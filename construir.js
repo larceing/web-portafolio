@@ -247,11 +247,11 @@ const html = `<!DOCTYPE html>
 
   <main id="contenido">
     <section class="inicio" id="inicio">
-      <h1>Automatizo procesos y pongo la IA a trabajar con los datos del negocio.</h1>
-      <div class="presentacion">
-        <img src="img/foto.webp" alt="Henry Arce" width="84" height="84">
+      <div>
+        <h1>Automatizo procesos y pongo la IA a trabajar con los datos del negocio.</h1>
         <p>Soy Henry Arce. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.</p>
       </div>
+      <img src="img/foto.webp" alt="Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia" width="640" height="640">
     </section>
 
     <section class="areas" aria-label="Áreas de trabajo">

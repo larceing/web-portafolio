@@ -46,5 +46,5 @@ ssh servidor "cd /opt/apps/portafolio && docker compose -f docker-compose.server
 
 ## Pendiente
 
-- Banner de la Ciudad de las Artes y las Ciencias: no está en el equipo; si se quiere usar, guardarlo en `img/`.
-- La foto es `img/foto.webp` (pequeña y en blanco y negro). Para cambiarla, sustituir ese fichero.
+- Versión en inglés, si se quiere.
+- La foto de la presentación es `img/foto.webp` (640 px). Para cambiarla, sustituir ese fichero.
