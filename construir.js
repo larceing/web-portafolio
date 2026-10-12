@@ -1,9 +1,11 @@
-// Genera index.html a partir de los datos de este fichero.
+// Genera index.html (español) y en/index.html (inglés) a partir de los datos
+// de este fichero y de las traducciones de contenido.en.js.
 //
 //   node construir.js
 //
-// Para añadir o cambiar un proyecto, edita la lista PROYECTOS y vuelve a
-// ejecutarlo. El resultado es HTML estático: no hace falta nada más para verlo.
+// Para añadir o cambiar un proyecto, edita la lista PROYECTOS, añade su
+// traducción en contenido.en.js y vuelve a ejecutarlo. El resultado es HTML
+// estático: no hace falta nada más para verlo.
 
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +15,7 @@ const LINKEDIN = 'https://www.linkedin.com/in/luis-henry-programador';
 const GITHUB = 'https://github.com/larceing';
 const TELEFONO = '+34 633 42 42 23';
 const WHATSAPP = 'https://wa.me/34633424223';
+const SITIO = 'https://luiscontacto03.com/';
 
 // Pictogramas de línea (lienzo de 48 x 48).
 const ICONOS = {
@@ -190,148 +193,219 @@ const TECNOLOGIAS = [
   ['Desarrollo', 'Node.js, Next.js, TypeScript, React Native, Django, Docker, Linux, Git']
 ];
 
-const TIPOS = { producto: 'Producto propio', empresa: 'Para empresa', abierto: 'Open source' };
+// Textos de la página en español. Los de inglés están en contenido.en.js.
+const UI = {
+  lang: 'es',
+  titulo: 'Henry Arce · Automatización, IA aplicada y datos',
+  descripcion: 'Henry Arce: automatización de procesos, IA aplicada y datos. Asistentes, integraciones e informes construidos sobre ERP, CRM y ecommerce reales.',
+  ogDescripcion: 'Proyectos reales, herramientas open source y trayectoria.',
+  saltar: 'Saltar al contenido',
+  lema: 'automatización · IA · datos',
+  secciones: 'Secciones',
+  menu: { proyectos: 'Proyectos', trayectoria: 'Trayectoria', tecnologias: 'Tecnologías', contacto: 'Contacto' },
+  otroIdioma: 'English',
+  otroIdiomaAria: 'English version',
+  h1: 'Automatizo procesos y pongo la IA a trabajar con los datos del negocio.',
+  intro: 'Soy Henry Arce. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.',
+  fotoAlt: 'Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia',
+  areasAria: 'Áreas de trabajo',
+  verProyectos: 'Ver proyectos',
+  franja: 'Abierto a proyectos y a nuevas conversaciones',
+  proyectos: 'Proyectos',
+  proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
+  filtrosAria: 'Filtrar proyectos',
+  todos: 'Todos',
+  tipos: { producto: 'Producto propio', empresa: 'Para empresa', abierto: 'Open source' },
+  enlaces: {},
+  trayectoria: 'Trayectoria',
+  trayectoriaSub: 'De la consultora a la fábrica',
+  tecnologias: 'Tecnologías',
+  tecnologiasSub: 'Con qué trabajo',
+  divulgacion: 'Divulgación',
+  divulgacionSub: 'Escribo en LinkedIn sobre BI e IA aplicada',
+  cifras: [
+    ['139.760', 'impresiones · Chuleta de comandos CMD de Windows'],
+    ['51.431', 'impresiones · 10 términos que todo profesional de datos debe dominar'],
+    ['29.131', 'impresiones · VBA, el abuelo sabio de Excel']
+  ],
+  contacto: 'Contacto',
+  contactoSub: 'Si en tu equipo hay tareas que se repiten o datos que no cuadran, cuéntamelo',
+  telefono: 'también por WhatsApp',
+  pie: 'Alicante, España',
+  cerrar: 'Cerrar'
+};
 
-function tesela(p) {
+const EN = require('./contenido.en.js');
+
+// Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
+// hasta la raíz (para css, js e img) y hasta la página del otro idioma.
+const IDIOMAS = [
+  { t: UI, areas: AREAS, proyectos: PROYECTOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carpeta: '', base: '', otro: 'en/' },
+  {
+    t: EN.UI,
+    areas: AREAS.map((a, i) => Object.assign({}, a, EN.AREAS[i])),
+    proyectos: PROYECTOS.map(p => {
+      if (!EN.PROYECTOS[p.id]) throw new Error('Falta la traducción del proyecto ' + p.id + ' en contenido.en.js');
+      return Object.assign({}, p, EN.PROYECTOS[p.id]);
+    }),
+    trayectoria: EN.TRAYECTORIA,
+    tecnologias: EN.TECNOLOGIAS,
+    carpeta: 'en', base: '../', otro: '../'
+  }
+];
+
+function tesela(p, t) {
   return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '" style="--c:' + p.color + '">\n' +
     '        ' + icono(p.icono) + '\n' +
     '        <span class="tesela-titulo">' + p.corto + '</span>\n' +
-    '        <span class="tesela-tipo">' + TIPOS[p.tipo] + '</span>\n' +
+    '        <span class="tesela-tipo">' + t.tipos[p.tipo] + '</span>\n' +
     '      </button>';
 }
 
-function detalle(p) {
+function detalle(p, t) {
   const cuerpo = p.caso
     ? '<dl class="caso">' + p.caso.map(c => '<div><dt>' + c[0] + '</dt><dd>' + c[1] + '</dd></div>').join('') + '</dl>'
     : '<p>' + p.texto + '</p>';
   const tec = p.tec ? '<p class="tec">' + p.tec.join(' · ') + '</p>' : '';
   const enlaces = p.enlaces
-    ? '<p class="enlaces">' + p.enlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('') + '</p>'
+    ? '<p class="enlaces">' + p.enlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + (t.enlaces[e[0]] || e[0]) + '</a>').join('') + '</p>'
     : '';
   return '    <div hidden id="d-' + p.id + '" data-color="' + p.color + '" data-icono="' + p.icono + '">\n' +
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n    </div>';
 }
 
-const html = `<!DOCTYPE html>
-<html lang="es">
+function pagina(d) {
+  const t = d.t;
+  const base = d.base;
+
+  return `<!DOCTYPE html>
+<html lang="${t.lang}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Henry Arce · Automatización, IA aplicada y datos</title>
-  <meta name="description" content="Henry Arce: automatización de procesos, IA aplicada y datos. Asistentes, integraciones e informes construidos sobre ERP, CRM y ecommerce reales.">
-  <meta property="og:title" content="Henry Arce · Automatización, IA aplicada y datos">
-  <meta property="og:description" content="Proyectos reales, herramientas open source y trayectoria.">
+  <title>${t.titulo}</title>
+  <meta name="description" content="${t.descripcion}">
+  <link rel="canonical" href="${SITIO}${d.carpeta ? d.carpeta + '/' : ''}">
+  <link rel="alternate" hreflang="es" href="${SITIO}">
+  <link rel="alternate" hreflang="en" href="${SITIO}en/">
+  <link rel="alternate" hreflang="x-default" href="${SITIO}">
+  <meta property="og:title" content="${t.titulo}">
+  <meta property="og:description" content="${t.ogDescripcion}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="img/monograma.png">
+  <meta property="og:image" content="${SITIO}img/monograma.png">
   <meta name="theme-color" content="#FFFFFF">
-  <link rel="icon" href="img/monograma.svg">
+  <link rel="icon" href="${base}img/monograma.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="${base}css/estilos.css">
 </head>
 
 <body>
-  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <a class="saltar" href="#contenido">${t.saltar}</a>
 
   <header class="cabecera">
-    <a class="marca" href="#inicio">Henry Arce <span>automatización · IA · datos</span></a>
-    <nav class="menu" aria-label="Secciones">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#trayectoria">Trayectoria</a>
-      <a href="#tecnologias">Tecnologías</a>
-      <a href="#contacto">Contacto</a>
+    <a class="marca" href="#inicio">Henry Arce <span>${t.lema}</span></a>
+    <nav class="menu" aria-label="${t.secciones}">
+      <a href="#proyectos">${t.menu.proyectos}</a>
+      <a href="#trayectoria">${t.menu.trayectoria}</a>
+      <a href="#tecnologias">${t.menu.tecnologias}</a>
+      <a href="#contacto">${t.menu.contacto}</a>
       <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="idioma" href="${d.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
     </nav>
   </header>
 
   <main id="contenido">
     <section class="inicio" id="inicio">
       <div>
-        <h1>Automatizo procesos y pongo la IA a trabajar con los datos del negocio.</h1>
-        <p>Soy Henry Arce. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.</p>
+        <h1>${t.h1}</h1>
+        <p>${t.intro}</p>
       </div>
-      <img src="img/foto.webp" alt="Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia" width="640" height="640">
+      <img src="${base}img/foto.webp" alt="${t.fotoAlt}" width="640" height="640">
     </section>
 
-    <section class="areas" aria-label="Áreas de trabajo">
-${AREAS.map(a => '      <a class="area" href="#proyectos" style="--c:' + a.color + '">\n        ' + icono(a.icono) + '\n        <strong>' + a.titulo + '</strong>\n        <span>' + a.texto + '</span>\n        <em>Ver proyectos</em>\n      </a>').join('\n')}
+    <section class="areas" aria-label="${t.areasAria}">
+${d.areas.map(a => '      <a class="area" href="#proyectos" style="--c:' + a.color + '">\n        ' + icono(a.icono) + '\n        <strong>' + a.titulo + '</strong>\n        <span>' + a.texto + '</span>\n        <em>' + t.verProyectos + '</em>\n      </a>').join('\n')}
     </section>
 
-    <p class="franja">Abierto a proyectos y a nuevas conversaciones <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a></span></p>
+    <p class="franja">${t.franja} <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a></span></p>
 
     <section class="bloque" id="proyectos">
-      <h2>Proyectos</h2>
-      <p class="sub">Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice</p>
+      <h2>${t.proyectos}</h2>
+      <p class="sub">${t.proyectosSub}</p>
 
-      <div class="filtros" role="group" aria-label="Filtrar proyectos">
-        <button type="button" class="filtro activo" data-filtro="todos">Todos</button>
-        <button type="button" class="filtro" data-filtro="empresa">Para empresa</button>
-        <button type="button" class="filtro" data-filtro="producto">Producto propio</button>
-        <button type="button" class="filtro" data-filtro="abierto">Open source</button>
+      <div class="filtros" role="group" aria-label="${t.filtrosAria}">
+        <button type="button" class="filtro activo" data-filtro="todos">${t.todos}</button>
+        <button type="button" class="filtro" data-filtro="empresa">${t.tipos.empresa}</button>
+        <button type="button" class="filtro" data-filtro="producto">${t.tipos.producto}</button>
+        <button type="button" class="filtro" data-filtro="abierto">${t.tipos.abierto}</button>
       </div>
 
       <div class="cuadricula">
-${PROYECTOS.map(tesela).join('\n')}
+${d.proyectos.map(p => tesela(p, t)).join('\n')}
       </div>
     </section>
 
-${PROYECTOS.map(detalle).join('\n')}
+${d.proyectos.map(p => detalle(p, t)).join('\n')}
 
     <section class="bloque" id="trayectoria">
-      <h2>Trayectoria</h2>
-      <p class="sub">De la consultora a la fábrica</p>
+      <h2>${t.trayectoria}</h2>
+      <p class="sub">${t.trayectoriaSub}</p>
 
       <ol class="lista">
-${TRAYECTORIA.map(t => '        <li><span class="cuando">' + t[0] + '</span><div><h3>' + t[1] + ' <span>· ' + t[2] + '</span></h3><p>' + t[3] + '</p></div></li>').join('\n')}
+${d.trayectoria.map(x => '        <li><span class="cuando">' + x[0] + '</span><div><h3>' + x[1] + ' <span>· ' + x[2] + '</span></h3><p>' + x[3] + '</p></div></li>').join('\n')}
       </ol>
     </section>
 
     <section class="bloque" id="tecnologias">
-      <h2>Tecnologías</h2>
-      <p class="sub">Con qué trabajo</p>
+      <h2>${t.tecnologias}</h2>
+      <p class="sub">${t.tecnologiasSub}</p>
 
       <dl class="lista">
-${TECNOLOGIAS.map(t => '        <div><dt class="cuando">' + t[0] + '</dt><dd>' + t[1] + '</dd></div>').join('\n')}
+${d.tecnologias.map(x => '        <div><dt class="cuando">' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
       </dl>
     </section>
 
     <section class="bloque" id="divulgacion">
-      <h2>Divulgación</h2>
-      <p class="sub">Escribo en LinkedIn sobre BI e IA aplicada</p>
+      <h2>${t.divulgacion}</h2>
+      <p class="sub">${t.divulgacionSub}</p>
 
       <div class="cifras">
-        <div><strong>139.760</strong><span>impresiones · Chuleta de comandos CMD de Windows</span></div>
-        <div><strong>51.431</strong><span>impresiones · 10 términos que todo profesional de datos debe dominar</span></div>
-        <div><strong>29.131</strong><span>impresiones · VBA, el abuelo sabio de Excel</span></div>
+${t.cifras.map(c => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span></div>').join('\n')}
       </div>
     </section>
 
     <section class="bloque contacto" id="contacto">
-      <h2>Contacto</h2>
-      <p class="sub">Si en tu equipo hay tareas que se repiten o datos que no cuadran, cuéntamelo</p>
+      <h2>${t.contacto}</h2>
+      <p class="sub">${t.contactoSub}</p>
       <a class="correo" href="mailto:${CORREO}">${CORREO}</a>
       <p class="redes">
         <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
         <a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
         <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
       </p>
-      <p class="telefono">${TELEFONO} · también por WhatsApp</p>
+      <p class="telefono">${TELEFONO} · ${t.telefono}</p>
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · Alicante, España · <span id="anio">2026</span></footer>
+  <footer class="pie">Henry Arce · ${t.pie} · <span id="anio">2026</span></footer>
 
   <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
     <div class="ficha-cabecera" id="fichaCabecera"></div>
     <div class="ficha-cuerpo" id="fichaCuerpo"></div>
-    <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="Cerrar">×</button>
+    <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="${t.cerrar}">×</button>
   </dialog>
 
-  <script src="js/app.js"></script>
+  <script src="${base}js/app.js"></script>
 </body>
 </html>
 `;
+}
 
-fs.writeFileSync(path.join(__dirname, 'index.html'), html);
-console.log('index.html generado: ' + PROYECTOS.length + ' proyectos');
+IDIOMAS.forEach(d => {
+  const carpeta = path.join(__dirname, d.carpeta);
+  fs.mkdirSync(carpeta, { recursive: true });
+  fs.writeFileSync(path.join(carpeta, 'index.html'), pagina(d));
+  console.log(path.join(d.carpeta, 'index.html') + ' generado: ' + d.proyectos.length + ' proyectos');
+});

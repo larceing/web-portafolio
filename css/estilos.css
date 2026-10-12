@@ -784,3 +784,17 @@ code {
     margin: 8px 0 0;
   }
 }
+
+/* Enlace a la versión en el otro idioma */
+
+.menu .idioma {
+  padding-left: 22px;
+  border-left: 1px solid var(--raya);
+  color: var(--azul);
+}
+
+@media (max-width: 640px) {
+  .menu .idioma {
+    padding-left: 14px;
+  }
+}

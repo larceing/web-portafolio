@@ -13,14 +13,16 @@ JavaScript sin dependencias.
 
 ## Cambiar el contenido
 
-Todo el texto está en `construir.js`: la lista `PROYECTOS`, `AREAS`, `TRAYECTORIA` y
+Todo el texto en español está en `construir.js`: la lista `PROYECTOS`, `AREAS`, `TRAYECTORIA` y
 `TECNOLOGIAS`, y el correo y los enlaces al principio. Después de editar:
 
 ```
 node construir.js
 ```
 
-Eso regenera `index.html`. No hace falta nada más para verlo: abre el fichero en el navegador.
+Eso regenera `index.html` (español) y `en/index.html` (inglés). Los textos en inglés están en
+`contenido.en.js`: al añadir un proyecto hay que poner allí su traducción con el mismo `id`, o
+`construir.js` avisa de que falta. Cada página enlaza a la otra desde el menú.
 
 Cada proyecto tiene `tipo` (`producto`, `empresa` o `abierto`, que decide el filtro), `icono`
 (uno de los de `ICONOS`) y `color` (uno de los seis de `C`). Con `caso` sale en formato
@@ -46,5 +48,4 @@ ssh servidor "cd /opt/apps/portafolio && docker compose -f docker-compose.server
 
 ## Pendiente
 
-- Versión en inglés, si se quiere.
 - La foto de la presentación es `img/foto.webp` (640 px). Para cambiarla, sustituir ese fichero.
