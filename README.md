@@ -1,43 +1,50 @@
 # Web portafolio · Henry Arce
 
-Página personal de una sola pantalla: presentación, qué hago, proyectos, trayectoria, tecnologías,
-divulgación y contacto. HTML, CSS y JavaScript sin dependencias ni compilación.
+Página personal de una sola pantalla, publicada en https://luiscontacto03.com. HTML, CSS y
+JavaScript sin dependencias.
 
-## Verla
+## Cómo está hecha
 
-Abrir `index.html` en el navegador.
+- **Franja de áreas:** cuatro paneles inclinados (automatización, IA aplicada, datos y BI,
+  sistemas de negocio).
+- **Proyectos:** cuadrícula de teselas de color con un pictograma y el título. Al pulsar una se
+  abre su ficha con el problema, lo que se hizo y el resultado.
+- **Trayectoria, tecnologías, divulgación y contacto:** listas sencillas a dos columnas.
 
-## Estructura
+## Cambiar el contenido
+
+Todo el texto está en `construir.js`: la lista `PROYECTOS`, `AREAS`, `TRAYECTORIA` y
+`TECNOLOGIAS`, y el correo y los enlaces al principio. Después de editar:
 
 ```
-index.html        todo el contenido
-css/estilos.css   diseño; los colores están al principio, en :root
-js/app.js         menú móvil, filtro de proyectos, animaciones y constelación del fondo
-img/              portadas de proyectos (WebP) y monograma
+node construir.js
 ```
 
-## Cambiar cosas
+Eso regenera `index.html`. No hace falta nada más para verlo: abre el fichero en el navegador.
 
-- **Colores, sombras y tipografía:** variables de `:root` en `css/estilos.css`. Fondo claro, superficies
-  blancas separadas por sombra, un azul como único acento (liso o en degradado) y naranja tostado
-  solo en las etiquetas. Titulares en Bricolage Grotesque, texto en IBM Plex Sans.
-- **Carrusel:** los proyectos pequeños van dentro de `<div class="carrusel">`; los tres destacados,
-  fuera, en `<div class="proyectos">`.
-- **Proyectos:** cada uno es un `<article class="proyecto">` en `index.html`. El atributo
-  `data-tipo` (`empresa`, `producto` o `abierto`) decide en qué filtro aparece. Los dos primeros
-  llevan `proyecto-grande` y el formato problema / qué hice / resultado.
-- **Trayectoria:** lista `<ol class="linea-tiempo">`.
-- **Cifras de la portada y de divulgación:** están escritas a mano en `index.html`; revisarlas
-  cuando cambien.
+Cada proyecto tiene `tipo` (`producto`, `empresa` o `abierto`, que decide el filtro), `icono`
+(uno de los de `ICONOS`) y `color` (uno de los seis de `C`). Con `caso` sale en formato
+problema / qué hice / resultado; con `texto`, en un párrafo.
+
+## Cambiar el aspecto
+
+`css/estilos.css`. Los colores y las tipografías están al principio, en `:root`: página blanca,
+tinta oscura, un azul de acento, titulares en Barlow Condensed y texto en IBM Plex Sans.
+
+## Publicar
+
+```
+tar -czf - --exclude=.git . | ssh servidor "tar -xzf - -C /opt/apps/portafolio"
+ssh servidor "cd /opt/apps/portafolio && docker compose -f docker-compose.server.yml up -d --build"
+```
 
 ## Criterios de contenido
 
 - En los proyectos para empresa no aparecen datos, cifras ni capturas del cliente.
-- Las portadas de `img/` salen de `MARCA_PERSONAL`, redimensionadas a 720 px.
+- `img/` conserva las portadas de `MARCA_PERSONAL` por si se quieren volver a usar; el diseño
+  actual no las muestra.
 
-## Pendiente antes de publicar
+## Pendiente
 
-- La dirección de contacto es `info@luiscontacto03.com`: hay que crear esa regla en Cloudflare
-  Email Routing (igual que `soporte@`) o cambiarla por otra que exista.
-- Decidir dónde se publica: GitHub Pages, o el servidor propio tras Nginx Proxy Manager.
-- Opcional: foto propia en la portada y versión en inglés.
+- Crear `info@luiscontacto03.com` en Cloudflare Email Routing: es el correo de contacto publicado.
+- Foto propia y versión en inglés, si se quieren.
