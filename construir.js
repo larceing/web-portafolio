@@ -11,6 +11,8 @@ const path = require('path');
 const CORREO = 'info@luiscontacto03.com';
 const LINKEDIN = 'https://www.linkedin.com/in/luis-henry-programador';
 const GITHUB = 'https://github.com/larceing';
+const TELEFONO = '+34 633 42 42 23';
+const WHATSAPP = 'https://wa.me/34633424223';
 
 // Pictogramas de línea (lienzo de 48 x 48).
 const ICONOS = {
@@ -239,20 +241,24 @@ const html = `<!DOCTYPE html>
       <a href="#trayectoria">Trayectoria</a>
       <a href="#tecnologias">Tecnologías</a>
       <a href="#contacto">Contacto</a>
+      <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
   </header>
 
   <main id="contenido">
     <section class="inicio" id="inicio">
       <h1>Automatizo procesos y pongo la IA a trabajar con los datos del negocio.</h1>
-      <p>Soy Henry Arce. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.</p>
+      <div class="presentacion">
+        <img src="img/foto.webp" alt="Henry Arce" width="84" height="84">
+        <p>Soy Henry Arce. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.</p>
+      </div>
     </section>
 
     <section class="areas" aria-label="Áreas de trabajo">
 ${AREAS.map(a => '      <a class="area" href="#proyectos" style="--c:' + a.color + '">\n        ' + icono(a.icono) + '\n        <strong>' + a.titulo + '</strong>\n        <span>' + a.texto + '</span>\n        <em>Ver proyectos</em>\n      </a>').join('\n')}
     </section>
 
-    <p class="franja">Abierto a proyectos y a nuevas conversaciones</p>
+    <p class="franja">Abierto a proyectos y a nuevas conversaciones <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a></span></p>
 
     <section class="bloque" id="proyectos">
       <h2>Proyectos</h2>
@@ -305,7 +311,12 @@ ${TECNOLOGIAS.map(t => '        <div><dt class="cuando">' + t[0] + '</dt><dd>' +
       <h2>Contacto</h2>
       <p class="sub">Si en tu equipo hay tareas que se repiten o datos que no cuadran, cuéntamelo</p>
       <a class="correo" href="mailto:${CORREO}">${CORREO}</a>
-      <p class="redes"><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a></p>
+      <p class="redes">
+        <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
+      </p>
+      <p class="telefono">${TELEFONO} · también por WhatsApp</p>
     </section>
   </main>
 

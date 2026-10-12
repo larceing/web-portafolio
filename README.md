@@ -46,5 +46,5 @@ ssh servidor "cd /opt/apps/portafolio && docker compose -f docker-compose.server
 
 ## Pendiente
 
-- Crear `info@luiscontacto03.com` en Cloudflare Email Routing: es el correo de contacto publicado.
-- Foto propia y versión en inglés, si se quieren.
+- Banner de la Ciudad de las Artes y las Ciencias: no está en el equipo; si se quiere usar, guardarlo en `img/`.
+- La foto es `img/foto.webp` (pequeña y en blanco y negro). Para cambiarla, sustituir ese fichero.
