@@ -574,6 +574,14 @@ code {
   line-height: 1.45;
 }
 
+.cifras a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--azul);
+  font-size: 14.5px;
+  text-underline-offset: 4px;
+}
+
 /* Contacto */
 
 .contacto {

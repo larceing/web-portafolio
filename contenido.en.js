@@ -39,6 +39,7 @@ module.exports = {
     ],
     contacto: 'Contact',
     contactoSub: 'If your team has tasks that keep repeating or data that doesn’t add up, tell me about it',
+    verPublicacion: 'View the post',
     telefono: 'WhatsApp works too',
     pie: 'Alicante, Spain',
     cerrar: 'Close'

@@ -17,6 +17,14 @@ const TELEFONO = '+34 633 42 42 23';
 const WHATSAPP = 'https://wa.me/34633424223';
 const SITIO = 'https://luiscontacto03.com/';
 
+// Publicaciones de LinkedIn de la sección de divulgación, en el mismo orden que
+// las cifras. Si una no tiene enlace (null), su cifra sale sin él.
+const PUBLICACIONES = [
+  'https://www.linkedin.com/posts/luis-henry-programador_windows-cmd-networking-activity-7371120247170502656-_654',
+  'https://www.linkedin.com/posts/luis-henry-programador_10-t%C3%A9rminos-que-todo-profesional-de-datos-activity-7372599959688462336-17HF',
+  null
+];
+
 // Pictogramas de línea (lienzo de 48 x 48).
 const ICONOS = {
   ticket: '<rect x="8" y="12" width="32" height="24" rx="3"/><path d="M16 20h16M16 28h10"/>',
@@ -230,6 +238,7 @@ const UI = {
   ],
   contacto: 'Contacto',
   contactoSub: 'Si en tu equipo hay tareas que se repiten o datos que no cuadran, cuéntamelo',
+  verPublicacion: 'Ver la publicación',
   telefono: 'también por WhatsApp',
   pie: 'Alicante, España',
   cerrar: 'Cerrar'
@@ -372,7 +381,7 @@ ${d.tecnologias.map(x => '        <div><dt class="cuando">' + x[0] + '</dt><dd>'
       <p class="sub">${t.divulgacionSub}</p>
 
       <div class="cifras">
-${t.cifras.map(c => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span></div>').join('\n')}
+${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
       </div>
     </section>
 
