@@ -96,7 +96,7 @@
         <dl class="cifras">
           <div><dt>Desde 2019</dt><dd>trabajando con datos</dd></div>
           <div><dt>2 ERP · 2 plantas</dt><dd>a mi cargo hoy</dd></div>
-          <div><dt>9 repositorios</dt><dd>de herramientas y guías abiertas</dd></div>
+          <div><dt>+15 repositorios</dt><dd>públicos en GitHub</dd></div>
           <div><dt>139.760</dt><dd>impresiones en mi publicación más vista</dd></div>
         </dl>
       </div>
@@ -186,6 +186,28 @@
             </div>
           </article>
 
+          <article class="proyecto proyecto-grande revelar" data-tipo="producto">
+            <div class="proyecto-imagen proyecto-diagrama" aria-hidden="true">
+              <svg viewBox="0 0 360 220">
+                <rect x="14" y="60" width="104" height="100" rx="12" class="caja"/><text x="66" y="100" class="t">Tablet</text><text x="66" y="120" class="s">sin conexión</text><text x="66" y="136" class="s">base local</text>
+                <rect x="242" y="60" width="104" height="100" rx="12" class="caja"/><text x="294" y="100" class="t">Web</text><text x="294" y="120" class="s">PostgreSQL</text><text x="294" y="136" class="s">panel de gestión</text>
+                <path d="M118 92 H242" class="linea"/><path d="M242 128 H118" class="linea vuelta"/>
+                <text x="180" y="84" class="s">cola de cambios</text><text x="180" y="146" class="s">eventos y versiones</text>
+                <text x="180" y="196" class="s">sincroniza al recuperar la red · resuelve conflictos</text>
+              </svg>
+            </div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Producto propio · en desarrollo</p>
+              <h3>CRM de citas con tablet sin conexión</h3>
+              <dl class="caso">
+                <div><dt>Problema</dt><dd>Un negocio que gestiona citas de pacientes en hospitales trabajaba con una aplicación sobre hojas de cálculo que se quedaba corta, y en los hospitales no siempre hay cobertura.</dd></div>
+                <div><dt>Qué hice</dt><dd>La reescribí como aplicación web con base de datos propia y una app de tablet que funciona sin conexión: guarda en local, encola los cambios y los sincroniza por eventos con control de versiones cuando vuelve la red.</dd></div>
+                <div><dt>Resultado</dt><dd>Agenda, pacientes, servicios, cobros, documentos y alarmas en un solo sitio, con pantalla de conflictos para decidir cuando dos dispositivos cambian lo mismo. Desplegado en servidor propio.</dd></div>
+              </dl>
+              <ul class="chips"><li>Next.js</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>React Native</li><li>Docker</li></ul>
+            </div>
+          </article>
+
           <article class="proyecto revelar" data-tipo="empresa">
             <div class="proyecto-cuerpo">
               <p class="etiqueta">Para Grupo SPSIL · en desarrollo</p>
@@ -199,8 +221,26 @@
             <div class="proyecto-cuerpo">
               <p class="etiqueta">Para Grupo SPSIL · 2025–2026</p>
               <h3>Reporting de ventas, cobros y stock</h3>
-              <p>Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric para que el servicio no dependiera de un único punto.</p>
+              <p>Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.</p>
               <ul class="chips"><li>Power BI</li><li>DAX</li><li>Microsoft Fabric</li><li>A3 ERP</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="empresa">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Para Grupo SPSIL · escritorio</p>
+              <h3>Informe operativo sin Power BI</h3>
+              <p>Aplicación de escritorio que genera un informe de ofertas por cliente y familia directamente desde SQL Server o el Lakehouse. El cálculo se hace en la base de datos para no cargar el equipo, con filtros, exportación a Excel y pruebas automáticas.</p>
+              <ul class="chips"><li>Python</li><li>PySide6</li><li>SQL Server</li><li>pytest</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="empresa">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Para un comercio · tienda online</p>
+              <h3>Tienda online con panel propio</h3>
+              <p>Tienda para un negocio de serigrafía: catálogo, carrito y compra, con un panel de administración a medida para gestionar productos y pedidos. Todo arranca con un solo comando gracias a Docker.</p>
+              <ul class="chips"><li>Next.js</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li></ul>
             </div>
           </article>
 
@@ -274,6 +314,24 @@
 
           <article class="proyecto revelar" data-tipo="abierto">
             <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · plantilla</p>
+              <h3>Marco de gobernanza de IA</h3>
+              <p>Plantilla para que un equipo defina cómo se usa la IA al revisar o construir proyectos: unas reglas que nadie puede saltarse y dos bucles de mejora que aprenden de cada caso real.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/claude-governance" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · Power BI</p>
+              <h3>Prioridad comercial sin saturar</h3>
+              <p>Informe de Power BI con datos de ejemplo para decidir a qué clientes y zonas dedicar el tiempo del equipo comercial, con un script de Python que regenera los datos.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/analisis_comerciales" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-cuerpo">
               <p class="etiqueta">Open source · manual</p>
               <h3>Apache NiFi: tu primer flujo</h3>
               <p>Manual paso a paso en español para instalar NiFi en Windows y montar un primer pipeline en veinte minutos, pensado para analistas que vienen de Power BI y Power Query.</p>
@@ -321,6 +379,19 @@
             <p>Primeros proyectos por cuenta propia: paneles de ventas, inventario y producción, y automatización de informes con Python y macros de Excel.</p>
           </li>
         </ol>
+
+        <div class="formacion">
+          <div class="revelar">
+            <p class="cuando">2020 – 2022</p>
+            <h3>Técnico en Sistemas de Telecomunicaciones e Informáticos</h3>
+            <p>IES El Palmeral · nota media 8,8</p>
+          </div>
+          <div class="revelar">
+            <p class="cuando">Reconocimientos</p>
+            <h3>Premio a la Excelencia Académica 2022</h3>
+            <p>Y premiado en el campeonato CV Skills 2021, modalidad de Electrónica.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -334,7 +405,7 @@
           <div class="revelar"><h3>ERP y negocio</h3><ul class="chips"><li>Clavei</li><li>Cybermax</li><li>SAP</li><li>A3 ERP</li><li>EDI</li><li>SharePoint</li></ul></div>
           <div class="revelar"><h3>Datos y BI</h3><ul class="chips"><li>Power BI</li><li>DAX</li><li>Power Query (M)</li><li>SQL Server</li><li>MariaDB</li><li>Microsoft Fabric</li><li>Azure Data Factory</li><li>Databricks</li></ul></div>
           <div class="revelar"><h3>Automatización</h3><ul class="chips"><li>Python</li><li>pandas</li><li>VBA</li><li>Shell Script</li><li>PowerShell</li><li>Power Automate</li><li>Power Apps</li><li>Apps Script</li></ul></div>
-          <div class="revelar"><h3>Desarrollo</h3><ul class="chips"><li>Node.js</li><li>Django</li><li>API REST</li><li>Docker</li><li>Linux</li><li>Git</li></ul></div>
+          <div class="revelar"><h3>Desarrollo</h3><ul class="chips"><li>Node.js</li><li>Next.js</li><li>TypeScript</li><li>React Native</li><li>Django</li><li>PostgreSQL</li><li>API REST</li><li>Docker</li><li>Linux</li><li>Git</li></ul></div>
           <div class="revelar"><h3>IA aplicada</h3><ul class="chips"><li>Claude</li><li>Claude Code</li><li>Copilot</li><li>Asistentes sobre datos</li></ul></div>
         </div>
       </div>
