@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Henry Arce · Business Applications &amp; Data</title>
+  <meta name="description" content="Henry Arce: administración de ERP, Business Intelligence, automatización e IA aplicada. Proyectos reales para industria, herramientas open source y trayectoria.">
+  <meta property="og:title" content="Henry Arce · Business Applications &amp; Data">
+  <meta property="og:description" content="ERP, datos e IA aplicada trabajando juntos. Proyectos, herramientas open source y trayectoria.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/monograma.png">
+  <meta name="theme-color" content="#050A1C">
+  <link rel="icon" href="img/monograma.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera" id="cabecera">
+    <a class="marca" href="#inicio" aria-label="Henry Arce, inicio">
+      <img src="img/monograma.svg" alt="" width="38" height="38">
+      <span><strong>Henry Arce</strong><small>Business Applications &amp; Data</small></span>
+    </a>
+
+    <button class="menu-boton" id="menuBoton" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="menu" id="menu" aria-label="Secciones">
+      <a href="#que-hago">Qué hago</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#stack">Tecnologías</a>
+      <a href="#contenido-linkedin">Divulgación</a>
+      <a class="menu-cta" href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- Inicio -->
+    <section class="hero" id="inicio">
+      <canvas class="hero-fondo" id="constelacion" aria-hidden="true"></canvas>
+
+      <div class="contenedor hero-rejilla">
+        <div class="hero-texto">
+          <p class="antetitulo"><span class="punto"></span>ERP · Automatización · Datos &amp; IA aplicada</p>
+          <h1>Hago que el ERP, los datos y la IA <span class="degradado">trabajen juntos</span>.</h1>
+          <p class="hero-sub">Soy Henry Arce. Administro sistemas de negocio, construyo el reporting que los explica y automatizo lo que se repite. Desde 2019 con datos: primero en consultoras, ahora dentro de la industria.</p>
+
+          <div class="hero-acciones">
+            <a class="boton boton-primario" href="#proyectos">Ver proyectos</a>
+            <a class="boton boton-secundario" href="#contacto">Escríbeme</a>
+          </div>
+
+          <p class="disponible"><span class="latido"></span>Abierto a proyectos y a nuevas conversaciones</p>
+        </div>
+
+        <!-- Del dato a la decisión: el recorrido que suelo montar -->
+        <figure class="flujo" aria-label="Recorrido del dato: del ERP a la decisión">
+          <svg viewBox="0 0 440 420" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="acento" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="440" y2="420">
+                <stop offset="0" stop-color="#5EE7FF"/>
+                <stop offset="1" stop-color="#2563EB"/>
+              </linearGradient>
+            </defs>
+
+            <g class="flujo-lineas" fill="none" stroke="url(#acento)" stroke-width="2">
+              <path d="M96 104 C 96 150, 120 150, 150 150"/>
+              <path d="M96 196 C 96 150, 120 150, 150 150"/>
+              <path d="M290 150 C 344 150, 344 140, 344 122"/>
+              <path d="M220 182 V266"/>
+              <path d="M280 292 C 344 292, 344 300, 344 314"/>
+              <path d="M374 122 V314"/>
+            </g>
+
+            <g class="flujo-nodos">
+              <g transform="translate(36 52)"><rect width="120" height="52" rx="12"/><text x="60" y="23">ERP</text><text class="sub" x="60" y="40">Clavei · SAP · A3</text></g>
+              <g transform="translate(36 196)"><rect width="120" height="52" rx="12"/><text x="60" y="23">Planta</text><text class="sub" x="60" y="40">máquinas · EDI</text></g>
+              <g class="nodo-centro" transform="translate(150 118)"><rect width="140" height="64" rx="14"/><text x="70" y="28">SQL</text><text class="sub" x="70" y="46">modelo de datos</text></g>
+              <g transform="translate(284 70)"><rect width="120" height="52" rx="12"/><text x="60" y="23">Power BI</text><text class="sub" x="60" y="40">DAX · Fabric</text></g>
+              <g transform="translate(160 266)"><rect width="120" height="52" rx="12"/><text x="60" y="23">Automatización</text><text class="sub" x="60" y="40">Python · flujos</text></g>
+              <g transform="translate(284 314)"><rect width="120" height="52" rx="12"/><text x="60" y="23">IA aplicada</text><text class="sub" x="60" y="40">asistentes</text></g>
+            </g>
+          </svg>
+          <figcaption>Del dato a la decisión: el recorrido que suelo montar.</figcaption>
+        </figure>
+      </div>
+
+      <div class="contenedor">
+        <dl class="cifras">
+          <div><dt>Desde 2019</dt><dd>trabajando con datos</dd></div>
+          <div><dt>2 ERP · 2 plantas</dt><dd>a mi cargo hoy</dd></div>
+          <div><dt>9 repositorios</dt><dd>de herramientas y guías abiertas</dd></div>
+          <div><dt>139.760</dt><dd>impresiones en mi publicación más vista</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Qué hago -->
+    <section class="seccion" id="que-hago">
+      <div class="contenedor">
+        <p class="antetitulo"><span class="punto"></span>Qué hago</p>
+        <h2>Tres piezas que casi nunca lleva la misma persona</h2>
+        <p class="entrada">Lo habitual es que el ERP, el reporting y la automatización vivan en equipos distintos. Yo trabajo en el punto donde se tocan, y por eso entiendo de dónde sale cada número.</p>
+
+        <div class="pilares">
+          <article class="pilar revelar">
+            <span class="pilar-num">01</span>
+            <h3>Sistemas de negocio</h3>
+            <p>Administro y hago evolucionar ERP en producción: pedidos, albaranes, facturación, EDI, permisos e integraciones con máquinas de planta.</p>
+            <ul><li>Clavei, Cybermax, SAP y A3 ERP</li><li>Integraciones y desarrollos a medida</li><li>Interlocución con proveedores</li></ul>
+          </article>
+
+          <article class="pilar revelar">
+            <span class="pilar-num">02</span>
+            <h3>Datos y Business Intelligence</h3>
+            <p>Modelo los datos y construyo informes que la gente usa de verdad: ventas, cobros, stock y compras, con el modelo que hay debajo bien resuelto.</p>
+            <ul><li>Power BI, DAX y Power Query</li><li>SQL Server, MariaDB y Microsoft Fabric</li><li>ETL y calidad del dato</li></ul>
+          </article>
+
+          <article class="pilar revelar">
+            <span class="pilar-num">03</span>
+            <h3>Automatización e IA aplicada</h3>
+            <p>Quito trabajo repetitivo con scripts y aplicaciones pequeñas, y meto IA donde resuelve una tarea concreta, no por ponerla.</p>
+            <ul><li>Python, VBA y Shell Script</li><li>Aplicaciones internas a medida</li><li>Asistentes de IA sobre datos de negocio</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section class="seccion seccion-alta" id="proyectos">
+      <div class="contenedor">
+        <p class="antetitulo"><span class="punto"></span>Proyectos</p>
+        <h2>Lo que he construido</h2>
+        <p class="entrada">Trabajo real, contado como problema, solución y resultado. En los proyectos para empresa no aparecen datos ni cifras del cliente.</p>
+
+        <div class="filtros" role="group" aria-label="Filtrar proyectos">
+          <button type="button" class="filtro activo" data-filtro="todos">Todos</button>
+          <button type="button" class="filtro" data-filtro="empresa">Para empresa</button>
+          <button type="button" class="filtro" data-filtro="producto">Producto propio</button>
+          <button type="button" class="filtro" data-filtro="abierto">Open source</button>
+        </div>
+
+        <div class="proyectos" id="listaProyectos">
+
+          <article class="proyecto proyecto-grande revelar" data-tipo="producto">
+            <div class="proyecto-imagen"><img src="img/tickets.webp" alt="Tablero de incidencias con columnas Nuevo, En curso y Resuelto" loading="lazy" width="720" height="720"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Producto propio · 2026</p>
+              <h3>Gestor de incidencias, horas y facturación</h3>
+              <dl class="caso">
+                <div><dt>Problema</dt><dd>Las incidencias se apuntaban a mano, las horas en una hoja de cálculo y las facturas aparte. Nada estaba conectado.</dd></div>
+                <div><dt>Qué hice</dt><dd>Una aplicación web propia donde cada incidencia lleva su seguimiento, su documentación, sus sesiones de trabajo cronometradas y su facturación. Usa MantisBT como motor de incidencias a través de su API, sin tocar su código.</dd></div>
+                <div><dt>Resultado</dt><dd>Historial migrado y cuadrado al céntimo, circuito proforma → factura → cobro, correo transaccional y 181 pruebas automáticas que recorren cada cambio de estado.</dd></div>
+              </dl>
+              <ul class="chips"><li>Node.js</li><li>MariaDB</li><li>API REST</li><li>Docker</li><li>Nginx</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto proyecto-grande revelar" data-tipo="empresa">
+            <div class="proyecto-imagen proyecto-diagrama" aria-hidden="true">
+              <svg viewBox="0 0 360 220">
+                <rect x="14" y="70" width="104" height="80" rx="12" class="caja"/><text x="66" y="104" class="t">Web</text><text x="66" y="124" class="s">en internet</text>
+                <rect x="242" y="70" width="104" height="80" rx="12" class="caja"/><text x="294" y="104" class="t">Agente</text><text x="294" y="124" class="s">red del cliente</text>
+                <path d="M118 96 H242" class="linea"/><path d="M242 124 H118" class="linea vuelta"/>
+                <text x="180" y="88" class="s">consulta</text><text x="180" y="142" class="s">dato fresco</text>
+                <text x="180" y="190" class="s">túnel abierto desde dentro · sin puertos de entrada</text>
+              </svg>
+            </div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Para Grupo SPSIL · 2026</p>
+              <h3>Gateway de datos en tiempo real</h3>
+              <dl class="caso">
+                <div><dt>Problema</dt><dd>El almacén necesitaba ver el stock real desde una web, pero las bases de datos están en la red interna y no se podían abrir puertos hacia fuera.</dd></div>
+                <div><dt>Qué hice</dt><dd>Un gateway al estilo del de Power BI: un agente dentro de la red abre un túnel WebSocket hacia la web, consulta MariaDB y SQL Server cuando alguien lo pide y devuelve el dato por ese mismo túnel.</dd></div>
+                <div><dt>Resultado</dt><dd>Stock al momento en pantallas táctiles de nave, permisos por departamento, interfaz en español, chino e inglés y exportación a Excel.</dd></div>
+              </dl>
+              <ul class="chips"><li>Python</li><li>Django Channels</li><li>WebSocket</li><li>SQL Server</li><li>MariaDB</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="empresa">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Para Grupo SPSIL · en desarrollo</p>
+              <h3>Asistente de IA sobre el ERP</h3>
+              <p>Un asistente que responde preguntas de negocio consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada; el modelo elige cuál usar y con qué parámetros, así no inventa datos. Responde en texto o en Excel.</p>
+              <ul class="chips"><li>Python</li><li>Django</li><li>LLM</li><li>SQL Server</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="empresa">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Para Grupo SPSIL · 2025–2026</p>
+              <h3>Reporting de ventas, cobros y stock</h3>
+              <p>Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric para que el servicio no dependiera de un único punto.</p>
+              <ul class="chips"><li>Power BI</li><li>DAX</li><li>Microsoft Fabric</li><li>A3 ERP</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="empresa">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">En ES Group · 2026</p>
+              <h3>Helpdesk interno, control horario y costes de IT</h3>
+              <p>Herramientas internas para dos plantas de producción: sistema de helpdesk propio para el soporte, control horario, seguimiento de costes de IT e integración de la facturación entre plantas del grupo.</p>
+              <ul class="chips"><li>Python</li><li>SQL Server</li><li>SAP</li><li>SharePoint</li></ul>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-imagen"><img src="img/theme-lab.webp" alt="Power BI Theme Lab: paleta de colores y panel de ventas de ejemplo" loading="lazy" width="720" height="720"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · herramienta web</p>
+              <h3>Power BI Theme Lab</h3>
+              <p>Generador de temas para Power BI en el navegador: eliges tu color de marca, ves la paleta sobre un panel en vivo, compruebas el contraste y exportas el <code>theme.json</code>.</p>
+              <div class="enlaces"><a href="https://larceing.github.io/powerbi-theme-lab/" target="_blank" rel="noopener">Probar la demo</a><a href="https://github.com/larceing/powerbi-theme-lab" target="_blank" rel="noopener">Código</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-imagen"><img src="img/calculate.webp" alt="CALCULATE en vivo: cambia el contexto de filtro y mira el resultado" loading="lazy" width="720" height="630"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · herramienta web</p>
+              <h3>CALCULATE en vivo</h3>
+              <p>Página interactiva para entender la función más potente y más confusa de DAX: cambias el contexto de filtro y ves, fila a fila, qué cuenta la medida y qué modifica <code>CALCULATE</code>.</p>
+              <div class="enlaces"><a href="https://larceing.github.io/dax-calculate-en-vivo/" target="_blank" rel="noopener">Probar la demo</a><a href="https://github.com/larceing/dax-calculate-en-vivo" target="_blank" rel="noopener">Código</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-imagen proyecto-ancha"><img src="img/mapa-grafo.webp" alt="Grafo de dependencias de un modelo de Power BI" loading="lazy" width="720" height="360"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · método</p>
+              <h3>Mapa-grafo de tu proyecto Power BI</h3>
+              <p>Cuatro pasos y cuatro prompts para que una IA lea tu modelo y dibuje su grafo de dependencias: qué medidas lo sostienen, cuáles no usa nadie y qué conexiones no se ven a simple vista.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/powerbi-mapa-grafo" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-imagen proyecto-ancha"><img src="img/outlook-ics.webp" alt="De Outlook a tus automatizaciones a través de un enlace de calendario" loading="lazy" width="720" height="360"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · Python</p>
+              <h3>outlook-ics-calendar</h3>
+              <p>Conecta tu calendario de Outlook a tus propios programas con un enlace y un script sin dependencias. Sin API de Microsoft, sin registrar aplicaciones y sin tokens.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/outlook-ics-calendar" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-imagen proyecto-ancha"><img src="img/modelo-ia.webp" alt="De preguntar a la IA a diseñar una interacción" loading="lazy" width="720" height="360"></div>
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · guía</p>
+              <h3>Modelo de interacción con la IA</h3>
+              <p>Una forma de trabajar con la IA como colaborador y no como buscador: encuadre, iteración y cierre, con plantillas pensadas para DAX, Power Query y documentación.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/modelo-interaccion-ia" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · PowerShell</p>
+              <h3>powerbi-report-reader</h3>
+              <p>Dos scripts para auditar un tenant de Power BI con tu propio inicio de sesión: a cuántos informes tienes acceso de verdad y qué conjuntos de datos están fallando al refrescar.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/powerbi-report-reader" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+          <article class="proyecto revelar" data-tipo="abierto">
+            <div class="proyecto-cuerpo">
+              <p class="etiqueta">Open source · manual</p>
+              <h3>Apache NiFi: tu primer flujo</h3>
+              <p>Manual paso a paso en español para instalar NiFi en Windows y montar un primer pipeline en veinte minutos, pensado para analistas que vienen de Power BI y Power Query.</p>
+              <div class="enlaces"><a href="https://github.com/larceing/apache-nifi-primer-flujo" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="mas">Más utilidades en GitHub: <a href="https://github.com/larceing/python_code" target="_blank" rel="noopener">python_code</a> (análisis financiero y de negocio) y <a href="https://github.com/larceing/m_snippets" target="_blank" rel="noopener">m_snippets</a> (fragmentos de Power Query).</p>
+      </div>
+    </section>
+
+    <!-- Trayectoria -->
+    <section class="seccion" id="trayectoria">
+      <div class="contenedor">
+        <p class="antetitulo"><span class="punto"></span>Trayectoria</p>
+        <h2>De la consultora a la fábrica</h2>
+        <p class="entrada">Empecé a los 16 trasteando con Arduino. En consultoras aprendí método y a documentar; en la industria aprendí qué significa que un dato esté mal un lunes a las ocho.</p>
+
+        <ol class="linea-tiempo">
+          <li class="revelar">
+            <p class="cuando">Abr 2026 – actualidad</p>
+            <h3>Business Applications Administrator <span>· F&amp;D Shower Tray (ES Group)</span></h3>
+            <p>Responsable de los ERP del grupo para dos plantas de producción. Integraciones con SAP, lectura de datos de máquinas, EDI, un helpdesk propio, control horario y costes de IT, y soporte a la migración a Azure.</p>
+          </li>
+          <li class="revelar">
+            <p class="cuando">Ene 2025 – mar 2026</p>
+            <h3>Data Analyst · Transformación digital <span>· Grupo SPSIL</span></h3>
+            <p>Análisis de datos, automatización y desarrollo para un fabricante: Microsoft Fabric para centralizar y gobernar el dato, Power BI para dirección y comerciales, y aplicaciones de escritorio en Python para logística y aprovisionamiento.</p>
+          </li>
+          <li class="revelar">
+            <p class="cuando">Nov 2023 – jul 2024</p>
+            <h3>Analista programador <span>· Inforges</span></h3>
+            <p>Área de innovación y transformación digital: ETL y almacenes de datos, informes en Power BI y Excel, e indicadores de proveedores (SLA, disponibilidad, MTBF, MTTR) con su documentación funcional y técnica.</p>
+          </li>
+          <li class="revelar">
+            <p class="cuando">Feb 2022 – nov 2023</p>
+            <h3>Business Intelligence Developer <span>· NTT DATA</span></h3>
+            <p>Soluciones de BI para el sector bancario: cuadros de mando de indicadores financieros y operativos, procesos ETL e integración de datos desde Azure Databricks, AWS, SharePoint y Oracle.</p>
+          </li>
+          <li class="revelar">
+            <p class="cuando">Sep 2019 – feb 2020</p>
+            <h3>Analista de datos <span>· Autónomo</span></h3>
+            <p>Primeros proyectos por cuenta propia: paneles de ventas, inventario y producción, y automatización de informes con Python y macros de Excel.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Tecnologías -->
+    <section class="seccion seccion-alta" id="stack">
+      <div class="contenedor">
+        <p class="antetitulo"><span class="punto"></span>Tecnologías</p>
+        <h2>Con qué trabajo</h2>
+
+        <div class="stack">
+          <div class="revelar"><h3>ERP y negocio</h3><ul class="chips"><li>Clavei</li><li>Cybermax</li><li>SAP</li><li>A3 ERP</li><li>EDI</li><li>SharePoint</li></ul></div>
+          <div class="revelar"><h3>Datos y BI</h3><ul class="chips"><li>Power BI</li><li>DAX</li><li>Power Query (M)</li><li>SQL Server</li><li>MariaDB</li><li>Microsoft Fabric</li><li>Azure Data Factory</li><li>Databricks</li></ul></div>
+          <div class="revelar"><h3>Automatización</h3><ul class="chips"><li>Python</li><li>pandas</li><li>VBA</li><li>Shell Script</li><li>PowerShell</li><li>Power Automate</li><li>Power Apps</li><li>Apps Script</li></ul></div>
+          <div class="revelar"><h3>Desarrollo</h3><ul class="chips"><li>Node.js</li><li>Django</li><li>API REST</li><li>Docker</li><li>Linux</li><li>Git</li></ul></div>
+          <div class="revelar"><h3>IA aplicada</h3><ul class="chips"><li>Claude</li><li>Claude Code</li><li>Copilot</li><li>Asistentes sobre datos</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divulgación -->
+    <section class="seccion" id="contenido-linkedin">
+      <div class="contenedor">
+        <p class="antetitulo"><span class="punto"></span>Divulgación</p>
+        <h2>También lo cuento</h2>
+        <p class="entrada">Escribo en LinkedIn sobre BI e IA aplicada, siempre con algo que se pueda copiar y usar. Estas son las publicaciones que más recorrido tuvieron.</p>
+
+        <div class="posts">
+          <article class="post revelar"><p class="post-cifra">139.760</p><p class="post-unidad">impresiones</p><h3>Chuleta de comandos CMD de Windows</h3></article>
+          <article class="post revelar"><p class="post-cifra">51.431</p><p class="post-unidad">impresiones</p><h3>10 términos que todo profesional de datos debe dominar</h3></article>
+          <article class="post revelar"><p class="post-cifra">29.131</p><p class="post-unidad">impresiones</p><h3>VBA, el abuelo sabio de Excel</h3></article>
+        </div>
+
+        <a class="boton boton-secundario" href="https://www.linkedin.com/in/luis-henry-programador" target="_blank" rel="noopener">Seguirme en LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="seccion contacto" id="contacto">
+      <div class="contenedor contacto-caja revelar">
+        <p class="antetitulo"><span class="punto"></span>Contacto</p>
+        <h2>¿Hablamos?</h2>
+        <p class="entrada">Si tienes un ERP que nadie termina de entender, informes que no cuadran o tareas que se repiten cada semana, cuéntamelo. También estoy abierto a propuestas profesionales.</p>
+
+        <div class="contacto-acciones">
+          <a class="boton boton-primario" href="mailto:hola@luiscontacto03.com">hola@luiscontacto03.com</a>
+          <a class="boton boton-secundario" href="https://www.linkedin.com/in/luis-henry-programador" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="boton boton-secundario" href="https://github.com/larceing" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie-rejilla">
+      <p><img src="img/monograma.svg" alt="" width="28" height="28"> Henry Arce · Business Applications &amp; Data</p>
+      <p>Alicante, España · <span id="anio">2026</span></p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
