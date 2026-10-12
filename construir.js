@@ -22,7 +22,7 @@ const SITIO = 'https://luiscontacto03.com/';
 const PUBLICACIONES = [
   'https://www.linkedin.com/posts/luis-henry-programador_windows-cmd-networking-activity-7371120247170502656-_654',
   'https://www.linkedin.com/posts/luis-henry-programador_10-t%C3%A9rminos-que-todo-profesional-de-datos-activity-7372599959688462336-17HF',
-  null
+  'https://www.linkedin.com/posts/luis-henry-programador_el-abuelo-sabio-del-excel-vba-hoy-activity-7368190955071504385-PzAT'
 ];
 
 // Pictogramas de línea (lienzo de 48 x 48).
