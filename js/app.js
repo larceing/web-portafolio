@@ -1,25 +1,3 @@
-// Menú móvil
-const menuBoton = document.getElementById('menuBoton');
-const menu = document.getElementById('menu');
-
-menuBoton.addEventListener('click', function() {
-  const abierto = menu.classList.toggle('abierto');
-  menuBoton.setAttribute('aria-expanded', abierto ? 'true' : 'false');
-});
-
-menu.addEventListener('click', function(e) {
-  if (e.target.tagName === 'A') {
-    menu.classList.remove('abierto');
-    menuBoton.setAttribute('aria-expanded', 'false');
-  }
-});
-
-// Borde de la cabecera al bajar
-const cabecera = document.getElementById('cabecera');
-window.addEventListener('scroll', function() {
-  cabecera.classList.toggle('con-borde', window.scrollY > 12);
-}, { passive: true });
-
 // Filtro de proyectos
 document.querySelectorAll('.filtro').forEach(function(boton) {
   boton.addEventListener('click', function() {
@@ -29,61 +7,51 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       b.classList.toggle('activo', b === boton);
     });
 
-    document.querySelectorAll('.proyecto').forEach(function(p) {
-      p.classList.toggle('oculto', filtro !== 'todos' && p.dataset.tipo !== filtro);
-      p.classList.add('visible');
+    document.querySelectorAll('.tesela').forEach(function(t) {
+      t.classList.toggle('oculta', filtro !== 'todos' && t.dataset.tipo !== filtro);
     });
   });
 });
 
-// Aparición al hacer scroll
-if ('IntersectionObserver' in window) {
-  const observador = new IntersectionObserver(function(entradas) {
-    entradas.forEach(function(entrada) {
-      if (entrada.isIntersecting) {
-        entrada.target.classList.add('visible');
-        observador.unobserve(entrada.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.revelar').forEach(function(el) { observador.observe(el); });
-} else {
-  document.querySelectorAll('.revelar').forEach(function(el) { el.classList.add('visible'); });
-}
-
-document.getElementById('anio').textContent = new Date().getFullYear();
-
-// Carrusel lateral de proyectos
+// Ficha de proyecto: se abre al pulsar una tesela.
 (function() {
-  const carrusel = document.getElementById('carrusel');
-  const antes = document.getElementById('carruselAntes');
-  const despues = document.getElementById('carruselDespues');
-  if (!carrusel) return;
+  const ficha = document.getElementById('ficha');
+  const cabecera = document.getElementById('fichaCabecera');
+  const cuerpo = document.getElementById('fichaCuerpo');
 
-  function paso() {
-    const tarjeta = carrusel.querySelector('.proyecto:not(.oculto)');
-    return tarjeta ? tarjeta.getBoundingClientRect().width + 24 : 380;
-  }
+  document.querySelectorAll('.tesela').forEach(function(tesela) {
+    tesela.addEventListener('click', function() {
+      const detalle = document.getElementById(tesela.dataset.detalle);
+      if (!detalle) return;
 
-  function actualizar() {
-    const maximo = carrusel.scrollWidth - carrusel.clientWidth - 2;
-    antes.disabled = carrusel.scrollLeft <= 2;
-    despues.disabled = carrusel.scrollLeft >= maximo;
-  }
+      cabecera.style.setProperty('--c', detalle.dataset.color);
+      cabecera.innerHTML = tesela.querySelector('svg').outerHTML;
+      cuerpo.innerHTML = detalle.innerHTML;
+      cuerpo.querySelector('h3').id = 'fichaTitulo';
 
-  antes.addEventListener('click', function() { carrusel.scrollBy({ left: -paso(), behavior: 'smooth' }); });
-  despues.addEventListener('click', function() { carrusel.scrollBy({ left: paso(), behavior: 'smooth' }); });
-  carrusel.addEventListener('scroll', actualizar, { passive: true });
-  window.addEventListener('resize', actualizar);
-
-  // Al cambiar de filtro, vuelve al principio.
-  document.querySelectorAll('.filtro').forEach(function(boton) {
-    boton.addEventListener('click', function() {
-      carrusel.scrollTo({ left: 0 });
-      setTimeout(actualizar, 60);
+      if (ficha.showModal) {
+        ficha.showModal();
+      } else {
+        ficha.setAttribute('open', '');
+      }
+      ficha.scrollTop = 0;
     });
   });
 
-  actualizar();
+  function cerrar() {
+    if (ficha.close) {
+      ficha.close();
+    } else {
+      ficha.removeAttribute('open');
+    }
+  }
+
+  document.getElementById('fichaCerrar').addEventListener('click', cerrar);
+
+  // Pulsar fuera de la ficha también la cierra.
+  ficha.addEventListener('click', function(e) {
+    if (e.target === ficha) cerrar();
+  });
 })();
+
+document.getElementById('anio').textContent = new Date().getFullYear();
