@@ -1,0 +1,16 @@
+name: portafolio
+
+# Producción: mismo patrón que el resto de apps del servidor. Sin puertos
+# publicados; Nginx Proxy Manager llega a portafolio-web por proxy_default.
+services:
+  portafolio-web:
+    image: portafolio-web:latest
+    build: .
+    container_name: portafolio-web
+    restart: unless-stopped
+    networks:
+      - proxy_default
+
+networks:
+  proxy_default:
+    external: true
