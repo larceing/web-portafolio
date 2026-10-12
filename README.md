@@ -18,8 +18,11 @@ img/              portadas de proyectos (WebP) y monograma
 
 ## Cambiar cosas
 
-- **Colores:** variables de `:root` en `css/estilos.css`. La paleta es azul marino profundo, azul
-  eléctrico y cian luminoso, con blanco y un acento dorado.
+- **Colores, sombras y tipografía:** variables de `:root` en `css/estilos.css`. Fondo claro, superficies
+  blancas separadas por sombra, un azul como único acento (liso o en degradado) y naranja tostado
+  solo en las etiquetas. Titulares en Bricolage Grotesque, texto en IBM Plex Sans.
+- **Carrusel:** los proyectos pequeños van dentro de `<div class="carrusel">`; los tres destacados,
+  fuera, en `<div class="proyectos">`.
 - **Proyectos:** cada uno es un `<article class="proyecto">` en `index.html`. El atributo
   `data-tipo` (`empresa`, `producto` o `abierto`) decide en qué filtro aparece. Los dos primeros
   llevan `proyecto-grande` y el formato problema / qué hice / resultado.
