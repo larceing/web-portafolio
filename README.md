@@ -34,7 +34,7 @@ img/              portadas de proyectos (WebP) y monograma
 
 ## Pendiente antes de publicar
 
-- La dirección de contacto es `hola@luiscontacto03.com`: hay que crear esa regla en Cloudflare
+- La dirección de contacto es `info@luiscontacto03.com`: hay que crear esa regla en Cloudflare
   Email Routing (igual que `soporte@`) o cambiarla por otra que exista.
 - Decidir dónde se publica: GitHub Pages, o el servidor propio tras Nginx Proxy Manager.
 - Opcional: foto propia en la portada y versión en inglés.
