@@ -11,6 +11,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+
+// Huella del contenido del CSS y del JS: va en su enlace (?v=...) para que el
+// navegador los pida de nuevo en cuanto cambian, aunque los guarde una semana.
+const huella = f => crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname, f))).digest('hex').slice(0, 10);
+const VERSION_CSS = huella('css/estilos.css');
+const VERSION_JS = huella('js/app.js');
+const VERSION_JS_LINKEDIN = huella('js/linkedin.js');
 
 const CORREO = 'info@luiscontacto03.com';
 const LINKEDIN = 'https://www.linkedin.com/in/luis-henry-programador';
@@ -268,6 +276,10 @@ const EN = require('./contenido.en.js');
 // toman la referencia (urn:li:...) y la altura, y el <iframe> se escribe aquí.
 const ALTO_LINKEDIN = 640;
 
+// Cuántas publicaciones se ven a la vez. Si en la lista hay más, cada semana
+// se eligen otras al azar (js/linkedin.js); si hay menos, cambia el orden.
+const LINKEDIN_A_LA_VEZ = 4;
+
 function publicacionLinkedin(entrada, i) {
   const texto = String(typeof entrada === 'string' ? entrada : entrada.publicacion).trim();
   let legible = texto;
@@ -351,7 +363,7 @@ function cabeza(d, p) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="${p.raiz}css/estilos.css">
+  <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
 </head>
 
 <body>
@@ -458,7 +470,7 @@ ${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[
     <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="${t.cerrar}">×</button>
   </dialog>
 
-  <script src="${base}js/app.js"></script>
+  <script src="${base}js/app.js?v=${VERSION_JS}"></script>
 </body>
 </html>
 `;
@@ -478,8 +490,8 @@ function paginaLinkedin(d) {
       <h1>${t.linkedinTitulo}</h1>
       <p class="sub">${t.linkedinSub}</p>
 
-      <div class="embebidas">
-${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida">\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
+      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}">
+${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
       </div>
 
       <p class="mas"><a href="${LINKEDIN}" target="_blank" rel="noopener">${t.linkedinPerfil}</a></p>
@@ -487,6 +499,8 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida">\n     
   </main>
 
   <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}</footer>
+
+  <script src="${'../' + d.base}js/linkedin.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
 </html>
 `;

@@ -35,7 +35,8 @@ de inserción, sin API ni credenciales. La lista está en `publicaciones-linkedi
 tres puntos de la publicación → «Insertar esta publicación», copiar el código, pegarlo en la lista
 entre comillas invertidas y ejecutar `node construir.js`. También vale el enlace de la publicación.
 `construir.js` solo toma de lo pegado la referencia (`urn:li:...`) y la altura, y escribe él el
-`<iframe>`. Solo se pueden insertar publicaciones públicas, y una publicación borrada deja su
+`<iframe>`. Cada semana `js/linkedin.js` elige al azar `LINKEDIN_A_LA_VEZ` publicaciones de la
+lista (4, en `construir.js`) y cambia su orden, sin volver a publicar. Solo se pueden insertar publicaciones públicas, y una publicación borrada deja su
 marco vacío: hay que quitarla de la lista.
 
 ## Cambiar el aspecto
@@ -50,6 +51,9 @@ en cada `location` con su propio `add_header`, porque nginx no las hereda en ese
 abre las fuentes de Google y los marcos de `https://www.linkedin.com`.
 
 ## Publicar
+
+Desde PowerShell en Windows: `.\publicar.ps1 "mensaje"` regenera, hace commit y sube la web.
+A mano, desde Linux o macOS:
 
 ```
 tar -czf - --exclude=.git . | ssh servidor "tar -xzf - -C /opt/apps/portafolio"

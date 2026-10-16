@@ -1,5 +1,7 @@
-// Publicaciones de LinkedIn que se muestran en /linkedin/ (y en /en/linkedin/),
-// de arriba abajo en este orden.
+// Publicaciones de LinkedIn que se muestran en /linkedin/ (y en /en/linkedin/).
+// Cada semana la página elige al azar unas cuantas de esta lista (cuántas lo
+// dice LINKEDIN_A_LA_VEZ en construir.js) y las cambia de orden. Cuantas más
+// pongas aquí, más variará.
 //
 // Para añadir una: en LinkedIn abre los tres puntos de la publicación, elige
 // «Insertar esta publicación» y copia el código. Pégalo aquí entre comillas
