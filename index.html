@@ -131,6 +131,11 @@
         <span class="tesela-titulo">Helpdesk interno</span>
         <span class="tesela-tipo">Para empresa</span>
       </button>
+      <button type="button" class="tesela" data-tipo="abierto" data-detalle="d-tareas" style="--c:#1D4F7A">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="30" rx="3"/><path d="M18.5 9v30M29.5 9v30"/><path d="M10.5 15h5M10.5 20h5M21.5 15h5M32.5 15h5M32.5 20h5M32.5 25h5"/></svg>
+        <span class="tesela-titulo">Gestor de tareas</span>
+        <span class="tesela-tipo">Open source</span>
+      </button>
       <button type="button" class="tesela" data-tipo="abierto" data-detalle="d-themelab" style="--c:#2E6C9E">
         <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8a16 16 0 1 0 0 32c3 0 4-2 3-4-2-3 0-6 4-6h3c4 0 6-3 6-6 0-9-7-16-16-16z"/><circle cx="17" cy="19" r="2"/><circle cx="25" cy="15" r="2"/><circle cx="33" cy="20" r="2"/></svg>
         <span class="tesela-titulo">Power BI Theme Lab</span>
@@ -232,6 +237,12 @@
       <h3>Helpdesk interno, control horario y costes de IT</h3>
       <p>Herramientas internas para dos plantas de producción: sistema de helpdesk propio para el soporte, control horario, seguimiento de costes de IT e integración de la facturación entre plantas del grupo.</p>
       <p class="tec">Python · SQL Server · SAP · SharePoint</p>
+    </div>
+    <div hidden id="d-tareas" data-color="#1D4F7A" data-icono="tablero">
+      <p class="etiqueta">Open source · app web</p>
+      <h3>Gestor de tareas y proyectos para equipos</h3>
+      <p>Aplicación web para organizar el trabajo de un equipo: tableros Kanban y Scrum, calendario y agenda, wiki, notas, pizarra, SLA, notas entre personas, muros de actividad y una API pensada para agentes de IA. Es una versión base sin datos de ninguna empresa: la marca, el inicio de sesión (local o Keycloak) y los módulos opcionales se configuran en un fichero, y se instala con Docker y datos de demostración.</p>
+      <p class="tec">Python · FastAPI · MariaDB · Keycloak · Docker</p><p class="enlaces"><a href="https://github.com/lharce/APP_TAREAS_BASE" target="_blank" rel="noopener">Ver en GitHub</a></p>
     </div>
     <div hidden id="d-themelab" data-color="#2E6C9E" data-icono="paleta">
       <p class="etiqueta">Open source · herramienta web</p>

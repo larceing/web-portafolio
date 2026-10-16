@@ -131,6 +131,11 @@
         <span class="tesela-titulo">Internal helpdesk</span>
         <span class="tesela-tipo">For a company</span>
       </button>
+      <button type="button" class="tesela" data-tipo="abierto" data-detalle="d-tareas" style="--c:#1D4F7A">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="9" width="34" height="30" rx="3"/><path d="M18.5 9v30M29.5 9v30"/><path d="M10.5 15h5M10.5 20h5M21.5 15h5M32.5 15h5M32.5 20h5M32.5 25h5"/></svg>
+        <span class="tesela-titulo">Task manager</span>
+        <span class="tesela-tipo">Open source</span>
+      </button>
       <button type="button" class="tesela" data-tipo="abierto" data-detalle="d-themelab" style="--c:#2E6C9E">
         <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8a16 16 0 1 0 0 32c3 0 4-2 3-4-2-3 0-6 4-6h3c4 0 6-3 6-6 0-9-7-16-16-16z"/><circle cx="17" cy="19" r="2"/><circle cx="25" cy="15" r="2"/><circle cx="33" cy="20" r="2"/></svg>
         <span class="tesela-titulo">Power BI Theme Lab</span>
@@ -232,6 +237,12 @@
       <h3>Internal helpdesk, time tracking and IT costs</h3>
       <p>Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.</p>
       <p class="tec">Python · SQL Server · SAP · SharePoint</p>
+    </div>
+    <div hidden id="d-tareas" data-color="#1D4F7A" data-icono="tablero">
+      <p class="etiqueta">Open source · web app</p>
+      <h3>Task and project manager for teams</h3>
+      <p>A web app to organise a team’s work: Kanban and Scrum boards, calendar and agenda, wiki, notes, whiteboard, SLA, person-to-person notes, activity walls and an API designed for AI agents. It is a base version with no company data: branding, login (local or Keycloak) and optional modules are set in one file, and it installs with Docker and demo data.</p>
+      <p class="tec">Python · FastAPI · MariaDB · Keycloak · Docker</p><p class="enlaces"><a href="https://github.com/lharce/APP_TAREAS_BASE" target="_blank" rel="noopener">View on GitHub</a></p>
     </div>
     <div hidden id="d-themelab" data-color="#2E6C9E" data-icono="paleta">
       <p class="etiqueta">Open source · web tool</p>

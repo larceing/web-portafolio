@@ -44,6 +44,7 @@ const ICONOS = {
   lupa: '<circle cx="21" cy="21" r="11"/><path d="M29 29l10 10"/>',
   flujo: '<rect x="5" y="18" width="10" height="12" rx="2"/><rect x="19" y="18" width="10" height="12" rx="2"/><rect x="33" y="18" width="10" height="12" rx="2"/><path d="M15 24h4M29 24h4"/>',
   escudo: '<path d="M24 6l14 5v11c0 9-6 15-14 20-8-5-14-11-14-20V11z"/><path d="M18 24l4 4 8-9"/>',
+  tablero: '<rect x="7" y="9" width="34" height="30" rx="3"/><path d="M18.5 9v30M29.5 9v30"/><path d="M10.5 15h5M10.5 20h5M21.5 15h5M32.5 15h5M32.5 20h5M32.5 25h5"/>',
   mapa: '<path d="M24 41c-8-10-12-15-12-21a12 12 0 0 1 24 0c0 6-4 11-12 21z"/><circle cx="24" cy="20" r="4"/>'
 };
 
@@ -126,6 +127,13 @@ const PROYECTOS = [
     tipo: 'empresa', etiqueta: 'En ES Group · 2026', icono: 'soporte', color: C.tinta,
     texto: 'Herramientas internas para dos plantas de producción: sistema de helpdesk propio para el soporte, control horario, seguimiento de costes de IT e integración de la facturación entre plantas del grupo.',
     tec: ['Python', 'SQL Server', 'SAP', 'SharePoint']
+  },
+  {
+    id: 'tareas', corto: 'Gestor de tareas', titulo: 'Gestor de tareas y proyectos para equipos',
+    tipo: 'abierto', etiqueta: 'Open source · app web', icono: 'tablero', color: C.azul,
+    texto: 'Aplicación web para organizar el trabajo de un equipo: tableros Kanban y Scrum, calendario y agenda, wiki, notas, pizarra, SLA, notas entre personas, muros de actividad y una API pensada para agentes de IA. Es una versión base sin datos de ninguna empresa: la marca, el inicio de sesión (local o Keycloak) y los módulos opcionales se configuran en un fichero, y se instala con Docker y datos de demostración.',
+    tec: ['Python', 'FastAPI', 'MariaDB', 'Keycloak', 'Docker'],
+    enlaces: [['Ver en GitHub', 'https://github.com/lharce/APP_TAREAS_BASE']]
   },
   {
     id: 'themelab', corto: 'Power BI Theme Lab', titulo: 'Power BI Theme Lab',

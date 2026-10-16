@@ -103,6 +103,10 @@ module.exports = {
       corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'At ES Group · 2026',
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
     },
+    tareas: {
+      corto: 'Task manager', titulo: 'Task and project manager for teams', etiqueta: 'Open source · web app',
+      texto: 'A web app to organise a team’s work: Kanban and Scrum boards, calendar and agenda, wiki, notes, whiteboard, SLA, person-to-person notes, activity walls and an API designed for AI agents. It is a base version with no company data: branding, login (local or Keycloak) and optional modules are set in one file, and it installs with Docker and demo data.'
+    },
     themelab: {
       etiqueta: 'Open source · web tool',
       texto: 'A theme generator for Power BI in the browser: you pick your brand colour, see the palette on a live dashboard, check the contrast and export the <code>theme.json</code>.'
