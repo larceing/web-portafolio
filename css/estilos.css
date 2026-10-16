@@ -806,3 +806,71 @@ code {
     padding-left: 14px;
   }
 }
+
+/* Página de publicaciones de LinkedIn (/linkedin/) */
+
+.publicaciones {
+  padding-top: 56px;
+  padding-bottom: 96px;
+}
+
+.publicaciones h1 {
+  font-family: var(--titulos);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Las publicaciones insertadas miden 504 px de ancho como mucho. */
+.embebidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 504px));
+  justify-content: center;
+  align-items: start;
+  gap: 36px 28px;
+  margin-top: 36px;
+}
+
+.embebida {
+  margin: 0;
+}
+
+.embebida iframe {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--raya);
+  border-radius: 8px;
+  background: var(--suave);
+}
+
+.embebida figcaption {
+  margin-top: 8px;
+  font-size: 14.5px;
+  text-align: right;
+}
+
+.embebida a,
+.mas a {
+  color: var(--azul);
+  text-underline-offset: 4px;
+}
+
+.mas {
+  margin-top: 28px;
+  font-size: 15px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .publicaciones {
+    padding-top: 40px;
+    padding-bottom: 72px;
+  }
+
+  .publicaciones h1 {
+    font-size: 28px;
+    letter-spacing: 0.14em;
+  }
+}

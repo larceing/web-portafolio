@@ -1,5 +1,7 @@
 // Genera index.html (español) y en/index.html (inglés) a partir de los datos
-// de este fichero y de las traducciones de contenido.en.js.
+// de este fichero y de las traducciones de contenido.en.js, y la página de
+// publicaciones de LinkedIn (linkedin/ y en/linkedin/) a partir de
+// publicaciones-linkedin.js.
 //
 //   node construir.js
 //
@@ -215,6 +217,13 @@ const UI = {
   titulo: 'Henry Arce · Automatización, IA aplicada y datos',
   descripcion: 'Henry Arce: automatización de procesos, IA aplicada y datos. Asistentes, integraciones e informes construidos sobre ERP, CRM y ecommerce reales.',
   ogDescripcion: 'Proyectos reales, herramientas open source y trayectoria.',
+  linkedinTitulo: 'Publicaciones en LinkedIn',
+  linkedinDescripcion: 'Publicaciones de Henry Arce en LinkedIn sobre BI, datos e IA aplicada.',
+  linkedinSub: 'Lo que escribo sobre BI, datos e IA aplicada',
+  linkedinMarco: 'Publicación de LinkedIn',
+  linkedinVer: 'Abrir en LinkedIn',
+  linkedinPerfil: 'Ver todas en mi perfil de LinkedIn',
+  verPublicaciones: 'Leer las publicaciones aquí',
   saltar: 'Saltar al contenido',
   lema: 'automatización · IA · datos',
   secciones: 'Secciones',
@@ -254,6 +263,30 @@ const UI = {
 
 const EN = require('./contenido.en.js');
 
+// Publicaciones de la página /linkedin/. Cada elemento es el código de
+// «Insertar esta publicación» o el enlace de la publicación; de él solo se
+// toman la referencia (urn:li:...) y la altura, y el <iframe> se escribe aquí.
+const ALTO_LINKEDIN = 640;
+
+function publicacionLinkedin(entrada, i) {
+  const texto = String(typeof entrada === 'string' ? entrada : entrada.publicacion).trim();
+  let legible = texto;
+  try { legible = decodeURIComponent(texto); } catch (e) { /* se usa tal cual */ }
+
+  const urn = (legible.match(/urn:li:(?:activity|share|ugcPost):\d+/) || [])[0]
+    || ((legible.match(/activity-(\d+)/) || [])[1] ? 'urn:li:activity:' + legible.match(/activity-(\d+)/)[1] : null);
+  if (!urn) {
+    throw new Error('publicaciones-linkedin.js, elemento ' + (i + 1) + ': no encuentro la publicación. Pega el código de «Insertar esta publicación» o el enlace de la publicación.');
+  }
+
+  const alto = Number(entrada.alto) || Number((texto.match(/height="(\d+)"/) || [])[1]) || ALTO_LINKEDIN;
+  const marco = 'https://www.linkedin.com/embed/feed/update/' + urn + (/collapsed=1/.test(texto) ? '?collapsed=1' : '');
+  const enlace = /^https:\/\/www\.linkedin\.com\/(posts|feed)\/[^\s"'<>]+$/.test(texto) ? texto : 'https://www.linkedin.com/feed/update/' + urn + '/';
+  return { marco: marco, alto: alto, enlace: enlace };
+}
+
+const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(publicacionLinkedin);
+
 // Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
 // hasta la raíz (para css, js e img) y hasta la página del otro idioma.
 const IDIOMAS = [
@@ -291,48 +324,58 @@ function detalle(p, t) {
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n    </div>';
 }
 
-function pagina(d) {
+// Cabecera HTML y menú, comunes a la portada y a la página de LinkedIn.
+// p.ruta: la página dentro de cada idioma ('' o 'linkedin/'). p.raiz: camino
+// hasta la raíz del sitio (css, js, img). p.inicio: camino hasta la portada
+// del mismo idioma. p.otro: la misma página en el otro idioma.
+function cabeza(d, p) {
   const t = d.t;
-  const base = d.base;
 
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${t.titulo}</title>
-  <meta name="description" content="${t.descripcion}">
-  <link rel="canonical" href="${SITIO}${d.carpeta ? d.carpeta + '/' : ''}">
-  <link rel="alternate" hreflang="es" href="${SITIO}">
-  <link rel="alternate" hreflang="en" href="${SITIO}en/">
-  <link rel="alternate" hreflang="x-default" href="${SITIO}">
-  <meta property="og:title" content="${t.titulo}">
-  <meta property="og:description" content="${t.ogDescripcion}">
+  <title>${p.titulo}</title>
+  <meta name="description" content="${p.descripcion}">
+  <link rel="canonical" href="${SITIO}${d.carpeta ? d.carpeta + '/' : ''}${p.ruta}">
+  <link rel="alternate" hreflang="es" href="${SITIO}${p.ruta}">
+  <link rel="alternate" hreflang="en" href="${SITIO}en/${p.ruta}">
+  <link rel="alternate" hreflang="x-default" href="${SITIO}${p.ruta}">
+  <meta property="og:title" content="${p.titulo}">
+  <meta property="og:description" content="${p.ogDescripcion}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${SITIO}img/monograma.png">
   <meta name="theme-color" content="#FFFFFF">
-  <link rel="icon" href="${base}img/monograma.svg">
+  <link rel="icon" href="${p.raiz}img/monograma.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="${base}css/estilos.css">
+  <link rel="stylesheet" href="${p.raiz}css/estilos.css">
 </head>
 
 <body>
   <a class="saltar" href="#contenido">${t.saltar}</a>
 
   <header class="cabecera">
-    <a class="marca" href="#inicio">Henry Arce <span>${t.lema}</span></a>
+    <a class="marca" href="${p.inicio}#inicio">Henry Arce <span>${t.lema}</span></a>
     <nav class="menu" aria-label="${t.secciones}">
-      <a href="#proyectos">${t.menu.proyectos}</a>
-      <a href="#trayectoria">${t.menu.trayectoria}</a>
-      <a href="#tecnologias">${t.menu.tecnologias}</a>
-      <a href="#contacto">${t.menu.contacto}</a>
+      <a href="${p.inicio}#proyectos">${t.menu.proyectos}</a>
+      <a href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
+      <a href="${p.inicio}#tecnologias">${t.menu.tecnologias}</a>
+      <a href="${p.inicio}#contacto">${t.menu.contacto}</a>
       <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="idioma" href="${d.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
+      <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
     </nav>
   </header>
+`;
+}
 
+function pagina(d) {
+  const t = d.t;
+  const base = d.base;
+
+  return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro }) + `
   <main id="contenido">
     <section class="inicio" id="inicio">
       <div>
@@ -391,6 +434,7 @@ ${d.tecnologias.map(x => '        <div><dt class="cuando">' + x[0] + '</dt><dd>'
       <div class="cifras">
 ${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
       </div>
+      <p class="mas"><a href="linkedin/">${t.verPublicaciones}</a></p>
     </section>
 
     <section class="bloque contacto" id="contacto">
@@ -420,9 +464,42 @@ ${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[
 `;
 }
 
+// Página /linkedin/: las publicaciones insertadas con el código oficial de
+// LinkedIn, una debajo de otra (dos columnas en pantallas anchas).
+function paginaLinkedin(d) {
+  const t = d.t;
+
+  return cabeza(d, {
+    titulo: t.linkedinTitulo + ' · Henry Arce', descripcion: t.linkedinDescripcion, ogDescripcion: t.linkedinDescripcion,
+    ruta: 'linkedin/', raiz: '../' + d.base, inicio: '../', otro: '../' + d.otro + 'linkedin/'
+  }) + `
+  <main id="contenido">
+    <section class="bloque publicaciones">
+      <h1>${t.linkedinTitulo}</h1>
+      <p class="sub">${t.linkedinSub}</p>
+
+      <div class="embebidas">
+${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida">\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
+      </div>
+
+      <p class="mas"><a href="${LINKEDIN}" target="_blank" rel="noopener">${t.linkedinPerfil}</a></p>
+    </section>
+  </main>
+
+  <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}</footer>
+</body>
+</html>
+`;
+}
+
 IDIOMAS.forEach(d => {
   const carpeta = path.join(__dirname, d.carpeta);
   fs.mkdirSync(carpeta, { recursive: true });
   fs.writeFileSync(path.join(carpeta, 'index.html'), pagina(d));
   console.log(path.join(d.carpeta, 'index.html') + ' generado: ' + d.proyectos.length + ' proyectos');
+
+  const carpetaLinkedin = path.join(carpeta, 'linkedin');
+  fs.mkdirSync(carpetaLinkedin, { recursive: true });
+  fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), paginaLinkedin(d));
+  console.log(path.join(d.carpeta, 'linkedin', 'index.html') + ' generado: ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones');
 });

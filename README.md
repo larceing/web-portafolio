@@ -28,10 +28,26 @@ Cada proyecto tiene `tipo` (`producto`, `empresa` o `abierto`, que decide el fil
 (uno de los de `ICONOS`) y `color` (uno de los seis de `C`). Con `caso` sale en formato
 problema / qué hice / resultado; con `texto`, en un párrafo.
 
+## Publicaciones de LinkedIn (`/linkedin/`)
+
+La página `/linkedin/` (y `/en/linkedin/`) muestra publicaciones de LinkedIn con su código oficial
+de inserción, sin API ni credenciales. La lista está en `publicaciones-linkedin.js`: en LinkedIn,
+tres puntos de la publicación → «Insertar esta publicación», copiar el código, pegarlo en la lista
+entre comillas invertidas y ejecutar `node construir.js`. También vale el enlace de la publicación.
+`construir.js` solo toma de lo pegado la referencia (`urn:li:...`) y la altura, y escribe él el
+`<iframe>`. Solo se pueden insertar publicaciones públicas, y una publicación borrada deja su
+marco vacío: hay que quitarla de la lista.
+
 ## Cambiar el aspecto
 
 `css/estilos.css`. Los colores y las tipografías están al principio, en `:root`: página blanca,
 tinta oscura, un azul de acento, titulares en Barlow Condensed y texto en IBM Plex Sans.
+
+## Cabeceras de seguridad
+
+`cabeceras.conf` reúne las cabeceras (CSP incluida) y se incluye en `nginx.conf` en el `server` y
+en cada `location` con su propio `add_header`, porque nginx no las hereda en ese caso. La CSP solo
+abre las fuentes de Google y los marcos de `https://www.linkedin.com`.
 
 ## Publicar
 
