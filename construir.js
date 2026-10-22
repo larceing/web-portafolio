@@ -22,6 +22,7 @@ const VERSION_JS_LINKEDIN = huella('js/linkedin.js');
 
 const VERSION_JS_BIT = huella('js/bit-arranque.js');
 const VERSION_JS_PASEO = huella('js/bit-paseo.js');
+const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -341,6 +342,13 @@ const UI = {
     ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker']
   ],
   serviciosCta: 'Cuéntame qué tarea te quita tiempo',
+  cinta: 'Automatización en marcha',
+  cintaSub: 'Lo que hace un flujo automático, en pequeño',
+  cintaPasos: [
+    ['Entra el trabajo manual', 'Hojas de cálculo, correos y PDF que hoy alguien copia a mano.'],
+    ['El flujo lo procesa', 'Lee, valida y cruza los datos sin que nadie toque nada.'],
+    ['Sale el resultado', 'Informes, avisos y datos al día, cada mañana.']
+  ],
   infra: 'Mi infraestructura',
   infraSub: 'Lo que tengo montado y mantengo yo, y donde viven mis aplicaciones y las de mis clientes',
   infraTexto: 'No dependo de plataformas cerradas: tengo un servidor propio con todo lo necesario para poner una aplicación en marcha con seguridad, probarla y pasarla a producción.',
@@ -355,14 +363,15 @@ const UI = {
     ['Copias y avisos', 'Copias nocturnas de las bases de datos y comprobación continua de que cada app responde.']
   ],
   infraEnlace: 'Ver la plataforma en GitHub',
+  infraLeyenda: ['Proxy con HTTPS', 'Servidor', 'Apps en contenedores', 'Copia cada noche'],
   arce: 'Arce Data Lab',
   arceSub: 'Mi marca: datos, automatización e IA para pymes, y un canal para que los niños se interesen por la tecnología',
   arceTexto: '<strong>Arce Data Lab</strong> es el laboratorio desde el que construyo aplicaciones, cuadros de mando y asistentes de IA para pymes e industria, con su propia plataforma de despliegue, correo y documentos. Todo lo que ves en los proyectos marcados como producto propio vive allí.',
   arceEnlaces: [['Demos para clientes', DEMOS], ['TikTok @arcedatalab', TIKTOK]],
   clubbyteTitulo: 'Club Byte',
-  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
+  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
   clubbyteEnlaces: [['YouTube @clubbyte_es', CLUBBYTE_YOUTUBE], ['Blog para familias y docentes', CLUBBYTE_BLOG]],
-  bitAlt: 'Byte, el hermano mayor de Bit, de Club Byte',
+  bitAlt: 'Byte, el asistente de Arce Data Lab',
   preguntas: 'Preguntas frecuentes',
   preguntasSub: 'Lo que más me preguntan, en una frase cada una',
   faq: [
@@ -377,17 +386,22 @@ const UI = {
   ],
   soporte: 'Soporte de las aplicaciones',
   bit: {
-    nombre: 'Byte, el hermano mayor de Bit',
-    hola: '¡Hola! Soy Byte, el hermano mayor de Bit, el robot de Club Byte. Te acompaño por la web de Henry.',
-    servicios: 'Si en tu empresa algo se hace a mano cada semana, Henry lo puede automatizar.',
-    infraestructura: 'Aquí vivo yo también: en contenedores, con copias cada noche.',
-    arcedatalab: 'Esto es Arce Data Lab. Mi hermano pequeño, Bit, sale en Club Byte, su canal para peques.',
-    proyectos: 'Pulsa un proyecto y te cuento qué problema resolvía.',
-    trayectoria: 'De la consultora a la fábrica. ¡Cuántos datos!',
-    tecnologias: 'Python, Power BI, Docker… a mí me programaron en Blender.',
-    preguntas: 'Respuestas cortas, como me gustan a mí.',
-    contacto: '¿Hablamos? Escribe a ' + CORREO,
-    pulsar: ['¡Bip bup! Eso hace cosquillas.', 'Soy un byte: 8 bits, y uno de ellos es mi hermano.', 'En Club Byte, Bit explica cómo piensan los ordenadores.', 'Un algoritmo es una receta. ¡Como un bocadillo!'],
+    nombre: 'Byte, el asistente de Arce Data Lab',
+    hola: 'Hola, soy Byte, el asistente de Arce Data Lab. Te acompaño por la web y te resumo cada proyecto.',
+    servicios: 'Si en tu empresa una tarea se repite cada semana, probablemente se puede automatizar.',
+    infraestructura: 'Esta web y las aplicaciones de los clientes funcionan aquí: contenedores, HTTPS y copias cada noche.',
+    arcedatalab: 'Arce Data Lab desarrolla software y soluciones de datos para pymes. Mi hermano pequeño, Bit, presenta Club Byte.',
+    proyectos: 'Abre cualquier proyecto y te resumo el problema, la solución y el resultado.',
+    ficha: 'Resumen del proyecto.',
+    jugar: ['Mientras lees, reviso los datos.', 'Comprobación de sistemas: todo en orden.', 'Sigo aquí. Avísame si quieres un resumen.', 'Revisando que todas las aplicaciones respondan.'],
+    dormir: 'Modo de ahorro de energía. Mueve el ratón y vuelvo.',
+    despertar: 'De vuelta. ¿En qué te ayudo?',
+    cinta: 'Así funciona una automatización: entran datos manuales y sale un informe listo, sin intervención.',
+    trayectoria: 'Consultoría, banca e industria: experiencia con datos reales y plazos reales.',
+    tecnologias: 'Herramientas probadas en producción, elegidas según el caso.',
+    preguntas: 'Respuestas breves a lo que más se pregunta antes de empezar un proyecto.',
+    contacto: '¿Hablamos de tu caso? Escribe a ' + CORREO + ' y Henry te responde.',
+    pulsar: ['Aquí estoy. ¿Te resumo algún proyecto?', 'Consejo: empieza automatizando la tarea que más tiempo te quita.', 'Si los datos no cuadran, casi siempre hay una causa que se puede corregir.', 'Un byte son 8 bits. Un buen proceso, cero tareas repetidas.'],
     ocultar: 'Ocultar a Byte',
     mostrar: 'Mostrar a Byte',
     canal: 'Ver Club Byte'
@@ -718,6 +732,17 @@ ${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) +
       <p class="mas"><a href="#contacto">${t.serviciosCta} →</a></p>
     </section>
 
+    <section class="bloque cinta" id="automatizacion" data-bit="cinta">
+      <h2>${t.cinta}</h2>
+      <p class="sub">${t.cintaSub}</p>
+      <div class="cinta-escena" id="cinta" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}">
+        <canvas class="cinta-lienzo" id="cintaLienzo" aria-hidden="true" hidden></canvas>
+        <ol class="cinta-pasos">
+${t.cintaPasos.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
+        </ol>
+      </div>
+    </section>
+
     <section class="bloque" id="arcedatalab" data-bit="arcedatalab">
       <h2>${t.arce}</h2>
       <p class="sub">${t.arceSub}</p>
@@ -743,6 +768,10 @@ ${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) +
       <h2>${t.infra}</h2>
       <p class="sub">${t.infraSub}</p>
       <p class="infra-texto">${t.infraTexto}</p>
+      <div class="infra-escena" id="infraEscena" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}" data-modelo="${d.base}img/bit.glb?v=${huella('img/bit.glb')}">
+        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
+        <ul class="infra-leyenda" aria-hidden="true">${t.infraLeyenda.map(x => '<li>' + x + '</li>').join('')}</ul>
+      </div>
 
       <dl class="infra">
 ${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
@@ -884,7 +913,8 @@ function bitHtml(t, base) {
   </aside>
   <script type="application/json" id="bitGuion">${jsonLd(guion)}</script>
   <script src="${base}js/bit-arranque.js?v=${VERSION_JS_BIT}"></script>
-  <script src="${base}js/bit-paseo.js?v=${VERSION_JS_PASEO}"></script>`;
+  <script src="${base}js/bit-paseo.js?v=${VERSION_JS_PASEO}"></script>
+  <script src="${base}js/cinta-arranque.js?v=${VERSION_JS_CINTA}"></script>`;
 }
 
 // Página propia de cada proyecto: /proyectos/<id>/ y /en/proyectos/<id>/.

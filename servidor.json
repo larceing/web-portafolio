@@ -1,0 +1,13 @@
+{
+  "nombre": "Web Arce Data Lab",
+  "ruta": "web",
+  "grupo": "Web",
+  "puerto": 80,
+  "prefijo": "quitar",
+  "version": "version/",
+  "despliegue": {
+    "tipo": "servidor",
+    "imagen": "ghcr.io/larceing/web-portafolio",
+    "memoria_mb": 64
+  }
+}

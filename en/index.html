@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="../css/estilos.css?v=e066d9750f">
+  <link rel="stylesheet" href="../css/estilos.css?v=ec0af45b62">
 </head>
 
 <body>
@@ -105,6 +105,19 @@
       <p class="mas"><a href="#contacto">Tell me which task is eating your time →</a></p>
     </section>
 
+    <section class="bloque cinta" id="automatizacion" data-bit="cinta">
+      <h2>Automation at work</h2>
+      <p class="sub">What an automated flow does, in miniature</p>
+      <div class="cinta-escena" id="cinta" data-js="../js/bit.js?v=055f85ed07">
+        <canvas class="cinta-lienzo" id="cintaLienzo" aria-hidden="true" hidden></canvas>
+        <ol class="cinta-pasos">
+          <li><strong>Manual work goes in</strong><span>Spreadsheets, emails and PDFs that someone copies by hand today.</span></li>
+          <li><strong>The flow processes it</strong><span>It reads, checks and matches the data with nobody touching it.</span></li>
+          <li><strong>The result comes out</strong><span>Reports, alerts and up-to-date data, every morning.</span></li>
+        </ol>
+      </div>
+    </section>
+
     <section class="bloque" id="arcedatalab" data-bit="arcedatalab">
       <h2>Arce Data Lab</h2>
       <p class="sub">My brand: data, automation and AI for SMEs, plus a channel that gets kids into technology</p>
@@ -116,10 +129,10 @@
           <p class="enlaces"><a href="https://demo.arcedatalab.com" target="_blank" rel="noopener">Client demos</a><a href="https://www.tiktok.com/@arcedatalab" target="_blank" rel="noopener">TikTok @arcedatalab</a></p>
         </article>
         <article class="marca-tarjeta clubbyte">
-          <img src="../img/bit.webp" alt="Byte, big brother of Bit from Club Byte" width="208" height="320" loading="lazy">
+          <img src="../img/bit.webp" alt="Byte, the Arce Data Lab assistant" width="208" height="320" loading="lazy">
           <div>
             <h3>Club Byte</h3>
-            <p><strong>Club Byte</strong> is Arce Data Lab’s educational channel, in Spanish: it explains to children aged 8 to 12 how computing works, with Lía, Teo and Bit the robot. His big brother, Byte, is the one keeping you company on this page. Every episode ends with an unplugged challenge for home or the classroom.</p>
+            <p><strong>Club Byte</strong> is Arce Data Lab’s educational channel, in Spanish: it explains to children aged 8 to 12 how computing works, with Lía, Teo and Bit the robot. His big brother, Byte, is the Arce Data Lab assistant keeping you company on this page. Every episode ends with an unplugged challenge for home or the classroom.</p>
             <p class="enlaces"><a href="https://www.youtube.com/@clubbyte_es" target="_blank" rel="noopener">YouTube @clubbyte_es</a><a href="https://clubbyte.arcedatalab.com" target="_blank" rel="noopener">Blog for families and teachers</a></p>
           </div>
         </article>
@@ -130,6 +143,10 @@
       <h2>My infrastructure</h2>
       <p class="sub">What I run and maintain myself, where my apps and my clients’ apps live</p>
       <p class="infra-texto">I don’t depend on closed platforms: I run my own server with everything needed to launch an application securely, test it and promote it to production.</p>
+      <div class="infra-escena" id="infraEscena" data-js="../js/bit.js?v=055f85ed07" data-modelo="../img/bit.glb?v=c774ee89ad">
+        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
+        <ul class="infra-leyenda" aria-hidden="true"><li>HTTPS proxy</li><li>Server</li><li>Apps in containers</li><li>Nightly backup</li></ul>
+      </div>
 
       <dl class="infra">
         <div><dt>Own server</dt><dd>Linux with Docker on Hetzner (Germany, EU). Each app in its own container, behind a single HTTPS proxy.</dd></div>
@@ -516,7 +533,7 @@
     <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="Close">×</button>
   </dialog>
 
-  <aside class="bit" id="bit" data-paseo="guia" aria-label="Byte, Bit’s big brother" data-modelo="../img/bit.glb?v=c774ee89ad" data-js="../js/bit.js?v=838a3326f4">
+  <aside class="bit" id="bit" data-paseo="guia" aria-label="Byte, the Arce Data Lab assistant" data-modelo="../img/bit.glb?v=c774ee89ad" data-js="../js/bit.js?v=055f85ed07">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
       <img class="bit-foto" src="../img/bit.webp" alt="" width="104" height="160">
@@ -524,9 +541,10 @@
     </div>
     <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="Hide Byte">×</button>
   </aside>
-  <script type="application/json" id="bitGuion">{"nombre":"Byte, Bit’s big brother","hola":"Hi! I’m Byte, big brother of Bit, the Club Byte robot. I’ll keep you company on Henry’s site.","servicios":"If something in your company is done by hand every week, Henry can automate it.","infraestructura":"I live here too: in containers, with backups every night.","arcedatalab":"This is Arce Data Lab. My little brother Bit stars in Club Byte, its channel for kids.","proyectos":"Click a project and I’ll tell you what problem it solved.","trayectoria":"From consulting to the factory floor. So much data!","tecnologias":"Python, Power BI, Docker… I was built in Blender.","preguntas":"Short answers, just how I like them.","contacto":"Shall we talk? Write to info@arcedatalab.com","pulsar":["Beep boop! That tickles.","I’m a byte: 8 bits, and one of them is my brother.","On Club Byte, Bit explains how computers think.","An algorithm is a recipe. Like a sandwich!"],"ocultar":"Hide Byte","mostrar":"Show Byte","canal":"Watch Club Byte","canalUrl":"https://www.youtube.com/@clubbyte_es"}</script>
-  <script src="../js/bit-arranque.js?v=d8d140afeb"></script>
-  <script src="../js/bit-paseo.js?v=6e4ffcbcdb"></script>
-  <script src="../js/app.js?v=7ea4fd0075"></script>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte, the Arce Data Lab assistant","hola":"Hi, I’m Byte, the Arce Data Lab assistant. I’ll guide you through the site and sum up each project.","servicios":"If a task in your company repeats every week, it can probably be automated.","infraestructura":"This site and the client apps run here: containers, HTTPS and nightly backups.","arcedatalab":"Arce Data Lab builds software and data solutions for SMEs. My little brother Bit hosts Club Byte.","proyectos":"Open any project and I’ll sum up the problem, the solution and the result.","ficha":"Project summary.","jugar":["While you read, I’m checking the data.","Systems check: all good.","Still here. Let me know if you want a summary.","Checking that every app responds."],"dormir":"Power-saving mode. Move the mouse and I’ll be back.","despertar":"Back again. How can I help?","cinta":"This is how automation works: manual data goes in, a finished report comes out, with no hands involved.","trayectoria":"Consulting, banking and industry: experience with real data and real deadlines.","tecnologias":"Production-proven tools, chosen for each case.","preguntas":"Short answers to what people ask most before starting a project.","contacto":"Want to talk about your case? Write to info@arcedatalab.com and Henry will reply.","pulsar":["Here I am. Want a summary of a project?","Tip: start by automating the task that takes you the most time.","When data does not add up, there is almost always a cause that can be fixed.","A byte is 8 bits. A good process, zero repeated tasks."],"ocultar":"Hide Byte","mostrar":"Show Byte","canal":"Watch Club Byte","canalUrl":"https://www.youtube.com/@clubbyte_es"}</script>
+  <script src="../js/bit-arranque.js?v=efe6261643"></script>
+  <script src="../js/bit-paseo.js?v=1340114e26"></script>
+  <script src="../js/cinta-arranque.js?v=87e19776e9"></script>
+  <script src="../js/app.js?v=50bcdeaf6c"></script>
 </body>
 </html>

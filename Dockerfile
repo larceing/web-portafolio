@@ -1,5 +1,8 @@
 FROM nginx:1.27-alpine
 
+# Versión de la imagen (sha-xxxxxxx o vX.Y.Z); la pone el workflow y se lee en /version/.
+ARG APP_VERSION=dev
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY cabeceras.conf /etc/nginx/cabeceras.conf
 COPY index.html robots.txt sitemap.xml llms.txt /usr/share/nginx/html/
@@ -9,3 +12,7 @@ COPY proyectos /usr/share/nginx/html/proyectos
 COPY css /usr/share/nginx/html/css
 COPY js /usr/share/nginx/html/js
 COPY img /usr/share/nginx/html/img
+RUN mkdir -p /usr/share/nginx/html/version \n && printf '{"version": "%s"}
+' "$APP_VERSION" > /usr/share/nginx/html/version/index.json
+
+HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- http://127.0.0.1/version/ >/dev/null || exit 1

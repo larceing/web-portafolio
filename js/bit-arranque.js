@@ -128,6 +128,18 @@
     observarSecciones();
   }
 
+  // Para js/bit-paseo.js: que Byte hable y salude cuando explica una ficha.
+  window.ByteWeb = {
+    decir: function (texto, segundos) { decir(texto, false, segundos); },
+    callar: function () { clearTimeout(temporizador); bocadillo.hidden = true; },
+    saludar: function () { if (bit3d) bit3d.saludar(); },
+    jugar: function (tipo) { return bit3d && bit3d.jugar ? bit3d.jugar(tipo) : 0; },
+    dormir: function () { if (bit3d && bit3d.dormir) bit3d.dormir(); },
+    despertar: function () { return !!(bit3d && bit3d.despertar && bit3d.despertar()); },
+    hay3d: function () { return !!bit3d; },
+    guion: guion
+  };
+
   function cuandoQuieta(fn) {
     if ('requestIdleCallback' in window) {
       requestIdleCallback(fn, { timeout: 3000 });

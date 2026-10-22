@@ -5,6 +5,9 @@
 //   ascensor · sube y baja por el borde derecho según lo leído, como una barra de progreso
 //   paseo    · pasea solo por los márgenes y se deja «empujar» por el scroll
 //
+// En todos, al abrir la ficha de un proyecto Byte entra a su lado (o se asoma
+// en su cabecera en el móvil) y la resume en bocadillos.
+//
 // Se elige con data-paseo="..." en #bit, o con ?bit=guia|ascensor|paseo en la
 // dirección (para probar). Sin ninguna, Bit se queda en la esquina como antes.
 //
@@ -47,11 +50,11 @@
   }
 
   // Lleva el cuerpo de Bit a (x, y) de la ventana: calcula el objetivo.
-  function irA(x, y) {
+  function irA(x, y, techo) {
     var r = reposo();
     var H = window.innerHeight, W = ancho();
     x = Math.min(Math.max(x, 8), W - r.w - 8);
-    y = Math.min(Math.max(y, 72), H - r.h - 8);
+    y = Math.min(Math.max(y, techo == null ? 72 : techo), H - r.h - 8);
     obj.x = x - r.x;
     obj.y = y - r.y;
     despertar();
@@ -118,8 +121,86 @@
     }
   }
 
+  // ---- Ficha de proyecto: Byte entra a su lado y la explica ----
+  var ficha = document.getElementById('ficha');
+  var enFicha = false, ladoFicha = 'izq', turnos = [];
+
+  // Frases de la ficha abierta: «Problema: …», «Qué hice: …», «Resultado: …»
+  // (la primera frase de cada parte) o, si no tiene esas partes, su texto.
+  function frases() {
+    var c = document.getElementById('fichaCuerpo');
+    if (!c) return [];
+    function primera(t) {
+      t = (t || '').replace(/\s+/g, ' ').trim();
+      var m = t.match(/^.+?[.!?](?=\s|$)/);
+      return m ? m[0] : t;
+    }
+    var lista = [];
+    var dts = c.querySelectorAll('dl.caso dt');
+    if (dts.length) {
+      dts.forEach(function (dt) {
+        var dd = dt.nextElementSibling;
+        if (dd) lista.push(dt.textContent.trim() + ': ' + primera(dd.textContent));
+      });
+    } else {
+      c.querySelectorAll('p:not(.etiqueta):not(.tec):not(.enlaces):not(.pagina-proyecto)').forEach(function (p, i) {
+        if (i < 2) lista.push(primera(p.textContent));
+      });
+    }
+    return lista;
+  }
+
+  function sitioFicha() {
+    var f = ficha.getBoundingClientRect(), r = reposo(), W = ancho();
+    if (f.left >= r.w + 24) { ladoFicha = 'izq'; return irA(f.left - r.w - 12, f.top + 190, 8); }
+    if (W - f.right >= r.w + 24) { ladoFicha = 'der'; return irA(f.right + 12, f.top + 190, 8); }
+    // Sin sitio a los lados (móvil): se asoma en la franja de color de la cabecera.
+    ladoFicha = 'dentro';
+    irA(f.left + 14, f.top + Math.max(4, 150 - r.h), 8);
+  }
+
+  function explicar() {
+    var api = window.ByteWeb;
+    if (!api) return;
+    turnos.forEach(clearTimeout);
+    turnos = [];
+    var lista = frases(), intro = api.guion && api.guion.ficha;
+    api.saludar();
+    var t = 650;
+    lista.forEach(function (texto, i) {
+      if (i === 0 && intro) texto = intro + ' ' + texto;
+      var dura = Math.min(12, 4 + texto.length / 20);
+      turnos.push(setTimeout(function () { if (enFicha) api.decir(texto, dura); }, t));
+      t += dura * 1000 + 350;
+    });
+  }
+
+  function entrarFicha() {
+    enFicha = true;
+    ficha.appendChild(caja); // Así queda por encima del fondo oscuro de la ficha.
+    requestAnimationFrame(function () { sitioFicha(); explicar(); });
+  }
+
+  function salirFicha() {
+    enFicha = false;
+    turnos.forEach(clearTimeout);
+    turnos = [];
+    if (window.ByteWeb) window.ByteWeb.callar();
+    document.body.appendChild(caja);
+    calcular();
+  }
+
+  if (ficha) {
+    new MutationObserver(function () {
+      var abierta = ficha.hasAttribute('open');
+      if (abierta && !enFicha && !caja.classList.contains('oculto') && caja.classList.contains('listo')) entrarFicha();
+      else if (!abierta && enFicha) salirFicha();
+    }).observe(ficha, { attributes: true, attributeFilter: ['open'] });
+  }
+
   function calcular(ahora) {
     if (caja.classList.contains('oculto')) { obj.x = obj.y = 0; return; }
+    if (enFicha) return sitioFicha();
     if (modo === 'guia') guia();
     else if (modo === 'ascensor') ascensor();
     else paseo(ahora || performance.now());
@@ -150,8 +231,14 @@
 
     // El bocadillo, al lado que tenga sitio.
     var r = cuerpo.getBoundingClientRect();
-    caja.classList.toggle('izq', r.left + r.width / 2 < ancho() / 2);
-    caja.classList.toggle('abajo', r.top < 190);
+    if (enFicha) {
+      // Junto a la ficha, el bocadillo se abre hacia fuera; dentro, hacia abajo.
+      caja.classList.toggle('izq', ladoFicha !== 'izq');
+      caja.classList.toggle('abajo', ladoFicha === 'dentro' || r.top < 130);
+    } else {
+      caja.classList.toggle('izq', r.left + r.width / 2 < ancho() / 2);
+      caja.classList.toggle('abajo', r.top < 190);
+    }
 
     var parado = Math.abs(obj.x - pos.x) < 0.5 && Math.abs(obj.y - pos.y) < 0.5 && Math.abs(vel.x) < 2 && Math.abs(vel.y) < 2;
     if (parado) {
@@ -186,6 +273,55 @@
     setTimeout(function () { calcular(); despertar(); }, 0);
   });
   document.addEventListener('visibilitychange', function () { if (!document.hidden) calcular(); });
+
+  // ---- Sin actividad, Byte se pone a jugar; si sigue sin pasar nada, se duerme ----
+  // Mismo orden que las frases de UI.bit.jugar.
+  var JUEGOS = ['malabares', 'voltereta', 'baile', 'giro'];
+  var ultimaActividad = performance.now(), siguienteJuego = 15000, juegos = 0, nJuego = 0, durmiendo = false;
+
+  function actividad() {
+    ultimaActividad = performance.now();
+    siguienteJuego = 12000 + Math.random() * 6000;
+    juegos = 0;
+    if (durmiendo) {
+      durmiendo = false;
+      var api = window.ByteWeb;
+      if (api && api.despertar()) api.decir(api.guion.despertar, 3.5);
+    }
+  }
+  ['pointermove', 'pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, actividad, { passive: true });
+  });
+
+  // Un saltito de lado y vuelta a su sitio (acompaña a la voltereta).
+  function saltito() {
+    if (estrecho() || enFicha) return;
+    var r = cuerpo.getBoundingClientRect();
+    obj.x += r.left > ancho() / 2 ? -120 : 120;
+    obj.y -= 50;
+    despertar();
+    setTimeout(calcular, 1300);
+  }
+
+  setInterval(function () {
+    var api = window.ByteWeb;
+    if (!api || !api.hay3d() || enFicha || durmiendo || document.hidden || caja.classList.contains('oculto')) return;
+    var quieto = performance.now() - ultimaActividad;
+    if (juegos >= 4 && quieto > 55000) {
+      durmiendo = true;
+      api.dormir();
+      api.decir(api.guion.dormir, 9);
+      return;
+    }
+    if (quieto < siguienteJuego) return;
+    var i = nJuego++ % JUEGOS.length;
+    var dura = api.jugar(JUEGOS[i]);
+    if (JUEGOS[i] === 'voltereta') saltito();
+    var frases = api.guion.jugar || [];
+    if (frases[i] && (juegos === 0 || Math.random() < 0.4)) api.decir(frases[i], Math.max(4, dura + 1));
+    juegos++;
+    siguienteJuego = quieto + 8000 + Math.random() * 5000;
+  }, 1000);
 
   // Empieza cuando Bit ya se ve (bit-arranque.js añade .listo).
   var vigia = new MutationObserver(function () {

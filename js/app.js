@@ -54,4 +54,32 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
   });
 })();
 
+// Relieve 3D: las teselas y los servicios se inclinan hacia el puntero y les
+// cruza un brillo. Solo con ratón y si nadie ha pedido menos movimiento.
+(function() {
+  const mq = function(q) { return window.matchMedia && window.matchMedia(q).matches; };
+  if (!mq('(hover: hover) and (pointer: fine)') || mq('(prefers-reduced-motion: reduce)')) return;
+
+  document.querySelectorAll('.tesela, .servicio').forEach(function(el) {
+    el.classList.add('relieve');
+    let pendiente = null;
+    el.addEventListener('pointermove', function(e) {
+      if (pendiente) return;
+      pendiente = requestAnimationFrame(function() {
+        pendiente = null;
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.setProperty('--rx', (-y * 12).toFixed(2) + 'deg');
+        el.style.setProperty('--ry', (x * 14).toFixed(2) + 'deg');
+        el.style.setProperty('--mx', ((x + 0.5) * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', ((y + 0.5) * 100).toFixed(1) + '%');
+      });
+    });
+    el.addEventListener('pointerleave', function() {
+      ['--rx', '--ry'].forEach(function(v) { el.style.removeProperty(v); });
+    });
+  });
+})();
+
 document.getElementById('anio').textContent = new Date().getFullYear();

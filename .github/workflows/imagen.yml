@@ -1,0 +1,67 @@
+# Imagen de la web. El servidor la despliega (tipo "servidor", ver servidor.json):
+#   push a main     -> comprobación -> ghcr.io/<repo>:sha-xxxxxxx  (luego «Poner» en DEV, en Ajustes)
+#   release vX.Y.Z  -> comprobación -> ghcr.io/<repo>:vX.Y.Z
+#   pull request    -> solo comprobación
+name: Imagen
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      # La web se sube ya generada; aquí solo se comprueba que construir.js funciona
+      # (faltan traducciones, un proyecto mal escrito…).
+      - run: node construir.js
+      - name: nginx acepta la configuración
+        run: |
+          docker run --rm -v "$PWD/nginx.conf:/etc/nginx/conf.d/default.conf:ro" \
+            -v "$PWD/cabeceras.conf:/etc/nginx/cabeceras.conf:ro" nginx:1.27-alpine nginx -t
+
+  imagen:
+    needs: comprobar
+    if: github.event_name == 'push' || github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = release ]; then
+            echo "version=$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+            echo "extra=latest" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=sha-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+            echo "extra=main" >> "$GITHUB_OUTPUT"
+          fi
+          echo "imagen=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: APP_VERSION=${{ steps.v.outputs.version }}
+          tags: |
+            ${{ steps.v.outputs.imagen }}:${{ steps.v.outputs.version }}
+            ${{ steps.v.outputs.imagen }}:${{ steps.v.outputs.extra }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

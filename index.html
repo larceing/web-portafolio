@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/estilos.css?v=e066d9750f">
+  <link rel="stylesheet" href="css/estilos.css?v=ec0af45b62">
 </head>
 
 <body>
@@ -105,6 +105,19 @@
       <p class="mas"><a href="#contacto">Cuéntame qué tarea te quita tiempo →</a></p>
     </section>
 
+    <section class="bloque cinta" id="automatizacion" data-bit="cinta">
+      <h2>Automatización en marcha</h2>
+      <p class="sub">Lo que hace un flujo automático, en pequeño</p>
+      <div class="cinta-escena" id="cinta" data-js="js/bit.js?v=055f85ed07">
+        <canvas class="cinta-lienzo" id="cintaLienzo" aria-hidden="true" hidden></canvas>
+        <ol class="cinta-pasos">
+          <li><strong>Entra el trabajo manual</strong><span>Hojas de cálculo, correos y PDF que hoy alguien copia a mano.</span></li>
+          <li><strong>El flujo lo procesa</strong><span>Lee, valida y cruza los datos sin que nadie toque nada.</span></li>
+          <li><strong>Sale el resultado</strong><span>Informes, avisos y datos al día, cada mañana.</span></li>
+        </ol>
+      </div>
+    </section>
+
     <section class="bloque" id="arcedatalab" data-bit="arcedatalab">
       <h2>Arce Data Lab</h2>
       <p class="sub">Mi marca: datos, automatización e IA para pymes, y un canal para que los niños se interesen por la tecnología</p>
@@ -116,10 +129,10 @@
           <p class="enlaces"><a href="https://demo.arcedatalab.com" target="_blank" rel="noopener">Demos para clientes</a><a href="https://www.tiktok.com/@arcedatalab" target="_blank" rel="noopener">TikTok @arcedatalab</a></p>
         </article>
         <article class="marca-tarjeta clubbyte">
-          <img src="img/bit.webp" alt="Byte, el hermano mayor de Bit, de Club Byte" width="208" height="320" loading="lazy">
+          <img src="img/bit.webp" alt="Byte, el asistente de Arce Data Lab" width="208" height="320" loading="lazy">
           <div>
             <h3>Club Byte</h3>
-            <p><strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.</p>
+            <p><strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.</p>
             <p class="enlaces"><a href="https://www.youtube.com/@clubbyte_es" target="_blank" rel="noopener">YouTube @clubbyte_es</a><a href="https://clubbyte.arcedatalab.com" target="_blank" rel="noopener">Blog para familias y docentes</a></p>
           </div>
         </article>
@@ -130,6 +143,10 @@
       <h2>Mi infraestructura</h2>
       <p class="sub">Lo que tengo montado y mantengo yo, y donde viven mis aplicaciones y las de mis clientes</p>
       <p class="infra-texto">No dependo de plataformas cerradas: tengo un servidor propio con todo lo necesario para poner una aplicación en marcha con seguridad, probarla y pasarla a producción.</p>
+      <div class="infra-escena" id="infraEscena" data-js="js/bit.js?v=055f85ed07" data-modelo="img/bit.glb?v=c774ee89ad">
+        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
+        <ul class="infra-leyenda" aria-hidden="true"><li>Proxy con HTTPS</li><li>Servidor</li><li>Apps en contenedores</li><li>Copia cada noche</li></ul>
+      </div>
 
       <dl class="infra">
         <div><dt>Servidor propio</dt><dd>Linux con Docker en Hetzner (Alemania, UE). Cada aplicación en su contenedor, detrás de un único proxy con HTTPS.</dd></div>
@@ -516,7 +533,7 @@
     <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="Cerrar">×</button>
   </dialog>
 
-  <aside class="bit" id="bit" data-paseo="guia" aria-label="Byte, el hermano mayor de Bit" data-modelo="img/bit.glb?v=c774ee89ad" data-js="js/bit.js?v=838a3326f4">
+  <aside class="bit" id="bit" data-paseo="guia" aria-label="Byte, el asistente de Arce Data Lab" data-modelo="img/bit.glb?v=c774ee89ad" data-js="js/bit.js?v=055f85ed07">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
       <img class="bit-foto" src="img/bit.webp" alt="" width="104" height="160">
@@ -524,9 +541,10 @@
     </div>
     <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="Ocultar a Byte">×</button>
   </aside>
-  <script type="application/json" id="bitGuion">{"nombre":"Byte, el hermano mayor de Bit","hola":"¡Hola! Soy Byte, el hermano mayor de Bit, el robot de Club Byte. Te acompaño por la web de Henry.","servicios":"Si en tu empresa algo se hace a mano cada semana, Henry lo puede automatizar.","infraestructura":"Aquí vivo yo también: en contenedores, con copias cada noche.","arcedatalab":"Esto es Arce Data Lab. Mi hermano pequeño, Bit, sale en Club Byte, su canal para peques.","proyectos":"Pulsa un proyecto y te cuento qué problema resolvía.","trayectoria":"De la consultora a la fábrica. ¡Cuántos datos!","tecnologias":"Python, Power BI, Docker… a mí me programaron en Blender.","preguntas":"Respuestas cortas, como me gustan a mí.","contacto":"¿Hablamos? Escribe a info@arcedatalab.com","pulsar":["¡Bip bup! Eso hace cosquillas.","Soy un byte: 8 bits, y uno de ellos es mi hermano.","En Club Byte, Bit explica cómo piensan los ordenadores.","Un algoritmo es una receta. ¡Como un bocadillo!"],"ocultar":"Ocultar a Byte","mostrar":"Mostrar a Byte","canal":"Ver Club Byte","canalUrl":"https://www.youtube.com/@clubbyte_es"}</script>
-  <script src="js/bit-arranque.js?v=d8d140afeb"></script>
-  <script src="js/bit-paseo.js?v=6e4ffcbcdb"></script>
-  <script src="js/app.js?v=7ea4fd0075"></script>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte, el asistente de Arce Data Lab","hola":"Hola, soy Byte, el asistente de Arce Data Lab. Te acompaño por la web y te resumo cada proyecto.","servicios":"Si en tu empresa una tarea se repite cada semana, probablemente se puede automatizar.","infraestructura":"Esta web y las aplicaciones de los clientes funcionan aquí: contenedores, HTTPS y copias cada noche.","arcedatalab":"Arce Data Lab desarrolla software y soluciones de datos para pymes. Mi hermano pequeño, Bit, presenta Club Byte.","proyectos":"Abre cualquier proyecto y te resumo el problema, la solución y el resultado.","ficha":"Resumen del proyecto.","jugar":["Mientras lees, reviso los datos.","Comprobación de sistemas: todo en orden.","Sigo aquí. Avísame si quieres un resumen.","Revisando que todas las aplicaciones respondan."],"dormir":"Modo de ahorro de energía. Mueve el ratón y vuelvo.","despertar":"De vuelta. ¿En qué te ayudo?","cinta":"Así funciona una automatización: entran datos manuales y sale un informe listo, sin intervención.","trayectoria":"Consultoría, banca e industria: experiencia con datos reales y plazos reales.","tecnologias":"Herramientas probadas en producción, elegidas según el caso.","preguntas":"Respuestas breves a lo que más se pregunta antes de empezar un proyecto.","contacto":"¿Hablamos de tu caso? Escribe a info@arcedatalab.com y Henry te responde.","pulsar":["Aquí estoy. ¿Te resumo algún proyecto?","Consejo: empieza automatizando la tarea que más tiempo te quita.","Si los datos no cuadran, casi siempre hay una causa que se puede corregir.","Un byte son 8 bits. Un buen proceso, cero tareas repetidas."],"ocultar":"Ocultar a Byte","mostrar":"Mostrar a Byte","canal":"Ver Club Byte","canalUrl":"https://www.youtube.com/@clubbyte_es"}</script>
+  <script src="js/bit-arranque.js?v=efe6261643"></script>
+  <script src="js/bit-paseo.js?v=1340114e26"></script>
+  <script src="js/cinta-arranque.js?v=87e19776e9"></script>
+  <script src="js/app.js?v=50bcdeaf6c"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 # Web portafolio · Henry Arce
 
 Página personal de Henry Arce (Arce Data Lab), publicada en https://arcedatalab.com
-(antes en luiscontacto03.com, que redirige aquí). HTML, CSS y JavaScript sin dependencias,
-más Byte, el hermano mayor de Bit (el robot de Club Byte), en 3D (ver `bit/README.md`).
+(antes en henry.arcedatalab.com y luiscontacto03.com, que redirigen aquí con 301). HTML, CSS
+y JavaScript sin dependencias, más Byte, el asistente de Arce Data Lab, y dos escenas en 3D
+(ver `bit/README.md` y `bit/BYTE.md`).
 
 ## Cómo está hecha
 
@@ -11,6 +12,24 @@ más Byte, el hermano mayor de Bit (el robot de Club Byte), en 3D (ver `bit/READ
 - **Proyectos:** cuadrícula de teselas de color con un pictograma y el título. Al pulsar una se
   abre su ficha con el problema, lo que se hizo y el resultado.
 - **Trayectoria, tecnologías, divulgación y contacto:** listas sencillas a dos columnas.
+
+## Byte y el 3D
+
+Todo el 3D va en un solo fichero, `js/bit.js` (three.js), que se pide cuando la página ya
+ha cargado. Sin WebGL o con ahorro de datos no se carga; con «menos movimiento», Byte no
+se mueve y las escenas quedan fijas.
+
+- **Byte** (`bit/BYTE.md`): vuela junto al título de cada sección (modo `guia`, puesto en
+  `construir.js` con `data-paseo`), mira al ratón, entra a resumir la ficha de un proyecto
+  al abrirla y, sin actividad, hace comprobaciones y acaba en «modo de ahorro de energía».
+- **Automatización en marcha** (`bit/cinta.js`): cinta con hojas que pasan por el flujo y
+  salen como datos hacia un informe.
+- **Mi infraestructura** (`bit/infra.js`): proxy, servidor, contenedores y, cada noche, un
+  Byte en miniatura llevando la copia a la caja fuerte.
+- **Relieve:** las teselas y los servicios se inclinan hacia el ratón (`js/app.js`).
+
+Después de tocar algo de `bit/`: `cd bit && npm install && npm run construir`, y luego
+`node construir.js`.
 
 ## Cambiar el contenido
 
@@ -85,5 +104,7 @@ ssh servidor "cd /opt/apps/portafolio && docker compose -f docker-compose.server
   actual no las muestra.
 
 ## Pendiente
+
+- Search Console: enviar `https://arcedatalab.com/sitemap.xml` (propiedad de dominio `arcedatalab.com`).
 
 - La foto de la presentación es `img/foto.webp` (640 px). Para cambiarla, sustituir ese fichero.

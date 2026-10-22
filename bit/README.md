@@ -1,7 +1,9 @@
-# Byte, el hermano mayor de Bit (Club Byte), en 3D
+# Byte, el asistente de Arce Data Lab, en 3D
 
 Byte (en el código sigue llamándose `bit`) acompaña la visita desde la esquina de la web: flota, parpadea, mira hacia el
 puntero, saluda al pulsarlo y comenta cada sección con un bocadillo.
+
+Quién es Byte, por qué se creó y cómo escribir sus textos: ver `BYTE.md`.
 
 ## Piezas
 
@@ -12,6 +14,9 @@ puntero, saluda al pulsarlo y comenta cada sección con un bocadillo.
 | `bit.js` | El visor (three.js): luces, cámara y animación hecha en código |
 | `../js/bit.js` | `bit.js` + three.js empaquetados y minimizados (unos 140 KB comprimido) |
 | `../js/bit-arranque.js` | Decide si carga el 3D, los bocadillos y el botón de ocultar |
+| `cinta.js` | La cinta de automatización en 3D de la sección «Automatización en marcha» (va en el mismo `../js/bit.js`) |
+| `../js/cinta-arranque.js` | Arranca la cinta cuando la sección está cerca de verse |
+| `../js/bit-paseo.js` | Mueve a Byte junto a cada sección y lo hace entrar a explicar la ficha de un proyecto |
 
 Los textos de los bocadillos están en `construir.js` (`UI.bit`) y en
 `contenido.en.js` (`UI.bit`).

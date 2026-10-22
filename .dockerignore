@@ -3,3 +3,5 @@ README.md
 docker-compose.server.yml
 construir.js
 bit
+.github
+servidor.json
