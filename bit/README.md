@@ -1,6 +1,6 @@
-# Bit, el robot de Club Byte, en 3D
+# Byte, el hermano mayor de Bit (Club Byte), en 3D
 
-Bit acompaña la visita desde la esquina de la web: flota, parpadea, mira hacia el
+Byte (en el código sigue llamándose `bit`) acompaña la visita desde la esquina de la web: flota, parpadea, mira hacia el
 puntero, saluda al pulsarlo y comenta cada sección con un bocadillo.
 
 ## Piezas

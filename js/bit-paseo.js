@@ -1,6 +1,6 @@
 // Bit se mueve por la página.
 //
-// Tres maneras de moverse (prototipo, se elige una):
+// Tres maneras de moverse (la web usa «guia», puesto en construir.js):
 //   guia     · vuela al margen, junto al título de la sección que se está leyendo
 //   ascensor · sube y baja por el borde derecho según lo leído, como una barra de progreso
 //   paseo    · pasea solo por los márgenes y se deja «empujar» por el scroll

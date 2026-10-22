@@ -360,9 +360,9 @@ const UI = {
   arceTexto: '<strong>Arce Data Lab</strong> es el laboratorio desde el que construyo aplicaciones, cuadros de mando y asistentes de IA para pymes e industria, con su propia plataforma de despliegue, correo y documentos. Todo lo que ves en los proyectos marcados como producto propio vive allí.',
   arceEnlaces: [['Demos para clientes', DEMOS], ['TikTok @arcedatalab', TIKTOK]],
   clubbyteTitulo: 'Club Byte',
-  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y Bit, el robot que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
+  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
   clubbyteEnlaces: [['YouTube @clubbyte_es', CLUBBYTE_YOUTUBE], ['Blog para familias y docentes', CLUBBYTE_BLOG]],
-  bitAlt: 'Bit, el robot de Club Byte',
+  bitAlt: 'Byte, el hermano mayor de Bit, de Club Byte',
   preguntas: 'Preguntas frecuentes',
   preguntasSub: 'Lo que más me preguntan, en una frase cada una',
   faq: [
@@ -377,19 +377,19 @@ const UI = {
   ],
   soporte: 'Soporte de las aplicaciones',
   bit: {
-    nombre: 'Bit, el robot de Club Byte',
-    hola: '¡Hola! Soy Bit, el robot de Club Byte. Te acompaño por la web de Henry.',
+    nombre: 'Byte, el hermano mayor de Bit',
+    hola: '¡Hola! Soy Byte, el hermano mayor de Bit, el robot de Club Byte. Te acompaño por la web de Henry.',
     servicios: 'Si en tu empresa algo se hace a mano cada semana, Henry lo puede automatizar.',
     infraestructura: 'Aquí vivo yo también: en contenedores, con copias cada noche.',
-    arcedatalab: 'Esto es Arce Data Lab. Y yo vengo de Club Byte, su canal para peques.',
+    arcedatalab: 'Esto es Arce Data Lab. Mi hermano pequeño, Bit, sale en Club Byte, su canal para peques.',
     proyectos: 'Pulsa un proyecto y te cuento qué problema resolvía.',
     trayectoria: 'De la consultora a la fábrica. ¡Cuántos datos!',
     tecnologias: 'Python, Power BI, Docker… a mí me programaron en Blender.',
     preguntas: 'Respuestas cortas, como me gustan a mí.',
     contacto: '¿Hablamos? Escribe a ' + CORREO,
-    pulsar: ['¡Bip bup! Eso hace cosquillas.', 'Si fuera un byte, sería 8 bits de alegría.', 'En Club Byte explico cómo piensan los ordenadores.', 'Un algoritmo es una receta. ¡Como un bocadillo!'],
-    ocultar: 'Ocultar a Bit',
-    mostrar: 'Mostrar a Bit',
+    pulsar: ['¡Bip bup! Eso hace cosquillas.', 'Soy un byte: 8 bits, y uno de ellos es mi hermano.', 'En Club Byte, Bit explica cómo piensan los ordenadores.', 'Un algoritmo es una receta. ¡Como un bocadillo!'],
+    ocultar: 'Ocultar a Byte',
+    mostrar: 'Mostrar a Byte',
     canal: 'Ver Club Byte'
   }
 };
@@ -874,7 +874,7 @@ const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
   const guion = Object.assign({}, t.bit, { canalUrl: CLUBBYTE_YOUTUBE });
-  return `  <aside class="bit" id="bit" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
+  return `  <aside class="bit" id="bit" data-paseo="guia" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
       <img class="bit-foto" src="${base}img/bit.webp" alt="" width="104" height="160">

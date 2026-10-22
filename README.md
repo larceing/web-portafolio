@@ -2,7 +2,7 @@
 
 Página personal de Henry Arce (Arce Data Lab), publicada en https://arcedatalab.com
 (antes en luiscontacto03.com, que redirige aquí). HTML, CSS y JavaScript sin dependencias,
-más Bit, el robot de Club Byte, en 3D (ver `bit/README.md`).
+más Byte, el hermano mayor de Bit (el robot de Club Byte), en 3D (ver `bit/README.md`).
 
 ## Cómo está hecha
 
