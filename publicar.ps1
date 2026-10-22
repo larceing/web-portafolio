@@ -28,4 +28,4 @@ ssh $Servidor "tar -xzf /tmp/portafolio.tgz -C /opt/apps/portafolio && rm /tmp/p
 if ($LASTEXITCODE -ne 0) { throw "El despliegue en el servidor ha fallado." }
 
 Remove-Item $Paquete
-Write-Host "Publicada: https://luiscontacto03.com" -ForegroundColor Green
+Write-Host "Publicada: https://arcedatalab.com" -ForegroundColor Green

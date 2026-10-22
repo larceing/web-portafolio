@@ -5,9 +5,11 @@
 module.exports = {
   UI: {
     lang: 'en',
-    titulo: 'Henry Arce · Automation, applied AI and data',
-    descripcion: 'Henry Arce: process automation, applied AI and data. Assistants, integrations and reports built on real ERP, CRM and ecommerce systems.',
-    ogDescripcion: 'Real projects, open source tools and career.',
+    titulo: 'Henry Arce · Automation, applied AI and Power BI | Arce Data Lab',
+    descripcion: 'Henry Arce, founder of Arce Data Lab (Alicante, Spain): automation, applied AI, Power BI and custom apps for SMEs and industry. Real projects and open source.',
+    ogDescripcion: 'Automation, applied AI and data for SMEs and industry. Real projects, open source and Club Byte.',
+    locale: 'en_GB',
+    idiomaNombre: 'English',
     linkedinTitulo: 'Posts on LinkedIn',
     linkedinDescripcion: 'Henry Arce’s LinkedIn posts on BI, data and applied AI.',
     linkedinSub: 'What I write about BI, data and applied AI, in Spanish',
@@ -18,11 +20,11 @@ module.exports = {
     saltar: 'Skip to content',
     lema: 'automation · AI · data',
     secciones: 'Sections',
-    menu: { proyectos: 'Projects', trayectoria: 'Career', tecnologias: 'Technologies', contacto: 'Contact' },
+    menu: { servicios: 'Services', arce: 'Arce Data Lab', proyectos: 'Projects', trayectoria: 'Career', tecnologias: 'Technologies', preguntas: 'FAQ', contacto: 'Contact' },
     otroIdioma: 'Español',
     otroIdiomaAria: 'Versión en español',
     h1: 'I automate processes and put AI to work on business data.',
-    intro: 'I’m Henry Arce. I find the manual tasks in a team, turn them into workflows, assistants and reports, and measure what is gained. Since 2019, first in consulting firms and now inside industry.',
+    intro: 'I’m Henry Arce, a data analyst and developer based in Alicante, Spain, and the founder of <a href="#arcedatalab">Arce Data Lab</a>. I find the manual tasks in a team, turn them into workflows, assistants and reports, and measure what is gained. Since 2019, first in consulting firms and now inside industry.',
     fotoAlt: 'Henry Arce at the City of Arts and Sciences in Valencia',
     areasAria: 'Areas of work',
     verProyectos: 'See projects',
@@ -32,7 +34,7 @@ module.exports = {
     filtrosAria: 'Filter projects',
     todos: 'All',
     tipos: { producto: 'Own product', empresa: 'For a company', abierto: 'Open source' },
-    enlaces: { 'Probar la demo': 'Try the demo', 'Código': 'Code', 'Ver en GitHub': 'View on GitHub' },
+    enlaces: { 'Probar la demo': 'Try the demo', 'Código': 'Code', 'Ver en GitHub': 'View on GitHub', 'Ver el canal': 'Watch the channel', 'Leer el blog': 'Read the blog', 'Mail en GitHub': 'Mail on GitHub', 'Report Server en GitHub': 'Report Server on GitHub' },
     trayectoria: 'Career',
     trayectoriaSub: 'From consulting to the factory floor',
     tecnologias: 'Technologies',
@@ -49,7 +51,71 @@ module.exports = {
     verPublicacion: 'View the post',
     telefono: 'WhatsApp works too',
     pie: 'Alicante, Spain',
-    cerrar: 'Close'
+    cerrar: 'Close',
+    verFicha: 'Full project page',
+    volver: 'Back to all projects',
+    migas: 'Home',
+    otrosProyectos: 'Other projects',
+    servicios: 'Services',
+    serviciosSub: 'What I can do for your company, through Arce Data Lab',
+    serviciosLista: [
+      ['flujo', 'Process automation', 'I remove repetitive manual work: reports that build themselves, data that moves between programs on its own, automatic alerts and emails.', 'Python, Power Automate, Apps Script, APIs'],
+      ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL'],
+      ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL'],
+      ['escritorio', 'Custom applications', 'ERP, CRM, appointments, tickets or an online shop: web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker']
+    ],
+    serviciosCta: 'Tell me which task is eating your time',
+    infra: 'My infrastructure',
+    infraSub: 'What I run and maintain myself, where my apps and my clients’ apps live',
+    infraTexto: 'I don’t depend on closed platforms: I run my own server with everything needed to launch an application securely, test it and promote it to production.',
+    infraLista: [
+      ['Own server', 'Linux with Docker on Hetzner (Germany, EU). Each app in its own container, behind a single HTTPS proxy.'],
+      ['DEV and PRO environments', 'Every app is tested before it reaches production, with automatic rollback if a version fails.'],
+      ['Single sign-on', 'Keycloak for every application, with groups per app and per environment.'],
+      ['Domains and certificates', 'Nginx Proxy Manager with Let’s Encrypt HTTPS and DNS on Cloudflare.'],
+      ['Branded email', 'A Mail service on top of Resend: apps send from soporte@arcedatalab.com, with SPF, DKIM and DMARC.'],
+      ['PDF documents', 'Report Server for invoices, orders and delivery notes from templates.'],
+      ['Continuous deployment', 'GitHub Actions builds every version and publishes it to GitHub Container Registry.'],
+      ['Backups and alerts', 'Nightly database backups and continuous checks that every app responds.']
+    ],
+    infraEnlace: 'See the platform on GitHub',
+    arce: 'Arce Data Lab',
+    arceSub: 'My brand: data, automation and AI for SMEs, plus a channel that gets kids into technology',
+    arceTexto: '<strong>Arce Data Lab</strong> is the lab where I build apps, dashboards and AI assistants for SMEs and industry, with its own deployment platform, email and document services. Every project marked as an own product lives there.',
+    arceEnlacesTextos: ['Client demos', 'TikTok @arcedatalab'],
+    clubbyteTitulo: 'Club Byte',
+    clubbyteTexto: '<strong>Club Byte</strong> is Arce Data Lab’s educational channel, in Spanish: it explains to children aged 8 to 12 how computing works, with Lía, Teo and Bit, the robot keeping you company on this page. Every episode ends with an unplugged challenge for home or the classroom.',
+    clubbyteEnlacesTextos: ['YouTube @clubbyte_es', 'Blog for families and teachers'],
+    bitAlt: 'Bit, the Club Byte robot',
+    preguntas: 'Frequently asked questions',
+    preguntasSub: 'What people ask me most, one sentence each',
+    faq: [
+      ['Who is Henry Arce?', 'Luis Henry Arce Inga, known as Henry Arce, is a data analyst and developer based in Alicante, Spain, specialised in process automation, applied AI and Power BI, and the founder of Arce Data Lab.'],
+      ['What is Arce Data Lab?', 'Arce Data Lab is Henry Arce’s brand for building custom apps, dashboards and AI integrations for SMEs and industry; its website is arcedatalab.com.'],
+      ['What services does Arce Data Lab offer?', 'Process automation, Power BI and Microsoft Fabric dashboards, AI assistants on business data and custom applications (ERP, CRM, appointments), deployed on its own infrastructure in the EU.'],
+      ['What kind of projects does he do?', 'He automates repetitive tasks, connects ERP, CRM and databases, builds Power BI and Microsoft Fabric reports, and puts AI assistants to answer questions on business data in read-only mode.'],
+      ['Does he work with SMEs?', 'Yes: with SMEs and factories that have manual tasks or data that does not add up, remotely or from Alicante.'],
+      ['What is Club Byte?', 'Club Byte is Arce Data Lab’s YouTube channel (@clubbyte_es) and blog that explains computing and technology to children aged 8 to 12, in Spanish, with unplugged challenges for families and teachers.'],
+      ['Where does he publish content?', 'On LinkedIn about BI, data and applied AI, on TikTok (@arcedatalab) with quick automation and data tips, and on YouTube with Club Byte for kids.'],
+      ['How can I get in touch?', 'By email at info@arcedatalab.com, by WhatsApp at +34 633 42 42 23 or on LinkedIn; for support with the apps, soporte@arcedatalab.com.']
+    ],
+    soporte: 'App support',
+    bit: {
+      nombre: 'Bit, the Club Byte robot',
+      hola: 'Hi! I’m Bit, the Club Byte robot. I’ll keep you company on Henry’s site.',
+      servicios: 'If something in your company is done by hand every week, Henry can automate it.',
+      infraestructura: 'I live here too: in containers, with backups every night.',
+      arcedatalab: 'This is Arce Data Lab. I come from Club Byte, its channel for kids.',
+      proyectos: 'Click a project and I’ll tell you what problem it solved.',
+      trayectoria: 'From consulting to the factory floor. So much data!',
+      tecnologias: 'Python, Power BI, Docker… I was built in Blender.',
+      preguntas: 'Short answers, just how I like them.',
+      contacto: 'Shall we talk? Write to info@arcedatalab.com',
+      pulsar: ['Beep boop! That tickles.', 'If I were a byte, I’d be 8 bits of joy.', 'On Club Byte I explain how computers think.', 'An algorithm is a recipe. Like a sandwich!'],
+      ocultar: 'Hide Bit',
+      mostrar: 'Show Bit',
+      canal: 'Watch Club Byte'
+    }
   },
 
   AREAS: [
@@ -60,14 +126,39 @@ module.exports = {
   ],
 
   PROYECTOS: {
+    clubbyte: {
+      corto: 'Club Byte', titulo: 'Club Byte: technology explained to children aged 8 to 12', etiqueta: 'Arce Data Lab · educational channel · 2026',
+      caso: [
+        ['Problem', 'There is hardly any content in Spanish that explains to children how computing works through stories and characters, without selling a course behind it.'],
+        ['What I did', 'A YouTube channel and a blog with two main characters, Lía and Teo, and Bit, a robot made in Blender. Each episode explains one idea (sensors, conditionals, binary, algorithms) and ends with an unplugged challenge for home or class.'],
+        ['Result', 'A 3D animated intro, scripts, voices and the first episode, plus a blog for families and teachers with activity sheets. No cookies or tracking, as a children’s site should be.']
+      ],
+      tec: ['Blender', 'Python', 'Educational scripts', 'SEO for families and teachers']
+    },
+    plataforma: {
+      corto: 'DEV/PRO platform', titulo: 'In-house platform to deploy apps to DEV and PRO', etiqueta: 'Open source · Arce Data Lab · 2026',
+      caso: [
+        ['Problem', 'Every application was deployed by hand on the server, each with its domain, login and backups done a different way.'],
+        ['What I did', 'A system that gives each app a test environment and a production one on the same server. An app plugs in with a manifest file and the system creates its route, its Keycloak user group, its domain with a certificate and its deployment from the GitHub image.'],
+        ['Result', 'About ten applications living on one server, “Deploy”, “Promote to PRO” and “Roll back” buttons, automatic rollback if a version does not respond, and an agent that updates itself when the tests are green.']
+      ]
+    },
+    sindri: {
+      corto: 'Sindri ERP + CRM', titulo: 'Sindri: ERP and CRM for small manufacturers', etiqueta: 'Own product · open source · 2026',
+      texto: 'ERP and CRM for small factories: customers, opportunities, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version and a shop-floor agent that reads the machines over OPC UA. It receives the billable support hours from Odin and builds its PDFs with Report Server.',
+      tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'REST API', 'Docker']
+    },
     gestor: {
-      corto: 'Ticket manager', titulo: 'Ticket, time and billing manager', etiqueta: 'Own product · 2026',
+      corto: 'Odin, tickets', titulo: 'Odin: tickets, documentation and support hours', etiqueta: 'Own product · open source · 2026',
       caso: [
         ['Problem', 'Tickets were noted down by hand, hours lived in a spreadsheet and invoices somewhere else. Nothing was connected.'],
-        ['What I did', 'My own web application where each ticket carries its follow-up, its documentation, its timed work sessions and its billing. It uses MantisBT as the ticket engine through its API, without touching its code.'],
-        ['Result', 'History migrated and reconciled to the cent, a pro forma → invoice → payment cycle, transactional email and 181 automated tests that walk through every state change.']
-      ],
-      tec: ['Node.js', 'MariaDB', 'REST API', 'Docker', 'Nginx']
+        ['What I did', 'My own web application where each ticket carries its follow-up, its documentation and its timed work sessions. It started on top of MantisBT and now has its own tables, with the history migrated.'],
+        ['Result', 'Single sign-on with Keycloak, every open ticket creates its task in the task manager, and pending hours flow to Sindri on their own to be invoiced. Branded email through the Mail service.']
+      ]
+    },
+    servicios: {
+      corto: 'Mail and Report Server', titulo: 'Mail and Report Server: email and PDF for every app', etiqueta: 'Open source · shared services · 2026',
+      texto: 'Two services shared by all my applications. <strong>Mail</strong> sends Arce Data Lab branded email through Resend, from <code>soporte@arcedatalab.com</code>, with blocks (title, button, table, image), attachments, per-app keys and a sent log. <strong>Report Server</strong> designs PDF templates in the browser with pdfme, connects to MariaDB in read-only mode and generates invoices, orders and delivery notes through an API.'
     },
     gateway: {
       corto: 'Data gateway', titulo: 'Real-time data gateway', etiqueta: 'For Grupo SPSIL · 2026',

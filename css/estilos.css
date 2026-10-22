@@ -874,3 +874,453 @@ code {
     letter-spacing: 0.14em;
   }
 }
+
+/* Arce Data Lab y Club Byte: dos tarjetas */
+
+.marcas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 22px;
+  max-width: 980px;
+  margin: 36px auto 0;
+}
+
+.marca-tarjeta {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 28px 30px;
+  background: var(--suave);
+  border-top: 4px solid var(--azul);
+}
+
+.marca-tarjeta.clubbyte {
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  border-top-color: #A94F0E;
+}
+
+.marca-tarjeta img {
+  width: 104px;
+  height: auto;
+}
+
+.marca-tarjeta h3,
+.preguntas dt {
+  font-family: var(--titulos);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.marca-tarjeta div {
+  display: grid;
+  gap: 12px;
+}
+
+/* Preguntas frecuentes */
+
+.preguntas {
+  max-width: 880px;
+  margin: 36px auto 0;
+}
+
+.preguntas > div {
+  padding: 20px 0;
+  border-top: 1px solid var(--raya);
+}
+
+.preguntas > div:last-child {
+  border-bottom: 1px solid var(--raya);
+}
+
+.preguntas dt {
+  font-size: 20px;
+  letter-spacing: 0.04em;
+}
+
+.preguntas dd {
+  margin: 6px 0 0;
+}
+
+/* Página de cada proyecto */
+
+.pagina-proyecto {
+  margin-top: 18px !important;
+  font-weight: 600;
+}
+
+.migas {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 28px 28px 0;
+  color: var(--tenue);
+  font-size: 14.5px;
+}
+
+.proyecto {
+  max-width: 780px;
+}
+
+.proyecto h1 {
+  font-family: var(--titulos);
+  font-size: clamp(32px, 4.4vw, 48px);
+  font-weight: 600;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.proyecto > p,
+.proyecto .caso {
+  margin-top: 18px;
+}
+
+.proyecto-cabecera {
+  display: grid;
+  place-items: center;
+  height: 140px;
+  margin-bottom: 24px;
+  background: var(--c);
+}
+
+.proyecto-cabecera svg {
+  width: 68px;
+  height: 68px;
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.proyecto-contacto {
+  padding: 18px 20px;
+  background: var(--suave);
+}
+
+.otros {
+  max-width: 780px;
+  margin: 28px auto 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 36px;
+}
+
+.otros li {
+  break-inside: avoid;
+  padding: 6px 0;
+}
+
+.otros span {
+  color: var(--tenue);
+  font-size: 14px;
+}
+
+.pie a {
+  color: inherit;
+}
+
+/* Bit, el robot de Club Byte, en la esquina */
+
+.bit {
+  position: fixed;
+  right: 18px;
+  bottom: 14px;
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.bit.listo {
+  display: flex;
+}
+
+.bit-cuerpo {
+  position: relative;
+  width: 150px;
+  height: 188px;
+  pointer-events: auto;
+}
+
+.bit-foto {
+  position: absolute;
+  right: 22px;
+  bottom: 6px;
+  width: 92px;
+  height: auto;
+  cursor: pointer;
+  animation: bit-flota 3.6s ease-in-out infinite;
+}
+
+.bit-lienzo {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.bit-bocadillo {
+  position: relative;
+  max-width: 250px;
+  margin: 0 18px 2px 0;
+  padding: 12px 15px;
+  background: var(--tinta);
+  color: #FFFFFF;
+  font-size: 14.5px;
+  line-height: 1.45;
+  border-radius: 14px 14px 4px 14px;
+  box-shadow: 0 8px 24px rgba(21, 32, 43, 0.22);
+  pointer-events: auto;
+}
+
+.bit-bocadillo a {
+  color: #8FD3FF;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bit-boton {
+  position: absolute;
+  right: 0;
+  bottom: 150px;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--raya);
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--tenue);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bit:hover .bit-boton,
+.bit-boton:focus-visible {
+  opacity: 1;
+}
+
+/* Oculto: queda un botón redondo con la cara de Bit para traerlo de vuelta. */
+.bit.oculto .bit-cuerpo,
+.bit.oculto .bit-bocadillo {
+  display: none;
+}
+
+.bit.oculto .bit-boton {
+  position: static;
+  width: 52px;
+  height: 52px;
+  opacity: 1;
+  background: #FFFFFF url('../img/bit.webp') center 30% / 34px auto no-repeat;
+  box-shadow: 0 4px 14px rgba(21, 32, 43, 0.18);
+}
+
+/* Bit en movimiento (js/bit-paseo.js) */
+.bit[class*="paseo-"] {
+  will-change: transform;
+}
+
+.bit[class*="paseo-"] .bit-cuerpo {
+  transform-origin: 50% 85%;
+}
+
+/* El bocadillo flota encima del cuerpo para que la caja no cambie de tamaño
+   al hablar; a la izquierda o debajo según donde haya sitio. */
+.bit[class*="paseo-"] .bit-bocadillo {
+  position: absolute;
+  right: 18px;
+  bottom: 100%;
+  width: max-content;
+  margin: 0 0 -8px;
+}
+
+.bit.izq .bit-bocadillo {
+  right: auto;
+  left: 18px;
+  border-radius: 14px 14px 14px 4px;
+}
+
+.bit.abajo .bit-bocadillo {
+  bottom: auto;
+  top: 100%;
+  margin: -6px 0 0;
+  border-radius: 4px 14px 14px 14px;
+}
+
+.bit.abajo.izq .bit-bocadillo {
+  border-radius: 14px 4px 14px 14px;
+}
+
+.bit.izq .bit-boton {
+  right: auto;
+  left: 0;
+}
+
+@keyframes bit-flota {
+  50% { transform: translateY(-6px); }
+}
+
+@media (max-width: 860px) {
+  .marcas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .marca-tarjeta {
+    padding: 22px 20px;
+  }
+
+  .marca-tarjeta.clubbyte {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .marca-tarjeta img {
+    width: 72px;
+  }
+
+  .migas {
+    padding: 20px 20px 0;
+  }
+
+  .otros {
+    columns: 1;
+  }
+
+  .bit {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .bit-cuerpo {
+    width: 96px;
+    height: 120px;
+  }
+
+  .bit-foto {
+    right: 14px;
+    width: 60px;
+  }
+
+  .bit-boton {
+    bottom: 96px;
+    opacity: 1;
+  }
+
+  .bit-bocadillo {
+    max-width: 210px;
+    font-size: 13.5px;
+  }
+}
+
+@media (hover: none) {
+  .bit-boton {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bit-foto {
+    animation: none;
+  }
+}
+
+@media print {
+  .bit {
+    display: none !important;
+  }
+}
+
+/* Servicios e infraestructura */
+
+.servicios {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.servicio {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 26px 24px;
+  border: 1px solid var(--raya);
+  border-top: 4px solid var(--azul);
+}
+
+.servicio svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: var(--azul);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.servicio h3 {
+  font-family: var(--titulos);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.servicio .tec {
+  margin-top: auto;
+}
+
+.infra-texto {
+  max-width: 70ch;
+  margin: 28px auto 0 !important;
+  text-align: center;
+}
+
+.infra {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  max-width: 980px;
+  margin: 30px auto 0;
+}
+
+.infra > div {
+  padding: 16px 0;
+  border-top: 1px solid var(--raya);
+}
+
+.infra dt {
+  color: var(--tinta);
+  font-family: var(--titulos);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.infra dd {
+  margin: 4px 0 0;
+}
+
+@media (max-width: 980px) {
+  .servicios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .servicios,
+  .infra {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

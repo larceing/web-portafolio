@@ -1,0 +1,12 @@
+{
+  "name": "bit-acompanante",
+  "private": true,
+  "description": "Bit, el robot de Club Byte, en 3D para la web. Genera ../js/bit.js.",
+  "scripts": {
+    "construir": "esbuild entrada.js --bundle --minify --format=iife --target=es2019 --outfile=../js/bit.js --legal-comments=eof"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2",
+    "three": "0.170.0"
+  }
+}

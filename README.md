@@ -1,7 +1,8 @@
 # Web portafolio · Henry Arce
 
-Página personal de una sola pantalla, publicada en https://luiscontacto03.com. HTML, CSS y
-JavaScript sin dependencias.
+Página personal de Henry Arce (Arce Data Lab), publicada en https://arcedatalab.com
+(antes en luiscontacto03.com, que redirige aquí). HTML, CSS y JavaScript sin dependencias,
+más Bit, el robot de Club Byte, en 3D (ver `bit/README.md`).
 
 ## Cómo está hecha
 
@@ -28,6 +29,21 @@ Cada proyecto tiene `tipo` (`producto`, `empresa` o `abierto`, que decide el fil
 (uno de los de `ICONOS`) y `color` (uno de los seis de `C`). Con `caso` sale en formato
 problema / qué hice / resultado; con `texto`, en un párrafo.
 
+## SEO y GEO (lo genera `construir.js`)
+
+- **Una página por proyecto** en `/proyectos/<id>/` y `/en/proyectos/<id>/`, con su título,
+  descripción, migas y datos estructurados. La ficha emergente de la portada enlaza a ella.
+  Si quitas un proyecto, borra también su carpeta en `proyectos/` y `en/proyectos/`.
+- **Datos estructurados (JSON-LD)**: `Person` (Henry), `Organization` (Arce Data Lab),
+  `CreativeWorkSeries` (Club Byte), `ProfilePage`, lista de proyectos y `FAQPage`.
+- **Preguntas frecuentes** visibles en la portada (`UI.faq`): respuestas de una frase que
+  los asistentes de IA pueden citar tal cual.
+- `sitemap.xml` (con las versiones es/en enlazadas), `robots.txt` (abierto también a los
+  rastreadores de IA) y `llms.txt` (resumen para asistentes de IA).
+- Imagen para redes: `img/og.jpg` (1200 × 630).
+- Search Console: la propiedad de dominio `arcedatalab.com` (cuenta henry@arcedatalab.com)
+  ya la cubre. Enviar `https://arcedatalab.com/sitemap.xml`.
+
 ## Publicaciones de LinkedIn (`/linkedin/`)
 
 La página `/linkedin/` (y `/en/linkedin/`) muestra publicaciones de LinkedIn con su código oficial
@@ -53,6 +69,8 @@ abre las fuentes de Google y los marcos de `https://www.linkedin.com`.
 ## Publicar
 
 Desde PowerShell en Windows: `.\publicar.ps1 "mensaje"` regenera, hace commit y sube la web.
+El contenedor atiende `arcedatalab.com` y redirige `www.arcedatalab.com`, `henry.arcedatalab.com`, `luiscontacto03.com` y su `www.` a la
+dirección nueva con la misma ruta (`nginx.conf`).
 A mano, desde Linux o macOS:
 
 ```
