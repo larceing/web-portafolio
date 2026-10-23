@@ -1,16 +1,21 @@
-/* Sencillo: página blanca, mucho aire, titulares condensados en mayúsculas y
-   el color solo en la franja de áreas y en la cuadrícula de proyectos. */
+/* Plantilla común de las apps de Arce Data Lab: superficie tonal clara,
+   tarjetas blancas redondeadas, Roboto Flex y el color en las áreas y los proyectos.
+   Lo propio de la plantilla está al final, en «Plantilla común». */
 :root {
-  --fondo: #FFFFFF;
-  --suave: #F4F6F8;
-  --tinta: #15202B;
-  --texto: #3A4652;
-  --tenue: #66717F;
+  --fondo: #F3F6FA;
+  --tarjeta: #FFFFFF;
+  --capa: #E6EBF2;
+  --tonal: #D3E4F5;
+  --sobre-tonal: #0B2E4B;
+  --suave: #FFFFFF;
+  --tinta: #191C20;
+  --texto: #2E3238;
+  --tenue: #5A5F67;
   --raya: #E3E8EE;
   --azul: #1D4F7A;
 
-  --titulos: 'Barlow Condensed', 'Arial Narrow', 'Segoe UI', sans-serif;
-  --cuerpo: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --titulos: 'Roboto Flex', Roboto, 'Segoe UI', system-ui, sans-serif;
+  --cuerpo: 'Roboto Flex', Roboto, 'Segoe UI', system-ui, sans-serif;
 
   --ancho: 1160px;
 }
@@ -1501,5 +1506,390 @@ code {
   .infra-leyenda {
     font-size: 11.5px;
     letter-spacing: 0.04em;
+  }
+}
+
+/* ── Plantilla común (la misma de las apps: propuestas 8 + 9, con toques del 7) ──
+   Titulares en minúscula y sin espaciado, píldoras tonales en el menú, tarjetas
+   blancas con radio 20–28 y las áreas como mosaico redondeado. */
+
+h1, h2, h3,
+.marca, .menu a, .inicio h1, .area strong, .area em, .franja, .bloque h2,
+.filtro, .tesela-titulo, .ficha-cuerpo h3, .caso dt, .cuando, .cifras strong,
+.correo, .redes a, .marca-tarjeta h3, .preguntas dt, .servicio h3, .infra dt,
+.cinta-pasos strong, .infra-leyenda {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.cabecera {
+  padding-block: 10px;
+  background: rgba(243, 246, 250, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 0;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.marca::before {
+  content: 'HA';
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--azul);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.marca span {
+  margin-left: 0;
+}
+
+.menu {
+  gap: 2px;
+}
+
+.menu a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 20px;
+  color: #43474E;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.menu a:hover {
+  background: var(--capa);
+  color: var(--tinta);
+}
+
+.menu .idioma {
+  margin-left: 8px;
+  padding-left: 14px;
+  border-left: 0;
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.inicio h1 {
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+
+.inicio img {
+  border-radius: 28px;
+}
+
+/* Áreas: mosaico de cuatro tarjetas de color */
+.areas {
+  max-width: var(--ancho);
+  height: auto;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  background: none;
+  overflow: visible;
+}
+
+.area,
+.area:first-child,
+.area:last-child {
+  margin: 0;
+  padding: 32px 20px;
+  border-radius: 28px;
+  clip-path: none;
+}
+
+.area:hover,
+.area:focus-visible {
+  flex: none;
+}
+
+.area svg {
+  width: 56px;
+  height: 56px;
+}
+
+.area strong {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.area em {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.franja {
+  max-width: calc(var(--ancho) - 56px);
+  margin: 16px auto 0;
+  padding: 18px 24px;
+  border-radius: 24px;
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.franja a {
+  color: var(--sobre-tonal);
+  font-weight: 600;
+}
+
+.bloque h2 {
+  font-size: clamp(28px, 3.4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  color: #43474E;
+}
+
+/* Filtros como chips */
+.filtros {
+  gap: 8px;
+}
+
+.filtro {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #C3C7CF;
+  border-radius: 8px;
+  color: #43474E;
+  font-size: 14px;
+}
+
+.filtro.activo {
+  border-color: var(--tonal);
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.filtro.activo::before {
+  content: '✓ ';
+}
+
+.cuadricula {
+  gap: 12px;
+}
+
+.tesela {
+  border-radius: 24px;
+}
+
+.tesela-titulo {
+  font-size: 18px;
+}
+
+.relieve::after {
+  border-radius: inherit;
+}
+
+/* Tarjetas blancas */
+.servicios {
+  gap: 16px;
+}
+
+.servicio,
+.servicio.relieve,
+.marca-tarjeta,
+.lista,
+.preguntas,
+.infra,
+.cifras {
+  border: 0;
+  border-radius: 24px;
+  background: var(--tarjeta);
+}
+
+.servicio {
+  padding: 24px;
+}
+
+.servicio svg {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border-radius: 14px;
+  background: var(--tonal);
+  stroke: var(--sobre-tonal);
+}
+
+.servicio h3 {
+  font-size: 20px;
+}
+
+.marca-tarjeta {
+  padding: 28px;
+}
+
+.marca-tarjeta.clubbyte {
+  background: #FFE3CC;
+}
+
+.marca-tarjeta h3,
+.preguntas dt {
+  font-size: 21px;
+}
+
+.lista,
+.preguntas,
+.infra,
+.cifras {
+  padding: 8px 28px;
+}
+
+.cifras {
+  padding: 28px;
+}
+
+.lista > li,
+.lista > div,
+.preguntas > div,
+.infra > div {
+  border-top: 0;
+  border-bottom: 1px solid #EEF1F5;
+}
+
+.lista > li:last-child,
+.lista > div:last-child,
+.preguntas > div:last-child {
+  border-bottom: 0;
+}
+
+.infra > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.cuando {
+  color: #43474E;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.infra dt {
+  font-size: 17px;
+}
+
+.infra-lienzo {
+  border-radius: 24px;
+}
+
+.cinta-pasos strong {
+  font-size: 17px;
+}
+
+.infra-leyenda {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Ficha */
+.ficha {
+  border-radius: 28px;
+  background: var(--tarjeta);
+}
+
+.ficha-cuerpo h3 {
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+
+/* Contacto: botones redondeados */
+.correo {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.redes {
+  gap: 8px;
+}
+
+.redes a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 22px;
+  background: var(--tarjeta);
+  color: var(--tinta);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.redes a:hover {
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.pie {
+  border-top: 0;
+}
+
+@media (max-width: 980px) {
+  .areas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cabecera {
+    padding: 10px 16px;
+  }
+
+  .menu a {
+    min-height: 36px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .areas {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .area,
+  .area:first-child,
+  .area:last-child {
+    padding: 22px 12px;
+    border-radius: 22px;
+  }
+
+  .franja {
+    margin: 10px 16px 0;
+  }
+
+  .lista,
+  .preguntas,
+  .infra {
+    padding: 4px 18px;
+  }
+
+  .infra > div:nth-last-child(2) {
+    border-bottom: 1px solid #EEF1F5;
+  }
+
+  .marca-tarjeta {
+    padding: 22px;
   }
 }

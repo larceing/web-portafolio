@@ -680,7 +680,7 @@ function cabeza(d, p) {
   <script type="application/ld+json">${jsonLd(p.datos)}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap">
   <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
 </head>
 
