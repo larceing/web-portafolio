@@ -87,6 +87,13 @@ abre las fuentes de Google y los marcos de `https://www.linkedin.com`.
 
 ## Publicar
 
+La web va por el sistema DEV/PRO del servidor (app «Web Arce Data Lab», ruta `/web/`, `servidor.json`):
+`node construir.js`, commit y push a `main` → GitHub construye `ghcr.io/larceing/web-portafolio:sha-xxxxxxx` →
+Ajustes → «Poner» en DEV (`dev.luiscontacto03.com/web/`) → «Pasar a PRO». PRO está en su dominio `arcedatalab.com`
+(«Poner en su dominio»; vuelta atrás: «Quitar su dominio», que vuelve al contenedor antiguo `portafolio-web`).
+
+### Forma antigua (reserva)
+
 Desde PowerShell en Windows: `.\publicar.ps1 "mensaje"` regenera, hace commit y sube la web.
 El contenedor atiende `arcedatalab.com` y redirige `www.arcedatalab.com`, `henry.arcedatalab.com`, `luiscontacto03.com` y su `www.` a la
 dirección nueva con la misma ruta (`nginx.conf`).
