@@ -12,7 +12,7 @@ COPY proyectos /usr/share/nginx/html/proyectos
 COPY css /usr/share/nginx/html/css
 COPY js /usr/share/nginx/html/js
 COPY img /usr/share/nginx/html/img
-RUN mkdir -p /usr/share/nginx/html/version \n && printf '{"version": "%s"}
-' "$APP_VERSION" > /usr/share/nginx/html/version/index.json
+RUN mkdir -p /usr/share/nginx/html/version \
+ && echo "{\"version\": \"$APP_VERSION\"}" > /usr/share/nginx/html/version/index.json
 
 HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- http://127.0.0.1/version/ >/dev/null || exit 1
