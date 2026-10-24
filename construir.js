@@ -112,7 +112,7 @@ const PROYECTOS = [
     caso: [
       ['Problema', 'Cada aplicación se desplegaba a mano en el servidor, con su dominio, su inicio de sesión y su copia de seguridad hechos de una forma distinta.'],
       ['Qué hice', 'Un sistema que da a cada app un entorno de pruebas y otro de producción en el mismo servidor. Una app se enchufa con un fichero de manifiesto y el sistema crea su ruta, su grupo de usuarios en Keycloak, su dominio con certificado y su despliegue desde la imagen de GitHub.'],
-      ['Resultado', 'Una decena de aplicaciones conviviendo en un servidor, botones de «Poner», «Pasar a PRO» y «Volver a la anterior», vuelta atrás automática si una versión no responde y un agente que se actualiza solo cuando las pruebas están en verde.']
+      ['Resultado', 'Una decena de aplicaciones conviviendo en un servidor, botones de «Poner», «Pasar a PRO» y «Volver a la anterior», vuelta atrás automática en las apps que despliega el servidor y un agente que se actualiza solo cuando las pruebas están en verde.']
     ],
     tec: ['Python', 'FastAPI', 'Nginx', 'Keycloak', 'Docker', 'GitHub Actions', 'Cloudflare'],
     enlaces: [['Ver en GitHub', GITHUB + '/servidor']]
@@ -354,13 +354,13 @@ const UI = {
   infraTexto: 'No dependo de plataformas cerradas: tengo un servidor propio con todo lo necesario para poner una aplicación en marcha con seguridad, probarla y pasarla a producción.',
   infraLista: [
     ['Servidor propio', 'Linux con Docker en Hetzner (Alemania, UE). Cada aplicación en su contenedor, detrás de un único proxy con HTTPS.'],
-    ['Entornos DEV y PRO', 'Cada app se prueba antes de llegar a producción, con vuelta atrás automática si una versión falla.'],
+    ['Entornos DEV y PRO', 'Cada app se prueba antes de llegar a producción, con «Volver a la anterior» en un clic y vuelta atrás automática en las apps que despliega el propio servidor.'],
     ['Inicio de sesión único', 'Keycloak para todas las aplicaciones, con grupos por app y por entorno.'],
-    ['Dominios y certificados', 'Nginx Proxy Manager con HTTPS de Let\'s Encrypt y DNS en Cloudflare.'],
+    ['Dominios y certificados', 'Nginx Proxy Manager con HTTPS de Let\'s Encrypt y, en los dominios que están en Cloudflare, el DNS se crea solo.'],
     ['Correo con marca', 'Servicio Mail sobre Resend: las apps envían desde ' + SOPORTE + ', con SPF, DKIM y DMARC.'],
     ['Documentos PDF', 'Report Server para facturas, pedidos y albaranes desde plantillas.'],
     ['Despliegue continuo', 'GitHub Actions construye cada versión y la publica en GitHub Container Registry.'],
-    ['Copias y avisos', 'Copias nocturnas de las bases de datos y comprobación continua de que cada app responde.']
+    ['Copias y avisos', 'Copias nocturnas de las bases de datos de las apps principales y comprobación continua de que cada app responde.']
   ],
   infraEnlace: 'Ver la plataforma en GitHub',
   infraLeyenda: ['Proxy con HTTPS', 'Servidor', 'Apps en contenedores', 'Copia cada noche'],

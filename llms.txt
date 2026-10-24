@@ -19,13 +19,13 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 
 ## Infraestructura propia
 - **Servidor propio**: Linux con Docker en Hetzner (Alemania, UE). Cada aplicación en su contenedor, detrás de un único proxy con HTTPS.
-- **Entornos DEV y PRO**: Cada app se prueba antes de llegar a producción, con vuelta atrás automática si una versión falla.
+- **Entornos DEV y PRO**: Cada app se prueba antes de llegar a producción, con «Volver a la anterior» en un clic y vuelta atrás automática en las apps que despliega el propio servidor.
 - **Inicio de sesión único**: Keycloak para todas las aplicaciones, con grupos por app y por entorno.
-- **Dominios y certificados**: Nginx Proxy Manager con HTTPS de Let's Encrypt y DNS en Cloudflare.
+- **Dominios y certificados**: Nginx Proxy Manager con HTTPS de Let's Encrypt y, en los dominios que están en Cloudflare, el DNS se crea solo.
 - **Correo con marca**: Servicio Mail sobre Resend: las apps envían desde soporte@arcedatalab.com, con SPF, DKIM y DMARC.
 - **Documentos PDF**: Report Server para facturas, pedidos y albaranes desde plantillas.
 - **Despliegue continuo**: GitHub Actions construye cada versión y la publica en GitHub Container Registry.
-- **Copias y avisos**: Copias nocturnas de las bases de datos y comprobación continua de que cada app responde.
+- **Copias y avisos**: Copias nocturnas de las bases de datos de las apps principales y comprobación continua de que cada app responde.
 
 ## Proyectos
 - [Club Byte: tecnología explicada a niños de 8 a 12 años](https://arcedatalab.com/proyectos/clubbyte/): Casi no hay contenido en castellano que explique a niños y niñas cómo funciona la informática con historias y personajes, sin vender un curso detrás. Un…

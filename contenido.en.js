@@ -78,13 +78,13 @@ module.exports = {
     infraTexto: 'I don’t depend on closed platforms: I run my own server with everything needed to launch an application securely, test it and promote it to production.',
     infraLista: [
       ['Own server', 'Linux with Docker on Hetzner (Germany, EU). Each app in its own container, behind a single HTTPS proxy.'],
-      ['DEV and PRO environments', 'Every app is tested before it reaches production, with automatic rollback if a version fails.'],
+      ['DEV and PRO environments', 'Every app is tested before it reaches production, with one-click “Roll back” and automatic rollback for the apps the server deploys itself.'],
       ['Single sign-on', 'Keycloak for every application, with groups per app and per environment.'],
-      ['Domains and certificates', 'Nginx Proxy Manager with Let’s Encrypt HTTPS and DNS on Cloudflare.'],
+      ['Domains and certificates', 'Nginx Proxy Manager with Let’s Encrypt HTTPS and, for domains on Cloudflare, DNS records created automatically.'],
       ['Branded email', 'A Mail service on top of Resend: apps send from soporte@arcedatalab.com, with SPF, DKIM and DMARC.'],
       ['PDF documents', 'Report Server for invoices, orders and delivery notes from templates.'],
       ['Continuous deployment', 'GitHub Actions builds every version and publishes it to GitHub Container Registry.'],
-      ['Backups and alerts', 'Nightly database backups and continuous checks that every app responds.']
+      ['Backups and alerts', 'Nightly backups of the main apps’ databases and continuous checks that every app responds.']
     ],
     infraEnlace: 'See the platform on GitHub',
     arce: 'Arce Data Lab',
@@ -153,7 +153,7 @@ module.exports = {
       caso: [
         ['Problem', 'Every application was deployed by hand on the server, each with its domain, login and backups done a different way.'],
         ['What I did', 'A system that gives each app a test environment and a production one on the same server. An app plugs in with a manifest file and the system creates its route, its Keycloak user group, its domain with a certificate and its deployment from the GitHub image.'],
-        ['Result', 'About ten applications living on one server, “Deploy”, “Promote to PRO” and “Roll back” buttons, automatic rollback if a version does not respond, and an agent that updates itself when the tests are green.']
+        ['Result', 'About ten applications living on one server, “Deploy”, “Promote to PRO” and “Roll back” buttons, automatic rollback for the apps the server deploys, and an agent that updates itself when the tests are green.']
       ]
     },
     sindri: {
