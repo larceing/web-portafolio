@@ -90,6 +90,7 @@ module.exports = {
     ],
     serviciosNota: 'Prices exclude VAT. Maintenance from €49 a month. We always start with a free 45-minute review.',
     serviciosCta: 'Book your free review',
+    serviciosPago: 'You pay 50% to start and 50% on delivery, by bank transfer or card, always with an invoice.',
     cinta: 'Automation at work',
     cintaSub: 'What an automated flow does, in miniature',
     cintaPasos: [

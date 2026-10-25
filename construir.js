@@ -370,6 +370,7 @@ const UI = {
   ],
   serviciosNota: 'Precios sin IVA. Mantenimiento desde 49 € al mes. Siempre empezamos con un diagnóstico gratis de 45 minutos.',
   serviciosCta: 'Pide tu diagnóstico gratis',
+  serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
   cintaSub: 'Lo que hace un flujo automático, en pequeño',
   cintaPasos: [
@@ -979,6 +980,7 @@ function paginaServicios(d) {
 ${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p>' + (x[4] ? '<p class="precio">' + x[4] + '</p>' : '') + '</article>').join('\n')}
       </div>
       <p class="servicios-nota">${t.serviciosNota}</p>
+      <p class="servicios-nota">${t.serviciosPago}</p>
       <p class="botones centrados"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a><a class="boton secundario" href="mailto:${CORREO}">${CORREO}</a></p>
     </section>
 
