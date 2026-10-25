@@ -200,7 +200,14 @@
       ponerOculto(true);
       return;
     }
-    cargar3d();
+    // El 3D se pide con el primer gesto (ratón, dedo, tecla o scroll): hasta
+    // entonces se ve la foto. Así la carga inicial no paga el WebGL.
+    var gestos = ['pointermove', 'pointerdown', 'keydown', 'scroll', 'touchstart'];
+    var alPrimerGesto = function () {
+      gestos.forEach(function (g) { window.removeEventListener(g, alPrimerGesto); });
+      cargar3d();
+    };
+    gestos.forEach(function (g) { window.addEventListener(g, alPrimerGesto, { passive: true }); });
     setTimeout(function () { decir(guion.hola, true, movil ? 5 : 7); }, 900);
     observarSecciones();
   }
