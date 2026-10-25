@@ -27,3 +27,43 @@
     caja.appendChild(figura);
   });
 })();
+
+// Estados de las publicaciones: «cargando» con un brillo hasta que llega el
+// marco, y si a los 12 segundos no ha llegado, un aviso con el enlace directo.
+(function() {
+  const caja = document.querySelector('.embebidas');
+  if (!caja) return;
+  caja.querySelectorAll('.embebida').forEach(function(figura) {
+    const marco = figura.querySelector('iframe');
+    if (!marco) return;
+    figura.classList.add('cargando');
+    let listo = false;
+    marco.addEventListener('load', function() {
+      listo = true;
+      figura.classList.remove('cargando', 'fallo');
+    });
+    function vigilar() {
+      setTimeout(function() {
+        if (listo) return;
+        figura.classList.remove('cargando');
+        figura.classList.add('fallo');
+        if (!figura.querySelector('.embebida-fallo')) {
+          const aviso = document.createElement('p');
+          aviso.className = 'embebida-fallo';
+          aviso.setAttribute('role', 'status');
+          aviso.textContent = caja.dataset.fallo;
+          figura.insertBefore(aviso, figura.querySelector('figcaption'));
+        }
+      }, 12000);
+    }
+    // Con loading="lazy" el marco no se pide hasta que se acerca: se cuenta desde ahí.
+    if ('IntersectionObserver' in window) {
+      const ojo = new IntersectionObserver(function(entradas) {
+        if (entradas.some(function(e) { return e.isIntersecting; })) { ojo.disconnect(); vigilar(); }
+      }, { rootMargin: '300px' });
+      ojo.observe(figura);
+    } else {
+      vigilar();
+    }
+  });
+})();

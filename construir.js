@@ -295,6 +295,8 @@ const UI = {
   linkedinSub: 'Lo que escribo sobre BI, datos e IA aplicada',
   linkedinMarco: 'Publicación de LinkedIn',
   linkedinVer: 'Abrir en LinkedIn',
+  linkedinFallo: 'LinkedIn no ha cargado esta publicación (a veces la bloquea el navegador). Puedes verla en LinkedIn con el enlace de abajo.',
+  sinProyectos: 'Todavía no hay proyectos de este tipo. Si tienes uno en mente, cuéntamelo.',
   linkedinPerfil: 'Ver todas en mi perfil de LinkedIn',
   verPublicaciones: 'Leer las publicaciones aquí',
   saltar: 'Saltar al contenido',
@@ -803,6 +805,7 @@ ${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
       <div class="cuadricula">
 ${enPortada(d.proyectos).map((p, i) => tesela(p, t, i >= PROYECTOS_A_LA_VISTA, base)).join('\n')}
       </div>
+      <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="#contacto">${t.inicioBotones[1]} →</a></p>
       <button type="button" class="ver-todos" id="verTodos">${t.verTodos.replace('{n}', d.proyectos.length)}</button>
     </section>
 
@@ -941,7 +944,7 @@ function paginaLinkedin(d) {
       <h1>${t.linkedinTitulo}</h1>
       <p class="sub">${t.linkedinSub}</p>
 
-      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}">
+      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
 ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
       </div>
 

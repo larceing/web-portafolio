@@ -15,6 +15,8 @@ module.exports = {
     linkedinSub: 'What I write about BI, data and applied AI, in Spanish',
     linkedinMarco: 'LinkedIn post',
     linkedinVer: 'Open on LinkedIn',
+    linkedinFallo: 'LinkedIn didn’t load this post (some browsers block it). You can read it on LinkedIn with the link below.',
+    sinProyectos: 'No projects of this type yet. If you have one in mind, tell me about it.',
     linkedinPerfil: 'See them all on my LinkedIn profile',
     verPublicaciones: 'Read the posts here',
     saltar: 'Skip to content',

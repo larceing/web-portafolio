@@ -7,9 +7,16 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       b.classList.toggle('activo', b === boton);
     });
 
+    let vistas = 0;
     document.querySelectorAll('.tesela').forEach(function(t) {
-      t.classList.toggle('oculta', filtro !== 'todos' && t.dataset.tipo !== filtro);
+      const fuera = filtro !== 'todos' && t.dataset.tipo !== filtro;
+      t.classList.toggle('oculta', fuera);
+      if (!fuera) vistas++;
     });
+
+    // Estado vacío: si un filtro no deja ningún proyecto, se dice.
+    const vacio = document.getElementById('sinProyectos');
+    if (vacio) vacio.hidden = vistas > 0;
   });
 });
 
