@@ -442,7 +442,20 @@ const UI = {
     tecnologias: 'Herramientas probadas en producción, elegidas según el caso.',
     preguntas: 'Respuestas breves a lo que más se pregunta antes de empezar un proyecto.',
     contacto: '¿Hablamos de tu caso? Escribe a ' + CORREO + ' y Henry te responde.',
-    pulsar: ['Aquí estoy. ¿Te resumo algún proyecto?', 'Consejo: empieza automatizando la tarea que más tiempo te quita.', 'Si los datos no cuadran, casi siempre hay una causa que se puede corregir.', 'Un byte son 8 bits. Un buen proceso, cero tareas repetidas.'],
+    pulsar: ['Aquí estoy. Si me haces doble clic, le dejo un mensaje a Henry.', '¿Te resumo algún proyecto? Abre cualquiera.', 'Consejo: empieza automatizando la tarea que más tiempo te quita.', 'Si los datos no cuadran, casi siempre hay una causa que se puede corregir.', 'Un byte son 8 bits. Un buen proceso, cero tareas repetidas.'],
+    mensaje: {
+      titulo: 'Déjale un mensaje a Henry',
+      sub: 'Byte lo prepara y se abre tu correo o WhatsApp con todo escrito. No se guarda nada en esta web.',
+      nombre: 'Tu nombre', empresa: 'Empresa (opcional)', texto: '¿En qué te puede ayudar?',
+      ejemplo: 'Ej.: cada lunes copiamos las ventas del ERP a un Excel y tardamos 3 horas.',
+      correo: 'Enviar por correo', whatsapp: 'Enviar por WhatsApp', cerrar: 'Cerrar',
+      vacio: 'Escribe al menos una frase para que Henry sepa qué necesitas.',
+      abriendo: 'Abriendo tu aplicación…',
+      listo: 'Listo: revisa la ventana que se ha abierto y pulsa enviar allí. Henry suele contestar en el día.',
+      fallo: '¿No se ha abierto nada? Copia el mensaje y mándalo a ',
+      copiar: 'Copiar mensaje', copiado: 'Copiado',
+      asunto: 'Mensaje desde arcedatalab.com', hola: 'Hola Henry, soy'
+    },
     ocultar: 'Ocultar a Byte',
     mostrar: 'Mostrar a Byte',
     canal: 'Ver Club Byte'
@@ -1092,7 +1105,8 @@ function paginaLegal(l) {
 const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
-  const guion = Object.assign({}, t.bit);
+  const guion = Object.assign({}, t.bit, { correoDestino: CORREO, whatsappDestino: WHATSAPP });
+  const m = t.bit.mensaje;
   return `  <aside class="bit" id="bit" data-paseo="libre" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
@@ -1101,6 +1115,21 @@ function bitHtml(t, base) {
     </div>
     <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="${t.bit.ocultar}">×</button>
   </aside>
+  <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
+    <form method="dialog" novalidate>
+      <h2 id="byteMensajeTitulo">${m.titulo}</h2>
+      <p class="sub">${m.sub}</p>
+      <label>${m.nombre}<input name="nombre" autocomplete="name" maxlength="80"></label>
+      <label>${m.empresa}<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>${m.texto}<textarea name="texto" rows="4" maxlength="1200" placeholder="${attr(m.ejemplo)}" required></textarea></label>
+      <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
+      <p class="botones">
+        <button type="button" class="boton" data-via="correo">${m.correo}</button>
+        <button type="button" class="boton secundario" data-via="whatsapp">${m.whatsapp}</button>
+      </p>
+      <button type="submit" class="byte-mensaje-cerrar" aria-label="${m.cerrar}">×</button>
+    </form>
+  </dialog>
   <script type="application/json" id="bitGuion">${jsonLd(guion)}</script>
   <script src="${base}js/bit-arranque.js?v=${VERSION_JS_BIT}"></script>
   <script src="${base}js/bit-paseo.js?v=${VERSION_JS_PASEO}"></script>

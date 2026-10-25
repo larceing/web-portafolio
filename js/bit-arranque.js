@@ -93,6 +93,83 @@
     document.head.appendChild(s);
   }
 
+  // ---- Doble clic (o doble toque) en Byte: mensaje para Henry ----
+  // No hay servidor de por medio: el mensaje se prepara aquí y se abre el
+  // correo o WhatsApp de la persona con todo escrito. Estados: vacío (falta
+  // texto), abriendo, listo y, si no se abre nada, copiar el mensaje.
+  var dialogo = document.getElementById('byteMensaje');
+  var m = guion.mensaje || {};
+  function abrirMensaje() {
+    if (!dialogo || typeof dialogo.showModal !== 'function') {
+      location.href = 'mailto:' + (guion.correoDestino || '');
+      return;
+    }
+    var estado = document.getElementById('byteEstado');
+    estado.textContent = '';
+    estado.className = 'byte-estado';
+    dialogo.showModal();
+    if (bit3d) bit3d.saludar();
+    var campo = dialogo.querySelector('[name=nombre]');
+    setTimeout(function () { campo.focus(); }, 50);
+  }
+  function textoMensaje(f) {
+    var nombre = f.nombre.value.trim(), empresa = f.empresa.value.trim(), texto = f.texto.value.trim();
+    var cabeza = nombre ? (m.hola || 'Hola Henry, soy') + ' ' + nombre + (empresa ? ' (' + empresa + ')' : '') + '.' : '';
+    return (cabeza ? cabeza + '\n\n' : '') + texto;
+  }
+  if (dialogo) {
+    var f = dialogo.querySelector('form');
+    var estado = document.getElementById('byteEstado');
+    dialogo.querySelectorAll('[data-via]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (f.texto.value.trim().length < 8) {
+          estado.textContent = m.vacio || '';
+          estado.className = 'byte-estado error';
+          f.texto.focus();
+          return;
+        }
+        var cuerpoMsg = textoMensaje(f);
+        var url = b.getAttribute('data-via') === 'whatsapp'
+          ? (guion.whatsappDestino || '') + '?text=' + encodeURIComponent(cuerpoMsg)
+          : 'mailto:' + guion.correoDestino + '?subject=' + encodeURIComponent(m.asunto || '') + '&body=' + encodeURIComponent(cuerpoMsg);
+        estado.textContent = m.abriendo || '';
+        estado.className = 'byte-estado cargando';
+        if (b.getAttribute('data-via') === 'whatsapp') window.open(url, '_blank', 'noopener');
+        else location.href = url;
+        setTimeout(function () {
+          estado.textContent = '';
+          estado.className = 'byte-estado listo';
+          estado.appendChild(document.createTextNode((m.listo || '') + ' '));
+          var p = document.createElement('span');
+          p.className = 'byte-fallo';
+          p.appendChild(document.createTextNode((m.fallo || '') + guion.correoDestino + '. '));
+          var copiar = document.createElement('button');
+          copiar.type = 'button';
+          copiar.className = 'enlace';
+          copiar.textContent = m.copiar || 'Copiar';
+          copiar.addEventListener('click', function () {
+            var hecho = function () { copiar.textContent = m.copiado || '✓'; };
+            if (navigator.clipboard) navigator.clipboard.writeText(cuerpoMsg).then(hecho, function () { f.texto.select(); });
+            else { f.texto.select(); }
+          });
+          p.appendChild(copiar);
+          estado.appendChild(p);
+        }, 1200);
+      });
+    });
+    // Clic fuera del cuadro: cerrar.
+    dialogo.addEventListener('click', function (e) { if (e.target === dialogo) dialogo.close(); });
+  }
+  // Doble clic con ratón, o dos toques seguidos en el móvil.
+  var ultimoToque = 0;
+  cuerpo.addEventListener('dblclick', function (e) { e.preventDefault(); abrirMensaje(); });
+  cuerpo.addEventListener('pointerup', function (e) {
+    if (e.pointerType !== 'touch') return;
+    var ahora = Date.now();
+    if (ahora - ultimoToque < 380) { ultimoToque = 0; abrirMensaje(); }
+    else ultimoToque = ahora;
+  });
+
   var pulsaciones = 0;
   function alPulsar() {
     var frases = guion.pulsar || [];
