@@ -134,3 +134,31 @@ document.getElementById('anio').textContent = new Date().getFullYear();
   window.addEventListener('scroll', mirar, { passive: true });
   mirar();
 })();
+
+// Los datos clave de la portada cuentan desde cero la primera vez que se ven
+// (el año no, que no tiene gracia contar hasta 2019).
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cifras = Array.from(document.querySelectorAll('.datos-clave strong')).filter(function (el) {
+    const n = Number(el.textContent.replace(/\./g, ''));
+    return Number.isFinite(n) && n > 0 && n < 1900 || n > 2100;
+  });
+  if (!cifras.length || !('IntersectionObserver' in window)) return;
+  const formato = new Intl.NumberFormat(document.documentElement.lang || 'es');
+  cifras.forEach(function (el) {
+    const final = Number(el.textContent.replace(/[.,]/g, ''));
+    el.dataset.final = el.textContent;
+    el.style.minWidth = el.offsetWidth + 'px';
+    const ojo = new IntersectionObserver(function (e) {
+      if (!e[0].isIntersecting) return;
+      ojo.disconnect();
+      const t0 = performance.now(), dura = 1300;
+      (function paso(ahora) {
+        const k = Math.min(1, (ahora - t0) / dura), suave = 1 - Math.pow(1 - k, 3);
+        el.textContent = k < 1 ? formato.format(Math.round(final * suave)) : el.dataset.final;
+        if (k < 1) requestAnimationFrame(paso);
+      })(t0);
+    }, { threshold: 0.6 });
+    ojo.observe(el);
+  });
+})();

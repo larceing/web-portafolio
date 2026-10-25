@@ -12,7 +12,7 @@ import {
   MathUtils, BufferGeometry, Float32BufferAttribute, Points, PointsMaterial
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda } from './calidad.js';
+import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda, chispas } from './calidad.js';
 
 const COLOR = {
   tinta: 0x15202B, azul: 0x1D4F7A, cielo: 0x2E6C9E, pizarra: 0x3F5266,
@@ -134,6 +134,9 @@ export function iniciarInfra(opciones) {
     return c;
   });
   let siguienteDespliegue = 4;
+  const polvo = chispas(mundo, 0xC9D6E3, 60);
+  const llegadas = chispas(mundo, COLOR.cian, 50);
+  const oro = chispas(mundo, COLOR.oro, 40);
   const sombraApps = sombra(4.3, 2.1, 0.85);
   sombraApps.position.set(1.45, 0.006, 0);
   mundo.add(sombraApps);
@@ -238,6 +241,12 @@ export function iniciarInfra(opciones) {
     // Peticiones: del exterior al proxy, al servidor y a un contenedor.
     paquetes.forEach(function (p) {
       const k = (t * 0.32 + p.userData.desfase) % 1;
+      // Cada petición que llega a su app suelta unas chispas.
+      if (p.userData.k > 0.9 && k < 0.1 && noche < 0.6) {
+        const d = apps[p.userData.destino].position;
+        llegadas.disparar(d.x, d.y + 0.4, 0, 6, 0.45);
+      }
+      p.userData.k = k;
       const destino = apps[p.userData.destino].position;
       let x, y;
       if (k < 0.5) {
@@ -277,6 +286,7 @@ export function iniciarInfra(opciones) {
         } else {
           c.position.y = h.y;
           c.userData.cae = 0;
+          polvo.disparar(c.position.x, Math.max(0.05, h.y - 0.3), 0.5, 14, 0.7);
           c.userData.cambiado = false;
         }
       }
@@ -318,6 +328,10 @@ export function iniciarInfra(opciones) {
       // La copia va en brazos, delante de la barriga.
       paquete.position.set(x, y + 0.05 + Math.sin(t * 2.4) * 0.05, z + 0.42);
     }
+    // Al guardar la copia en la caja fuerte, un destello dorado.
+    if (abre > 0.95 && !byte.guardado) { byte.guardado = true; oro.disparar(5.4, 1.1, 0.9, 18, 0.8); }
+    if (abre < 0.1) byte.guardado = false;
+    polvo.paso(dt); llegadas.paso(dt); oro.paso(dt);
     puerta.rotation.y = -abre * 1.6;
     rueda.rotation.z = t * 0.8;
 
