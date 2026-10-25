@@ -62,7 +62,7 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 - **¿Dónde publica contenido?** En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en Instagram (@henry_arce_dev). Pronto también en YouTube, en el canal Imagina en IT.
 - **¿Cómo contactar?** Por correo a info@arcedatalab.com, por WhatsApp al +34 633 42 42 23 o por LinkedIn; para soporte de las aplicaciones, soporte@arcedatalab.com.
 - **¿Cuánto cuesta un proyecto?** Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.
-- **¿Cuánto tarda?** Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.
+- **¿Cuánto tarda?** Depende mucho de cada caso: de cuántas fuentes de datos hay, de cómo están y de lo que haga falta construir. Por eso el plazo se cierra por escrito después del diagnóstico gratis, cuando ya he visto tus datos, y se cumple.
 - **¿Cómo se empieza?** Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.
 
 ## Trayectoria
