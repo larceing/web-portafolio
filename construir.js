@@ -60,6 +60,11 @@ const PUBLICACIONES = [
 ];
 
 // Pictogramas de línea (lienzo de 48 x 48).
+// Catálogo de plantillas de ejemplo (repo demos). En DEV, js/bit-arranque.js
+// cambia el enlace por el de DEV (atributo data-dev).
+const CATALOGO_PLANTILLAS = 'https://pro.luiscontacto03.com/demos/catalogo/';
+const CATALOGO_PLANTILLAS_DEV = 'https://dev.luiscontacto03.com/demos/catalogo/';
+
 const ICONOS = {
   ticket: '<rect x="8" y="12" width="32" height="24" rx="3"/><path d="M16 20h16M16 28h10"/>',
   tunel: '<rect x="5" y="16" width="13" height="16" rx="2"/><rect x="30" y="16" width="13" height="16" rx="2"/><path d="M18 21h12M30 27H18"/>',
@@ -146,6 +151,13 @@ const PROYECTOS = [
     texto: 'El CRM de la casa, en proceso. Va como módulo de Sindri, con los mismos clientes, presupuestos, pedidos y facturas, así nada se duplica. El objetivo: registrar una visita en menos de 30 segundos desde el móvil o la PDA, incluso sin cobertura; que la oportunidad se gane sola al confirmarse el pedido, y una línea de tiempo por cliente que junte llamadas, presupuestos, facturas, cobros e incidencias de Odin. El embudo, las actividades y los presupuestos ya funcionan dentro de Sindri; antes de seguir analicé 15 CRM libres.',
     tec: ['Módulo de Sindri', 'Fastify', 'PostgreSQL', 'React', 'Keycloak'],
     enlaces: [['Ver en GitHub', GITHUB + '/brokkr']]
+  },
+  {
+    id: 'plantillas', corto: 'Plantillas de web', titulo: 'Plantillas de web para negocios locales',
+    tipo: 'producto', etiqueta: 'Producto propio · 2026', icono: 'escritorio', color: C.tostado,
+    texto: '28 webs de ejemplo con negocios inventados: hostelería, belleza, deporte, salud, mascotas, comercio y servicios. Cada una tiene su acción principal (reservar mesa, pedir cita, encargar o pedir presupuesto) y se prueba entera sin enviar nada. Pensadas primero para el móvil, con tipografías propias sin Google Fonts y sin estilos ni scripts en línea, así pasan una política de seguridad estricta. Llevan aviso legal y dicen claramente que el negocio es inventado. El catálogo se filtra por sector y sale del mismo generador que uso para las demos privadas de clientes.',
+    tec: ['HTML y CSS', 'JavaScript sin dependencias', 'CSP estricta', 'Generador propio'],
+    ver: true
   },
   {
     id: 'whatsapp', corto: 'IA para WhatsApp', titulo: 'Asistente de IA para WhatsApp',
@@ -401,7 +413,7 @@ const UI = {
     ['escritorio', 'Webs y aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'webs']
   ],
   verServicio: 'Ver el servicio',
-  serviciosNota: 'Cada proyecto es distinto, así que no hay tarifa fija: el precio se cierra por escrito, sin IVA, tras un diagnóstico gratis de 45 minutos. Si quieres una idea antes, la <a href="power-bi/#calculadora">calculadora</a> te da un rango orientativo para un cuadro de mando.',
+  serviciosNota: 'Cada proyecto es distinto, así que no hay tarifa fija: el precio se cierra por escrito, sin IVA, tras un diagnóstico gratis de 45 minutos. Si quieres una idea antes, la <a href="power-bi/#calculadora">calculadora</a> te da un rango orientativo para un cuadro de mando. Y si buscas una web, mira las <a href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">plantillas de ejemplo</a>.',
   serviciosCta: 'Pide tu diagnóstico gratis',
   serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
@@ -504,6 +516,7 @@ UI.serv = {
   antesAlt: 'Portada de las demos antes del rediseño',
   ahoraAlt: 'Portada de las demos después del rediseño',
   plantillas: 'Ver plantillas de ejemplo',
+  verPlantillas: 'Ver las plantillas',
   plantillasSub: '28 webs de ejemplo con negocios inventados, para que veas estilos antes de empezar.',
   deslizar: 'Comparar antes y después',
   pasos: [
@@ -532,10 +545,6 @@ UI.porque = {
 // rango sale de las horas × TARIFA_HORA (y × 1,2 para el tope), redondeado a
 // 50 €. Los precios no se enseñan en ningún otro sitio de la web.
 const TARIFA_HORA = 40;
-// Catálogo de plantillas de ejemplo (repo demos). En DEV, js/antes-ahora.js
-// cambia el enlace por el de DEV (atributo data-dev).
-const CATALOGO_PLANTILLAS = 'https://pro.luiscontacto03.com/demos/catalogo/';
-const CATALOGO_PLANTILLAS_DEV = 'https://dev.luiscontacto03.com/demos/catalogo/';
 UI.calc = {
   titulo: '¿Cuánto cuesta mi dashboard?',
   sub: 'Seis preguntas y te doy un rango orientativo. No se guarda nada: si quieres, el resultado se abre en tu WhatsApp para mandármelo.',
@@ -612,7 +621,7 @@ const SERVICIOS = [
   },
   {
     id: 'webs', icono: 'escritorio', antesAhora: true,
-    proyectos: ['tienda', 'crm', 'sindri', 'brokkr', 'gestor', 'tareas', 'nutricion', 'plataforma'],
+    proyectos: ['plantillas', 'tienda', 'crm', 'sindri', 'brokkr', 'gestor', 'tareas', 'nutricion', 'plataforma'],
     titulo: 'Diseño de webs y aplicaciones a medida para pymes | Arce Data Lab',
     corto: 'Webs y aplicaciones',
     h1: 'Webs y aplicaciones a medida para pymes',
@@ -851,7 +860,7 @@ function datosProyecto(d, p) {
 
 // Orden de los proyectos en la portada: primero los que más dicen a una pyme
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
-const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'whatsapp', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
+const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'plantillas', 'whatsapp', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
 const PROYECTOS_A_LA_VISTA = 9;
 
 // Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
@@ -876,6 +885,11 @@ function enPortada(lista) {
   return lista.slice().sort((a, b) => peso(a) - peso(b));
 }
 
+// Botón al catálogo de plantillas. En DEV, js/bit-arranque.js lo cambia por data-dev.
+function botonPlantillas(t) {
+  return '<p class="probar"><a class="boton" href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">' + t.serv.verPlantillas + '</a></p>';
+}
+
 function tesela(p, t, extra, base) {
   return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '"' + (extra ? ' data-extra' : '') + ' style="--c:' + p.color + '">\n' +
     '        <span class="tesela-cara">' + (LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="76" height="76" loading="lazy">' : icono(p.icono)) + '</span>\n' +
@@ -895,6 +909,7 @@ function detalle(p, t, base) {
   return '    <div hidden id="d-' + p.id + '" data-color="' + p.color + '" data-icono="' + p.icono + '">\n' +
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n' +
     (LAB_DEMOS.includes(p.id) ? '      <p class="probar"><a class="boton" href="' + base + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>\n' : '') +
+    (p.ver ? '      ' + botonPlantillas(t) + '\n' : '') +
     '      <p class="pagina-proyecto"><a href="' + base + 'proyectos/' + p.id + '/">' + t.verFicha + ' →</a></p>\n    </div>';
 }
 
@@ -1347,7 +1362,7 @@ function paginaProyecto(d, p) {
       <h1>${p.titulo}</h1>
       ${cuerpo}
       ${tec}${enlaces}
-      ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}
+      ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}${p.ver ? botonPlantillas(t) : ''}
       ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
       <p class="proyecto-contacto">${t.contactoSub}: <a href="mailto:${CORREO}">${CORREO}</a></p>
     </article>
