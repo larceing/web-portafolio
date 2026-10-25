@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratorio · Arce Data Lab</title>
+<meta name="description" content="Prueba los proyectos de Arce Data Lab en simulaciones que funcionan en tu navegador, con datos inventados.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Arce Data Lab">
+<meta property="og:title" content="Laboratorio · Arce Data Lab">
+<meta property="og:description" content="Prueba los proyectos de Arce Data Lab en simulaciones con datos inventados.">
+<meta property="og:image" content="https://arcedatalab.com/lab/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="preload" href="fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="lab.css?v=202610250248">
+</head>
+<body>
+<a class="saltar" href="#escenario">Saltar a la demo</a>
+<header class="cab">
+  <a class="marca" href="https://arcedatalab.com/"><img src="icono.svg" alt="" width="32" height="32"><span>Arce Data Lab<small>Laboratorio de proyectos</small></span></a>
+  <button class="abrir-lista" id="abrirLista" type="button" aria-expanded="false" aria-controls="catalogo">Proyectos</button>
+  <a class="volver" href="https://arcedatalab.com/#proyectos">Volver a la web</a>
+</header>
+<div class="lab">
+  <nav class="catalogo" id="catalogo" aria-label="Proyectos del laboratorio"></nav>
+  <main class="escenario" id="escenario" tabindex="-1" aria-live="polite">
+    <section class="bienvenida" id="bienvenida">
+      <p class="antetitulo">Laboratorio</p>
+      <h1>Prueba los sistemas que construyo</h1>
+      <p class="entradilla">Cada proyecto tiene aquí una simulación que funciona en tu navegador. Puedes dar de alta un cliente, leer un palé o pedirle un informe al asistente. Nada está conectado a nada: los datos son inventados y se borran al recargar la página.</p>
+      <p>Elige un proyecto en la lista para empezar. Solo se carga el que abres.</p>
+    </section>
+  </main>
+</div>
+<noscript><p class="sin-js">El laboratorio necesita JavaScript para simular los sistemas.</p></noscript>
+<script type="module" src="lab.js?v=202610250248"></script>
+</body>
+</html>
