@@ -155,6 +155,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/brokkr/"/>
   </url>
   <url>
+    <loc>https://arcedatalab.com/proyectos/whatsapp/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/en/proyectos/whatsapp/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+  </url>
+  <url>
     <loc>https://arcedatalab.com/proyectos/gestor/</loc>
     <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gestor/"/>
