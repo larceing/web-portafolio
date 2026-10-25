@@ -11,7 +11,7 @@ Arce Data Lab usa una herramienta interna de publicación («Publicador Arce Dat
 - **Datos de las cuentas conectadas:** identificador de cuenta, nombre visible y los permisos (tokens) que concede cada plataforma al conectar la cuenta.
 - **Contenido publicado:** vídeos, imágenes, títulos, descripciones y la fecha de publicación.
 - **Resultados de publicación:** identificador y enlace de cada publicación y su estado.
-- **Formulario y correo de contacto de la web:** nombre, correo y mensaje que nos envíes.
+- **Contacto por correo o WhatsApp:** tu nombre, tu correo o número y el mensaje que nos envíes.
 
 No se recogen datos de seguidores ni de otros usuarios de las plataformas, ni se venden ni ceden datos a terceros.
 
