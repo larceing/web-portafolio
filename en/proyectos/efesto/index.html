@@ -60,7 +60,7 @@
       <h1>Efesto: Sindri reads the factory</h1>
       <dl class="caso"><div><dt>Problem</dt><dd>Machine status, good and bad parts and alarms stay inside each PLC or SCADA, far from the ERP, and connecting them usually means opening ports into the factory.</dd></div><div><dt>What I did</dt><dd>A read-only shop-floor agent with 16 connectors: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, historian SQL, files and scales, among others. The connection goes out from the factory, stores and resends if the network drops, and no plant addresses or passwords ever leave it.</dd></div><div><dt>Result</dt><dd>Tested with 22 simulated machines: 106 out of 106 data points reach Sindri. If one machine goes down, the rest carry on. Not yet connected to a real factory.</dd></div></dl>
       <p class="tec">Python · OPC UA · Modbus · Siemens S7 · MQTT · SQLite · Docker</p><p class="enlaces"><a href="https://github.com/larceing/sindri" target="_blank" rel="noopener">View on GitHub</a></p>
-      
+      <p class="probar"><a class="boton" href="../../../lab/#efesto">Try it in the lab</a></p>
       
       <p class="proyecto-contacto">If your team has tasks that keep repeating or data that doesn’t add up, tell me about it: <a href="mailto:info@arcedatalab.com">info@arcedatalab.com</a></p>
     </article>
@@ -76,8 +76,8 @@
         <li><a href="../gestor/">Odin: tickets, documentation and support hours</a> <span>· Own product</span></li>
         <li><a href="../servicios/">Mail and Report Server: email and PDF for every app</a> <span>· Open source</span></li>
         <li><a href="../gateway/">Real-time data gateway</a> <span>· For a company</span></li>
-        <li><a href="../crm/">Appointment CRM with an offline tablet app</a> <span>· Own product</span></li>
-        <li><a href="../asistente/">AI assistant on top of the ERP</a> <span>· For a company</span></li>
+        <li><a href="../crm/">Forja: appointments with an offline tablet app</a> <span>· Own product</span></li>
+        <li><a href="../asistente/">Lin-AI: AI assistant on top of the ERP</a> <span>· For a company</span></li>
         <li><a href="../reporting/">Sales, collections and stock reporting</a> <span>· For a company</span></li>
         <li><a href="../nutricion/">Nutrition and training app</a> <span>· Own product</span></li>
         <li><a href="../escritorio/">Operational report without Power BI</a> <span>· For a company</span></li>

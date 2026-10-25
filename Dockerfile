@@ -16,6 +16,7 @@ COPY proyectos /usr/share/nginx/html/proyectos
 COPY css /usr/share/nginx/html/css
 COPY js /usr/share/nginx/html/js
 COPY img /usr/share/nginx/html/img
+COPY lab /usr/share/nginx/html/lab
 RUN mkdir -p /usr/share/nginx/html/version \
  && echo "{\"version\": \"$APP_VERSION\"}" > /usr/share/nginx/html/version/index.json
 
