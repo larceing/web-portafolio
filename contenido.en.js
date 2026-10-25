@@ -347,7 +347,7 @@ module.exports = {
       ]
     },
     crm: {
-      corto: 'Offline CRM', titulo: 'Appointment CRM with an offline tablet app', etiqueta: 'Own product · in development',
+      corto: 'Forja, appointments', titulo: 'Forja: appointments with an offline tablet app', etiqueta: 'Own product · in development',
       caso: [
         ['Problem', 'A business that manages patient appointments in hospitals was working with a spreadsheet-based application that had fallen short, and hospitals do not always have coverage.'],
         ['What I did', 'I rewrote it as a web application with its own database and a tablet app that works offline: it saves locally, queues the changes and syncs them as versioned events when the network comes back.'],
@@ -355,7 +355,7 @@ module.exports = {
       ]
     },
     asistente: {
-      corto: 'AI assistant', titulo: 'AI assistant on top of the ERP', etiqueta: 'For Grupo SPSIL · in development',
+      corto: 'Lin-AI, assistant', titulo: 'Lin-AI: AI assistant on top of the ERP', etiqueta: 'For Grupo SPSIL · 2026',
       texto: 'An assistant that answers business questions by querying the ERP in read-only mode. Each type of query is a closed function; the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated, and it answers in text or in Excel.',
       tec: ['Python', 'Agents', 'Knowledge base', 'SQL Server']
     },
@@ -372,7 +372,7 @@ module.exports = {
       texto: 'A desktop application that generates a report of quotes by customer and product family straight from SQL Server or the Lakehouse. The calculation runs in the database so the computer is not loaded, with filters, export to Excel and automated tests.'
     },
     tienda: {
-      corto: 'Online shop', titulo: 'Online shop with its own admin panel', etiqueta: 'For a retailer · online shop',
+      corto: 'Online shop', titulo: 'Online shop with its own admin panel', etiqueta: 'For a retailer · in development',
       texto: 'A shop for a screen-printing business: catalogue, cart and checkout, with a custom admin panel to manage products and orders. Everything starts with a single command thanks to Docker.'
     },
     helpdesk: {

@@ -182,7 +182,7 @@ const PROYECTOS = [
     tec: ['Python', 'Django Channels', 'WebSocket', 'SQL Server', 'MariaDB']
   },
   {
-    id: 'crm', corto: 'CRM sin conexión', titulo: 'CRM de citas con tablet sin conexión',
+    id: 'crm', corto: 'Forja, citas', titulo: 'Forja: citas con tablet sin conexión',
     tipo: 'producto', etiqueta: 'Producto propio · en desarrollo', icono: 'tablet', color: C.cielo,
     caso: [
       ['Problema', 'Un negocio que gestiona citas de pacientes en hospitales trabajaba con una aplicación sobre hojas de cálculo que se quedaba corta, y en los hospitales no siempre hay cobertura.'],
@@ -192,8 +192,8 @@ const PROYECTOS = [
     tec: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'React Native', 'Docker']
   },
   {
-    id: 'asistente', corto: 'Asistente de IA', titulo: 'Asistente de IA sobre el ERP',
-    tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · en desarrollo', icono: 'bot', color: C.tostado,
+    id: 'asistente', corto: 'Lin-AI, asistente', titulo: 'Lin-AI: asistente de IA sobre el ERP',
+    tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · 2026', icono: 'bot', color: C.tostado,
     texto: 'Un asistente que responde preguntas de negocio consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada; el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa, y responde en texto o en Excel.',
     tec: ['Python', 'Agentes', 'Base de conocimiento', 'SQL Server']
   },
@@ -217,7 +217,7 @@ const PROYECTOS = [
   },
   {
     id: 'tienda', corto: 'Tienda online', titulo: 'Tienda online con panel propio',
-    tipo: 'empresa', etiqueta: 'Para un comercio · tienda online', icono: 'tienda', color: C.tostado,
+    tipo: 'empresa', etiqueta: 'Para un comercio · en desarrollo', icono: 'tienda', color: C.tostado,
     texto: 'Tienda para un negocio de serigrafía: catálogo, carrito y compra, con un panel de administración a medida para gestionar productos y pedidos. Todo arranca con un solo comando gracias a Docker.',
     tec: ['Next.js', 'PostgreSQL', 'Prisma', 'Docker']
   },
@@ -549,10 +549,10 @@ UI.calc = {
   whatsapp: 'Hola Henry, he usado la calculadora de arcedatalab.com:'
 };
 
-// Laboratorio de demos: botón «Probarlo» en las fichas de estos proyectos.
-// Vacío hasta que el laboratorio esté publicado (luego: ['sindri', 'reporting', 'asistente']).
-const LAB = 'https://demo.arcedatalab.com/lab/';
-const LAB_DEMOS = [];
+// Laboratorio de demos (carpeta lab/, lo compila el hilo de demos): botón
+// «Probarlo» en las fichas de estos proyectos. El enlace es relativo
+// (…/lab/#id) para que funcione igual en DEV (/web/lab/) y en arcedatalab.com/lab/.
+const LAB_DEMOS = ['sindri', 'brokkr', 'efesto', 'tareas', 'servicios', 'reporting', 'asistente'];
 
 // Una página por servicio, en /servicios/<id>/. El título es lo que escribe el
 // cliente en Google. proyectos: ids de PROYECTOS que se enlazan desde aquí (y
@@ -888,7 +888,7 @@ function detalle(p, t, base) {
     : '';
   return '    <div hidden id="d-' + p.id + '" data-color="' + p.color + '" data-icono="' + p.icono + '">\n' +
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n' +
-    (LAB_DEMOS.includes(p.id) ? '      <p class="probar"><a class="boton" href="' + LAB + '#' + p.id + '" target="_blank" rel="noopener">' + t.serv.probar + '</a></p>\n' : '') +
+    (LAB_DEMOS.includes(p.id) ? '      <p class="probar"><a class="boton" href="' + base + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>\n' : '') +
     '      <p class="pagina-proyecto"><a href="' + base + 'proyectos/' + p.id + '/">' + t.verFicha + ' →</a></p>\n    </div>';
 }
 
@@ -1341,7 +1341,7 @@ function paginaProyecto(d, p) {
       <h1>${p.titulo}</h1>
       ${cuerpo}
       ${tec}${enlaces}
-      ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + LAB + '#' + p.id + '" target="_blank" rel="noopener">' + t.serv.probar + '</a></p>' : ''}
+      ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}
       ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
       <p class="proyecto-contacto">${t.contactoSub}: <a href="mailto:${CORREO}">${CORREO}</a></p>
     </article>
