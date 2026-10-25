@@ -1093,7 +1093,7 @@ const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
   const guion = Object.assign({}, t.bit);
-  return `  <aside class="bit" id="bit" data-paseo="guia" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
+  return `  <aside class="bit" id="bit" data-paseo="libre" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
       <img class="bit-foto" src="${base}img/bit.webp" alt="" width="104" height="160">
