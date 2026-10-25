@@ -908,7 +908,7 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · <a href="servicios/">${t.servicios}</a> · ${t.pie} · <span id="anio">2026</span></footer>
+  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · <a href="servicios/">${t.servicios}</a> · ${t.pie} · <span id="anio">2026</span>${legales(base)}</footer>
 
   <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
     <div class="ficha-cabecera" id="fichaCabecera"></div>
@@ -946,7 +946,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}</footer>
+  <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}${legales('../' + d.base)}</footer>
 
   <script src="${'../' + d.base}js/linkedin.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
@@ -993,7 +993,66 @@ ${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</d
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}</footer>
+  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}${legales('../' + d.base)}</footer>
+</body>
+</html>
+`;
+}
+
+// Páginas legales (/privacidad/ y /condiciones/), solo en español: se escriben
+// en legal/*.md y aquí se pasan a HTML. Las piden TikTok, Google y Meta para
+// dar acceso a sus API.
+const LEGALES = [
+  { ruta: 'privacidad/', fichero: 'legal/privacidad.md', es: 'Privacidad', en: 'Privacy' },
+  { ruta: 'condiciones/', fichero: 'legal/condiciones.md', es: 'Condiciones', en: 'Terms' }
+];
+
+// Enlaces del pie a las páginas legales. raiz: camino hasta la raíz del sitio.
+function legales(raiz) {
+  return '<br>' + LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + l.es + '</a>').join(' · ');
+}
+
+// Markdown sencillo (títulos, párrafos, listas, negrita y enlaces) a HTML.
+function markdown(texto, raiz) {
+  const enLinea = x => x
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => url.startsWith('/')
+      ? '<a href="' + raiz + url.slice(1) + '">' + txt + '</a>'
+      : '<a href="' + url + '" target="_blank" rel="noopener">' + txt + '</a>');
+  const html = [];
+  let lista = null;
+  const cerrar = () => { if (lista) { html.push('</' + lista + '>'); lista = null; } };
+  texto.split('\n').forEach(linea => {
+    let m;
+    if (!linea.trim()) { cerrar(); return; }
+    if ((m = linea.match(/^(#{1,3}) (.*)/))) { cerrar(); const n = m[1].length; html.push('<h' + n + '>' + enLinea(m[2]) + '</h' + n + '>'); return; }
+    if ((m = linea.match(/^- (.*)/))) { if (lista !== 'ul') { cerrar(); lista = 'ul'; html.push('<ul>'); } html.push('<li>' + enLinea(m[1]) + '</li>'); return; }
+    if ((m = linea.match(/^\d+\. (.*)/))) { if (lista !== 'ol') { cerrar(); lista = 'ol'; html.push('<ol>'); } html.push('<li>' + enLinea(m[1]) + '</li>'); return; }
+    cerrar();
+    html.push('<p>' + enLinea(linea) + '</p>');
+  });
+  cerrar();
+  return html.join('\n      ');
+}
+
+function paginaLegal(l) {
+  const d = IDIOMAS[0];
+  const texto = fs.readFileSync(path.join(__dirname, l.fichero), 'utf8');
+  const titulo = (texto.match(/^# (.*)/m) || [])[1] || l.es;
+  const url = SITIO + l.ruta;
+  return cabeza(d, {
+    titulo: titulo + ' · Arce Data Lab', descripcion: titulo + ' de arcedatalab.com y de las herramientas de Arce Data Lab.', ogDescripcion: titulo + ' de Arce Data Lab.', ogTipo: 'website',
+    ruta: l.ruta, raiz: '../', inicio: '../', otro: '../',
+    datos: { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebPage', '@id': url, url: url, name: titulo, inLanguage: 'es', isPartOf: { '@id': ID_WEB } }] }
+  }) + `
+  <main id="contenido">
+    <article class="bloque legal">
+      ${markdown(texto, '../')}
+    </article>
+  </main>
+
+  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${d.t.pie} · ${new Date().getFullYear()}${legales('../')}</footer>
 </body>
 </html>
 `;
@@ -1059,7 +1118,7 @@ ${otros.map(o => '        <li><a href="../' + o.id + '/">' + o.titulo + '</a> <s
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}</footer>
+  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}${legales(raiz)}</footer>
 
 ${bitHtml(t, raiz)}
 </body>
@@ -1075,8 +1134,9 @@ function sitemap() {
     '    <xhtml:link rel="alternate" hreflang="es" href="' + SITIO + ruta + '"/>\n' +
     '    <xhtml:link rel="alternate" hreflang="en" href="' + SITIO + 'en/' + ruta + '"/>\n' +
     '    <xhtml:link rel="alternate" hreflang="x-default" href="' + SITIO + ruta + '"/>\n  </url>').join('\n');
+  const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n  </url>';
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-    rutas.map(entrada).join('\n') + '\n</urlset>\n';
+    rutas.map(entrada).join('\n') + '\n' + LEGALES.map(legal).join('\n') + '\n</urlset>\n';
 }
 
 // robots.txt: todo abierto, también a los rastreadores de IA (GEO).
@@ -1140,6 +1200,13 @@ IDIOMAS.forEach(d => {
     fs.writeFileSync(path.join(carpetaProyecto, 'index.html'), paginaProyecto(d, p));
   });
   console.log(path.join(d.carpeta, 'proyectos') + ': ' + d.proyectos.length + ' páginas de proyecto');
+});
+
+LEGALES.forEach(l => {
+  const carpeta = path.join(__dirname, l.ruta);
+  fs.mkdirSync(carpeta, { recursive: true });
+  fs.writeFileSync(path.join(carpeta, 'index.html'), paginaLegal(l));
+  console.log(l.ruta + 'index.html generado');
 });
 
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap());

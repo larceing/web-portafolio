@@ -364,4 +364,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nifi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nifi/"/>
   </url>
+  <url>
+    <loc>https://arcedatalab.com/privacidad/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/condiciones/</loc>
+    <lastmod>2026-10-25</lastmod>
+  </url>
 </urlset>
