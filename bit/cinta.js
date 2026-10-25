@@ -13,7 +13,7 @@ import {
   ExtrudeGeometry, DoubleSide, Clock, MathUtils
 } from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda } from './calidad.js';
+import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda, chispas } from './calidad.js';
 
 const COLOR = {
   tinta: 0x15202B, azul: 0x1D4F7A, cielo: 0x2E6C9E, pizarra: 0x3F5266,
@@ -226,6 +226,10 @@ export function iniciarCinta(opciones) {
     paquetes.push(p);
   }
 
+  // Chispa: estallidos al convertir una hoja en dato, al llegar al informe y al completarlo.
+  const chispasCian = chispas(mundo, COLOR.cian, 70);
+  const chispasColor = coloresBarra.map(function (c) { return chispas(mundo, c, 40); });
+
   function colocar() {
     entrada.position.x = -S;
     arco.position.x = 0;
@@ -311,6 +315,7 @@ export function iniciarCinta(opciones) {
         p.position.x = u.x;
         p.position.y = MathUtils.lerp(p.position.y, 0.04, 0.12);
         if (u.fase === 'papel' && u.x > 0) {
+          chispasCian.disparar(0, 0.35, 0, 14, 0.8);
           u.fase = 'cubo';
           u.t = 0;
           u.papel.visible = false;
@@ -340,6 +345,8 @@ export function iniciarCinta(opciones) {
         u.cubo.rotation.x += dt * 5;
         if (k >= 1) {
           b.userData.objetivo = Math.min(2.6, b.userData.objetivo + 0.32);
+          b.userData.rebote = 1;
+          chispasColor[u.barra].disparar(destinoX, destinoY, 0, 10, 0.6);
           u.fase = 'libre';
           p.visible = false;
         }
@@ -363,9 +370,15 @@ export function iniciarCinta(opciones) {
       u.alto = MathUtils.lerp(u.alto, u.objetivo, 0.08);
       b.scale.y = u.alto;
       b.position.y = 0.12 + u.alto / 2;
+      // Rebote al recibir un dato: se ensancha un poco y vuelve.
+      u.rebote = Math.max(0, (u.rebote || 0) - dt * 3);
+      const ancho = 1 + Math.sin(u.rebote * Math.PI) * 0.18;
+      b.scale.x = ancho; b.scale.z = ancho;
       if (u.objetivo >= 2.5) llenas++;
     });
     if (llenas >= 2 && t > recarga) {
+      // Informe completo: confeti de los cuatro colores.
+      barras.forEach(function (b, i) { chispasColor[i].disparar(S + b.position.x, b.userData.alto + 0.4, 0, 16, 1.3); });
       barras.forEach(function (b, i) { b.userData.objetivo = 0.3 + i * 0.12; });
       recarga = t + 2;
     }
@@ -376,6 +389,9 @@ export function iniciarCinta(opciones) {
       p.position.set(MathUtils.lerp(0.2, S, k), 2.4 + Math.sin(k * Math.PI) * 1.1 - k * 0.9, 0);
       p.scale.setScalar(Math.sin(k * Math.PI) * 1.3 + 0.2);
     });
+
+    chispasCian.paso(dt);
+    chispasColor.forEach(function (c) { c.paso(dt); });
 
     // Un poco de paralaje con el puntero.
     mundo.rotation.y = MathUtils.lerp(mundo.rotation.y, GIRO + apuntaX * 0.1, 0.05);

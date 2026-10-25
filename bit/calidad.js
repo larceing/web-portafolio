@@ -107,3 +107,56 @@ export function cajaRedonda(w, h, d, radio, segmentos) {
   if (!cajas.has(clave)) cajas.set(clave, new RoundedBoxGeometry(w, h, d, segmentos || 3, r));
   return cajas.get(clave);
 }
+
+// Chispas: un estallido de partículas pequeñas (una sola llamada de dibujo).
+// disparar(x, y, z, cantidad, fuerza) las lanza; paso(dt) las mueve con gravedad.
+import { InstancedMesh, OctahedronGeometry, Object3D, Color } from 'three';
+export function chispas(padre, color, maximo) {
+  const n = maximo || 60;
+  const malla = new InstancedMesh(new OctahedronGeometry(0.05, 0), new MeshBasicMaterial({ color: color, toneMapped: false, transparent: true }), n);
+  malla.frustumCulled = false;
+  const datos = [];
+  const muñeco = new Object3D();
+  for (let i = 0; i < n; i++) {
+    datos.push({ vida: 0, x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, giro: 0 });
+    muñeco.scale.setScalar(0);
+    muñeco.updateMatrix();
+    malla.setMatrixAt(i, muñeco.matrix);
+  }
+  padre.add(malla);
+  let siguiente = 0;
+  return {
+    malla: malla,
+    disparar: function (x, y, z, cantidad, fuerza) {
+      const f = fuerza || 1;
+      for (let k = 0; k < (cantidad || 12); k++) {
+        const d = datos[siguiente];
+        siguiente = (siguiente + 1) % n;
+        const a = Math.random() * Math.PI * 2, b = Math.random() * 0.9 + 0.3;
+        d.vida = 0.7 + Math.random() * 0.5;
+        d.x = x; d.y = y; d.z = z;
+        d.vx = Math.cos(a) * b * 2.2 * f; d.vz = Math.sin(a) * b * 2.2 * f; d.vy = (1.5 + Math.random() * 2.5) * f;
+        d.giro = Math.random() * 6;
+      }
+    },
+    paso: function (dt) {
+      let vivas = false;
+      for (let i = 0; i < n; i++) {
+        const d = datos[i];
+        if (d.vida <= 0) continue;
+        vivas = true;
+        d.vida -= dt;
+        d.vy -= 7 * dt;
+        d.x += d.vx * dt; d.y += d.vy * dt; d.z += d.vz * dt;
+        d.giro += dt * 8;
+        muñeco.position.set(d.x, d.y, d.z);
+        muñeco.rotation.set(d.giro, d.giro * 0.7, 0);
+        muñeco.scale.setScalar(Math.max(0, Math.min(1, d.vida * 2)));
+        muñeco.updateMatrix();
+        malla.setMatrixAt(i, muñeco.matrix);
+      }
+      malla.instanceMatrix.needsUpdate = true;
+      return vivas;
+    }
+  };
+}

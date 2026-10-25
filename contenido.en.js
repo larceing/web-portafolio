@@ -162,7 +162,20 @@ module.exports = {
       tecnologias: 'Production-proven tools, chosen for each case.',
       preguntas: 'Short answers to what people ask most before starting a project.',
       contacto: 'Want to talk about your case? Write to info@arcedatalab.com and Henry will reply.',
-      pulsar: ['Here I am. Want a summary of a project?', 'Tip: start by automating the task that takes you the most time.', 'When data does not add up, there is almost always a cause that can be fixed.', 'A byte is 8 bits. A good process, zero repeated tasks.'],
+      pulsar: ['Here I am. Double-click me and I’ll leave Henry a message.', 'Want a summary of a project? Open any of them.', 'Tip: start by automating the task that takes you the most time.', 'When data does not add up, there is almost always a cause that can be fixed.', 'A byte is 8 bits. A good process, zero repeated tasks.'],
+      mensaje: {
+        titulo: 'Leave Henry a message',
+        sub: 'Byte drafts it and your email or WhatsApp opens with everything written. Nothing is stored on this site.',
+        nombre: 'Your name', empresa: 'Company (optional)', texto: 'How can he help?',
+        ejemplo: 'E.g. every Monday we copy sales from the ERP into Excel and it takes 3 hours.',
+        correo: 'Send by email', whatsapp: 'Send on WhatsApp', cerrar: 'Close',
+        vacio: 'Write at least one sentence so Henry knows what you need.',
+        abriendo: 'Opening your app…',
+        listo: 'Done: check the window that opened and press send there. Henry usually replies the same day.',
+        fallo: 'Nothing opened? Copy the message and send it to ',
+        copiar: 'Copy message', copiado: 'Copied',
+        asunto: 'Message from arcedatalab.com', hola: 'Hi Henry, I am'
+      },
       ocultar: 'Hide Byte',
       mostrar: 'Show Byte',
       canal: 'Watch Club Byte'

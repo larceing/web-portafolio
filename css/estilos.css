@@ -2843,3 +2843,185 @@ h1, h2, h3,
 .bit[class*="paseo-libre"] .bit-bocadillo {
   max-width: min(250px, calc(100vw - 32px));
 }
+
+/* Mensaje para Henry (doble clic en Byte) */
+.byte-mensaje {
+  width: min(460px, calc(100vw - 32px));
+  padding: 0;
+  border: 0;
+  border-radius: 28px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  box-shadow: 0 24px 60px rgba(21, 32, 43, 0.28);
+}
+
+.byte-mensaje::backdrop {
+  background: rgba(21, 32, 43, 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.byte-mensaje form {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 28px;  text-align: left;
+}
+
+.byte-mensaje h2 {
+  margin: 0;
+  padding-right: 32px;
+  font-size: 22px;
+}
+
+.byte-mensaje .sub {
+  margin: 0;
+  font-size: 14.5px;
+}
+
+.byte-mensaje label {
+  display: grid;
+  gap: 6px;
+  color: var(--tinta);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.byte-mensaje input,
+.byte-mensaje textarea {
+  padding: 11px 14px;
+  border: 1px solid var(--raya);
+  border-radius: 14px;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 400;
+  resize: vertical;
+}
+
+.byte-mensaje input:focus-visible,
+.byte-mensaje textarea:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 1px;
+}
+
+.byte-mensaje .botones {
+  margin: 4px 0 0;
+}
+
+.byte-mensaje .boton {
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.byte-mensaje-cerrar {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--capa);
+  color: var(--tinta);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.byte-estado {
+  min-height: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.byte-estado:empty {
+  display: none;
+}
+
+.byte-estado.error {
+  color: #B3261E;
+}
+
+.byte-estado.cargando::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid var(--tonal);
+  border-top-color: var(--azul);
+  border-radius: 50%;
+  vertical-align: -1px;
+  animation: girar 0.8s linear infinite;
+}
+
+.byte-estado.listo {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.byte-fallo {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.byte-estado .enlace {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--azul);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* Chispa: las escaleras suben con un pequeño rebote, el peldaño «Completo»
+   lleva un brillo que pasa de vez en cuando y cada peldaño se eleva al pasar
+   el ratón. Nada de esto se arma con «menos movimiento». */
+@media (prefers-reduced-motion: no-preference) {
+  .animar .peldano {
+    transition: transform 0.8s cubic-bezier(0.3, 1.45, 0.5, 1) calc(var(--i) * 0.18s), translate 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .escalera li:nth-child(3) .peldano {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animar.visto .escalera li:nth-child(3) .peldano::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 -60%;
+    width: 50%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    animation: brillo-peldano 4.5s ease-in-out 1.4s infinite;
+  }
+
+  .peldano:hover {
+    translate: 0 -4px;
+    box-shadow: 0 10px 24px rgba(21, 32, 43, 0.14);
+  }
+
+  .datos-clave li {
+    transition: translate 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .datos-clave li:hover {
+    translate: 0 -3px;
+    box-shadow: 0 10px 24px rgba(21, 32, 43, 0.08);
+  }
+}
+
+@keyframes brillo-peldano {
+  0%, 60% { transform: translateX(0); }
+  100% { transform: translateX(420%); }
+}
