@@ -3,6 +3,101 @@
 // PROYECTOS va por id; AREAS, TRAYECTORIA y TECNOLOGIAS, en el mismo orden.
 
 module.exports = {
+  SERV: {
+    incluye: 'What’s included',
+    como: 'How we work',
+    relacionados: 'Related projects',
+    otros: 'Other services',
+    calcular: 'Work out the price',
+    relacionado: 'Related service',
+    probar: 'Try it in the lab',
+    pasos: [
+      ['Free review', '45 minutes on a video call to look at your data, your tasks and what really takes up your time.'],
+      ['Written proposal', 'What gets built, how many rounds of changes, the fixed price and the deadline, set once I have seen the data.'],
+      ['Build', 'I show you progress along the way. You pay 50% to start and 50% on delivery, always with an invoice.'],
+      ['Delivery and training', 'I leave it working, documented and explained to your team. If you like, I carry on with monthly maintenance.']
+    ]
+  },
+  CALC: {
+    titulo: 'How much does my dashboard cost?',
+    sub: 'Six questions and I give you a guide range. Nothing is stored: if you like, the result opens in your WhatsApp so you can send it to me.',
+    preguntas: [
+      'Where does the data come from?', ['One Excel file or a single source', 'Two or three sources (ERP, Excel, CRM…)', 'Four sources or more', 'SQL databases, APIs or SharePoint'],
+      'How many pages will the report have?', ['1 or 2', '3 to 5', '6 or more'],
+      'What calculations do you need?', ['Totals and simple comparisons', 'Previous year, targets and margins', 'Custom calculations, forecasts or per-user permissions'],
+      'How is it refreshed?', ['By hand, when needed', 'On its own, every day'],
+      'How many rounds of changes?', ['Two, the usual', 'Four'],
+      'When do you need it?', ['No rush', 'It’s urgent']
+    ],
+    resultado: 'Guide range',
+    rango: 'Between €{a} and €{b}',
+    nota: 'Excluding VAT. It is an estimate: the fixed price comes from the free 45-minute review, once I have seen your data.',
+    enviar: 'Send me the result on WhatsApp',
+    sinJs: 'The calculator needs JavaScript. Message me on WhatsApp and I will give you the range anyway.',
+    whatsapp: 'Hi Henry, I used the calculator on arcedatalab.com:'
+  },
+  SERVICIOS: {
+    'power-bi': {
+      titulo: 'Power BI consultant for SMEs | Arce Data Lab',
+      corto: 'Power BI',
+      h1: 'Power BI consultant for SMEs',
+      descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL, with figures that add up. Work out what your dashboard costs in a minute.',
+      intro: 'If your company’s numbers live in several Excel files and someone spends hours every month pulling them together, a Power BI dashboard does it on its own. I connect it to your ERP, your spreadsheets or your database, reconcile the figures with accounting and hand it over documented.',
+      incluye: [
+        ['Tidy data', 'Cleaning and a data model with Power Query: one version of every figure, even when it comes from several places.'],
+        ['DAX measures', 'Sales, margins, collections, stock or production, compared with last year and with your targets.'],
+        ['Clear design', 'Pages built for decisions: the important things first, simple filters and a mobile layout.'],
+        ['Automatic refresh', 'The report refreshes every morning through the gateway, with nobody copying anything.'],
+        ['Documentation', 'What each figure measures and where it comes from, so your team trusts it and can maintain it.']
+      ],
+      faq: [
+        ['How much does a Power BI dashboard cost?', 'It depends on the data sources, the number of pages and the calculations. The calculator on this page gives you a guide range in a minute, and the fixed price comes from the free review.'],
+        ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
+        ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
+        ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.']
+      ]
+    },
+    'automatizacion-n8n': {
+      titulo: 'Business process automation with n8n | Arce Data Lab',
+      corto: 'Automation with n8n',
+      h1: 'Process automation with n8n',
+      descripcion: 'I use n8n to automate the tasks your team repeats every week: emails, alerts, orders and reports moving on their own between your programs.',
+      intro: 'Copying orders from email into the ERP, sending the same reminder every Monday or moving data from one sheet to another adds nothing and often goes wrong. With n8n I turn it into a flow that does it on its own, with alerts if something fails, and I host it on a server in the EU.',
+      incluye: [
+        ['Task map', 'We look together at what is done by hand, how often and how long it takes, to start with what pays off most.'],
+        ['The n8n flow', 'Connected to your programs: email, Excel or Google Sheets, ERP, CRM, forms, WhatsApp or any API.'],
+        ['Tests with real data', 'Before it goes live, including your odd cases.'],
+        ['Alerts when something fails', 'If a step goes wrong you get an alert saying what happened, instead of a silent error.'],
+        ['One hour of training', 'So your team knows what the flow does and how to stop or change it.']
+      ],
+      faq: [
+        ['What is n8n?', 'n8n is an automation tool that connects programs with visual flows. It can be installed on your own server, so your data stays in the EU.'],
+        ['Which tasks can be automated?', 'The ones that repeat and always follow the same steps: copying data between programs, sending alerts or emails, generating reports or PDFs, checking forms and sorting messages.'],
+        ['How much does an automation cost?', 'It depends on how many applications are connected and on the special cases. The price is agreed in writing after the free 45-minute review.'],
+        ['What if a program changes?', 'The flow warns you when something stops working and gets adjusted. With monthly maintenance, I do it.']
+      ]
+    },
+    webs: {
+      titulo: 'Custom websites and web apps for SMEs | Arce Data Lab',
+      corto: 'Websites and apps',
+      h1: 'Custom websites and web apps for SMEs',
+      descripcion: 'Fast websites and custom apps for SMEs: bookings, online shop, CRM or ticketing, with your brand and hosted on EU servers.',
+      intro: 'A website that loads fast, shows up on Google and lets customers book or buy without calling you. Or an application built around how your company works, instead of you adapting to generic software. I build it, publish it on my own infrastructure and maintain it.',
+      incluye: [
+        ['Design with your brand', 'Mobile-friendly, accessible and without heavy templates.'],
+        ['SEO from day one', 'Titles, structured data, sitemap and speed, so Google understands it.'],
+        ['Whatever you need inside', 'Bookings and appointments, a shop, forms, a client area, a CRM or a management panel.'],
+        ['EU server', 'HTTPS, nightly backups and separate test and production environments.'],
+        ['Legal pages', 'Legal notice, privacy and cookies, adapted to what your site does.']
+      ],
+      faq: [
+        ['How much does a website cost?', 'It depends on the pages and on what it has to do: a brochure site is not the same as one with bookings or a shop. The price is agreed in writing after the free review.'],
+        ['Do you use WordPress?', 'Not by default: I build custom sites, which are faster and need less security maintenance. If you already have WordPress and it works for you, we can look at it.'],
+        ['Where is it hosted?', 'On my server in Germany (EU), with HTTPS, nightly backups and continuous checks that it responds. I can also put it on your own hosting.'],
+        ['Can I change the text myself?', 'If you need to, the site comes with a simple panel to change text and photos; if not, ask me and I change it as part of monthly maintenance.']
+      ]
+    }
+  },
   UI: {
     lang: 'en',
     titulo: 'Henry Arce · Automation, applied AI and Power BI | Arce Data Lab',
@@ -49,11 +144,11 @@ module.exports = {
       ['grafico', 'Data and Power BI', ['Your Excel tidy, with figures that add up', 'A dashboard with what matters', 'Reports that refresh themselves every morning']],
       ['escritorio', 'Custom applications', ['A website with bookings or appointments', 'A CRM or a ticket manager', 'ERP and CRM connected, with your brand']]
     ],
-    verServicios: 'See services and prices',
+    verServicios: 'See services',
     verTodos: 'See all {n} projects',
     verProyectosHechos: 'See finished projects',
-    serviciosTitulo: 'Services and prices',
-    serviciosDescripcion: 'Process automation, Power BI dashboards, AI assistants and custom applications for SMEs, with guide prices and a free 45-minute review.',
+    serviciosTitulo: 'Services',
+    serviciosDescripcion: 'Process automation with n8n, Power BI dashboards, AI assistants and custom websites for SMEs, with a guide price calculator and a free 45-minute review.',
     whatsappDiagnostico: 'https://wa.me/34633424223?text=' + encodeURIComponent('Hi Henry, I’m interested in the free 45-minute review for my business.'),
     proyectos: 'Projects',
     proyectosSub: 'Click any of them to see the problem it solved and how I did it',
@@ -89,12 +184,13 @@ module.exports = {
     servicios: 'Services',
     serviciosSub: 'What I can do for your company, through Arce Data Lab',
     serviciosLista: [
-      ['flujo', 'Process automation', 'I remove repetitive manual work: reports that build themselves, data that moves between programs on its own, automatic alerts and emails.', 'Python, Power Automate, Apps Script, APIs', 'From €290'],
-      ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL', 'From €490'],
-      ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL', 'Fixed price after the review'],
-      ['escritorio', 'Custom applications', 'ERP, CRM, appointments, tickets or an online shop: web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'Booking websites from €590']
+      ['flujo', 'Process automation', 'I remove repetitive manual work: reports that build themselves, data that moves between programs on its own, automatic alerts and emails.', 'n8n, Python, Power Automate, APIs', 'automatizacion-n8n'],
+      ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL', 'power-bi'],
+      ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL', ''],
+      ['escritorio', 'Custom websites and applications', 'ERP, CRM, appointments, tickets or an online shop: websites and web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'webs']
     ],
-    serviciosNota: 'Prices exclude VAT. Maintenance from €49 a month. We always start with a free 45-minute review.',
+    verServicio: 'See the service',
+    serviciosNota: 'Every project is different, so there is no fixed rate: the price is agreed in writing, excluding VAT, after a free 45-minute review. If you want an idea first, the <a href="power-bi/#calculadora">calculator</a> gives you a guide range for a dashboard.',
     serviciosCta: 'Book your free review',
     serviciosPago: 'You pay 50% to start and 50% on delivery, by bank transfer or card, always with an invoice.',
     cinta: 'Automation at work',
@@ -141,7 +237,7 @@ module.exports = {
       ['How can I get in touch?', 'By email at info@arcedatalab.com, by WhatsApp at +34 633 42 42 23 or on LinkedIn; for support with the apps, soporte@arcedatalab.com.']
     ],
     faqServicios: [
-      ['How much does a project cost?', 'A Power BI dashboard starts at €490, an automation at €290 and a booking website at €590, excluding VAT; the exact price is fixed after a free 45-minute review.'],
+      ['How much does a project cost?', 'It depends on how many data sources there are, what state they are in and what needs to be built. For a Power BI dashboard, the calculator on this site gives you a guide range in a minute; the exact price is agreed in writing after a free 45-minute review.'],
       ['How long does it take?', 'It depends a lot on each case: how many data sources there are, what state they are in and what needs to be built. That is why the deadline is agreed in writing after the free review, once I have seen your data, and then kept.'],
       ['How do we start?', 'With a free 45-minute video call: we review the data and the tasks, and you get a proposal with a fixed price.']
     ],
@@ -208,8 +304,8 @@ module.exports = {
       ]
     },
     sindri: {
-      corto: 'Sindri ERP + CRM', titulo: 'Sindri: ERP and CRM for small manufacturers', etiqueta: 'Own product · open source · 2026',
-      texto: 'ERP and CRM for small factories: customers, opportunities, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version and a shop-floor agent that reads the machines over OPC UA. It receives the billable support hours from Odin and builds its PDFs with Report Server.',
+      corto: 'Sindri ERP', titulo: 'Sindri: ERP for small manufacturers', etiqueta: 'Own product · open source · 2026',
+      texto: 'ERP for small factories: customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, the CRM. It receives the billable support hours from Odin and builds its PDFs with Report Server.',
       tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'REST API', 'Docker']
     },
     gestor: {
@@ -265,8 +361,21 @@ module.exports = {
       corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'At ES Group · 2026',
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
     },
+    efesto: {
+      corto: 'Efesto, shop floor', titulo: 'Efesto: Sindri reads the factory', etiqueta: 'Own product · part of Sindri · 2026',
+      caso: [
+        ['Problem', 'Machine status, good and bad parts and alarms stay inside each PLC or SCADA, far from the ERP, and connecting them usually means opening ports into the factory.'],
+        ['What I did', 'A read-only shop-floor agent with 16 connectors: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, historian SQL, files and scales, among others. The connection goes out from the factory, stores and resends if the network drops, and no plant addresses or passwords ever leave it.'],
+        ['Result', 'Tested with 22 simulated machines: 106 out of 106 data points reach Sindri. If one machine goes down, the rest carry on. Not yet connected to a real factory.']
+      ]
+    },
+    brokkr: {
+      corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM for a small manufacturer’s sales rep', etiqueta: 'Own product · in progress',
+      texto: 'The in-house CRM, in progress. It is a Sindri module sharing the same customers, quotes, orders and invoices, so nothing is duplicated. The goal: log a visit in under 30 seconds from a phone or handheld, even without coverage; opportunities that win themselves when the order is confirmed; and one timeline per customer with calls, quotes, invoices, payments and Odin tickets. The pipeline, activities and quotes already work inside Sindri; before going further I analysed 15 open-source CRMs.',
+      tec: ['Sindri module', 'Fastify', 'PostgreSQL', 'React', 'Keycloak']
+    },
     tareas: {
-      corto: 'Task manager', titulo: 'Task and project manager for teams', etiqueta: 'Open source · web app',
+      corto: 'Aris, tasks', titulo: 'Aris: tasks and projects for teams', etiqueta: 'Open source · web app',
       texto: 'A web app to organise a team’s work: Kanban and Scrum boards, calendar and agenda, wiki, notes, whiteboard, SLA, person-to-person notes, activity walls and an API designed for AI agents. It is a base version with no company data: branding, login (local or Keycloak) and optional modules are set in one file, and it installs with Docker and demo data.'
     },
     themelab: {

@@ -23,6 +23,7 @@ const VERSION_JS_LINKEDIN = huella('js/linkedin.js');
 const VERSION_JS_BIT = huella('js/bit-arranque.js');
 const VERSION_JS_PASEO = huella('js/bit-paseo.js');
 const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
+const VERSION_JS_CALC = huella('js/calculadora.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -121,11 +122,29 @@ const PROYECTOS = [
     enlaces: [['Ver en GitHub', GITHUB + '/servidor']]
   },
   {
-    id: 'sindri', corto: 'Sindri ERP + CRM', titulo: 'Sindri: ERP y CRM para pymes industriales',
+    id: 'sindri', corto: 'Sindri ERP', titulo: 'Sindri: ERP para pymes industriales',
     tipo: 'producto', etiqueta: 'Producto propio · open source · 2026', icono: 'fabrica', color: C.azul,
-    texto: 'ERP y CRM para fábricas pequeñas: clientes, oportunidades, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio y un agente de planta que lee las máquinas por OPC UA. Recibe las horas de soporte por facturar desde Odin y genera sus PDF con Report Server.',
+    texto: 'ERP para fábricas pequeñas: clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, el CRM. Recibe las horas de soporte por facturar desde Odin y genera sus PDF con Report Server.',
     tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'API REST', 'Docker'],
     enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
+  },
+  {
+    id: 'efesto', corto: 'Efesto, planta', titulo: 'Efesto: Sindri lee la fábrica',
+    tipo: 'producto', etiqueta: 'Producto propio · parte de Sindri · 2026', icono: 'servidor', color: C.tostado,
+    caso: [
+      ['Problema', 'El estado de las máquinas, las piezas buenas y malas y las alarmas se quedan en cada PLC o SCADA, lejos del ERP, y conectarlos suele obligar a abrir puertos de la fábrica.'],
+      ['Qué hice', 'Un agente de planta en solo lectura con 16 conectores: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, SQL de históricos, ficheros y básculas, entre otros. La conexión sale de la fábrica, guarda y reenvía si se corta la red, y ni direcciones ni claves salen de la planta.'],
+      ['Resultado', 'Probado con 22 máquinas simuladas: llegan a Sindri los 106 datos de 106. Si una máquina cae, las demás siguen. Pendiente de conectarlo a una fábrica real.']
+    ],
+    tec: ['Python', 'OPC UA', 'Modbus', 'Siemens S7', 'MQTT', 'SQLite', 'Docker'],
+    enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
+  },
+  {
+    id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM para el comercial de una pyme industrial',
+    tipo: 'producto', etiqueta: 'Producto propio · en proceso', icono: 'tablet', color: C.verde,
+    texto: 'El CRM de la casa, en proceso. Va como módulo de Sindri, con los mismos clientes, presupuestos, pedidos y facturas, así nada se duplica. El objetivo: registrar una visita en menos de 30 segundos desde el móvil o la PDA, incluso sin cobertura; que la oportunidad se gane sola al confirmarse el pedido, y una línea de tiempo por cliente que junte llamadas, presupuestos, facturas, cobros e incidencias de Odin. El embudo, las actividades y los presupuestos ya funcionan dentro de Sindri; antes de seguir analicé 15 CRM libres.',
+    tec: ['Módulo de Sindri', 'Fastify', 'PostgreSQL', 'React', 'Keycloak'],
+    enlaces: [['Ver en GitHub', GITHUB + '/brokkr']]
   },
   {
     id: 'gestor', corto: 'Odin, incidencias', titulo: 'Odin: incidencias, documentación y horas de soporte',
@@ -202,11 +221,11 @@ const PROYECTOS = [
     tec: ['Python', 'SQL Server', 'SAP', 'SharePoint']
   },
   {
-    id: 'tareas', corto: 'Gestor de tareas', titulo: 'Gestor de tareas y proyectos para equipos',
+    id: 'tareas', corto: 'Aris, tareas', titulo: 'Aris: tareas y proyectos para equipos',
     tipo: 'abierto', etiqueta: 'Open source · app web', icono: 'tablero', color: C.azul,
     texto: 'Aplicación web para organizar el trabajo de un equipo: tableros Kanban y Scrum, calendario y agenda, wiki, notas, pizarra, SLA, notas entre personas, muros de actividad y una API pensada para agentes de IA. Es una versión base sin datos de ninguna empresa: la marca, el inicio de sesión (local o Keycloak) y los módulos opcionales se configuran en un fichero, y se instala con Docker y datos de demostración.',
     tec: ['Python', 'FastAPI', 'MariaDB', 'Keycloak', 'Docker'],
-    enlaces: [['Ver en GitHub', 'https://github.com/lharce/APP_TAREAS_BASE']]
+    enlaces: [['Ver en GitHub', GITHUB + '/aris']]
   },
   {
     id: 'themelab', corto: 'Power BI Theme Lab', titulo: 'Power BI Theme Lab',
@@ -329,11 +348,11 @@ const UI = {
     ['grafico', 'Datos y Power BI', ['Tu Excel ordenado y con las cifras cuadradas', 'Un cuadro de mando con lo importante', 'Informes que se actualizan solos cada mañana']],
     ['escritorio', 'Aplicaciones a medida', ['Una web con reservas o citas', 'Un CRM o un gestor de incidencias', 'ERP y CRM conectados, con tu marca']]
   ],
-  verServicios: 'Ver servicios y tarifas',
+  verServicios: 'Ver servicios',
   verTodos: 'Ver los {n} proyectos',
   verProyectosHechos: 'Ver proyectos hechos',
-  serviciosTitulo: 'Servicios y tarifas',
-  serviciosDescripcion: 'Automatización de procesos, cuadros de mando de Power BI, asistentes de IA y aplicaciones a medida para pymes, con precios orientativos y un diagnóstico gratis de 45 minutos.',
+  serviciosTitulo: 'Servicios',
+  serviciosDescripcion: 'Automatización con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes, con diagnóstico gratis de 45 minutos.',
   whatsappDiagnostico: WHATSAPP_DIAGNOSTICO,
   proyectos: 'Proyectos',
   proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
@@ -369,12 +388,13 @@ const UI = {
   servicios: 'Servicios',
   serviciosSub: 'Qué puedo hacer por tu empresa, a través de Arce Data Lab',
   serviciosLista: [
-    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API', 'Desde 290 €'],
-    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'Desde 490 €'],
-    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', 'Precio cerrado tras el diagnóstico'],
-    ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'Webs con reservas desde 590 €']
+    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'n8n, Python, Power Automate, API', 'automatizacion-n8n'],
+    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'power-bi'],
+    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', ''],
+    ['escritorio', 'Webs y aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'webs']
   ],
-  serviciosNota: 'Precios sin IVA. Mantenimiento desde 49 € al mes. Siempre empezamos con un diagnóstico gratis de 45 minutos.',
+  verServicio: 'Ver el servicio',
+  serviciosNota: 'Cada proyecto es distinto, así que no hay tarifa fija: el precio se cierra por escrito, sin IVA, tras un diagnóstico gratis de 45 minutos. Si quieres una idea antes, la <a href="power-bi/#calculadora">calculadora</a> te da un rango orientativo para un cuadro de mando.',
   serviciosCta: 'Pide tu diagnóstico gratis',
   serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
@@ -421,7 +441,7 @@ const UI = {
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
   ],
   faqServicios: [
-    ['¿Cuánto cuesta un proyecto?', 'Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.'],
+    ['¿Cuánto cuesta un proyecto?', 'Depende de cuántas fuentes de datos haya, de cómo estén y de lo que haya que construir. Para un cuadro de mando de Power BI, la calculadora de esta web da un rango orientativo en un minuto; el precio exacto se cierra por escrito tras un diagnóstico gratis de 45 minutos.'],
     ['¿Cuánto tarda?', 'Depende mucho de cada caso: de cuántas fuentes de datos hay, de cómo están y de lo que haga falta construir. Por eso el plazo se cierra por escrito después del diagnóstico gratis, cuando ya he visto tus datos, y se cumple.'],
     ['¿Cómo se empieza?', 'Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.']
   ],
@@ -462,6 +482,126 @@ const UI = {
   }
 };
 
+// Textos comunes de las páginas de cada servicio, la calculadora y el laboratorio.
+UI.serv = {
+  incluye: 'Qué incluye',
+  como: 'Cómo trabajamos',
+  relacionados: 'Proyectos relacionados',
+  otros: 'Otros servicios',
+  calcular: 'Calcular el precio',
+  relacionado: 'Servicio relacionado',
+  probar: 'Probarlo en el laboratorio',
+  pasos: [
+    ['Diagnóstico gratis', '45 minutos por videollamada para ver tus datos, tus tareas y lo que de verdad te quita tiempo.'],
+    ['Propuesta por escrito', 'Qué se construye, cuántas rondas de cambios, el precio cerrado y el plazo, que se fija cuando ya he visto los datos.'],
+    ['Construcción', 'Te enseño avances por el camino. Se paga el 50 % al empezar y el 50 % a la entrega, siempre con factura.'],
+    ['Entrega y formación', 'Lo dejo funcionando, documentado y explicado a tu equipo. Si quieres, sigo con un mantenimiento mensual.']
+  ]
+};
+
+// Calculadora «¿Cuánto cuesta mi dashboard?». Cada respuesta suma horas; el
+// rango sale de las horas × TARIFA_HORA (y × 1,2 para el tope), redondeado a
+// 50 €. Los precios no se enseñan en ningún otro sitio de la web.
+const TARIFA_HORA = 40;
+UI.calc = {
+  titulo: '¿Cuánto cuesta mi dashboard?',
+  sub: 'Seis preguntas y te doy un rango orientativo. No se guarda nada: si quieres, el resultado se abre en tu WhatsApp para mandármelo.',
+  preguntas: [
+    ['¿De dónde salen los datos?', [['Un Excel o una sola fuente', 6], ['Dos o tres fuentes (ERP, Excel, CRM…)', 12], ['Cuatro fuentes o más', 20], ['Bases de datos SQL, API o SharePoint', 30]]],
+    ['¿Cuántas páginas tendrá el informe?', [['1 o 2', 4], ['De 3 a 5', 12], ['6 o más', 22]]],
+    ['¿Qué cálculos necesitas?', [['Totales y comparaciones sencillas', 2], ['Año anterior, objetivos y márgenes', 8], ['Cálculos a medida, previsiones o permisos por usuario', 18]]],
+    ['¿Cómo se actualiza?', [['A mano, cuando haga falta', 0], ['Sola, cada día', 3]]],
+    ['¿Cuántas rondas de cambios?', [['Dos, lo normal', 0], ['Cuatro', 4]]],
+    ['¿Para cuándo lo necesitas?', [['Sin prisa', 1], ['Es urgente', 1.25]]]
+  ],
+  resultado: 'Rango orientativo',
+  rango: 'Entre {a} y {b} €',
+  nota: 'Sin IVA. Es una estimación: el precio cerrado sale del diagnóstico gratis de 45 minutos, cuando ya he visto tus datos.',
+  enviar: 'Mandarme el resultado por WhatsApp',
+  sinJs: 'La calculadora necesita JavaScript. Escríbeme por WhatsApp y te doy el rango igualmente.',
+  whatsapp: 'Hola Henry, he usado la calculadora de arcedatalab.com:'
+};
+
+// Laboratorio de demos: botón «Probarlo» en las fichas de estos proyectos.
+// Vacío hasta que el laboratorio esté publicado (luego: ['sindri', 'reporting', 'asistente']).
+const LAB = 'https://demo.arcedatalab.com/lab/';
+const LAB_DEMOS = [];
+
+// Una página por servicio, en /servicios/<id>/. El título es lo que escribe el
+// cliente en Google. proyectos: ids de PROYECTOS que se enlazan desde aquí (y
+// que enlazan de vuelta a este servicio).
+const SERVICIOS = [
+  {
+    id: 'power-bi', icono: 'grafico', calculadora: true,
+    proyectos: ['reporting', 'escritorio', 'comercial', 'grafo', 'reader', 'themelab', 'calculate'],
+    titulo: 'Consultor de Power BI para pymes | Arce Data Lab',
+    corto: 'Power BI',
+    h1: 'Consultor de Power BI para pymes',
+    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL, con las cifras cuadradas. Calcula en un minuto cuánto cuesta tu dashboard.',
+    intro: 'Si los números de tu empresa viven en varios Excel y cada mes alguien pasa horas juntándolos, un cuadro de mando de Power BI lo hace solo. Lo conecto a tu ERP, a tus hojas o a tu base de datos, cuadro las cifras con contabilidad y te lo entrego documentado.',
+    incluye: [
+      ['Datos ordenados', 'Limpieza y modelo de datos con Power Query: una sola versión de cada cifra, aunque venga de varios sitios.'],
+      ['Medidas DAX', 'Ventas, márgenes, cobros, stock o producción, comparados con el año anterior y con tus objetivos.'],
+      ['Diseño claro', 'Páginas pensadas para decidir: lo importante arriba, filtros sencillos y versión para el móvil.'],
+      ['Actualización sola', 'El informe se refresca cada mañana con la puerta de enlace, sin que nadie copie nada.'],
+      ['Documentación', 'Qué mide cada cifra y de dónde sale, para que tu equipo confíe en ella y la pueda mantener.']
+    ],
+    tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, A3 ERP, SharePoint',
+    faq: [
+      ['¿Cuánto cuesta un dashboard de Power BI?', 'Depende de las fuentes de datos, del número de páginas y de los cálculos. La calculadora de esta página da un rango orientativo en un minuto, y el precio cerrado sale del diagnóstico gratis.'],
+      ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
+      ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
+      ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.']
+    ]
+  },
+  {
+    id: 'automatizacion-n8n', icono: 'flujo',
+    proyectos: ['helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
+    titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
+    corto: 'Automatización con n8n',
+    h1: 'Automatización de procesos con n8n',
+    descripcion: 'Automatizo con n8n las tareas que tu equipo repite cada semana: correos, avisos, pedidos, facturas e informes que pasan solos entre ERP, CRM, Excel y correo.',
+    intro: 'Copiar pedidos del correo al ERP, mandar el mismo aviso cada lunes o pasar datos de una hoja a otra no aporta nada y se equivoca a menudo. Con n8n lo convierto en un flujo que lo hace solo, con avisos si algo falla, y lo instalo en un servidor en la UE.',
+    incluye: [
+      ['Mapa de la tarea', 'Vemos juntos qué se hace a mano, cuántas veces y cuánto tiempo se lleva, para empezar por lo que más rinde.'],
+      ['El flujo en n8n', 'Conectado a tus programas: correo, Excel o Google Sheets, ERP, CRM, formularios, WhatsApp o cualquier API.'],
+      ['Pruebas con datos reales', 'Antes de ponerlo en marcha, con tus casos raros incluidos.'],
+      ['Avisos si algo falla', 'Si un paso no sale bien, te llega un aviso con lo que ha pasado, en vez de un error en silencio.'],
+      ['Una hora de formación', 'Para que tu equipo sepa qué hace el flujo y cómo pararlo o cambiarlo.']
+    ],
+    tec: 'n8n, Python, Power Automate, Apps Script, API REST, webhooks',
+    faq: [
+      ['¿Qué es n8n?', 'n8n es una herramienta de automatización que conecta programas entre sí con flujos visuales. Se puede instalar en tu propio servidor, así tus datos no salen de la UE.'],
+      ['¿Qué tareas se pueden automatizar?', 'Las que se repiten y siguen siempre los mismos pasos: copiar datos entre programas, enviar avisos o correos, generar informes o PDF, revisar formularios y clasificar mensajes.'],
+      ['¿Cuánto cuesta una automatización?', 'Depende de cuántas aplicaciones se conectan y de los casos especiales. El precio se cierra por escrito tras el diagnóstico gratis de 45 minutos.'],
+      ['¿Qué pasa si cambia un programa?', 'El flujo avisa cuando algo deja de funcionar y se ajusta. Con el mantenimiento mensual, lo hago yo.']
+    ]
+  },
+  {
+    id: 'webs', icono: 'escritorio',
+    proyectos: ['tienda', 'crm', 'sindri', 'brokkr', 'gestor', 'tareas', 'nutricion', 'plataforma'],
+    titulo: 'Diseño de webs y aplicaciones a medida para pymes | Arce Data Lab',
+    corto: 'Webs y aplicaciones',
+    h1: 'Webs y aplicaciones a medida para pymes',
+    descripcion: 'Webs rápidas y aplicaciones a medida para pymes: reservas, tienda online, CRM o incidencias, con tu marca y en servidores de la UE.',
+    intro: 'Una web que carga rápido, sale en Google y deja que el cliente reserve o compre sin llamarte. O una aplicación hecha para cómo trabaja tu empresa, en vez de adaptarte tú a un programa genérico. La hago, la publico en mi propia infraestructura y la mantengo.',
+    incluye: [
+      ['Diseño con tu marca', 'Adaptado al móvil, accesible y sin plantillas pesadas.'],
+      ['SEO desde el principio', 'Títulos, datos estructurados, mapa del sitio y velocidad, para que Google la entienda.'],
+      ['Lo que necesites dentro', 'Reservas y citas, tienda, formularios, área de clientes, CRM o un panel de gestión.'],
+      ['Servidor en la UE', 'HTTPS, copias cada noche y entornos de prueba y producción.'],
+      ['Textos legales', 'Aviso legal, privacidad y cookies, adaptados a lo que hace tu web.']
+    ],
+    tec: 'HTML y CSS, Node.js, Next.js, Python, PostgreSQL, Docker',
+    faq: [
+      ['¿Cuánto cuesta una web?', 'Depende de las páginas y de lo que tenga que hacer: no es lo mismo una web de presentación que una con reservas o tienda. El precio se cierra por escrito tras el diagnóstico gratis.'],
+      ['¿Usas WordPress?', 'No por defecto: hago webs a medida, más rápidas y con menos mantenimiento de seguridad. Si ya tienes WordPress y te funciona, lo miramos.'],
+      ['¿Dónde se aloja?', 'En mi servidor en Alemania (UE), con HTTPS, copias cada noche y comprobación continua de que responde. También puedo dejarla en tu propio hosting.'],
+      ['¿Puedo cambiar los textos yo?', 'Si lo necesitas, la web lleva un panel sencillo para cambiar textos y fotos; si no, me lo pides y lo cambio con el mantenimiento mensual.']
+    ]
+  }
+];
+
 const EN = require('./contenido.en.js');
 
 // Publicaciones de la página /linkedin/. Cada elemento es el código de
@@ -495,12 +635,20 @@ const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(public
 // Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
 // hasta la raíz (para css, js e img) y hasta la página del otro idioma.
 const IDIOMAS = [
-  { t: UI, areas: AREAS, proyectos: PROYECTOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carpeta: '', base: '', otro: 'en/' },
+  { t: UI, areas: AREAS, proyectos: PROYECTOS, servicios: SERVICIOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carpeta: '', base: '', otro: 'en/' },
   {
     t: Object.assign({}, EN.UI, {
       arceEnlaces: UI.arceEnlaces.map((e, i) => [EN.UI.arceEnlacesTextos[i], e[1]]),
       clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [EN.UI.clubbyteEnlacesTextos[i], e[1]]),
-      datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]])
+      datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]]),
+      serv: EN.SERV,
+      calc: Object.assign({}, EN.CALC, {
+        preguntas: UI.calc.preguntas.map((q, i) => [EN.CALC.preguntas[2 * i], q[1].map((o, j) => [EN.CALC.preguntas[2 * i + 1][j], o[1]])])
+      })
+    }),
+    servicios: SERVICIOS.map(s => {
+      if (!EN.SERVICIOS[s.id]) throw new Error('Falta la traducción del servicio ' + s.id + ' en contenido.en.js');
+      return Object.assign({}, s, EN.SERVICIOS[s.id]);
     }),
     areas: AREAS.map((a, i) => Object.assign({}, a, EN.AREAS[i])),
     proyectos: PROYECTOS.map(p => {
@@ -669,7 +817,7 @@ function datosProyecto(d, p) {
 
 // Orden de los proyectos en la portada: primero los que más dicen a una pyme
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
-const DESTACADOS = ['reporting', 'asistente', 'sindri', 'gestor', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
+const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
 const PROYECTOS_A_LA_VISTA = 9;
 
 // Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
@@ -712,6 +860,7 @@ function detalle(p, t, base) {
     : '';
   return '    <div hidden id="d-' + p.id + '" data-color="' + p.color + '" data-icono="' + p.icono + '">\n' +
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n' +
+    (LAB_DEMOS.includes(p.id) ? '      <p class="probar"><a class="boton" href="' + LAB + '#' + p.id + '" target="_blank" rel="noopener">' + t.serv.probar + '</a></p>\n' : '') +
     '      <p class="pagina-proyecto"><a href="' + base + 'proyectos/' + p.id + '/">' + t.verFicha + ' →</a></p>\n    </div>';
 }
 
@@ -771,7 +920,7 @@ function cabeza(d, p) {
       <a href="${p.inicio}#proyectos">${t.menu.proyectos}</a>
       <a class="menu-extra" href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
       <a class="menu-extra" href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
-      <a href="${p.inicio}servicios/"${p.ruta === 'servicios/' ? ' aria-current="page"' : ''}>${t.menu.servicios}</a>
+      <a href="${p.inicio}servicios/"${p.ruta.startsWith('servicios/') ? ' aria-current="page"' : ''}>${t.menu.servicios}</a>
       <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
       <a class="menu-cta" href="${p.inicio}#contacto">${t.inicioBotones[1]}</a>
     </nav>
@@ -992,7 +1141,7 @@ function paginaServicios(d) {
       <p class="sub">${t.serviciosSub}</p>
 
       <div class="servicios">
-${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p>' + (x[4] ? '<p class="precio">' + x[4] + '</p>' : '') + '</article>').join('\n')}
+${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + (x[4] ? '<a href="' + x[4] + '/">' + x[1] + '</a>' : x[1]) + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p>' + (x[4] ? '<p class="precio"><a href="' + x[4] + '/">' + t.verServicio + ' →</a></p>' : '') + '</article>').join('\n')}
       </div>
       <p class="servicios-nota">${t.serviciosNota}</p>
       <p class="servicios-nota">${t.serviciosPago}</p>
@@ -1046,6 +1195,7 @@ function pie(t, raiz, inicio) {
         '<a href="' + inicio + 'servicios/">' + t.menu.servicios + '</a>',
         '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
       ])}
+      ${col(t.menu.servicios, SERVICIOS.map(x => '<a href="' + inicio + 'servicios/' + x.id + '/">' + (t.lang === 'en' ? EN.SERVICIOS[x.id].corto : x.corto) + '</a>'))}
       ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub')])}
       ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (t.lang === 'en' ? l.en : l.es) + '</a>'))}
     </div>
@@ -1163,6 +1313,8 @@ function paginaProyecto(d, p) {
       <h1>${p.titulo}</h1>
       ${cuerpo}
       ${tec}${enlaces}
+      ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + LAB + '#' + p.id + '" target="_blank" rel="noopener">' + t.serv.probar + '</a></p>' : ''}
+      ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
       <p class="proyecto-contacto">${t.contactoSub}: <a href="mailto:${CORREO}">${CORREO}</a></p>
     </article>
 
@@ -1183,9 +1335,129 @@ ${bitHtml(t, raiz)}
 `;
 }
 
+// ---------- Páginas de cada servicio y calculadora ----------
+
+// Rango de la calculadora con la respuesta por defecto (la primera de cada
+// pregunta), para que sin JavaScript tampoco salga vacío. Misma cuenta que js/calculadora.js.
+function rangoCalc(calc, lang) {
+  let horas = 0, factor = 1;
+  calc.preguntas.forEach((q, i) => { if (i === calc.preguntas.length - 1) factor *= q[1][0][1]; else horas += q[1][0][1]; });
+  const r = n => (Math.round(n / 50) * 50).toLocaleString(lang === 'en' ? 'en-GB' : 'es-ES');
+  return calc.rango.replace('{a}', r(horas * TARIFA_HORA * factor)).replace('{b}', r(horas * TARIFA_HORA * 1.2 * factor));
+}
+
+function calculadoraHtml(t, raiz) {
+  const c = t.calc;
+  const ultima = c.preguntas.length - 1;
+  const grupos = c.preguntas.map((q, i) =>
+    '        <fieldset' + (i === ultima ? ' data-factor' : '') + '>\n          <legend>' + q[0] + '</legend>\n' +
+    q[1].map((o, j) => '          <label><input type="radio" name="p' + i + '" value="' + o[1] + '" data-texto="' + attr(o[0]) + '"' + (j === 0 ? ' checked' : '') + '><span>' + o[0] + '</span></label>').join('\n') +
+    '\n        </fieldset>').join('\n');
+  return `
+    <section class="bloque calculadora" id="calculadora" aria-labelledby="calc-titulo">
+      <h2 id="calc-titulo">${c.titulo}</h2>
+      <p class="sub">${c.sub}</p>
+      <form class="calc" id="calc" data-tarifa="${TARIFA_HORA}" data-whatsapp="${WHATSAPP}" data-texto="${attr(c.whatsapp)}" data-rango="${attr(c.rango)}">
+        <div class="calc-preguntas">
+${grupos}
+        </div>
+        <div class="calc-resultado">
+          <p class="calc-etiqueta">${c.resultado}</p>
+          <output id="calcRango" for="calc" aria-live="polite">${rangoCalc(c, t.lang)}</output>
+          <p class="calc-nota">${c.nota}</p>
+          <a class="boton" id="calcEnviar" href="${WHATSAPP}" target="_blank" rel="noopener">${c.enviar}</a>
+        </div>
+      </form>
+      <noscript><p class="servicios-nota">${c.sinJs}</p></noscript>
+    </section>
+    <script src="${raiz}js/calculadora.js?v=${VERSION_JS_CALC}" defer></script>
+`;
+}
+
+// El servicio al que pertenece un proyecto (para enlazar de vuelta), o nada.
+function servicioDe(d, id) {
+  return d.servicios.find(s => s.proyectos.includes(id));
+}
+
+function paginaServicio(d, s) {
+  const t = d.t;
+  const ruta = 'servicios/' + s.id + '/';
+  const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + ruta;
+  const inicio = SITIO + (d.carpeta ? d.carpeta + '/' : '');
+  const raiz = '../../' + d.base;
+  const proyectos = s.proyectos.map(id => d.proyectos.find(p => p.id === id)).filter(Boolean);
+  const otros = d.servicios.filter(o => o.id !== s.id);
+
+  return cabeza(d, {
+    titulo: s.titulo, descripcion: attr(s.descripcion), ogDescripcion: attr(s.descripcion), ogTipo: 'website',
+    ruta: ruta, raiz: raiz, inicio: '../../', otro: '../../' + d.otro + ruta,
+    datos: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        { '@type': 'WebPage', '@id': url, url: url, name: plano(s.h1), description: plano(s.descripcion), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': url + '#servicio' }, breadcrumb: { '@id': url + '#migas' } },
+        { '@type': 'Service', '@id': url + '#servicio', name: plano(s.h1), serviceType: plano(s.corto), description: plano(s.descripcion), url: url, provider: { '@id': ID_ORG }, areaServed: [{ '@type': 'Country', name: 'España' }, { '@type': 'Place', name: 'Unión Europea' }], availableLanguage: ['es', 'en'] },
+        { '@type': 'BreadcrumbList', '@id': url + '#migas', itemListElement: [
+          { '@type': 'ListItem', position: 1, name: plano(t.migas), item: inicio },
+          { '@type': 'ListItem', position: 2, name: plano(t.serviciosTitulo), item: inicio + 'servicios/' },
+          { '@type': 'ListItem', position: 3, name: plano(s.corto), item: url }
+        ] },
+        { '@type': 'FAQPage', '@id': url + '#preguntas', inLanguage: t.lang, mainEntity: s.faq.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } })) }
+      ]
+    }
+  }) + `
+  <main id="contenido" class="pagina-servicios pagina-servicio">
+    <nav class="migas" aria-label="Breadcrumb"><a href="../../">${t.migas}</a> › <a href="../">${t.serviciosTitulo}</a> › <span>${s.corto}</span></nav>
+
+    <section class="bloque servicio-cabeza">
+      <span class="servicio-icono">${icono(s.icono)}</span>
+      <h1>${s.h1}</h1>
+      <p class="sub">${s.intro}</p>
+      <p class="botones">${s.calculadora ? '<a class="boton" href="#calculadora">' + t.serv.calcular + '</a>' : ''}<a class="boton${s.calculadora ? ' secundario' : ''}" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a></p>
+    </section>
+
+    <section class="bloque">
+      <h2>${t.serv.incluye}</h2>
+      <div class="servicios servicio-incluye">
+${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>' + x[1] + '</p></article>').join('\n')}
+      </div>
+      <p class="servicios-nota">${s.tec}</p>
+    </section>
+
+    <section class="bloque">
+      <h2>${t.serv.como}</h2>
+      <ol class="pasos-servicio">
+${t.serv.pasos.map(x => '        <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
+      </ol>
+    </section>
+${s.calculadora ? calculadoraHtml(t, raiz) : ''}
+    <section class="bloque">
+      <h2>${t.serv.relacionados}</h2>
+      <ul class="otros">
+${proyectos.map(p => '        <li><a href="../../proyectos/' + p.id + '/">' + p.titulo + '</a> <span>· ' + t.tipos[p.tipo] + '</span></li>').join('\n')}
+      </ul>
+    </section>
+
+    <section class="bloque">
+      <h2>${t.preguntas}</h2>
+      <dl class="preguntas">
+${s.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>').join('\n')}
+      </dl>
+      <h2 class="otros-servicios">${t.serv.otros}</h2>
+      <p class="botones">${otros.map(o => '<a class="boton secundario" href="../' + o.id + '/">' + o.corto + '</a>').join('')}<a class="boton secundario" href="../">${t.serviciosTitulo}</a></p>
+    </section>
+  </main>
+
+  ${pie(t, raiz, '../../')}
+
+${bitHtml(t, raiz)}
+</body>
+</html>
+`;
+}
+
 // sitemap.xml con las dos versiones de cada página enlazadas entre sí.
 function sitemap() {
-  const rutas = [''].concat(['servicios/', 'linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
+  const rutas = [''].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
   const entrada = ruta => ['', 'en/'].map(pre =>
     '  <url>\n    <loc>' + SITIO + pre + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
     '    <xhtml:link rel="alternate" hreflang="es" href="' + SITIO + ruta + '"/>\n' +
@@ -1226,12 +1498,14 @@ function llms() {
     '- Perfiles: LinkedIn ' + LINKEDIN + ' · GitHub ' + GITHUB + ' · TikTok ' + TIKTOK + ' · Instagram ' + INSTAGRAM,
     '- Club Byte (' + CLUBBYTE_BLOG + ') es un proyecto personal de animación 3D para niños, aparte de Arce Data Lab: no es un servicio ni una marca de la empresa.', '',
     '## Servicios'
-  ].concat(UI.serviciosLista.map(x => '- **' + x[1] + '**: ' + plano(x[2])))
+  ].concat(UI.serviciosLista.map(x => '- **' + x[1] + '**: ' + plano(x[2]) + (x[4] ? ' Más: ' + SITIO + 'servicios/' + x[4] + '/' : '')))
    .concat(['', '## Infraestructura propia']).concat(UI.infraLista.map(x => '- **' + x[0] + '**: ' + plano(x[1])))
    .concat(['', '## Proyectos']).concat(PROYECTOS.map(p => '- [' + plano(p.titulo) + '](' + urlProyecto(es, p) + '): ' + resumen(p)))
    .concat(['', '## Preguntas frecuentes']).concat(UI.faq.concat(UI.faqServicios).map(f => '- **' + f[0] + '** ' + plano(f[1])))
    .concat(['', '## Trayectoria']).concat(TRAYECTORIA.map(x => '- ' + plano(x[0]) + ': ' + plano(x[1]) + ', ' + plano(x[2])))
-   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios y tarifas](' + SITIO + 'servicios/)', '- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
+   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios](' + SITIO + 'servicios/)'])
+   .concat(SERVICIOS.map(x => '- [' + plano(x.h1) + '](' + SITIO + 'servicios/' + x.id + '/)'))
+   .concat(['- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
   return lineas.join('\n');
 }
 
@@ -1250,6 +1524,13 @@ IDIOMAS.forEach(d => {
   fs.mkdirSync(carpetaServicios, { recursive: true });
   fs.writeFileSync(path.join(carpetaServicios, 'index.html'), paginaServicios(d));
   console.log(path.join(d.carpeta, 'servicios', 'index.html') + ' generado');
+
+  d.servicios.forEach(x => {
+    const carpetaServicio = path.join(carpetaServicios, x.id);
+    fs.mkdirSync(carpetaServicio, { recursive: true });
+    fs.writeFileSync(path.join(carpetaServicio, 'index.html'), paginaServicio(d, x));
+  });
+  console.log(path.join(d.carpeta, 'servicios') + ': ' + d.servicios.length + ' páginas de servicio');
 
   d.proyectos.forEach(p => {
     const carpetaProyecto = path.join(carpeta, 'proyectos', p.id);
