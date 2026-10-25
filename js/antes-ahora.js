@@ -9,8 +9,4 @@
     fig.classList.add('activo');
     mueve();
   });
-  // En DEV, los enlaces con data-dev apuntan a la copia de DEV.
-  if (location.hostname.indexOf('dev.') === 0) {
-    document.querySelectorAll('a[data-dev]').forEach(function (a) { a.href = a.getAttribute('data-dev'); });
-  }
 })();

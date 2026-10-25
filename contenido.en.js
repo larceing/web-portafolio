@@ -30,6 +30,7 @@ module.exports = {
     ahoraAlt: 'Demos landing page after the redesign',
     deslizar: 'Compare before and after',
     plantillas: 'See example templates',
+    verPlantillas: 'See the templates',
     plantillasSub: '28 example websites for made-up businesses, so you can look at styles before we start.',
     pasos: [
       ['Free review', '45 minutes on a video call to look at your data, your tasks and what really takes up your time.'],
@@ -210,7 +211,7 @@ module.exports = {
       ['escritorio', 'Custom websites and applications', 'ERP, CRM, appointments, tickets or an online shop: websites and web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'webs']
     ],
     verServicio: 'See the service',
-    serviciosNota: 'Every project is different, so there is no fixed rate: the price is agreed in writing, excluding VAT, after a free 45-minute review. If you want an idea first, the <a href="power-bi/#calculadora">calculator</a> gives you a guide range for a dashboard.',
+    serviciosNota: 'Every project is different, so there is no fixed rate: the price is agreed in writing, excluding VAT, after a free 45-minute review. If you want an idea first, the <a href="power-bi/#calculadora">calculator</a> gives you a guide range for a dashboard. And if you need a website, have a look at the <a href="https://pro.luiscontacto03.com/demos/catalogo/" data-dev="https://dev.luiscontacto03.com/demos/catalogo/" target="_blank" rel="noopener">example templates</a>.',
     serviciosCta: 'Book your free review',
     serviciosPago: 'You pay 50% to start and 50% on delivery, by bank transfer or card, always with an invoice.',
     cinta: 'Automation at work',
@@ -380,6 +381,11 @@ module.exports = {
     helpdesk: {
       corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'At ES Group · 2026',
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
+    },
+    plantillas: {
+      corto: 'Website templates', titulo: 'Website templates for local businesses', etiqueta: 'Own product · 2026',
+      texto: '28 example websites for made-up businesses: hospitality, beauty, sport, health, pets, retail and services. Each one has its main action (book a table, make an appointment, place an order or ask for a quote) and you can try it end to end without sending anything. Mobile first, with self-hosted fonts instead of Google Fonts and no inline styles or scripts, so they pass a strict security policy. They include a legal notice and say clearly that the business is made up. The catalogue filters by sector and comes from the same generator I use for private client demos.',
+      tec: ['HTML and CSS', 'Dependency-free JavaScript', 'Strict CSP', 'Own generator']
     },
     whatsapp: {
       corto: 'AI for WhatsApp', titulo: 'AI assistant for WhatsApp', etiqueta: 'Own product · in development',

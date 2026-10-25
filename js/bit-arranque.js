@@ -5,6 +5,12 @@
 // comprimido, y img/bit.glb). No se carga el 3D si el navegador no tiene
 // WebGL, si la persona pide menos movimiento o ahorro de datos, o si lo ha
 // ocultado (se recuerda en este navegador).
+// En DEV, los enlaces con data-dev (catálogo de plantillas) apuntan a la
+// copia de DEV. Va aquí porque este archivo se carga en todas las páginas.
+if (location.hostname.indexOf('dev.') === 0) {
+  document.querySelectorAll('a[data-dev]').forEach(function (a) { a.href = a.getAttribute('data-dev'); });
+}
+
 (function () {
   var caja = document.getElementById('bit');
   if (!caja) return;
