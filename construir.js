@@ -503,6 +503,8 @@ UI.serv = {
   antes: 'Antes', ahora: 'Ahora',
   antesAlt: 'Portada de las demos antes del rediseño',
   ahoraAlt: 'Portada de las demos después del rediseño',
+  plantillas: 'Ver plantillas de ejemplo',
+  plantillasSub: '28 webs de ejemplo con negocios inventados, para que veas estilos antes de empezar.',
   deslizar: 'Comparar antes y después',
   pasos: [
     ['Diagnóstico gratis', '45 minutos por videollamada para ver tus datos, tus tareas y lo que de verdad te quita tiempo.'],
@@ -530,6 +532,10 @@ UI.porque = {
 // rango sale de las horas × TARIFA_HORA (y × 1,2 para el tope), redondeado a
 // 50 €. Los precios no se enseñan en ningún otro sitio de la web.
 const TARIFA_HORA = 40;
+// Catálogo de plantillas de ejemplo (repo demos). En DEV, js/antes-ahora.js
+// cambia el enlace por el de DEV (atributo data-dev).
+const CATALOGO_PLANTILLAS = 'https://pro.luiscontacto03.com/demos/catalogo/';
+const CATALOGO_PLANTILLAS_DEV = 'https://dev.luiscontacto03.com/demos/catalogo/';
 UI.calc = {
   titulo: '¿Cuánto cuesta mi dashboard?',
   sub: 'Seis preguntas y te doy un rango orientativo. No se guarda nada: si quieres, el resultado se abre en tu WhatsApp para mandármelo.',
@@ -1428,6 +1434,8 @@ function antesAhoraHtml(t, raiz) {
         <span class="aa-etiqueta aa-e-ahora" aria-hidden="true">${s.ahora}</span>
         <input type="range" min="0" max="100" value="50" aria-label="${s.deslizar}">
       </figure>
+      <p class="sub">${s.plantillasSub}</p>
+      <p class="botones"><a class="boton secundario" href="${CATALOGO_PLANTILLAS}" data-dev="${CATALOGO_PLANTILLAS_DEV}" target="_blank" rel="noopener">${s.plantillas}</a></p>
     </section>
     <script src="${raiz}js/antes-ahora.js?v=${VERSION_JS_ANTES}" defer></script>
 `;

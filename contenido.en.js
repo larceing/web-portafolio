@@ -29,6 +29,8 @@ module.exports = {
     antesAlt: 'Demos landing page before the redesign',
     ahoraAlt: 'Demos landing page after the redesign',
     deslizar: 'Compare before and after',
+    plantillas: 'See example templates',
+    plantillasSub: '28 example websites for made-up businesses, so you can look at styles before we start.',
     pasos: [
       ['Free review', '45 minutes on a video call to look at your data, your tasks and what really takes up your time.'],
       ['Written proposal', 'What gets built, how many rounds of changes, the fixed price and the deadline, set once I have seen the data.'],
