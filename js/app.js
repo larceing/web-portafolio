@@ -7,9 +7,16 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       b.classList.toggle('activo', b === boton);
     });
 
+    let vistas = 0;
     document.querySelectorAll('.tesela').forEach(function(t) {
-      t.classList.toggle('oculta', filtro !== 'todos' && t.dataset.tipo !== filtro);
+      const fuera = filtro !== 'todos' && t.dataset.tipo !== filtro;
+      t.classList.toggle('oculta', fuera);
+      if (!fuera) vistas++;
     });
+
+    // Estado vacío: si un filtro no deja ningún proyecto, se dice.
+    const vacio = document.getElementById('sinProyectos');
+    if (vacio) vacio.hidden = vistas > 0;
   });
 });
 
@@ -25,7 +32,7 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       if (!detalle) return;
 
       cabecera.style.setProperty('--c', detalle.dataset.color);
-      cabecera.innerHTML = tesela.querySelector('svg').outerHTML;
+      cabecera.innerHTML = tesela.querySelector('.tesela-cara').innerHTML;
       cuerpo.innerHTML = detalle.innerHTML;
       cuerpo.querySelector('h3').id = 'fichaTitulo';
 
@@ -82,4 +89,48 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
   });
 })();
 
+// «Ver todos»: la portada enseña nueve proyectos; el botón o cualquier filtro
+// abren la lista completa.
+(function() {
+  const boton = document.getElementById('verTodos');
+  const cuadricula = document.querySelector('.cuadricula');
+  if (!boton || !cuadricula) return;
+  function abrir() {
+    cuadricula.classList.add('abierta');
+    boton.hidden = true;
+  }
+  boton.addEventListener('click', abrir);
+  document.querySelectorAll('.filtro').forEach(function(f) {
+    f.addEventListener('click', function() {
+      if (f.dataset.filtro !== 'todos') abrir();
+    });
+  });
+})();
+
+// «Lo que puede ganar tu empresa»: las escaleras suben al entrar en pantalla.
+(function() {
+  const zona = document.querySelector('.niveles');
+  if (!zona || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  zona.querySelectorAll('.nivel').forEach(function(n) { n.classList.add('animar'); });
+  const io = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visto');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  zona.querySelectorAll('.nivel').forEach(function(n) { io.observe(n); });
+})();
+
 document.getElementById('anio').textContent = new Date().getFullYear();
+
+// La cabecera coge una sombra suave en cuanto bajas.
+(function () {
+  const cab = document.querySelector('.cabecera');
+  if (!cab) return;
+  const mirar = () => cab.classList.toggle('con-sombra', window.scrollY > 8);
+  window.addEventListener('scroll', mirar, { passive: true });
+  mirar();
+})();

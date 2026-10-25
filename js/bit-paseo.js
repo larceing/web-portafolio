@@ -77,8 +77,8 @@
     var titulo = s && s.querySelector('h1, h2');
     if (!titulo) return aLaEsquina();
     var r = reposo(), t = titulo.getBoundingClientRect(), m = margen();
-    // Si el margen es muy estrecho (portátil pequeño), taparía texto: a la esquina.
-    if (m < r.w * 0.5) return aLaEsquina();
+    // Si Byte no cabe entero en el margen, taparía texto: a la esquina.
+    if (m < r.w + 10) return aLaEsquina();
     // Alterna lados de una sección a otra; si el margen no cabe, a la derecha.
     var id = s.id || 'inicio';
     if (!(id in lados)) lados[id] = Object.keys(lados).length % 2 === 0 ? 'der' : 'izq';

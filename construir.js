@@ -35,10 +35,13 @@ const GITHUB = 'https://github.com/larceing';
 const TELEFONO = '+34 633 42 42 23';
 const WHATSAPP = 'https://wa.me/34633424223';
 
-// Arce Data Lab (la marca) y Club Byte (su canal infantil).
+// Arce Data Lab (la marca) y Club Byte (proyecto personal de animación, aparte).
 const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
+const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
+// Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
+const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, me interesa el diagnóstico gratis de 45 minutos para mi negocio.');
 const CLUBBYTE_YOUTUBE = 'https://www.youtube.com/@clubbyte_es';
 const CLUBBYTE_CANAL = 'https://www.youtube.com/channel/UCGf6S4beoxCkjF3Fyl2XIrA';
 const CLUBBYTE_BLOG = 'https://clubbyte.arcedatalab.com';
@@ -97,7 +100,7 @@ const C = { tinta: '#15202B', azul: '#1D4F7A', cielo: '#2E6C9E', pizarra: '#3F52
 const PROYECTOS = [
   {
     id: 'clubbyte', corto: 'Club Byte', titulo: 'Club Byte: tecnología explicada a niños de 8 a 12 años',
-    tipo: 'producto', etiqueta: 'Arce Data Lab · canal educativo · 2026', icono: 'video', color: C.tostado,
+    tipo: 'producto', etiqueta: 'Proyecto personal · animación 3D · 2026', icono: 'video', color: C.tostado,
     caso: [
       ['Problema', 'Casi no hay contenido en castellano que explique a niños y niñas cómo funciona la informática con historias y personajes, sin vender un curso detrás.'],
       ['Qué hice', 'Un canal de YouTube y un blog con dos protagonistas, Lía y Teo, y Bit, un robot hecho en Blender. Cada capítulo explica una idea (sensores, condicionales, binario, algoritmos) y termina con un reto sin pantalla para hacer en casa o en clase.'],
@@ -284,7 +287,7 @@ const UI = {
   lang: 'es',
   titulo: 'Henry Arce · Automatización, IA aplicada y Power BI | Arce Data Lab',
   descripcion: 'Henry Arce, fundador de Arce Data Lab (Alicante): automatización, IA aplicada, Power BI y apps a medida para pymes e industria. Proyectos reales y open source.',
-  ogDescripcion: 'Automatización, IA aplicada y datos para pymes e industria. Proyectos reales, open source y Club Byte.',
+  ogDescripcion: 'Automatización, IA aplicada y datos para pymes e industria. Proyectos reales, cuadros de mando y open source.',
   locale: 'es_ES',
   idiomaNombre: 'Español',
   linkedinTitulo: 'Publicaciones en LinkedIn',
@@ -292,6 +295,8 @@ const UI = {
   linkedinSub: 'Lo que escribo sobre BI, datos e IA aplicada',
   linkedinMarco: 'Publicación de LinkedIn',
   linkedinVer: 'Abrir en LinkedIn',
+  linkedinFallo: 'LinkedIn no ha cargado esta publicación (a veces la bloquea el navegador). Puedes verla en LinkedIn con el enlace de abajo.',
+  sinProyectos: 'Todavía no hay proyectos de este tipo. Si tienes uno en mente, cuéntamelo.',
   linkedinPerfil: 'Ver todas en mi perfil de LinkedIn',
   verPublicaciones: 'Leer las publicaciones aquí',
   saltar: 'Saltar al contenido',
@@ -300,12 +305,36 @@ const UI = {
   menu: { servicios: 'Servicios', arce: 'Arce Data Lab', proyectos: 'Proyectos', trayectoria: 'Trayectoria', tecnologias: 'Tecnologías', preguntas: 'Preguntas', contacto: 'Contacto' },
   otroIdioma: 'English',
   otroIdiomaAria: 'English version',
-  h1: 'Automatizo procesos y pongo la IA a trabajar con los datos del negocio.',
+  antetitulo: 'Analista de datos y desarrollador · Alicante',
+  lema2: 'LA MEDIDA ES LO MEJOR',
+  h1: 'Automatizo procesos y pongo la IA a trabajar <em>con los datos del negocio.</em>',
   intro: 'Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de <a href="#arcedatalab">Arce Data Lab</a>. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.',
   fotoAlt: 'Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia',
   areasAria: 'Áreas de trabajo',
   verProyectos: 'Ver proyectos',
-  franja: 'Abierto a proyectos y a nuevas conversaciones',
+  franja: '¿Tus números viven en Excel? Te los miro gratis en 45 minutos.',
+  inicioBotones: ['Ver proyectos', 'Hablemos'],
+  datosClave: [
+    ['2019', 'trabajando con datos, de la consultora a la fábrica'],
+    [String(PROYECTOS.length), 'proyectos documentados, con problema y resultado'],
+    ['139.760', 'impresiones en mi publicación más leída de LinkedIn'],
+    ['UE', 'servidores propios, con copias cada noche']
+  ],
+  queHago: 'Lo que puede ganar tu empresa',
+  queHagoSub: 'De lo más sencillo a lo más completo. Se empieza por lo que más tiempo os quita.',
+  nivelesNombres: ['Para empezar', 'Siguiente paso', 'Completo'],
+  niveles: [
+    ['flujo', 'Automatización de tareas', ['Avisos y correos que salen solos', 'Formularios y hojas que se rellenan sin copiar a mano', 'Procesos enteros entre ERP, CRM y correo']],
+    ['bot', 'Asistentes de IA', ['Respuestas a las preguntas de siempre', 'Un asistente que busca en tus documentos', 'IA que consulta tu ERP sin inventar cifras']],
+    ['grafico', 'Datos y Power BI', ['Tu Excel ordenado y con las cifras cuadradas', 'Un cuadro de mando con lo importante', 'Informes que se actualizan solos cada mañana']],
+    ['escritorio', 'Aplicaciones a medida', ['Una web con reservas o citas', 'Un CRM o un gestor de incidencias', 'ERP y CRM conectados, con tu marca']]
+  ],
+  verServicios: 'Ver servicios y tarifas',
+  verTodos: 'Ver los {n} proyectos',
+  verProyectosHechos: 'Ver proyectos hechos',
+  serviciosTitulo: 'Servicios y tarifas',
+  serviciosDescripcion: 'Automatización de procesos, cuadros de mando de Power BI, asistentes de IA y aplicaciones a medida para pymes, con precios orientativos y un diagnóstico gratis de 45 minutos.',
+  whatsappDiagnostico: WHATSAPP_DIAGNOSTICO,
   proyectos: 'Proyectos',
   proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
   filtrosAria: 'Filtrar proyectos',
@@ -323,11 +352,15 @@ const UI = {
     ['51.431', 'impresiones · 10 términos que todo profesional de datos debe dominar'],
     ['29.131', 'impresiones · VBA, el abuelo sabio de Excel']
   ],
-  contacto: 'Contacto',
+  contacto: '¿Hablamos?',
   contactoSub: 'Si en tu equipo hay tareas que se repiten o datos que no cuadran, cuéntamelo',
   verPublicacion: 'Ver la publicación',
   telefono: 'también por WhatsApp',
   pie: 'Alicante, España',
+  pieFrase: 'Datos, Power BI y desarrollo a medida para empresas que quieren decidir con números.',
+  pieNav: 'La web',
+  pieRedes: 'Redes',
+  escribemeWhatsapp: 'Escríbeme por WhatsApp',
   cerrar: 'Cerrar',
   verFicha: 'Página completa del proyecto',
   volver: 'Volver a todos los proyectos',
@@ -336,12 +369,14 @@ const UI = {
   servicios: 'Servicios',
   serviciosSub: 'Qué puedo hacer por tu empresa, a través de Arce Data Lab',
   serviciosLista: [
-    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API'],
-    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL'],
-    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL'],
-    ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker']
+    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API', 'Desde 290 €'],
+    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'Desde 490 € · tu informe listo en 7 días'],
+    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', 'Precio cerrado tras el diagnóstico'],
+    ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'Webs con reservas desde 590 €']
   ],
-  serviciosCta: 'Cuéntame qué tarea te quita tiempo',
+  serviciosNota: 'Precios sin IVA. Mantenimiento desde 49 € al mes. Siempre empezamos con un diagnóstico gratis de 45 minutos.',
+  serviciosCta: 'Pide tu diagnóstico gratis',
+  serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
   cintaSub: 'Lo que hace un flujo automático, en pequeño',
   cintaPasos: [
@@ -365,11 +400,12 @@ const UI = {
   infraEnlace: 'Ver la plataforma en GitHub',
   infraLeyenda: ['Proxy con HTTPS', 'Servidor', 'Apps en contenedores', 'Copia cada noche'],
   arce: 'Arce Data Lab',
-  arceSub: 'Mi marca: datos, automatización e IA para pymes, y un canal para que los niños se interesen por la tecnología',
+  arceSub: 'Mi marca: datos, automatización e IA para pymes',
+  clubbyteLinea: 'También hago <strong>Club Byte</strong>, un canal para que niños de 8 a 12 años se interesen por la tecnología:',
   arceTexto: '<strong>Arce Data Lab</strong> es el laboratorio desde el que construyo aplicaciones, cuadros de mando y asistentes de IA para pymes e industria, con su propia plataforma de despliegue, correo y documentos. Todo lo que ves en los proyectos marcados como producto propio vive allí.',
   arceEnlaces: [['Demos para clientes', DEMOS], ['TikTok @arcedatalab', TIKTOK]],
   clubbyteTitulo: 'Club Byte',
-  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
+  clubbyteTexto: '<strong>Club Byte</strong> es un proyecto personal de animación 3D, aparte de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
   clubbyteEnlaces: [['YouTube @clubbyte_es', CLUBBYTE_YOUTUBE], ['Blog para familias y docentes', CLUBBYTE_BLOG]],
   bitAlt: 'Byte, el asistente de Arce Data Lab',
   preguntas: 'Preguntas frecuentes',
@@ -380,9 +416,14 @@ const UI = {
     ['¿Qué servicios ofrece Arce Data Lab?', 'Automatización de procesos, cuadros de mando con Power BI y Microsoft Fabric, asistentes de IA sobre los datos del negocio y aplicaciones a medida (ERP, CRM, citas), desplegadas en infraestructura propia en la UE.'],
     ['¿Qué tipo de proyectos hace?', 'Automatiza tareas repetitivas, conecta ERP, CRM y bases de datos, crea informes de Power BI y Microsoft Fabric, y pone asistentes de IA a responder sobre los datos del negocio en solo lectura.'],
     ['¿Trabaja con pymes?', 'Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.'],
-    ['¿Qué es Club Byte?', 'Club Byte es el canal de YouTube (@clubbyte_es) y el blog de Arce Data Lab que explica informática y tecnología a niños de 8 a 12 años, con retos sin pantalla para familias y docentes.'],
-    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en YouTube con Club Byte para niños.'],
+    ['¿Mis datos están seguros?', 'Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.'],
+    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en Instagram (@henry_arce_dev). Pronto también en YouTube, en el canal Imagina en IT.'],
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
+  ],
+  faqServicios: [
+    ['¿Cuánto cuesta un proyecto?', 'Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.'],
+    ['¿Cuánto tarda?', 'Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.'],
+    ['¿Cómo se empieza?', 'Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.']
   ],
   soporte: 'Soporte de las aplicaciones',
   bit: {
@@ -390,7 +431,7 @@ const UI = {
     hola: 'Hola, soy Byte, el asistente de Arce Data Lab. Te acompaño por la web y te resumo cada proyecto.',
     servicios: 'Si en tu empresa una tarea se repite cada semana, probablemente se puede automatizar.',
     infraestructura: 'Esta web y las aplicaciones de los clientes funcionan aquí: contenedores, HTTPS y copias cada noche.',
-    arcedatalab: 'Arce Data Lab desarrolla software y soluciones de datos para pymes. Mi hermano pequeño, Bit, presenta Club Byte.',
+    arcedatalab: 'Arce Data Lab desarrolla software, cuadros de mando y asistentes de IA para pymes.',
     proyectos: 'Abre cualquier proyecto y te resumo el problema, la solución y el resultado.',
     ficha: 'Resumen del proyecto.',
     jugar: ['Mientras lees, reviso los datos.', 'Comprobación de sistemas: todo en orden.', 'Sigo aquí. Avísame si quieres un resumen.', 'Revisando que todas las aplicaciones respondan.'],
@@ -445,7 +486,8 @@ const IDIOMAS = [
   {
     t: Object.assign({}, EN.UI, {
       arceEnlaces: UI.arceEnlaces.map((e, i) => [EN.UI.arceEnlacesTextos[i], e[1]]),
-      clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [EN.UI.clubbyteEnlacesTextos[i], e[1]])
+      clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [EN.UI.clubbyteEnlacesTextos[i], e[1]]),
+      datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]])
     }),
     areas: AREAS.map((a, i) => Object.assign({}, a, EN.AREAS[i])),
     proyectos: PROYECTOS.map(p => {
@@ -501,7 +543,7 @@ function persona(d) {
     knowsAbout: ['Power BI', 'DAX', 'Microsoft Fabric', 'Automatización de procesos', 'IA aplicada', 'Agentes de IA', 'Python', 'SQL Server', 'ERP', 'CRM', 'Docker', 'Keycloak', 'Node.js', 'Blender', 'Process automation', 'Business intelligence'],
     alumniOf: { '@type': 'EducationalOrganization', name: 'IES El Palmeral' },
     award: ['Premio a la Excelencia Académica 2022', 'CV Skills 2021, Electrónica'],
-    sameAs: [LINKEDIN, GITHUB, TIKTOK]
+    sameAs: [LINKEDIN, GITHUB, TIKTOK, INSTAGRAM]
   };
 }
 
@@ -520,8 +562,7 @@ function organizacion() {
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
       { '@type': 'ContactPoint', contactType: 'technical support', email: SOPORTE, availableLanguage: ['es'] }
     ],
-    sameAs: [TIKTOK, CLUBBYTE_YOUTUBE],
-    brand: { '@id': ID_CLUBBYTE },
+    sameAs: [TIKTOK, INSTAGRAM, LINKEDIN],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
       itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
@@ -539,7 +580,6 @@ function clubbyte() {
     description: 'Canal educativo que explica informática y tecnología a niños y niñas de 8 a 12 años, con retos sin pantalla para familias y docentes.',
     audience: { '@type': 'PeopleAudience', suggestedMinAge: 8, suggestedMaxAge: 12 },
     educationalUse: 'Pensamiento computacional',
-    publisher: { '@id': ID_ORG },
     creator: { '@id': ID_PERSONA },
     sameAs: [CLUBBYTE_YOUTUBE, CLUBBYTE_CANAL]
   };
@@ -614,9 +654,36 @@ function datosProyecto(d, p) {
   };
 }
 
-function tesela(p, t) {
-  return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '" style="--c:' + p.color + '">\n' +
-    '        ' + icono(p.icono) + '\n' +
+// Orden de los proyectos en la portada: primero los que más dicen a una pyme
+// (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
+const DESTACADOS = ['reporting', 'asistente', 'sindri', 'gestor', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
+const PROYECTOS_A_LA_VISTA = 9;
+
+// Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
+const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp' };
+
+// Logo de Arce Data Lab: media hoja de arce con el nombre encima, a la manera
+// del de NERV, y el lema de Cleóbulo («la medida es lo mejor»). Va en línea
+// para que use la tipografía de la página.
+const HOJA_ARCE = 'M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z';
+function logoArce(lema) {
+  return '<svg class="logo-arce" viewBox="-12 -162 330 290" role="img" aria-label="Arce Data Lab">' +
+    '<path class="logo-hoja" d="' + HOJA_ARCE + '"/>' +
+    '<text class="logo-nombre" x="18" y="18">ARCE</text>' +
+    '<text class="logo-lab" x="22" y="56">DATA LAB</text>' +
+    '<text class="logo-lema" x="22" y="88">ΜΕΤΡΟΝ ΑΡΙΣΤΟΝ</text>' +
+    '<text class="logo-lema" x="22" y="108">' + lema + '</text></svg>';
+}
+const AL_FINAL = ['clubbyte'];
+
+function enPortada(lista) {
+  const peso = p => DESTACADOS.includes(p.id) ? DESTACADOS.indexOf(p.id) : AL_FINAL.includes(p.id) ? 1000 : 100 + lista.indexOf(p);
+  return lista.slice().sort((a, b) => peso(a) - peso(b));
+}
+
+function tesela(p, t, extra, base) {
+  return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '"' + (extra ? ' data-extra' : '') + ' style="--c:' + p.color + '">\n' +
+    '        <span class="tesela-cara">' + (LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="76" height="76" loading="lazy">' : icono(p.icono)) + '</span>\n' +
     '        <span class="tesela-titulo">' + p.corto + '</span>\n' +
     '        <span class="tesela-tipo">' + t.tipos[p.tipo] + '</span>\n' +
     '      </button>';
@@ -678,9 +745,7 @@ function cabeza(d, p) {
   <link rel="me" href="${LINKEDIN}">
   <link rel="me" href="${GITHUB}">
   <script type="application/ld+json">${jsonLd(p.datos)}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap">
+  <link rel="preload" href="${p.raiz}fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
 </head>
 
@@ -688,15 +753,14 @@ function cabeza(d, p) {
   <a class="saltar" href="#contenido">${t.saltar}</a>
 
   <header class="cabecera">
-    <a class="marca" href="${p.inicio}#inicio">Henry Arce <span>${t.lema}</span></a>
+    <a class="marca" href="${p.inicio}#inicio">${hojita()}Henry Arce <span>${t.lema}</span></a>
     <nav class="menu" aria-label="${t.secciones}">
-      <a href="${p.inicio}#servicios">${t.menu.servicios}</a>
-      <a href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
       <a href="${p.inicio}#proyectos">${t.menu.proyectos}</a>
-      <a href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
-      <a href="${p.inicio}#preguntas">${t.menu.preguntas}</a>
-      <a href="${p.inicio}#contacto">${t.menu.contacto}</a>
+      <a class="menu-extra" href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
+      <a class="menu-extra" href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
+      <a href="${p.inicio}servicios/"${p.ruta === 'servicios/' ? ' aria-current="page"' : ''}>${t.menu.servicios}</a>
       <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
+      <a class="menu-cta" href="${p.inicio}#contacto">${t.inicioBotones[1]}</a>
     </nav>
   </header>
 `;
@@ -707,29 +771,49 @@ function pagina(d) {
   const base = d.base;
 
   return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
-  <main id="contenido">
-    <section class="inicio" id="inicio">
-      <div>
-        <h1>${t.h1}</h1>
-        <p>${t.intro}</p>
+  <main id="contenido" class="portadilla">
+    <section class="portada" id="inicio">
+      <img class="portada-boceto" src="${base}img/boceto.webp" alt="" width="720" height="720" aria-hidden="true">
+      <div class="portada-dentro">
+        <div class="portada-texto">
+          <p class="antetitulo">${t.antetitulo}</p>
+          <h1>${t.h1}</h1>
+          <p class="intro">${t.intro}</p>
+          <p class="botones"><a class="boton" href="#proyectos">${t.inicioBotones[0]}</a><a class="boton secundario" href="#contacto">${t.inicioBotones[1]}</a></p>
+        </div>
+        <div class="portada-logo">${logoArce(t.lema2)}</div>
+        <ul class="datos-clave">
+${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
+        </ul>
       </div>
-      <img src="${base}img/foto.webp" alt="${t.fotoAlt}" width="640" height="640">
     </section>
 
-    <section class="areas" aria-label="${t.areasAria}">
-${d.areas.map(a => '      <a class="area" href="#proyectos" style="--c:' + a.color + '">\n        ' + icono(a.icono) + '\n        <strong>' + a.titulo + '</strong>\n        <span>' + a.texto + '</span>\n        <em>' + t.verProyectos + '</em>\n      </a>').join('\n')}
+    <section class="bloque" id="proyectos" data-bit="proyectos">
+      <h2>${t.proyectos}</h2>
+      <p class="sub">${t.proyectosSub}</p>
+
+      <div class="filtros" role="group" aria-label="${t.filtrosAria}">
+        <button type="button" class="filtro activo" data-filtro="todos">${t.todos}</button>
+        <button type="button" class="filtro" data-filtro="empresa">${t.tipos.empresa}</button>
+        <button type="button" class="filtro" data-filtro="producto">${t.tipos.producto}</button>
+        <button type="button" class="filtro" data-filtro="abierto">${t.tipos.abierto}</button>
+      </div>
+
+      <div class="cuadricula">
+${enPortada(d.proyectos).map((p, i) => tesela(p, t, i >= PROYECTOS_A_LA_VISTA, base)).join('\n')}
+      </div>
+      <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="#contacto">${t.inicioBotones[1]} →</a></p>
+      <button type="button" class="ver-todos" id="verTodos">${t.verTodos.replace('{n}', d.proyectos.length)}</button>
     </section>
 
-    <p class="franja">${t.franja} <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a><a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a></span></p>
+${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
 
-    <section class="bloque" id="servicios" data-bit="servicios">
-      <h2>${t.servicios}</h2>
-      <p class="sub">${t.serviciosSub}</p>
-
-      <div class="servicios">
-${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p></article>').join('\n')}
+    <section class="bloque" id="que-hago" data-bit="servicios">
+      <h2>${t.queHago}</h2>
+      <p class="sub">${t.queHagoSub}</p>
+      <div class="niveles">
+${t.niveles.map(n => '        <article class="nivel" data-icono="' + n[0] + '">\n          <div class="nivel-cabeza"><span class="nivel-icono">' + icono(n[0]) + '</span><h3>' + n[1] + '</h3></div>\n          <ol class="escalera">' + n[2].map((x, i) => '<li style="--i:' + i + '"><span class="peldano"><em>' + t.nivelesNombres[i] + '</em>' + x + '</span></li>').join('') + '</ol>\n        </article>').join('\n')}
       </div>
-      <p class="mas"><a href="#contacto">${t.serviciosCta} →</a></p>
     </section>
 
     <section class="bloque cinta" id="automatizacion" data-bit="cinta">
@@ -753,14 +837,6 @@ ${t.cintaPasos.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
           <p>${t.arceTexto}</p>
           <p class="enlaces">${t.arceEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
         </article>
-        <article class="marca-tarjeta clubbyte">
-          <img src="${base}img/bit.webp" alt="${t.bitAlt}" width="208" height="320" loading="lazy">
-          <div>
-            <h3>${t.clubbyteTitulo}</h3>
-            <p>${t.clubbyteTexto}</p>
-            <p class="enlaces">${t.clubbyteEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -778,24 +854,6 @@ ${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd>
       </dl>
       <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="proyectos/plataforma/">${t.verFicha}</a></p>
     </section>
-
-    <section class="bloque" id="proyectos" data-bit="proyectos">
-      <h2>${t.proyectos}</h2>
-      <p class="sub">${t.proyectosSub}</p>
-
-      <div class="filtros" role="group" aria-label="${t.filtrosAria}">
-        <button type="button" class="filtro activo" data-filtro="todos">${t.todos}</button>
-        <button type="button" class="filtro" data-filtro="empresa">${t.tipos.empresa}</button>
-        <button type="button" class="filtro" data-filtro="producto">${t.tipos.producto}</button>
-        <button type="button" class="filtro" data-filtro="abierto">${t.tipos.abierto}</button>
-      </div>
-
-      <div class="cuadricula">
-${d.proyectos.map(p => tesela(p, t)).join('\n')}
-      </div>
-    </section>
-
-${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
 
     <section class="bloque" id="trayectoria" data-bit="trayectoria">
       <h2>${t.trayectoria}</h2>
@@ -838,19 +896,20 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
       <h2>${t.contacto}</h2>
       <p class="sub">${t.contactoSub}</p>
       <a class="correo" href="mailto:${CORREO}">${CORREO}</a>
+      <p class="botones"><a class="boton" href="${WHATSAPP}" target="_blank" rel="noopener">${t.escribemeWhatsapp}</a></p>
       <p class="redes">
         <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
         <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
         <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
-        <a href="${CLUBBYTE_YOUTUBE}" target="_blank" rel="noopener">YouTube · Club Byte</a>
       </p>
-      <p class="telefono">${TELEFONO} · ${t.telefono}</p>
+      <p class="telefono"><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a> · ${t.telefono}</p>
       <p class="telefono">${t.soporte}: <a href="mailto:${SOPORTE}">${SOPORTE}</a></p>
+      <p class="contacto-servicios"><a href="servicios/">${t.verServicios} →</a></p>
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · <span id="anio">2026</span></footer>
+  ${pie(t, base, '')}
 
   <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
     <div class="ficha-cabecera" id="fichaCabecera"></div>
@@ -880,7 +939,7 @@ function paginaLinkedin(d) {
       <h1>${t.linkedinTitulo}</h1>
       <p class="sub">${t.linkedinSub}</p>
 
-      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}">
+      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
 ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
       </div>
 
@@ -888,9 +947,140 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}</footer>
+  ${pie(t, '../' + d.base, '../')}
 
   <script src="${'../' + d.base}js/linkedin.js?v=${VERSION_JS_LINKEDIN}"></script>
+</body>
+</html>
+`;
+}
+
+// Página /servicios/: lo que se ofrece y desde cuánto. La portada no enseña
+// precios; quien los quiera ver llega aquí desde el menú o el contacto.
+function paginaServicios(d) {
+  const t = d.t;
+  const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'servicios/';
+
+  return cabeza(d, {
+    titulo: t.serviciosTitulo + ' · Henry Arce', descripcion: t.serviciosDescripcion, ogDescripcion: t.serviciosDescripcion, ogTipo: 'website',
+    ruta: 'servicios/', raiz: '../' + d.base, inicio: '../', otro: '../' + d.otro + 'servicios/',
+    datos: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        { '@type': 'WebPage', '@id': url, url: url, name: plano(t.serviciosTitulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_ORG } },
+        { '@type': 'FAQPage', '@id': url + '#preguntas', inLanguage: t.lang, mainEntity: t.faqServicios.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } })) },
+        persona(d)
+      ]
+    }
+  }) + `
+  <main id="contenido" class="pagina-servicios">
+    <section class="bloque">
+      <h1>${t.serviciosTitulo}</h1>
+      <p class="sub">${t.serviciosSub}</p>
+
+      <div class="servicios">
+${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p>' + (x[4] ? '<p class="precio">' + x[4] + '</p>' : '') + '</article>').join('\n')}
+      </div>
+      <p class="servicios-nota">${t.serviciosNota}</p>
+      <p class="servicios-nota">${t.serviciosPago}</p>
+      <p class="botones centrados"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a><a class="boton secundario" href="mailto:${CORREO}">${CORREO}</a></p>
+    </section>
+
+    <section class="bloque">
+      <h2>${t.preguntas}</h2>
+      <dl class="preguntas">
+${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>').join('\n')}
+      </dl>
+      <p class="mas"><a href="../#proyectos">${t.verProyectosHechos} →</a></p>
+    </section>
+  </main>
+
+  ${pie(t, '../' + d.base, '../')}
+</body>
+</html>
+`;
+}
+
+// Páginas legales (/privacidad/ y /condiciones/), solo en español: se escriben
+// en legal/*.md y aquí se pasan a HTML. Las piden TikTok, Google y Meta para
+// dar acceso a sus API.
+const LEGALES = [
+  { ruta: 'privacidad/', fichero: 'legal/privacidad.md', es: 'Privacidad', en: 'Privacy' },
+  { ruta: 'condiciones/', fichero: 'legal/condiciones.md', es: 'Condiciones', en: 'Terms' }
+];
+
+// Enlaces del pie a las páginas legales. raiz: camino hasta la raíz del sitio.
+// La hoja de Arce en pequeño, para la cabecera y el pie.
+function hojita() {
+  return '<svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="' + HOJA_ARCE + '"/></svg>';
+}
+
+// Pie común: marca, navegación, redes y legal.
+function pie(t, raiz, inicio) {
+  const col = (titulo, enlaces) => '<div class="pie-col"><h2>' + titulo + '</h2><ul>' + enlaces.map(e => '<li>' + e + '</li>').join('') + '</ul></div>';
+  const fuera = (url, txt) => '<a href="' + url + '" target="_blank" rel="noopener">' + txt + '</a>';
+  return `<footer class="pie">
+    <div class="pie-dentro">
+      <div class="pie-marca">
+        <a class="marca" href="${inicio}#inicio">${hojita()}Henry Arce</a>
+        <p>${t.pieFrase}</p>
+        <p><a href="mailto:${CORREO}">${CORREO}</a><br><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a></p>
+      </div>
+      ${col(t.pieNav, [
+        '<a href="' + inicio + '#proyectos">' + t.menu.proyectos + '</a>',
+        '<a href="' + inicio + '#trayectoria">' + t.menu.trayectoria + '</a>',
+        '<a href="' + inicio + '#arcedatalab">' + t.menu.arce + '</a>',
+        '<a href="' + inicio + 'servicios/">' + t.menu.servicios + '</a>',
+        '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
+      ])}
+      ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub')])}
+      ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (t.lang === 'en' ? l.en : l.es) + '</a>'))}
+    </div>
+    <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
+  </footer>`;
+}
+
+// Markdown sencillo (títulos, párrafos, listas, negrita y enlaces) a HTML.
+function markdown(texto, raiz) {
+  const enLinea = x => x
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => url.startsWith('/')
+      ? '<a href="' + raiz + url.slice(1) + '">' + txt + '</a>'
+      : '<a href="' + url + '" target="_blank" rel="noopener">' + txt + '</a>');
+  const html = [];
+  let lista = null;
+  const cerrar = () => { if (lista) { html.push('</' + lista + '>'); lista = null; } };
+  texto.split('\n').forEach(linea => {
+    let m;
+    if (!linea.trim()) { cerrar(); return; }
+    if ((m = linea.match(/^(#{1,3}) (.*)/))) { cerrar(); const n = m[1].length; html.push('<h' + n + '>' + enLinea(m[2]) + '</h' + n + '>'); return; }
+    if ((m = linea.match(/^- (.*)/))) { if (lista !== 'ul') { cerrar(); lista = 'ul'; html.push('<ul>'); } html.push('<li>' + enLinea(m[1]) + '</li>'); return; }
+    if ((m = linea.match(/^\d+\. (.*)/))) { if (lista !== 'ol') { cerrar(); lista = 'ol'; html.push('<ol>'); } html.push('<li>' + enLinea(m[1]) + '</li>'); return; }
+    cerrar();
+    html.push('<p>' + enLinea(linea) + '</p>');
+  });
+  cerrar();
+  return html.join('\n      ');
+}
+
+function paginaLegal(l) {
+  const d = IDIOMAS[0];
+  const texto = fs.readFileSync(path.join(__dirname, l.fichero), 'utf8');
+  const titulo = (texto.match(/^# (.*)/m) || [])[1] || l.es;
+  const url = SITIO + l.ruta;
+  return cabeza(d, {
+    titulo: titulo + ' · Arce Data Lab', descripcion: titulo + ' de arcedatalab.com y de las herramientas de Arce Data Lab.', ogDescripcion: titulo + ' de Arce Data Lab.', ogTipo: 'website',
+    ruta: l.ruta, raiz: '../', inicio: '../', otro: '../',
+    datos: { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebPage', '@id': url, url: url, name: titulo, inLanguage: 'es', isPartOf: { '@id': ID_WEB } }] }
+  }) + `
+  <main id="contenido">
+    <article class="bloque legal">
+      ${markdown(texto, '../')}
+    </article>
+  </main>
+
+  ${pie(d.t, '../', '../')}
 </body>
 </html>
 `;
@@ -902,7 +1092,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >
 const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
-  const guion = Object.assign({}, t.bit, { canalUrl: CLUBBYTE_YOUTUBE });
+  const guion = Object.assign({}, t.bit);
   return `  <aside class="bit" id="bit" data-paseo="guia" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
@@ -956,7 +1146,7 @@ ${otros.map(o => '        <li><a href="../' + o.id + '/">' + o.titulo + '</a> <s
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}</footer>
+  ${pie(t, raiz, '../../')}
 
 ${bitHtml(t, raiz)}
 </body>
@@ -966,14 +1156,15 @@ ${bitHtml(t, raiz)}
 
 // sitemap.xml con las dos versiones de cada página enlazadas entre sí.
 function sitemap() {
-  const rutas = [''].concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
+  const rutas = [''].concat(['servicios/', 'linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
   const entrada = ruta => ['', 'en/'].map(pre =>
     '  <url>\n    <loc>' + SITIO + pre + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
     '    <xhtml:link rel="alternate" hreflang="es" href="' + SITIO + ruta + '"/>\n' +
     '    <xhtml:link rel="alternate" hreflang="en" href="' + SITIO + 'en/' + ruta + '"/>\n' +
     '    <xhtml:link rel="alternate" hreflang="x-default" href="' + SITIO + ruta + '"/>\n  </url>').join('\n');
+  const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n  </url>';
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-    rutas.map(entrada).join('\n') + '\n</urlset>\n';
+    rutas.map(entrada).join('\n') + '\n' + LEGALES.map(legal).join('\n') + '\n</urlset>\n';
 }
 
 // robots.txt: todo abierto, también a los rastreadores de IA (GEO).
@@ -1003,15 +1194,15 @@ function llms() {
     '- Nombre: Luis Henry Arce Inga (Henry Arce). Alicante, España.',
     '- Marca: Arce Data Lab (' + ARCE + '). Correo: ' + CORREO + '. Soporte: ' + SOPORTE + '.',
     '- Especialidad: automatización de procesos, IA aplicada sobre datos de negocio, Power BI y Microsoft Fabric, apps a medida (ERP, CRM).',
-    '- Perfiles: LinkedIn ' + LINKEDIN + ' · GitHub ' + GITHUB + ' · TikTok ' + TIKTOK,
-    '- Club Byte (canal educativo para niños de 8 a 12 años): YouTube ' + CLUBBYTE_YOUTUBE + ' · blog ' + CLUBBYTE_BLOG, '',
+    '- Perfiles: LinkedIn ' + LINKEDIN + ' · GitHub ' + GITHUB + ' · TikTok ' + TIKTOK + ' · Instagram ' + INSTAGRAM,
+    '- Club Byte (' + CLUBBYTE_BLOG + ') es un proyecto personal de animación 3D para niños, aparte de Arce Data Lab: no es un servicio ni una marca de la empresa.', '',
     '## Servicios'
   ].concat(UI.serviciosLista.map(x => '- **' + x[1] + '**: ' + plano(x[2])))
    .concat(['', '## Infraestructura propia']).concat(UI.infraLista.map(x => '- **' + x[0] + '**: ' + plano(x[1])))
    .concat(['', '## Proyectos']).concat(PROYECTOS.map(p => '- [' + plano(p.titulo) + '](' + urlProyecto(es, p) + '): ' + resumen(p)))
-   .concat(['', '## Preguntas frecuentes']).concat(UI.faq.map(f => '- **' + f[0] + '** ' + plano(f[1])))
+   .concat(['', '## Preguntas frecuentes']).concat(UI.faq.concat(UI.faqServicios).map(f => '- **' + f[0] + '** ' + plano(f[1])))
    .concat(['', '## Trayectoria']).concat(TRAYECTORIA.map(x => '- ' + plano(x[0]) + ': ' + plano(x[1]) + ', ' + plano(x[2])))
-   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
+   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios y tarifas](' + SITIO + 'servicios/)', '- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
   return lineas.join('\n');
 }
 
@@ -1026,12 +1217,55 @@ IDIOMAS.forEach(d => {
   fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), paginaLinkedin(d));
   console.log(path.join(d.carpeta, 'linkedin', 'index.html') + ' generado: ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones');
 
+  const carpetaServicios = path.join(carpeta, 'servicios');
+  fs.mkdirSync(carpetaServicios, { recursive: true });
+  fs.writeFileSync(path.join(carpetaServicios, 'index.html'), paginaServicios(d));
+  console.log(path.join(d.carpeta, 'servicios', 'index.html') + ' generado');
+
   d.proyectos.forEach(p => {
     const carpetaProyecto = path.join(carpeta, 'proyectos', p.id);
     fs.mkdirSync(carpetaProyecto, { recursive: true });
     fs.writeFileSync(path.join(carpetaProyecto, 'index.html'), paginaProyecto(d, p));
   });
   console.log(path.join(d.carpeta, 'proyectos') + ': ' + d.proyectos.length + ' páginas de proyecto');
+});
+
+// 404.html: la sirve nginx para cualquier ruta que no exista, así que no
+// puede usar rutas relativas; lleva su estilo dentro y enlaces completos.
+fs.writeFileSync(path.join(__dirname, '404.html'), `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada · Henry Arce</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #F3F6FA; color: #191C20; font-family: 'Roboto Flex', Roboto, 'Segoe UI', system-ui, sans-serif; }
+    main { max-width: 520px; padding: 40px 28px; border-radius: 28px; background: #FFFFFF; text-align: center; }
+    p.codigo { margin: 0; color: #1D4F7A; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; }
+    h1 { margin: 8px 0 0; font-size: 26px; }
+    p { margin: 12px 0 0; color: #43474E; line-height: 1.6; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+    a { padding: 10px 18px; border-radius: 22px; background: #D3E4F5; color: #0B2E4B; font-weight: 600; text-decoration: none; }
+    a:first-child { background: #1D4F7A; color: #FFFFFF; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="codigo">404</p>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté mal escrito o que la página se haya movido. / This page doesn’t exist.</p>
+    <nav><a href="${SITIO}">Ir al inicio</a><a href="${SITIO}#proyectos">Ver proyectos</a><a href="mailto:${CORREO}">${CORREO}</a></nav>
+  </main>
+</body>
+</html>
+`);
+
+LEGALES.forEach(l => {
+  const carpeta = path.join(__dirname, l.ruta);
+  fs.mkdirSync(carpeta, { recursive: true });
+  fs.writeFileSync(path.join(carpeta, 'index.html'), paginaLegal(l));
+  console.log(l.ruta + 'index.html generado');
 });
 
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap());
