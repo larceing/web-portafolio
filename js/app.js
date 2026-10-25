@@ -25,7 +25,7 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       if (!detalle) return;
 
       cabecera.style.setProperty('--c', detalle.dataset.color);
-      cabecera.innerHTML = tesela.querySelector('svg').outerHTML;
+      cabecera.innerHTML = tesela.querySelector('.tesela-cara').innerHTML;
       cuerpo.innerHTML = detalle.innerHTML;
       cuerpo.querySelector('h3').id = 'fichaTitulo';
 
@@ -98,6 +98,23 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       if (f.dataset.filtro !== 'todos') abrir();
     });
   });
+})();
+
+// «Lo que puede ganar tu empresa»: las escaleras suben al entrar en pantalla.
+(function() {
+  const zona = document.querySelector('.niveles');
+  if (!zona || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  zona.querySelectorAll('.nivel').forEach(function(n) { n.classList.add('animar'); });
+  const io = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visto');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  zona.querySelectorAll('.nivel').forEach(function(n) { io.observe(n); });
 })();
 
 document.getElementById('anio').textContent = new Date().getFullYear();

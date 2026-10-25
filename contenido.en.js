@@ -24,6 +24,7 @@ module.exports = {
     otroIdioma: 'Español',
     otroIdiomaAria: 'Versión en español',
     antetitulo: 'Data analyst and developer · Alicante, Spain',
+    lema2: 'MEASURE IS BEST',
     h1: 'I automate processes and put AI to work <em>on business data.</em>',
     intro: 'I’m Henry Arce, a data analyst and developer based in Alicante, Spain, and the founder of <a href="#arcedatalab">Arce Data Lab</a>. I find the manual tasks in a team, turn them into workflows, assistants and reports, and measure what is gained. Since 2019, first in consulting firms and now inside industry.',
     fotoAlt: 'Henry Arce at the City of Arts and Sciences in Valencia',
@@ -37,8 +38,15 @@ module.exports = {
       ['139,760', 'impressions on my most-read LinkedIn post'],
       ['EU', 'own servers, backed up every night']
     ],
-    queHago: 'What I do',
-    queHagoSub: 'Four fronts with one goal: your team stops losing hours',
+    queHago: 'What your company can gain',
+    queHagoSub: 'From the simplest to the most complete. We start with whatever takes up most of your time.',
+    nivelesNombres: ['To start', 'Next step', 'Complete'],
+    niveles: [
+      ['flujo', 'Task automation', ['Alerts and emails that send themselves', 'Forms and sheets filled in without copying by hand', 'Whole processes across ERP, CRM and email']],
+      ['bot', 'AI assistants', ['Answers to the usual questions', 'An assistant that searches your documents', 'AI that queries your ERP without making up figures']],
+      ['grafico', 'Data and Power BI', ['Your Excel tidy, with figures that add up', 'A dashboard with what matters', 'Reports that refresh themselves every morning']],
+      ['escritorio', 'Custom applications', ['A website with bookings or appointments', 'A CRM or a ticket manager', 'ERP and CRM connected, with your brand']]
+    ],
     verServicios: 'See services and prices',
     verTodos: 'See all {n} projects',
     verProyectosHechos: 'See finished projects',

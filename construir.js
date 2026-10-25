@@ -304,6 +304,7 @@ const UI = {
   otroIdioma: 'English',
   otroIdiomaAria: 'English version',
   antetitulo: 'Analista de datos y desarrollador · Alicante',
+  lema2: 'LA MEDIDA ES LO MEJOR',
   h1: 'Automatizo procesos y pongo la IA a trabajar <em>con los datos del negocio.</em>',
   intro: 'Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de <a href="#arcedatalab">Arce Data Lab</a>. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.',
   fotoAlt: 'Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia',
@@ -317,8 +318,15 @@ const UI = {
     ['139.760', 'impresiones en mi publicación más leída de LinkedIn'],
     ['UE', 'servidores propios, con copias cada noche']
   ],
-  queHago: 'Lo que hago',
-  queHagoSub: 'Cuatro frentes con un mismo objetivo: que tu equipo deje de perder horas',
+  queHago: 'Lo que puede ganar tu empresa',
+  queHagoSub: 'De lo más sencillo a lo más completo. Se empieza por lo que más tiempo os quita.',
+  nivelesNombres: ['Para empezar', 'Siguiente paso', 'Completo'],
+  niveles: [
+    ['flujo', 'Automatización de tareas', ['Avisos y correos que salen solos', 'Formularios y hojas que se rellenan sin copiar a mano', 'Procesos enteros entre ERP, CRM y correo']],
+    ['bot', 'Asistentes de IA', ['Respuestas a las preguntas de siempre', 'Un asistente que busca en tus documentos', 'IA que consulta tu ERP sin inventar cifras']],
+    ['grafico', 'Datos y Power BI', ['Tu Excel ordenado y con las cifras cuadradas', 'Un cuadro de mando con lo importante', 'Informes que se actualizan solos cada mañana']],
+    ['escritorio', 'Aplicaciones a medida', ['Una web con reservas o citas', 'Un CRM o un gestor de incidencias', 'ERP y CRM conectados, con tu marca']]
+  ],
   verServicios: 'Ver servicios y tarifas',
   verTodos: 'Ver los {n} proyectos',
   verProyectosHechos: 'Ver proyectos hechos',
@@ -646,6 +654,22 @@ function datosProyecto(d, p) {
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
 const DESTACADOS = ['reporting', 'asistente', 'sindri', 'gestor', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
 const PROYECTOS_A_LA_VISTA = 9;
+
+// Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
+const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp' };
+
+// Logo de Arce Data Lab: media hoja de arce con el nombre encima, a la manera
+// del de NERV, y el lema de Cleóbulo («la medida es lo mejor»). Va en línea
+// para que use la tipografía de la página.
+const HOJA_ARCE = 'M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z';
+function logoArce(lema) {
+  return '<svg class="logo-arce" viewBox="-12 -162 330 290" role="img" aria-label="Arce Data Lab">' +
+    '<path class="logo-hoja" d="' + HOJA_ARCE + '"/>' +
+    '<text class="logo-nombre" x="18" y="18">ARCE</text>' +
+    '<text class="logo-lab" x="22" y="56">DATA LAB</text>' +
+    '<text class="logo-lema" x="22" y="88">ΜΕΤΡΟΝ ΑΡΙΣΤΟΝ</text>' +
+    '<text class="logo-lema" x="22" y="108">' + lema + '</text></svg>';
+}
 const AL_FINAL = ['clubbyte'];
 
 function enPortada(lista) {
@@ -653,9 +677,9 @@ function enPortada(lista) {
   return lista.slice().sort((a, b) => peso(a) - peso(b));
 }
 
-function tesela(p, t, extra) {
+function tesela(p, t, extra, base) {
   return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '"' + (extra ? ' data-extra' : '') + ' style="--c:' + p.color + '">\n' +
-    '        <span class="tesela-cara">' + icono(p.icono) + '</span>\n' +
+    '        <span class="tesela-cara">' + (LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="76" height="76" loading="lazy">' : icono(p.icono)) + '</span>\n' +
     '        <span class="tesela-titulo">' + p.corto + '</span>\n' +
     '        <span class="tesela-tipo">' + t.tipos[p.tipo] + '</span>\n' +
     '      </button>';
@@ -719,7 +743,7 @@ function cabeza(d, p) {
   <script type="application/ld+json">${jsonLd(p.datos)}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap">
   <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
 </head>
 
@@ -747,6 +771,7 @@ function pagina(d) {
   return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
   <main id="contenido" class="portadilla">
     <section class="portada" id="inicio">
+      <img class="portada-boceto" src="${base}img/boceto.webp" alt="" width="720" height="720" aria-hidden="true">
       <div class="portada-dentro">
         <div class="portada-texto">
           <p class="antetitulo">${t.antetitulo}</p>
@@ -754,7 +779,7 @@ function pagina(d) {
           <p class="intro">${t.intro}</p>
           <p class="botones"><a class="boton" href="#proyectos">${t.inicioBotones[0]}</a><a class="boton secundario" href="#contacto">${t.inicioBotones[1]}</a></p>
         </div>
-        <img src="${base}img/foto.webp" alt="${t.fotoAlt}" width="640" height="640">
+        <div class="portada-logo">${logoArce(t.lema2)}</div>
         <ul class="datos-clave">
 ${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
         </ul>
@@ -773,7 +798,7 @@ ${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
       </div>
 
       <div class="cuadricula">
-${enPortada(d.proyectos).map((p, i) => tesela(p, t, i >= PROYECTOS_A_LA_VISTA)).join('\n')}
+${enPortada(d.proyectos).map((p, i) => tesela(p, t, i >= PROYECTOS_A_LA_VISTA, base)).join('\n')}
       </div>
       <button type="button" class="ver-todos" id="verTodos">${t.verTodos.replace('{n}', d.proyectos.length)}</button>
     </section>
@@ -783,9 +808,9 @@ ${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
     <section class="bloque" id="que-hago" data-bit="servicios">
       <h2>${t.queHago}</h2>
       <p class="sub">${t.queHagoSub}</p>
-      <ol class="enfoque">
-${d.areas.map(a => '        <li>' + icono(a.icono) + '<h3>' + a.titulo + '</h3><p>' + a.texto + '</p></li>').join('\n')}
-      </ol>
+      <div class="niveles">
+${t.niveles.map(n => '        <article class="nivel" data-icono="' + n[0] + '">\n          <div class="nivel-cabeza"><span class="nivel-icono">' + icono(n[0]) + '</span><h3>' + n[1] + '</h3></div>\n          <ol class="escalera">' + n[2].map((x, i) => '<li style="--i:' + i + '"><span class="peldano"><em>' + t.nivelesNombres[i] + '</em>' + x + '</span></li>').join('') + '</ol>\n        </article>').join('\n')}
+      </div>
     </section>
 
     <section class="bloque cinta" id="automatizacion" data-bit="cinta">
