@@ -58,13 +58,13 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 - **¿Qué servicios ofrece Arce Data Lab?** Automatización de procesos, cuadros de mando con Power BI y Microsoft Fabric, asistentes de IA sobre los datos del negocio y aplicaciones a medida (ERP, CRM, citas), desplegadas en infraestructura propia en la UE.
 - **¿Qué tipo de proyectos hace?** Automatiza tareas repetitivas, conecta ERP, CRM y bases de datos, crea informes de Power BI y Microsoft Fabric, y pone asistentes de IA a responder sobre los datos del negocio en solo lectura.
 - **¿Trabaja con pymes?** Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.
-- **¿Cuánto cuesta un proyecto?** Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.
-- **¿Cuánto tarda?** Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.
 - **¿Mis datos están seguros?** Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.
-- **¿Cómo se empieza?** Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.
 - **¿Qué es Club Byte?** Club Byte es el canal de YouTube (@clubbyte_es) y el blog de Arce Data Lab que explica informática y tecnología a niños de 8 a 12 años, con retos sin pantalla para familias y docentes.
 - **¿Dónde publica contenido?** En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en YouTube con Club Byte para niños.
 - **¿Cómo contactar?** Por correo a info@arcedatalab.com, por WhatsApp al +34 633 42 42 23 o por LinkedIn; para soporte de las aplicaciones, soporte@arcedatalab.com.
+- **¿Cuánto cuesta un proyecto?** Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.
+- **¿Cuánto tarda?** Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.
+- **¿Cómo se empieza?** Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.
 
 ## Trayectoria
 - Abr 2026 – actualidad: Business Applications Administrator, F&D Shower Tray (ES Group)
@@ -76,4 +76,5 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 
 ## Otras páginas
 - [English version](https://arcedatalab.com/en/)
+- [Servicios y tarifas](https://arcedatalab.com/servicios/)
 - [Publicaciones de LinkedIn](https://arcedatalab.com/linkedin/)

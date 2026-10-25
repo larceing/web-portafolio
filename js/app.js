@@ -82,4 +82,22 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
   });
 })();
 
+// «Ver todos»: la portada enseña nueve proyectos; el botón o cualquier filtro
+// abren la lista completa.
+(function() {
+  const boton = document.getElementById('verTodos');
+  const cuadricula = document.querySelector('.cuadricula');
+  if (!boton || !cuadricula) return;
+  function abrir() {
+    cuadricula.classList.add('abierta');
+    boton.hidden = true;
+  }
+  boton.addEventListener('click', abrir);
+  document.querySelectorAll('.filtro').forEach(function(f) {
+    f.addEventListener('click', function() {
+      if (f.dataset.filtro !== 'todos') abrir();
+    });
+  });
+})();
+
 document.getElementById('anio').textContent = new Date().getFullYear();
