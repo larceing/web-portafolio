@@ -7,7 +7,7 @@ module.exports = {
     lang: 'en',
     titulo: 'Henry Arce · Automation, applied AI and Power BI | Arce Data Lab',
     descripcion: 'Henry Arce, founder of Arce Data Lab (Alicante, Spain): automation, applied AI, Power BI and custom apps for SMEs and industry. Real projects and open source.',
-    ogDescripcion: 'Automation, applied AI and data for SMEs and industry. Real projects, open source and Club Byte.',
+    ogDescripcion: 'Automation, applied AI and data for SMEs and industry. Real projects, dashboards and open source.',
     locale: 'en_GB',
     idiomaNombre: 'English',
     linkedinTitulo: 'Posts on LinkedIn',
@@ -125,7 +125,7 @@ module.exports = {
     arceTexto: '<strong>Arce Data Lab</strong> is the lab where I build apps, dashboards and AI assistants for SMEs and industry, with its own deployment platform, email and document services. Every project marked as an own product lives there.',
     arceEnlacesTextos: ['Client demos', 'TikTok @arcedatalab'],
     clubbyteTitulo: 'Club Byte',
-    clubbyteTexto: '<strong>Club Byte</strong> is Arce Data Lab’s educational channel, in Spanish: it explains to children aged 8 to 12 how computing works, with Lía, Teo and Bit the robot. His big brother, Byte, is the Arce Data Lab assistant keeping you company on this page. Every episode ends with an unplugged challenge for home or the classroom.',
+    clubbyteTexto: '<strong>Club Byte</strong> is a personal 3D animation project, separate from Arce Data Lab, in Spanish: it explains to children aged 8 to 12 how computing works, with Lía, Teo and Bit the robot. His big brother, Byte, is the Arce Data Lab assistant keeping you company on this page. Every episode ends with an unplugged challenge for home or the classroom.',
     clubbyteEnlacesTextos: ['YouTube @clubbyte_es', 'Blog for families and teachers'],
     bitAlt: 'Byte, the Arce Data Lab assistant',
     preguntas: 'Frequently asked questions',
@@ -137,8 +137,7 @@ module.exports = {
       ['What kind of projects does he do?', 'He automates repetitive tasks, connects ERP, CRM and databases, builds Power BI and Microsoft Fabric reports, and puts AI assistants to answer questions on business data in read-only mode.'],
       ['Does he work with SMEs?', 'Yes: with SMEs and factories that have manual tasks or data that does not add up, remotely or from Alicante.'],
       ['Is my data safe?', 'Yes: read-only access is used whenever possible, and the apps run on EU servers with nightly backups.'],
-      ['What is Club Byte?', 'Club Byte is Arce Data Lab’s YouTube channel (@clubbyte_es) and blog that explains computing and technology to children aged 8 to 12, in Spanish, with unplugged challenges for families and teachers.'],
-      ['Where does he publish content?', 'On LinkedIn about BI, data and applied AI, on TikTok (@arcedatalab) with quick automation and data tips, and on YouTube with Club Byte for kids.'],
+      ['Where does he publish content?', 'On LinkedIn about BI, data and applied AI, on TikTok (@arcedatalab) with quick automation and data tips, and on Instagram (@henry_arce_dev). Soon on YouTube too, on the Imagina en IT channel.'],
       ['How can I get in touch?', 'By email at info@arcedatalab.com, by WhatsApp at +34 633 42 42 23 or on LinkedIn; for support with the apps, soporte@arcedatalab.com.']
     ],
     faqServicios: [
@@ -152,7 +151,7 @@ module.exports = {
       hola: 'Hi, I’m Byte, the Arce Data Lab assistant. I’ll guide you through the site and sum up each project.',
       servicios: 'If a task in your company repeats every week, it can probably be automated.',
       infraestructura: 'This site and the client apps run here: containers, HTTPS and nightly backups.',
-      arcedatalab: 'Arce Data Lab builds software and data solutions for SMEs. My little brother Bit hosts Club Byte.',
+      arcedatalab: 'Arce Data Lab builds software, dashboards and AI assistants for SMEs.',
       proyectos: 'Open any project and I’ll sum up the problem, the solution and the result.',
       ficha: 'Project summary.',
       jugar: ['While you read, I’m checking the data.', 'Systems check: all good.', 'Still here. Let me know if you want a summary.', 'Checking that every app responds.'],
@@ -179,7 +178,7 @@ module.exports = {
 
   PROYECTOS: {
     clubbyte: {
-      corto: 'Club Byte', titulo: 'Club Byte: technology explained to children aged 8 to 12', etiqueta: 'Arce Data Lab · educational channel · 2026',
+      corto: 'Club Byte', titulo: 'Club Byte: technology explained to children aged 8 to 12', etiqueta: 'Personal project · 3D animation · 2026',
       caso: [
         ['Problem', 'There is hardly any content in Spanish that explains to children how computing works through stories and characters, without selling a course behind it.'],
         ['What I did', 'A YouTube channel and a blog with two main characters, Lía and Teo, and Bit, a robot made in Blender. Each episode explains one idea (sensors, conditionals, binary, algorithms) and ends with an unplugged challenge for home or class.'],

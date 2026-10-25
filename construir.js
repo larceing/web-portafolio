@@ -35,7 +35,7 @@ const GITHUB = 'https://github.com/larceing';
 const TELEFONO = '+34 633 42 42 23';
 const WHATSAPP = 'https://wa.me/34633424223';
 
-// Arce Data Lab (la marca) y Club Byte (su canal infantil).
+// Arce Data Lab (la marca) y Club Byte (proyecto personal de animación, aparte).
 const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
@@ -100,7 +100,7 @@ const C = { tinta: '#15202B', azul: '#1D4F7A', cielo: '#2E6C9E', pizarra: '#3F52
 const PROYECTOS = [
   {
     id: 'clubbyte', corto: 'Club Byte', titulo: 'Club Byte: tecnología explicada a niños de 8 a 12 años',
-    tipo: 'producto', etiqueta: 'Arce Data Lab · canal educativo · 2026', icono: 'video', color: C.tostado,
+    tipo: 'producto', etiqueta: 'Proyecto personal · animación 3D · 2026', icono: 'video', color: C.tostado,
     caso: [
       ['Problema', 'Casi no hay contenido en castellano que explique a niños y niñas cómo funciona la informática con historias y personajes, sin vender un curso detrás.'],
       ['Qué hice', 'Un canal de YouTube y un blog con dos protagonistas, Lía y Teo, y Bit, un robot hecho en Blender. Cada capítulo explica una idea (sensores, condicionales, binario, algoritmos) y termina con un reto sin pantalla para hacer en casa o en clase.'],
@@ -287,7 +287,7 @@ const UI = {
   lang: 'es',
   titulo: 'Henry Arce · Automatización, IA aplicada y Power BI | Arce Data Lab',
   descripcion: 'Henry Arce, fundador de Arce Data Lab (Alicante): automatización, IA aplicada, Power BI y apps a medida para pymes e industria. Proyectos reales y open source.',
-  ogDescripcion: 'Automatización, IA aplicada y datos para pymes e industria. Proyectos reales, open source y Club Byte.',
+  ogDescripcion: 'Automatización, IA aplicada y datos para pymes e industria. Proyectos reales, cuadros de mando y open source.',
   locale: 'es_ES',
   idiomaNombre: 'Español',
   linkedinTitulo: 'Publicaciones en LinkedIn',
@@ -405,7 +405,7 @@ const UI = {
   arceTexto: '<strong>Arce Data Lab</strong> es el laboratorio desde el que construyo aplicaciones, cuadros de mando y asistentes de IA para pymes e industria, con su propia plataforma de despliegue, correo y documentos. Todo lo que ves en los proyectos marcados como producto propio vive allí.',
   arceEnlaces: [['Demos para clientes', DEMOS], ['TikTok @arcedatalab', TIKTOK]],
   clubbyteTitulo: 'Club Byte',
-  clubbyteTexto: '<strong>Club Byte</strong> es el canal educativo de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
+  clubbyteTexto: '<strong>Club Byte</strong> es un proyecto personal de animación 3D, aparte de Arce Data Lab: explica a niños y niñas de 8 a 12 años cómo funciona la informática con Lía, Teo y el robot Bit. Su hermano mayor, Byte, es el asistente de Arce Data Lab que te acompaña en esta página. Cada capítulo acaba con un reto sin pantalla para hacer en casa o en clase.',
   clubbyteEnlaces: [['YouTube @clubbyte_es', CLUBBYTE_YOUTUBE], ['Blog para familias y docentes', CLUBBYTE_BLOG]],
   bitAlt: 'Byte, el asistente de Arce Data Lab',
   preguntas: 'Preguntas frecuentes',
@@ -417,8 +417,7 @@ const UI = {
     ['¿Qué tipo de proyectos hace?', 'Automatiza tareas repetitivas, conecta ERP, CRM y bases de datos, crea informes de Power BI y Microsoft Fabric, y pone asistentes de IA a responder sobre los datos del negocio en solo lectura.'],
     ['¿Trabaja con pymes?', 'Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.'],
     ['¿Mis datos están seguros?', 'Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.'],
-    ['¿Qué es Club Byte?', 'Club Byte es el canal de YouTube (@clubbyte_es) y el blog de Arce Data Lab que explica informática y tecnología a niños de 8 a 12 años, con retos sin pantalla para familias y docentes.'],
-    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en YouTube con Club Byte para niños.'],
+    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en Instagram (@henry_arce_dev). Pronto también en YouTube, en el canal Imagina en IT.'],
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
   ],
   faqServicios: [
@@ -432,7 +431,7 @@ const UI = {
     hola: 'Hola, soy Byte, el asistente de Arce Data Lab. Te acompaño por la web y te resumo cada proyecto.',
     servicios: 'Si en tu empresa una tarea se repite cada semana, probablemente se puede automatizar.',
     infraestructura: 'Esta web y las aplicaciones de los clientes funcionan aquí: contenedores, HTTPS y copias cada noche.',
-    arcedatalab: 'Arce Data Lab desarrolla software y soluciones de datos para pymes. Mi hermano pequeño, Bit, presenta Club Byte.',
+    arcedatalab: 'Arce Data Lab desarrolla software, cuadros de mando y asistentes de IA para pymes.',
     proyectos: 'Abre cualquier proyecto y te resumo el problema, la solución y el resultado.',
     ficha: 'Resumen del proyecto.',
     jugar: ['Mientras lees, reviso los datos.', 'Comprobación de sistemas: todo en orden.', 'Sigo aquí. Avísame si quieres un resumen.', 'Revisando que todas las aplicaciones respondan.'],
@@ -563,8 +562,7 @@ function organizacion() {
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
       { '@type': 'ContactPoint', contactType: 'technical support', email: SOPORTE, availableLanguage: ['es'] }
     ],
-    sameAs: [TIKTOK, CLUBBYTE_YOUTUBE],
-    brand: { '@id': ID_CLUBBYTE },
+    sameAs: [TIKTOK, INSTAGRAM, LINKEDIN],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
       itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
@@ -582,7 +580,6 @@ function clubbyte() {
     description: 'Canal educativo que explica informática y tecnología a niños y niñas de 8 a 12 años, con retos sin pantalla para familias y docentes.',
     audience: { '@type': 'PeopleAudience', suggestedMinAge: 8, suggestedMaxAge: 12 },
     educationalUse: 'Pensamiento computacional',
-    publisher: { '@id': ID_ORG },
     creator: { '@id': ID_PERSONA },
     sameAs: [CLUBBYTE_YOUTUBE, CLUBBYTE_CANAL]
   };
@@ -841,7 +838,6 @@ ${t.cintaPasos.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
           <p class="enlaces">${t.arceEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
         </article>
       </div>
-      <p class="mas">${t.clubbyteLinea} ${t.clubbyteEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join(' · ')}</p>
     </section>
 
     <section class="bloque" id="infraestructura" data-bit="infraestructura">
@@ -906,7 +902,6 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
         <a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
         <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
         <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
-        <a href="${CLUBBYTE_YOUTUBE}" target="_blank" rel="noopener">YouTube · Club Byte</a>
       </p>
       <p class="telefono"><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a> · ${t.telefono}</p>
       <p class="telefono">${t.soporte}: <a href="mailto:${SOPORTE}">${SOPORTE}</a></p>
@@ -1038,7 +1033,7 @@ function pie(t, raiz, inicio) {
         '<a href="' + inicio + 'servicios/">' + t.menu.servicios + '</a>',
         '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
       ])}
-      ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub'), fuera(CLUBBYTE_YOUTUBE, 'YouTube · Club Byte')])}
+      ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub')])}
       ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (t.lang === 'en' ? l.en : l.es) + '</a>'))}
     </div>
     <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
@@ -1097,7 +1092,7 @@ function paginaLegal(l) {
 const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
-  const guion = Object.assign({}, t.bit, { canalUrl: CLUBBYTE_YOUTUBE });
+  const guion = Object.assign({}, t.bit);
   return `  <aside class="bit" id="bit" data-paseo="guia" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
@@ -1199,8 +1194,8 @@ function llms() {
     '- Nombre: Luis Henry Arce Inga (Henry Arce). Alicante, España.',
     '- Marca: Arce Data Lab (' + ARCE + '). Correo: ' + CORREO + '. Soporte: ' + SOPORTE + '.',
     '- Especialidad: automatización de procesos, IA aplicada sobre datos de negocio, Power BI y Microsoft Fabric, apps a medida (ERP, CRM).',
-    '- Perfiles: LinkedIn ' + LINKEDIN + ' · GitHub ' + GITHUB + ' · TikTok ' + TIKTOK,
-    '- Club Byte (canal educativo para niños de 8 a 12 años): YouTube ' + CLUBBYTE_YOUTUBE + ' · blog ' + CLUBBYTE_BLOG, '',
+    '- Perfiles: LinkedIn ' + LINKEDIN + ' · GitHub ' + GITHUB + ' · TikTok ' + TIKTOK + ' · Instagram ' + INSTAGRAM,
+    '- Club Byte (' + CLUBBYTE_BLOG + ') es un proyecto personal de animación 3D para niños, aparte de Arce Data Lab: no es un servicio ni una marca de la empresa.', '',
     '## Servicios'
   ].concat(UI.serviciosLista.map(x => '- **' + x[1] + '**: ' + plano(x[2])))
    .concat(['', '## Infraestructura propia']).concat(UI.infraLista.map(x => '- **' + x[0] + '**: ' + plano(x[1])))
