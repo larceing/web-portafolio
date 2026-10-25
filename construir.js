@@ -741,9 +741,7 @@ function cabeza(d, p) {
   <link rel="me" href="${LINKEDIN}">
   <link rel="me" href="${GITHUB}">
   <script type="application/ld+json">${jsonLd(p.datos)}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400..700&display=swap">
+  <link rel="preload" href="${p.raiz}fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
 </head>
 
@@ -902,7 +900,7 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
         <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
         <a href="${CLUBBYTE_YOUTUBE}" target="_blank" rel="noopener">YouTube · Club Byte</a>
       </p>
-      <p class="telefono">${TELEFONO} · ${t.telefono}</p>
+      <p class="telefono"><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a> · ${t.telefono}</p>
       <p class="telefono">${t.soporte}: <a href="mailto:${SOPORTE}">${SOPORTE}</a></p>
       <p class="contacto-servicios"><a href="servicios/">${t.verServicios} →</a></p>
     </section>
@@ -1201,6 +1199,37 @@ IDIOMAS.forEach(d => {
   });
   console.log(path.join(d.carpeta, 'proyectos') + ': ' + d.proyectos.length + ' páginas de proyecto');
 });
+
+// 404.html: la sirve nginx para cualquier ruta que no exista, así que no
+// puede usar rutas relativas; lleva su estilo dentro y enlaces completos.
+fs.writeFileSync(path.join(__dirname, '404.html'), `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada · Henry Arce</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #F3F6FA; color: #191C20; font-family: 'Roboto Flex', Roboto, 'Segoe UI', system-ui, sans-serif; }
+    main { max-width: 520px; padding: 40px 28px; border-radius: 28px; background: #FFFFFF; text-align: center; }
+    p.codigo { margin: 0; color: #1D4F7A; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; }
+    h1 { margin: 8px 0 0; font-size: 26px; }
+    p { margin: 12px 0 0; color: #43474E; line-height: 1.6; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+    a { padding: 10px 18px; border-radius: 22px; background: #D3E4F5; color: #0B2E4B; font-weight: 600; text-decoration: none; }
+    a:first-child { background: #1D4F7A; color: #FFFFFF; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="codigo">404</p>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté mal escrito o que la página se haya movido. / This page doesn’t exist.</p>
+    <nav><a href="${SITIO}">Ir al inicio</a><a href="${SITIO}#proyectos">Ver proyectos</a><a href="mailto:${CORREO}">${CORREO}</a></nav>
+  </main>
+</body>
+</html>
+`);
 
 LEGALES.forEach(l => {
   const carpeta = path.join(__dirname, l.ruta);
