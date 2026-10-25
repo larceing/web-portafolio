@@ -172,7 +172,13 @@ module.exports = {
     serviciosDescripcion: 'Process automation with n8n, Power BI dashboards, AI assistants and custom websites for SMEs, with a guide price calculator and a free 45-minute review.',
     whatsappDiagnostico: 'https://wa.me/34633424223?text=' + encodeURIComponent('Hi Henry, I’m interested in the free 45-minute review for my business.'),
     proyectos: 'Projects',
-    proyectosSub: 'Click any of them to see the problem it solved and how I did it',
+    proyectosSub: 'You can try the main ones in the lab, with made-up data. The rest are below, in short.',
+    principales: 'Main projects',
+    masProyectos: 'More projects',
+    masSub: 'Click any of them to see the problem it solved and how I did it',
+    enLab: 'In the lab',
+    verCaso: 'See the case',
+    tambien: 'Also in the lab',
     filtrosAria: 'Filter projects',
     todos: 'All',
     tipos: { producto: 'Own product', empresa: 'For a company', abierto: 'Open source' },
@@ -307,6 +313,17 @@ module.exports = {
   ],
 
   PROYECTOS: {
+    ada: {
+      corto: 'Ada, marketing', titulo: 'Ada: marketing for my channels with n8n and AI', etiqueta: 'Own product · running · 2026',
+      resumen: 'Prepares, reviews and publishes the videos and posts of five channels. A weekly cycle, a nightly check and a queue where nothing goes out without review.',
+      probar: 'Be Ada for a week: stories, a used-up quota, the 8 pm review and publishing.',
+      caso: [
+        ['Problem', 'Running YouTube, Instagram, TikTok and LinkedIn with videos, covers and copy every day eats up the evenings, and the day something breaks, nothing gets published.'],
+        ['What I did', 'Ada, a system in n8n that works in two cycles. Every week it asks ChatGPT for the stories and prepares episodes, reels, posts and campaigns; every night it looks back at the day and, if it is worth it, prepares a news video. ChatGPT writes the stories and makes the images, Google AI Studio does the voices, and editing, clips and covers come from my own video engine. Everything goes into a queue: the evening before, at 8 pm, it checks cover, copy, time, a maximum of three posts a day per network and no repeated topic within 14 days, and sends an email with a “Stop” button for each post.'],
+        ['Result', 'Approved posts go out through Buffer and the YouTube API, and the video is archived on its own. An error and alert log: if the image or voice quota runs out, it records the time and picks the work up again when there is quota; if a network fails, it asks for a manual upload. Review and alerts are live; automatic publishing is in testing.']
+      ],
+      tec: ['n8n', 'OpenAI API', 'Google AI Studio', 'Buffer', 'YouTube API', 'rclone']
+    },
     clubbyte: {
       corto: 'Club Byte', titulo: 'Club Byte: technology explained to children aged 8 to 12', etiqueta: 'Personal project · 3D animation · 2026',
       caso: [
@@ -326,6 +343,8 @@ module.exports = {
     },
     sindri: {
       corto: 'Sindri ERP', titulo: 'Sindri: ERP for small manufacturers', etiqueta: 'Own product · open source · 2026',
+      resumen: 'ERP for small factories: orders, a warehouse with batches, invoices ready for VERI*FACTU and the shop floor connected through Efesto.',
+      probar: 'From sales to the shop floor: opportunity, order, routing, a pallet with its batch and the delivery note.',
       texto: 'ERP for small factories: customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, the CRM. It receives the billable support hours from Odin and builds its PDFs with Report Server.',
       tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'REST API', 'Docker']
     },
@@ -359,11 +378,15 @@ module.exports = {
     },
     asistente: {
       corto: 'Lin-AI, assistant', titulo: 'Lin-AI: AI assistant on top of the ERP', etiqueta: 'For Grupo SPSIL · 2026',
+      resumen: 'Business questions to the ERP in plain language, with closed queries so it does not make data up.',
+      probar: 'Ask the ERP, see which query it picks and download the answer.',
       texto: 'An assistant that answers business questions by querying the ERP in read-only mode. Each type of query is a closed function; the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated, and it answers in text or in Excel.',
       tec: ['Python', 'Agents', 'Knowledge base', 'SQL Server']
     },
     reporting: {
       corto: 'BI reporting', titulo: 'Sales, collections and stock reporting', etiqueta: 'For Grupo SPSIL · 2025–2026',
+      resumen: 'Sales, collections and stock in Power BI, migrated to Microsoft Fabric and checked before and after.',
+      probar: 'Filter, switch pages and refresh the model step by step.',
       texto: 'Power BI reports on top of the ERP for management, sales and purchasing. After a network change cut off the data sources, I migrated the processes to Dataflows and a Lakehouse in Microsoft Fabric. Every change to a view ships with its backup, its rollback script and a before-and-after check.'
     },
     nutricion: {
@@ -407,6 +430,8 @@ module.exports = {
     },
     tareas: {
       corto: 'Aris, tasks', titulo: 'Aris: tasks and projects for teams', etiqueta: 'Open source · web app',
+      resumen: 'Kanban, Scrum, wiki and calendar for teams, with an API designed for AI agents.',
+      probar: 'A ticket from Odin arrives as a card and you take it to “Done”.',
       texto: 'A web app to organise a team’s work: Kanban and Scrum boards, calendar and agenda, wiki, notes, whiteboard, SLA, person-to-person notes, activity walls and an API designed for AI agents. It is a base version with no company data: branding, login (local or Keycloak) and optional modules are set in one file, and it installs with Docker and demo data.'
     },
     themelab: {

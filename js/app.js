@@ -8,9 +8,9 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
     });
 
     let vistas = 0;
-    document.querySelectorAll('.tesela').forEach(function(t) {
+    document.querySelectorAll('.mini').forEach(function(t) {
       const fuera = filtro !== 'todos' && t.dataset.tipo !== filtro;
-      t.classList.toggle('oculta', fuera);
+      t.parentNode.hidden = fuera;
       if (!fuera) vistas++;
     });
 
@@ -20,19 +20,21 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
   });
 });
 
-// Ficha de proyecto: se abre al pulsar una tesela.
+// Ficha de proyecto: se abre al pulsar un proyecto de la lista corta o
+// «Ver el caso» en un proyecto principal.
 (function() {
   const ficha = document.getElementById('ficha');
   const cabecera = document.getElementById('fichaCabecera');
   const cuerpo = document.getElementById('fichaCuerpo');
 
-  document.querySelectorAll('.tesela').forEach(function(tesela) {
+  document.querySelectorAll('[data-detalle]').forEach(function(tesela) {
     tesela.addEventListener('click', function() {
       const detalle = document.getElementById(tesela.dataset.detalle);
       if (!detalle) return;
+      const tarjeta = tesela.closest('.principal') || tesela;
 
       cabecera.style.setProperty('--c', detalle.dataset.color);
-      cabecera.innerHTML = tesela.querySelector('.tesela-cara').innerHTML;
+      cabecera.innerHTML = tarjeta.querySelector('.tesela-cara').innerHTML;
       cuerpo.innerHTML = detalle.innerHTML;
       cuerpo.querySelector('h3').id = 'fichaTitulo';
 
