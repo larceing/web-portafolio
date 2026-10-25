@@ -38,10 +38,10 @@ module.exports = {
   },
   SERVICIOS: {
     'power-bi': {
-      titulo: 'Power BI consultant for SMEs · Dashboards | Arce Data Lab',
+      titulo: 'Power BI consultant for SMEs | Arce Data Lab',
       corto: 'Power BI',
       h1: 'Power BI consultant for SMEs',
-      descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL: sales, collections, stock and production with figures that add up. Work out what your dashboard costs in a minute.',
+      descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL, with figures that add up. Work out what your dashboard costs in a minute.',
       intro: 'If your company’s numbers live in several Excel files and someone spends hours every month pulling them together, a Power BI dashboard does it on its own. I connect it to your ERP, your spreadsheets or your database, reconcile the figures with accounting and hand it over documented.',
       incluye: [
         ['Tidy data', 'Cleaning and a data model with Power Query: one version of every figure, even when it comes from several places.'],
@@ -61,7 +61,7 @@ module.exports = {
       titulo: 'Business process automation with n8n | Arce Data Lab',
       corto: 'Automation with n8n',
       h1: 'Process automation with n8n',
-      descripcion: 'I use n8n to automate the tasks your team repeats every week: emails, alerts, orders, invoices and reports that move on their own between ERP, CRM, Excel and email.',
+      descripcion: 'I use n8n to automate the tasks your team repeats every week: emails, alerts, orders and reports moving on their own between your programs.',
       intro: 'Copying orders from email into the ERP, sending the same reminder every Monday or moving data from one sheet to another adds nothing and often goes wrong. With n8n I turn it into a flow that does it on its own, with alerts if something fails, and I host it on a server in the EU.',
       incluye: [
         ['Task map', 'We look together at what is done by hand, how often and how long it takes, to start with what pays off most.'],
@@ -81,7 +81,7 @@ module.exports = {
       titulo: 'Custom websites and web apps for SMEs | Arce Data Lab',
       corto: 'Websites and apps',
       h1: 'Custom websites and web apps for SMEs',
-      descripcion: 'Fast websites and custom applications for SMEs: bookings and appointments, online shop, CRM or ticket management, with your brand, on EU servers and with nightly backups.',
+      descripcion: 'Fast websites and custom apps for SMEs: bookings, online shop, CRM or ticketing, with your brand and hosted on EU servers.',
       intro: 'A website that loads fast, shows up on Google and lets customers book or buy without calling you. Or an application built around how your company works, instead of you adapting to generic software. I build it, publish it on my own infrastructure and maintain it.',
       incluye: [
         ['Design with your brand', 'Mobile-friendly, accessible and without heavy templates.'],
@@ -362,14 +362,17 @@ module.exports = {
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
     },
     efesto: {
-      corto: 'Efesto, shop floor', titulo: 'Efesto: connecting Sindri to the shop floor', etiqueta: 'Own product · in development',
-      texto: 'The shop-floor side of Sindri, SCADA style: an agent that reads the machines over OPC UA in read-only mode, keeps readings in a local queue if the network drops and gives each one an id so the server counts it only once. Its machine events join Sindri’s production reports.',
-      tec: ['OPC UA', 'Shop-floor agent', 'Offline queue', 'Sindri API']
+      corto: 'Efesto, shop floor', titulo: 'Efesto: Sindri reads the factory', etiqueta: 'Own product · part of Sindri · 2026',
+      caso: [
+        ['Problem', 'Machine status, good and bad parts and alarms stay inside each PLC or SCADA, far from the ERP, and connecting them usually means opening ports into the factory.'],
+        ['What I did', 'A read-only shop-floor agent with 16 connectors: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, historian SQL, files and scales, among others. The connection goes out from the factory, stores and resends if the network drops, and no plant addresses or passwords ever leave it.'],
+        ['Result', 'Tested with 22 simulated machines: 106 out of 106 data points reach Sindri. If one machine goes down, the rest carry on. Not yet connected to a real factory.']
+      ]
     },
     brokkr: {
-      corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM for Sindri', etiqueta: 'Own product · in progress',
-      texto: 'The in-house CRM, under construction: customers, contacts, opportunities and sales activities, with a tablet view. It is built as a Sindri module, so customers are never duplicated across two programs and what is sold goes straight into quotes and orders.',
-      tec: ['Sindri module', 'REST API', 'Keycloak']
+      corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM for a small manufacturer’s sales rep', etiqueta: 'Own product · in progress',
+      texto: 'The in-house CRM, in progress. It is a Sindri module sharing the same customers, quotes, orders and invoices, so nothing is duplicated. The goal: log a visit in under 30 seconds from a phone or handheld, even without coverage; opportunities that win themselves when the order is confirmed; and one timeline per customer with calls, quotes, invoices, payments and Odin tickets. The pipeline, activities and quotes already work inside Sindri; before going further I analysed 15 open-source CRMs.',
+      tec: ['Sindri module', 'Fastify', 'PostgreSQL', 'React', 'Keycloak']
     },
     tareas: {
       corto: 'Aris, tasks', titulo: 'Aris: tasks and projects for teams', etiqueta: 'Open source · web app',

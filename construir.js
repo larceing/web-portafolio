@@ -129,16 +129,22 @@ const PROYECTOS = [
     enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
   },
   {
-    id: 'efesto', corto: 'Efesto, planta', titulo: 'Efesto: la conexión de Sindri con la planta',
-    tipo: 'producto', etiqueta: 'Producto propio · en desarrollo', icono: 'servidor', color: C.tostado,
-    texto: 'La parte de planta de Sindri, tipo SCADA: un agente que lee las máquinas por OPC UA en solo lectura, guarda las lecturas en una cola local si se corta la red y les pone un identificador para que el servidor cuente cada una una sola vez. Sus eventos de máquina se unen a los partes de fabricación de Sindri.',
-    tec: ['OPC UA', 'Agente de planta', 'Cola sin conexión', 'API de Sindri']
+    id: 'efesto', corto: 'Efesto, planta', titulo: 'Efesto: Sindri lee la fábrica',
+    tipo: 'producto', etiqueta: 'Producto propio · parte de Sindri · 2026', icono: 'servidor', color: C.tostado,
+    caso: [
+      ['Problema', 'El estado de las máquinas, las piezas buenas y malas y las alarmas se quedan en cada PLC o SCADA, lejos del ERP, y conectarlos suele obligar a abrir puertos de la fábrica.'],
+      ['Qué hice', 'Un agente de planta en solo lectura con 16 conectores: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, SQL de históricos, ficheros y básculas, entre otros. La conexión sale de la fábrica, guarda y reenvía si se corta la red, y ni direcciones ni claves salen de la planta.'],
+      ['Resultado', 'Probado con 22 máquinas simuladas: llegan a Sindri los 106 datos de 106. Si una máquina cae, las demás siguen. Pendiente de conectarlo a una fábrica real.']
+    ],
+    tec: ['Python', 'OPC UA', 'Modbus', 'Siemens S7', 'MQTT', 'SQLite', 'Docker'],
+    enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
   },
   {
-    id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM de Sindri',
+    id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM para el comercial de una pyme industrial',
     tipo: 'producto', etiqueta: 'Producto propio · en proceso', icono: 'tablet', color: C.verde,
-    texto: 'El CRM de la casa, en construcción: clientes, contactos, oportunidades y actividades comerciales, con una vista para tablet. Va como módulo de Sindri, así los clientes no se duplican entre dos programas y lo que se vende pasa directo a presupuestos y pedidos.',
-    tec: ['Módulo de Sindri', 'API REST', 'Keycloak']
+    texto: 'El CRM de la casa, en proceso. Va como módulo de Sindri, con los mismos clientes, presupuestos, pedidos y facturas, así nada se duplica. El objetivo: registrar una visita en menos de 30 segundos desde el móvil o la PDA, incluso sin cobertura; que la oportunidad se gane sola al confirmarse el pedido, y una línea de tiempo por cliente que junte llamadas, presupuestos, facturas, cobros e incidencias de Odin. El embudo, las actividades y los presupuestos ya funcionan dentro de Sindri; antes de seguir analicé 15 CRM libres.',
+    tec: ['Módulo de Sindri', 'Fastify', 'PostgreSQL', 'React', 'Keycloak'],
+    enlaces: [['Ver en GitHub', GITHUB + '/brokkr']]
   },
   {
     id: 'gestor', corto: 'Odin, incidencias', titulo: 'Odin: incidencias, documentación y horas de soporte',
@@ -219,7 +225,7 @@ const PROYECTOS = [
     tipo: 'abierto', etiqueta: 'Open source · app web', icono: 'tablero', color: C.azul,
     texto: 'Aplicación web para organizar el trabajo de un equipo: tableros Kanban y Scrum, calendario y agenda, wiki, notas, pizarra, SLA, notas entre personas, muros de actividad y una API pensada para agentes de IA. Es una versión base sin datos de ninguna empresa: la marca, el inicio de sesión (local o Keycloak) y los módulos opcionales se configuran en un fichero, y se instala con Docker y datos de demostración.',
     tec: ['Python', 'FastAPI', 'MariaDB', 'Keycloak', 'Docker'],
-    enlaces: [['Ver en GitHub', 'https://github.com/lharce/APP_TAREAS_BASE']]
+    enlaces: [['Ver en GitHub', GITHUB + '/aris']]
   },
   {
     id: 'themelab', corto: 'Power BI Theme Lab', titulo: 'Power BI Theme Lab',
@@ -346,7 +352,7 @@ const UI = {
   verTodos: 'Ver los {n} proyectos',
   verProyectosHechos: 'Ver proyectos hechos',
   serviciosTitulo: 'Servicios',
-  serviciosDescripcion: 'Automatización de procesos con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes, con calculadora de precio orientativo y diagnóstico gratis de 45 minutos.',
+  serviciosDescripcion: 'Automatización con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes, con diagnóstico gratis de 45 minutos.',
   whatsappDiagnostico: WHATSAPP_DIAGNOSTICO,
   proyectos: 'Proyectos',
   proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
@@ -528,10 +534,10 @@ const SERVICIOS = [
   {
     id: 'power-bi', icono: 'grafico', calculadora: true,
     proyectos: ['reporting', 'escritorio', 'comercial', 'grafo', 'reader', 'themelab', 'calculate'],
-    titulo: 'Consultor de Power BI para pymes · Cuadros de mando | Arce Data Lab',
+    titulo: 'Consultor de Power BI para pymes | Arce Data Lab',
     corto: 'Power BI',
     h1: 'Consultor de Power BI para pymes',
-    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL: ventas, cobros, stock y producción con las cifras cuadradas. Calcula en un minuto cuánto cuesta tu dashboard.',
+    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL, con las cifras cuadradas. Calcula en un minuto cuánto cuesta tu dashboard.',
     intro: 'Si los números de tu empresa viven en varios Excel y cada mes alguien pasa horas juntándolos, un cuadro de mando de Power BI lo hace solo. Lo conecto a tu ERP, a tus hojas o a tu base de datos, cuadro las cifras con contabilidad y te lo entrego documentado.',
     incluye: [
       ['Datos ordenados', 'Limpieza y modelo de datos con Power Query: una sola versión de cada cifra, aunque venga de varios sitios.'],
@@ -577,7 +583,7 @@ const SERVICIOS = [
     titulo: 'Diseño de webs y aplicaciones a medida para pymes | Arce Data Lab',
     corto: 'Webs y aplicaciones',
     h1: 'Webs y aplicaciones a medida para pymes',
-    descripcion: 'Webs rápidas y aplicaciones a medida para pymes: reservas y citas, tienda online, CRM o gestión de incidencias, con tu marca, en servidores de la UE y con copias cada noche.',
+    descripcion: 'Webs rápidas y aplicaciones a medida para pymes: reservas, tienda online, CRM o incidencias, con tu marca y en servidores de la UE.',
     intro: 'Una web que carga rápido, sale en Google y deja que el cliente reserve o compre sin llamarte. O una aplicación hecha para cómo trabaja tu empresa, en vez de adaptarte tú a un programa genérico. La hago, la publico en mi propia infraestructura y la mantengo.',
     incluye: [
       ['Diseño con tu marca', 'Adaptado al móvil, accesible y sin plantillas pesadas.'],
