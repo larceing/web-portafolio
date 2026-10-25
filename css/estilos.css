@@ -2620,3 +2620,155 @@ h1, h2, h3,
 .pie a + a {
   font-size: 14px;
 }
+
+/* ── Pulido con las referencias (cabecera, botón de contacto y pie) ── */
+
+.marca::before {
+  content: none;
+}
+
+.hojita {
+  width: auto;
+  height: 34px;
+  fill: var(--azul);
+  flex: none;
+}
+
+.cabecera {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cabecera.con-sombra {
+  border-bottom-color: var(--raya);
+  box-shadow: 0 6px 24px rgba(25, 28, 32, 0.06);
+}
+
+.menu {
+  align-items: center;
+}
+
+.menu .menu-cta {
+  margin-left: 6px;
+  background: var(--azul);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.menu .menu-cta:hover,
+.menu .menu-cta:focus-visible {
+  background: var(--sobre-tonal);
+  color: #FFFFFF;
+}
+
+.menu a[aria-current="page"] {
+  background: var(--capa);
+  color: var(--tinta);
+}
+
+.boton {
+  transition: background-color 0.15s, transform 0.15s;
+}
+
+.boton:hover {
+  transform: translateY(-1px);
+}
+
+.portadilla .contacto .botones {
+  margin-top: 20px;
+}
+
+/* Pie en columnas */
+.pie {
+  margin-top: 72px;
+  padding: 56px max(28px, calc((100vw - var(--ancho)) / 2 + 28px)) 28px;
+  border-top: 1px solid var(--raya);
+  background: var(--tarjeta);
+  color: var(--tenue);
+  font-size: 15px;
+  text-align: left;
+}
+
+.pie-dentro {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 32px;
+}
+
+.pie-marca .marca {
+  font-size: 19px;
+}
+
+.pie-marca p {
+  max-width: 34ch;
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+
+.pie-col h2 {
+  margin: 6px 0 14px;
+  color: var(--tinta);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.pie-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie-col li + li {
+  margin-top: 8px;
+}
+
+.pie a,
+.pie br + a,
+.pie a + a {
+  color: var(--texto);
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.pie a:hover {
+  color: var(--azul);
+  text-decoration: underline;
+}
+
+.pie-final {
+  margin: 40px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--raya);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .pie-dentro {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pie-marca {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .hojita {
+    height: 28px;
+  }
+
+  .pie {
+    padding: 40px 20px 24px;
+  }
+
+  .menu .menu-cta {
+    margin-left: 0;
+  }
+}
+
+/* En el móvil, Trayectoria y Arce Data Lab quedan en el pie: el menú cabe en una línea. */
+@media (max-width: 640px) {
+  .menu .menu-extra {
+    display: none;
+  }
+}

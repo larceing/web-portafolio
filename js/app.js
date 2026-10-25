@@ -118,3 +118,12 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
 })();
 
 document.getElementById('anio').textContent = new Date().getFullYear();
+
+// La cabecera coge una sombra suave en cuanto bajas.
+(function () {
+  const cab = document.querySelector('.cabecera');
+  if (!cab) return;
+  const mirar = () => cab.classList.toggle('con-sombra', window.scrollY > 8);
+  window.addEventListener('scroll', mirar, { passive: true });
+  mirar();
+})();

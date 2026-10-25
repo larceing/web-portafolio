@@ -355,6 +355,10 @@ const UI = {
   verPublicacion: 'Ver la publicación',
   telefono: 'también por WhatsApp',
   pie: 'Alicante, España',
+  pieFrase: 'Datos, Power BI y desarrollo a medida para empresas que quieren decidir con números.',
+  pieNav: 'La web',
+  pieRedes: 'Redes',
+  escribemeWhatsapp: 'Escríbeme por WhatsApp',
   cerrar: 'Cerrar',
   verFicha: 'Página completa del proyecto',
   volver: 'Volver a todos los proyectos',
@@ -750,14 +754,14 @@ function cabeza(d, p) {
   <a class="saltar" href="#contenido">${t.saltar}</a>
 
   <header class="cabecera">
-    <a class="marca" href="${p.inicio}#inicio">Henry Arce <span>${t.lema}</span></a>
+    <a class="marca" href="${p.inicio}#inicio">${hojita()}Henry Arce <span>${t.lema}</span></a>
     <nav class="menu" aria-label="${t.secciones}">
       <a href="${p.inicio}#proyectos">${t.menu.proyectos}</a>
-      <a href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
-      <a href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
+      <a class="menu-extra" href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
+      <a class="menu-extra" href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
       <a href="${p.inicio}servicios/"${p.ruta === 'servicios/' ? ' aria-current="page"' : ''}>${t.menu.servicios}</a>
-      <a href="${p.inicio}#contacto">${t.menu.contacto}</a>
       <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
+      <a class="menu-cta" href="${p.inicio}#contacto">${t.inicioBotones[1]}</a>
     </nav>
   </header>
 `;
@@ -893,9 +897,9 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
       <h2>${t.contacto}</h2>
       <p class="sub">${t.contactoSub}</p>
       <a class="correo" href="mailto:${CORREO}">${CORREO}</a>
+      <p class="botones"><a class="boton" href="${WHATSAPP}" target="_blank" rel="noopener">${t.escribemeWhatsapp}</a></p>
       <p class="redes">
         <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
         <a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
         <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
         <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
@@ -907,7 +911,7 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · <a href="servicios/">${t.servicios}</a> · ${t.pie} · <span id="anio">2026</span>${legales(base)}</footer>
+  ${pie(t, base, '')}
 
   <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
     <div class="ficha-cabecera" id="fichaCabecera"></div>
@@ -945,7 +949,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · ${t.pie} · ${new Date().getFullYear()}${legales('../' + d.base)}</footer>
+  ${pie(t, '../' + d.base, '../')}
 
   <script src="${'../' + d.base}js/linkedin.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
@@ -993,7 +997,7 @@ ${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</d
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}${legales('../' + d.base)}</footer>
+  ${pie(t, '../' + d.base, '../')}
 </body>
 </html>
 `;
@@ -1008,8 +1012,34 @@ const LEGALES = [
 ];
 
 // Enlaces del pie a las páginas legales. raiz: camino hasta la raíz del sitio.
-function legales(raiz) {
-  return '<br>' + LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + l.es + '</a>').join(' · ');
+// La hoja de Arce en pequeño, para la cabecera y el pie.
+function hojita() {
+  return '<svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="' + HOJA_ARCE + '"/></svg>';
+}
+
+// Pie común: marca, navegación, redes y legal.
+function pie(t, raiz, inicio) {
+  const col = (titulo, enlaces) => '<div class="pie-col"><h2>' + titulo + '</h2><ul>' + enlaces.map(e => '<li>' + e + '</li>').join('') + '</ul></div>';
+  const fuera = (url, txt) => '<a href="' + url + '" target="_blank" rel="noopener">' + txt + '</a>';
+  return `<footer class="pie">
+    <div class="pie-dentro">
+      <div class="pie-marca">
+        <a class="marca" href="${inicio}#inicio">${hojita()}Henry Arce</a>
+        <p>${t.pieFrase}</p>
+        <p><a href="mailto:${CORREO}">${CORREO}</a><br><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a></p>
+      </div>
+      ${col(t.pieNav, [
+        '<a href="' + inicio + '#proyectos">' + t.menu.proyectos + '</a>',
+        '<a href="' + inicio + '#trayectoria">' + t.menu.trayectoria + '</a>',
+        '<a href="' + inicio + '#arcedatalab">' + t.menu.arce + '</a>',
+        '<a href="' + inicio + 'servicios/">' + t.menu.servicios + '</a>',
+        '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
+      ])}
+      ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub'), fuera(CLUBBYTE_YOUTUBE, 'YouTube · Club Byte')])}
+      ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (t.lang === 'en' ? l.en : l.es) + '</a>'))}
+    </div>
+    <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
+  </footer>`;
 }
 
 // Markdown sencillo (títulos, párrafos, listas, negrita y enlaces) a HTML.
@@ -1052,7 +1082,7 @@ function paginaLegal(l) {
     </article>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${d.t.pie} · ${new Date().getFullYear()}${legales('../')}</footer>
+  ${pie(d.t, '../', '../')}
 </body>
 </html>
 `;
@@ -1118,7 +1148,7 @@ ${otros.map(o => '        <li><a href="../' + o.id + '/">' + o.titulo + '</a> <s
     </section>
   </main>
 
-  <footer class="pie">Henry Arce · <a href="${ARCE}">Arce Data Lab</a> · ${t.pie} · ${new Date().getFullYear()}${legales(raiz)}</footer>
+  ${pie(t, raiz, '../../')}
 
 ${bitHtml(t, raiz)}
 </body>
