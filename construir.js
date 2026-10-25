@@ -24,6 +24,7 @@ const VERSION_JS_BIT = huella('js/bit-arranque.js');
 const VERSION_JS_PASEO = huella('js/bit-paseo.js');
 const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
 const VERSION_JS_CALC = huella('js/calculadora.js');
+const VERSION_JS_ANTES = huella('js/antes-ahora.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -145,6 +146,12 @@ const PROYECTOS = [
     texto: 'El CRM de la casa, en proceso. Va como módulo de Sindri, con los mismos clientes, presupuestos, pedidos y facturas, así nada se duplica. El objetivo: registrar una visita en menos de 30 segundos desde el móvil o la PDA, incluso sin cobertura; que la oportunidad se gane sola al confirmarse el pedido, y una línea de tiempo por cliente que junte llamadas, presupuestos, facturas, cobros e incidencias de Odin. El embudo, las actividades y los presupuestos ya funcionan dentro de Sindri; antes de seguir analicé 15 CRM libres.',
     tec: ['Módulo de Sindri', 'Fastify', 'PostgreSQL', 'React', 'Keycloak'],
     enlaces: [['Ver en GitHub', GITHUB + '/brokkr']]
+  },
+  {
+    id: 'whatsapp', corto: 'IA para WhatsApp', titulo: 'Asistente de IA para WhatsApp',
+    tipo: 'producto', etiqueta: 'Producto propio · en desarrollo', icono: 'chat', color: C.cielo,
+    texto: 'Un asistente que atiende por WhatsApp a los clientes de un negocio: contesta las preguntas de siempre, da horarios y servicios, ayuda a pedir cita o hacer un pedido y pasa la conversación a una persona cuando hace falta. Solo con la API oficial de WhatsApp Business. Está en desarrollo.',
+    tec: ['API oficial de WhatsApp Business', 'IA aplicada']
   },
   {
     id: 'gestor', corto: 'Odin, incidencias', titulo: 'Odin: incidencias, documentación y horas de soporte',
@@ -491,11 +498,31 @@ UI.serv = {
   calcular: 'Calcular el precio',
   relacionado: 'Servicio relacionado',
   probar: 'Probarlo en el laboratorio',
+  antesAhora: 'Antes y después',
+  antesAhoraSub: 'El mismo contenido, rediseñado: la portada de mis demos para clientes. Arrastra la línea para comparar.',
+  antes: 'Antes', ahora: 'Ahora',
+  antesAlt: 'Portada de las demos antes del rediseño',
+  ahoraAlt: 'Portada de las demos después del rediseño',
+  deslizar: 'Comparar antes y después',
   pasos: [
     ['Diagnóstico gratis', '45 minutos por videollamada para ver tus datos, tus tareas y lo que de verdad te quita tiempo.'],
     ['Propuesta por escrito', 'Qué se construye, cuántas rondas de cambios, el precio cerrado y el plazo, que se fija cuando ya he visto los datos.'],
     ['Construcción', 'Te enseño avances por el camino. Se paga el 50 % al empezar y el 50 % a la entrega, siempre con factura.'],
     ['Entrega y formación', 'Lo dejo funcionando, documentado y explicado a tu equipo. Si quieres, sigo con un mantenimiento mensual.']
+  ]
+};
+
+// «¿Por qué trabajar conmigo?»: hechos comprobables, sin frases de folleto.
+UI.porque = {
+  titulo: '¿Por qué trabajar conmigo?',
+  sub: 'Lo que cambia frente a contratar una agencia o un programa genérico',
+  lista: [
+    ['Hablas con quien lo hace', 'Quien te escucha en el diagnóstico es quien diseña, programa y te entrega el trabajo. Sin comerciales ni intermediarios.'],
+    ['Conozco el día a día de una empresa', 'Trabajo con datos desde 2019, primero en consultoras y hoy dentro de la industria, con ERP como A3, SAP o Clavei.'],
+    ['Precio cerrado y por escrito', 'Antes de empezar sabes qué se construye, cuántas rondas de cambios hay y cuánto cuesta. Sin sorpresas al final.'],
+    ['Tus datos, cuidados', 'Trabajo en solo lectura siempre que se puede y las aplicaciones viven en servidores de la UE con copias cada noche.'],
+    ['Sin atarte a mí', 'Te entrego el trabajo documentado y mucho de lo que hago es open source: puedes ver cómo trabajo antes de llamarme.'],
+    ['Mido lo que se gana', 'Apunto cuánto tiempo lleva hoy la tarea y cuánto después, para que sepas si ha merecido la pena.']
   ]
 };
 
@@ -556,7 +583,7 @@ const SERVICIOS = [
   },
   {
     id: 'automatizacion-n8n', icono: 'flujo',
-    proyectos: ['helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
+    proyectos: ['whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
     titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
     corto: 'Automatización con n8n',
     h1: 'Automatización de procesos con n8n',
@@ -578,7 +605,7 @@ const SERVICIOS = [
     ]
   },
   {
-    id: 'webs', icono: 'escritorio',
+    id: 'webs', icono: 'escritorio', antesAhora: true,
     proyectos: ['tienda', 'crm', 'sindri', 'brokkr', 'gestor', 'tareas', 'nutricion', 'plataforma'],
     titulo: 'Diseño de webs y aplicaciones a medida para pymes | Arce Data Lab',
     corto: 'Webs y aplicaciones',
@@ -642,6 +669,7 @@ const IDIOMAS = [
       clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [EN.UI.clubbyteEnlacesTextos[i], e[1]]),
       datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]]),
       serv: EN.SERV,
+      porque: EN.PORQUE,
       calc: Object.assign({}, EN.CALC, {
         preguntas: UI.calc.preguntas.map((q, i) => [EN.CALC.preguntas[2 * i], q[1].map((o, j) => [EN.CALC.preguntas[2 * i + 1][j], o[1]])])
       })
@@ -817,11 +845,11 @@ function datosProyecto(d, p) {
 
 // Orden de los proyectos en la portada: primero los que más dicen a una pyme
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
-const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
+const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'whatsapp', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
 const PROYECTOS_A_LA_VISTA = 9;
 
 // Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
-const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp' };
+const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp', brokkr: 'img/logo-brokkr.webp' };
 
 // Logo de Arce Data Lab: media hoja de arce con el nombre encima, a la manera
 // del de NERV, y el lema de Cleóbulo («la medida es lo mejor»). Va en línea
@@ -977,7 +1005,7 @@ ${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
 ${t.niveles.map(n => '        <article class="nivel" data-icono="' + n[0] + '">\n          <div class="nivel-cabeza"><span class="nivel-icono">' + icono(n[0]) + '</span><h3>' + n[1] + '</h3></div>\n          <ol class="escalera">' + n[2].map((x, i) => '<li style="--i:' + i + '"><span class="peldano"><em>' + t.nivelesNombres[i] + '</em>' + x + '</span></li>').join('') + '</ol>\n        </article>').join('\n')}
       </div>
     </section>
-
+${porqueHtml(t)}
     <section class="bloque cinta" id="automatizacion" data-bit="cinta">
       <h2>${t.cinta}</h2>
       <p class="sub">${t.cintaSub}</p>
@@ -1147,7 +1175,7 @@ ${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) +
       <p class="servicios-nota">${t.serviciosPago}</p>
       <p class="botones centrados"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a><a class="boton secundario" href="mailto:${CORREO}">${CORREO}</a></p>
     </section>
-
+${porqueHtml(t)}
     <section class="bloque">
       <h2>${t.preguntas}</h2>
       <dl class="preguntas">
@@ -1374,6 +1402,37 @@ ${grupos}
 `;
 }
 
+function porqueHtml(t) {
+  const p = t.porque;
+  return `
+    <section class="bloque porque" id="por-que">
+      <h2>${p.titulo}</h2>
+      <p class="sub">${p.sub}</p>
+      <ol class="porque-lista">
+${p.lista.map(x => '        <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
+      </ol>
+    </section>
+`;
+}
+
+function antesAhoraHtml(t, raiz) {
+  const s = t.serv;
+  return `
+    <section class="bloque" id="antes-ahora">
+      <h2>${s.antesAhora}</h2>
+      <p class="sub">${s.antesAhoraSub}</p>
+      <figure class="antes-ahora" style="--pos:50%">
+        <img class="aa-ahora" src="${raiz}img/antes-ahora/demos-ahora.webp" alt="${s.ahoraAlt}" width="640" height="760" loading="lazy">
+        <img class="aa-antes" src="${raiz}img/antes-ahora/demos-antes.webp" alt="${s.antesAlt}" width="640" height="760" loading="lazy">
+        <span class="aa-etiqueta aa-e-antes" aria-hidden="true">${s.antes}</span>
+        <span class="aa-etiqueta aa-e-ahora" aria-hidden="true">${s.ahora}</span>
+        <input type="range" min="0" max="100" value="50" aria-label="${s.deslizar}">
+      </figure>
+    </section>
+    <script src="${raiz}js/antes-ahora.js?v=${VERSION_JS_ANTES}" defer></script>
+`;
+}
+
 // El servicio al que pertenece un proyecto (para enlazar de vuelta), o nada.
 function servicioDe(d, id) {
   return d.servicios.find(s => s.proyectos.includes(id));
@@ -1429,7 +1488,7 @@ ${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>
 ${t.serv.pasos.map(x => '        <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
       </ol>
     </section>
-${s.calculadora ? calculadoraHtml(t, raiz) : ''}
+${s.calculadora ? calculadoraHtml(t, raiz) : ''}${s.antesAhora ? antesAhoraHtml(t, raiz) : ''}${porqueHtml(t)}
     <section class="bloque">
       <h2>${t.serv.relacionados}</h2>
       <ul class="otros">

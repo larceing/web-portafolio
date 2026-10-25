@@ -3,6 +3,18 @@
 // PROYECTOS va por id; AREAS, TRAYECTORIA y TECNOLOGIAS, en el mismo orden.
 
 module.exports = {
+  PORQUE: {
+    titulo: 'Why work with me?',
+    sub: 'What changes compared with hiring an agency or off-the-shelf software',
+    lista: [
+      ['You talk to the person who builds it', 'Whoever listens to you in the review is who designs, codes and delivers the work. No sales reps, no middlemen.'],
+      ['I know how a company works day to day', 'I have worked with data since 2019, first in consulting and now inside industry, with ERPs such as A3, SAP or Clavei.'],
+      ['A fixed price, in writing', 'Before we start you know what gets built, how many rounds of changes there are and what it costs. No surprises at the end.'],
+      ['Your data, looked after', 'I work read-only whenever possible and the applications live on EU servers with nightly backups.'],
+      ['No lock-in', 'I hand the work over documented, and much of what I do is open source: you can see how I work before you call me.'],
+      ['I measure what you gain', 'I note how long the task takes today and how long afterwards, so you know whether it was worth it.']
+    ]
+  },
   SERV: {
     incluye: 'What’s included',
     como: 'How we work',
@@ -11,6 +23,12 @@ module.exports = {
     calcular: 'Work out the price',
     relacionado: 'Related service',
     probar: 'Try it in the lab',
+    antesAhora: 'Before and after',
+    antesAhoraSub: 'Same content, redesigned: the landing page of my client demos. Drag the line to compare.',
+    antes: 'Before', ahora: 'After',
+    antesAlt: 'Demos landing page before the redesign',
+    ahoraAlt: 'Demos landing page after the redesign',
+    deslizar: 'Compare before and after',
     pasos: [
       ['Free review', '45 minutes on a video call to look at your data, your tasks and what really takes up your time.'],
       ['Written proposal', 'What gets built, how many rounds of changes, the fixed price and the deadline, set once I have seen the data.'],
@@ -360,6 +378,11 @@ module.exports = {
     helpdesk: {
       corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'At ES Group · 2026',
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
+    },
+    whatsapp: {
+      corto: 'AI for WhatsApp', titulo: 'AI assistant for WhatsApp', etiqueta: 'Own product · in development',
+      texto: 'An assistant that looks after a business’s customers on WhatsApp: it answers the usual questions, gives opening hours and services, helps book an appointment or place an order and hands the chat to a person when needed. Official WhatsApp Business API only. In development.',
+      tec: ['Official WhatsApp Business API', 'Applied AI']
     },
     efesto: {
       corto: 'Efesto, shop floor', titulo: 'Efesto: Sindri reads the factory', etiqueta: 'Own product · part of Sindri · 2026',

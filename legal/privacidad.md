@@ -2,7 +2,7 @@
 
 Última actualización: 25 de octubre de 2026
 
-**Responsable:** Luis Henry Arce Inga («Henry Arce», Arce Data Lab), Alicante (España). Contacto: info@arcedatalab.com.
+**Responsable:** Luis Henry Arce Inga («Henry Arce», Arce Data Lab), NIF 61281955L, Alicante (España). Contacto: info@arcedatalab.com.
 
 ## 1. Qué es esta herramienta
 Arce Data Lab usa una herramienta interna de publicación («Publicador Arce Data Lab», basada en n8n y alojada en un servidor propio en la Unión Europea) para programar y publicar **sus propios contenidos** en sus cuentas de YouTube, TikTok, Instagram y LinkedIn. No es un servicio abierto al público: solo la usa el titular para sus cuentas.
