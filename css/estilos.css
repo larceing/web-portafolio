@@ -929,9 +929,9 @@ code {
 
 .marcas {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
-  max-width: 980px;
+  max-width: 760px;
   margin: 36px auto 0;
 }
 
@@ -1892,4 +1892,45 @@ h1, h2, h3,
   .marca-tarjeta {
     padding: 22px;
   }
+}
+
+/* Ventas: botones de la portada, precio de cada servicio y nota de precios */
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.boton {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 24px;
+  background: var(--azul);
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: var(--sobre-tonal);
+}
+
+.boton.secundario {
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.servicio .precio {
+  margin: 12px 0 0;
+  color: var(--azul);
+  font-weight: 600;
+}
+
+.servicios-nota {
+  margin: 20px 0 0;
+  color: var(--tenue);
+  font-size: 15px;
+  text-align: center;
 }

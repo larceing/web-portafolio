@@ -39,6 +39,9 @@ const WHATSAPP = 'https://wa.me/34633424223';
 const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
+const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
+// Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
+const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, me interesa el diagnóstico gratis de 45 minutos para mi negocio.');
 const CLUBBYTE_YOUTUBE = 'https://www.youtube.com/@clubbyte_es';
 const CLUBBYTE_CANAL = 'https://www.youtube.com/channel/UCGf6S4beoxCkjF3Fyl2XIrA';
 const CLUBBYTE_BLOG = 'https://clubbyte.arcedatalab.com';
@@ -305,7 +308,8 @@ const UI = {
   fotoAlt: 'Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia',
   areasAria: 'Áreas de trabajo',
   verProyectos: 'Ver proyectos',
-  franja: 'Abierto a proyectos y a nuevas conversaciones',
+  franja: '¿Tus números viven en Excel? Te los miro gratis en 45 minutos.',
+  inicioBotones: ['Pide tu diagnóstico gratis', 'Ver servicios y precios'],
   proyectos: 'Proyectos',
   proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
   filtrosAria: 'Filtrar proyectos',
@@ -336,12 +340,13 @@ const UI = {
   servicios: 'Servicios',
   serviciosSub: 'Qué puedo hacer por tu empresa, a través de Arce Data Lab',
   serviciosLista: [
-    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API'],
-    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL'],
-    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL'],
-    ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker']
+    ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API', 'Desde 290 €'],
+    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'Desde 490 € · tu informe listo en 7 días'],
+    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', 'Precio cerrado tras el diagnóstico'],
+    ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'Webs con reservas desde 590 €']
   ],
-  serviciosCta: 'Cuéntame qué tarea te quita tiempo',
+  serviciosNota: 'Precios sin IVA. Mantenimiento desde 49 € al mes. Siempre empezamos con un diagnóstico gratis de 45 minutos.',
+  serviciosCta: 'Pide tu diagnóstico gratis',
   cinta: 'Automatización en marcha',
   cintaSub: 'Lo que hace un flujo automático, en pequeño',
   cintaPasos: [
@@ -365,7 +370,8 @@ const UI = {
   infraEnlace: 'Ver la plataforma en GitHub',
   infraLeyenda: ['Proxy con HTTPS', 'Servidor', 'Apps en contenedores', 'Copia cada noche'],
   arce: 'Arce Data Lab',
-  arceSub: 'Mi marca: datos, automatización e IA para pymes, y un canal para que los niños se interesen por la tecnología',
+  arceSub: 'Mi marca: datos, automatización e IA para pymes',
+  clubbyteLinea: 'También hago <strong>Club Byte</strong>, un canal para que niños de 8 a 12 años se interesen por la tecnología:',
   arceTexto: '<strong>Arce Data Lab</strong> es el laboratorio desde el que construyo aplicaciones, cuadros de mando y asistentes de IA para pymes e industria, con su propia plataforma de despliegue, correo y documentos. Todo lo que ves en los proyectos marcados como producto propio vive allí.',
   arceEnlaces: [['Demos para clientes', DEMOS], ['TikTok @arcedatalab', TIKTOK]],
   clubbyteTitulo: 'Club Byte',
@@ -380,6 +386,10 @@ const UI = {
     ['¿Qué servicios ofrece Arce Data Lab?', 'Automatización de procesos, cuadros de mando con Power BI y Microsoft Fabric, asistentes de IA sobre los datos del negocio y aplicaciones a medida (ERP, CRM, citas), desplegadas en infraestructura propia en la UE.'],
     ['¿Qué tipo de proyectos hace?', 'Automatiza tareas repetitivas, conecta ERP, CRM y bases de datos, crea informes de Power BI y Microsoft Fabric, y pone asistentes de IA a responder sobre los datos del negocio en solo lectura.'],
     ['¿Trabaja con pymes?', 'Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.'],
+    ['¿Cuánto cuesta un proyecto?', 'Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.'],
+    ['¿Cuánto tarda?', 'Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.'],
+    ['¿Mis datos están seguros?', 'Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.'],
+    ['¿Cómo se empieza?', 'Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.'],
     ['¿Qué es Club Byte?', 'Club Byte es el canal de YouTube (@clubbyte_es) y el blog de Arce Data Lab que explica informática y tecnología a niños de 8 a 12 años, con retos sin pantalla para familias y docentes.'],
     ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en YouTube con Club Byte para niños.'],
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
@@ -501,7 +511,7 @@ function persona(d) {
     knowsAbout: ['Power BI', 'DAX', 'Microsoft Fabric', 'Automatización de procesos', 'IA aplicada', 'Agentes de IA', 'Python', 'SQL Server', 'ERP', 'CRM', 'Docker', 'Keycloak', 'Node.js', 'Blender', 'Process automation', 'Business intelligence'],
     alumniOf: { '@type': 'EducationalOrganization', name: 'IES El Palmeral' },
     award: ['Premio a la Excelencia Académica 2022', 'CV Skills 2021, Electrónica'],
-    sameAs: [LINKEDIN, GITHUB, TIKTOK]
+    sameAs: [LINKEDIN, GITHUB, TIKTOK, INSTAGRAM]
   };
 }
 
@@ -712,6 +722,7 @@ function pagina(d) {
       <div>
         <h1>${t.h1}</h1>
         <p>${t.intro}</p>
+        <p class="botones"><a class="boton" href="${WHATSAPP_DIAGNOSTICO}" target="_blank" rel="noopener">${t.inicioBotones[0]}</a><a class="boton secundario" href="#servicios">${t.inicioBotones[1]}</a></p>
       </div>
       <img src="${base}img/foto.webp" alt="${t.fotoAlt}" width="640" height="640">
     </section>
@@ -720,16 +731,17 @@ function pagina(d) {
 ${d.areas.map(a => '      <a class="area" href="#proyectos" style="--c:' + a.color + '">\n        ' + icono(a.icono) + '\n        <strong>' + a.titulo + '</strong>\n        <span>' + a.texto + '</span>\n        <em>' + t.verProyectos + '</em>\n      </a>').join('\n')}
     </section>
 
-    <p class="franja">${t.franja} <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a><a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a></span></p>
+    <p class="franja">${t.franja} <span><a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a><a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a><a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a><a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a></span></p>
 
     <section class="bloque" id="servicios" data-bit="servicios">
       <h2>${t.servicios}</h2>
       <p class="sub">${t.serviciosSub}</p>
 
       <div class="servicios">
-${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p></article>').join('\n')}
+${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) + '<h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="tec">' + x[3] + '</p>' + (x[4] ? '<p class="precio">' + x[4] + '</p>' : '') + '</article>').join('\n')}
       </div>
-      <p class="mas"><a href="#contacto">${t.serviciosCta} →</a></p>
+      <p class="servicios-nota">${t.serviciosNota}</p>
+      <p class="mas"><a href="${WHATSAPP_DIAGNOSTICO}" target="_blank" rel="noopener">${t.serviciosCta} →</a></p>
     </section>
 
     <section class="bloque cinta" id="automatizacion" data-bit="cinta">
@@ -753,30 +765,8 @@ ${t.cintaPasos.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
           <p>${t.arceTexto}</p>
           <p class="enlaces">${t.arceEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
         </article>
-        <article class="marca-tarjeta clubbyte">
-          <img src="${base}img/bit.webp" alt="${t.bitAlt}" width="208" height="320" loading="lazy">
-          <div>
-            <h3>${t.clubbyteTitulo}</h3>
-            <p>${t.clubbyteTexto}</p>
-            <p class="enlaces">${t.clubbyteEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
-          </div>
-        </article>
       </div>
-    </section>
-
-    <section class="bloque" id="infraestructura" data-bit="infraestructura">
-      <h2>${t.infra}</h2>
-      <p class="sub">${t.infraSub}</p>
-      <p class="infra-texto">${t.infraTexto}</p>
-      <div class="infra-escena" id="infraEscena" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}" data-modelo="${d.base}img/bit.glb?v=${huella('img/bit.glb')}">
-        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
-        <ul class="infra-leyenda" aria-hidden="true">${t.infraLeyenda.map(x => '<li>' + x + '</li>').join('')}</ul>
-      </div>
-
-      <dl class="infra">
-${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
-      </dl>
-      <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="proyectos/plataforma/">${t.verFicha}</a></p>
+      <p class="mas">${t.clubbyteLinea} ${t.clubbyteEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join(' · ')}</p>
     </section>
 
     <section class="bloque" id="proyectos" data-bit="proyectos">
@@ -796,6 +786,21 @@ ${d.proyectos.map(p => tesela(p, t)).join('\n')}
     </section>
 
 ${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
+
+    <section class="bloque" id="infraestructura" data-bit="infraestructura">
+      <h2>${t.infra}</h2>
+      <p class="sub">${t.infraSub}</p>
+      <p class="infra-texto">${t.infraTexto}</p>
+      <div class="infra-escena" id="infraEscena" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}" data-modelo="${d.base}img/bit.glb?v=${huella('img/bit.glb')}">
+        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
+        <ul class="infra-leyenda" aria-hidden="true">${t.infraLeyenda.map(x => '<li>' + x + '</li>').join('')}</ul>
+      </div>
+
+      <dl class="infra">
+${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
+      </dl>
+      <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="proyectos/plataforma/">${t.verFicha}</a></p>
+    </section>
 
     <section class="bloque" id="trayectoria" data-bit="trayectoria">
       <h2>${t.trayectoria}</h2>
@@ -841,6 +846,7 @@ ${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
       <p class="redes">
         <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
         <a href="${WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
         <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
         <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
         <a href="${CLUBBYTE_YOUTUBE}" target="_blank" rel="noopener">YouTube · Club Byte</a>
