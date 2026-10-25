@@ -370,7 +370,7 @@ const UI = {
   serviciosSub: 'Qué puedo hacer por tu empresa, a través de Arce Data Lab',
   serviciosLista: [
     ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'Python, Power Automate, Apps Script, API', 'Desde 290 €'],
-    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'Desde 490 € · tu informe listo en 7 días'],
+    ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'Desde 490 €'],
     ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', 'Precio cerrado tras el diagnóstico'],
     ['escritorio', 'Aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: aplicaciones web con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'Webs con reservas desde 590 €']
   ],
@@ -422,7 +422,7 @@ const UI = {
   ],
   faqServicios: [
     ['¿Cuánto cuesta un proyecto?', 'Un cuadro de mando de Power BI empieza en 490 €, una automatización en 290 € y una web con reservas en 590 €, sin IVA; el precio exacto se cierra tras un diagnóstico gratis de 45 minutos.'],
-    ['¿Cuánto tarda?', 'Un cuadro de mando suele estar listo en 7 días y una automatización sencilla en una o dos semanas, según el estado de los datos.'],
+    ['¿Cuánto tarda?', 'Depende mucho de cada caso: de cuántas fuentes de datos hay, de cómo están y de lo que haga falta construir. Por eso el plazo se cierra por escrito después del diagnóstico gratis, cuando ya he visto tus datos, y se cumple.'],
     ['¿Cómo se empieza?', 'Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.']
   ],
   soporte: 'Soporte de las aplicaciones',
@@ -1093,7 +1093,7 @@ const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
   const guion = Object.assign({}, t.bit);
-  return `  <aside class="bit" id="bit" data-paseo="guia" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
+  return `  <aside class="bit" id="bit" data-paseo="libre" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
     <div class="bit-cuerpo" id="bitCuerpo">
       <img class="bit-foto" src="${base}img/bit.webp" alt="" width="104" height="160">

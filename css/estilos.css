@@ -2815,3 +2815,31 @@ h1, h2, h3,
     animation: none;
   }
 }
+
+/* Byte en modo libre: se esconde mientras algo pasa por debajo y, si no hay
+   hueco en la pantalla, se queda asomado al borde. */
+.bit {
+  transition: opacity 0.18s;
+}
+
+.bit.apartado {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bit.apartado * {
+  pointer-events: none !important;
+}
+
+.bit.asomado .bit-cuerpo {
+  opacity: 0.85;
+}
+
+.bit.asomado .bit-bocadillo,
+.bit.asomado .bit-boton {
+  display: none;
+}
+
+.bit[class*="paseo-libre"] .bit-bocadillo {
+  max-width: min(250px, calc(100vw - 32px));
+}

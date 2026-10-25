@@ -1,6 +1,7 @@
 // Bit se mueve por la página.
 //
-// Tres maneras de moverse (la web usa «guia», puesto en construir.js):
+// Cuatro maneras de moverse (la web usa «libre», puesto en construir.js):
+//   libre    · solo se pone donde no tapa nada (ver «libre» más abajo)
 //   guia     · vuela al margen, junto al título de la sección que se está leyendo
 //   ascensor · sube y baja por el borde derecho según lo leído, como una barra de progreso
 //   paseo    · pasea solo por los márgenes y se deja «empujar» por el scroll
@@ -19,12 +20,14 @@
   if (!caja) return;
   var cuerpo = document.getElementById('bitCuerpo');
 
-  var parametro = (location.search.match(/[?&]bit=(guia|ascensor|paseo)\b/) || [])[1];
+  var parametro = (location.search.match(/[?&]bit=(libre|guia|ascensor|paseo)\b/) || [])[1];
   var modo = parametro || caja.getAttribute('data-paseo');
   if (!modo) return;
 
   var mq = function (q) { return window.matchMedia && window.matchMedia(q).matches; };
-  if (mq('(prefers-reduced-motion: reduce)')) return;
+  // Con «menos movimiento» solo se queda el modo libre, y salta sin animación.
+  var sinAnimar = mq('(prefers-reduced-motion: reduce)');
+  if (sinAnimar && modo !== 'libre') return;
 
   caja.classList.add('paseo-' + modo);
 
@@ -121,6 +124,193 @@
     }
   }
 
+  // ---- libre: un algoritmo de uso de la pantalla ----
+  // Byte (y su bocadillo) solo se ponen en un hueco donde no hay nada debajo.
+  // 1. Se proponen sitios: los márgenes junto al título de la sección que se
+  //    lee (si caben) y las esquinas y bordes de la ventana.
+  // 2. En el móvil manda el dedo: si tocas arriba, Byte se va abajo, y al revés.
+  // 3. Cada sitio se comprueba con una rejilla de puntos: si alguno cae sobre
+  //    texto, una imagen, un botón o una tarjeta, ese sitio no vale.
+  // 4. Si no hay ningún hueco, Byte se aparta al borde y solo se asoma un poco.
+  // 5. Mientras se desplaza la página, si algo pasa por debajo, se esconde, y
+  //    reaparece en un hueco cuando la página se para.
+  var ultimoToque = null, apartadoHasta = 0;
+
+  function cabeceraAbajo() {
+    var c = document.querySelector('.cabecera');
+    if (!c) return 8;
+    var b = c.getBoundingClientRect().bottom;
+    return b > 0 ? b + 8 : 8;
+  }
+
+  // ¿Hay contenido en este punto de la ventana? (Byte no cuenta.)
+  var FONDOS = /^(HTML|BODY|MAIN|SECTION)$/;
+  function esFondo(el) {
+    if (FONDOS.test(el.tagName)) return true;
+    if (el.matches('img[aria-hidden="true"], .portada, .portada-dentro, .bloque')) return true;
+    if (/^(IMG|CANVAS|SVG|VIDEO|IFRAME|A|BUTTON|INPUT|TEXTAREA|SELECT|LABEL|LI|DT|DD|P|H1|H2|H3|H4|FIGURE)$/i.test(el.tagName)) return false;
+    var e = getComputedStyle(el);
+    if (e.backgroundImage !== 'none') return false;
+    var fondo = e.backgroundColor;
+    if (fondo && fondo !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(fondo)) return false;
+    for (var n = el.firstChild; n; n = n.nextSibling) {
+      if (n.nodeType === 3 && n.textContent.trim()) return false;
+    }
+    return true;
+  }
+  function hayAlgo(x, y) {
+    var W = ancho(), H = window.innerHeight;
+    if (x < 0 || y < 0 || x > W || y > H) return false;
+    var pila = document.elementsFromPoint(x, y);
+    for (var i = 0; i < pila.length; i++) {
+      if (caja.contains(pila[i])) continue;
+      return !esFondo(pila[i]);
+    }
+    return false;
+  }
+  // Parte del rectángulo que tapa algo (0 = hueco limpio). Rejilla cols × filas.
+  function tapa(x, y, w, h, cols, filas) {
+    var malos = 0, total = 0;
+    for (var i = 0; i < cols; i++) {
+      for (var j = 0; j < filas; j++) {
+        total++;
+        if (hayAlgo(x + w * (i + 0.5) / cols, y + h * (j + 0.5) / filas)) malos++;
+      }
+    }
+    return malos / total;
+  }
+  // Del cuerpo solo cuenta el robot, no el aire transparente de alrededor.
+  // También cuenta el botón de cerrar (×), que va pegado al cuerpo.
+  var botonX = document.getElementById('bitBoton');
+  function tapaByte(x, y, r) {
+    var nota = tapa(x + r.w * 0.2, y + r.h * 0.12, r.w * 0.6, r.h * 0.82, 4, 5);
+    if (nota === 0 && botonX && botonX.offsetWidth && getComputedStyle(botonX).opacity !== '0') {
+      var b = botonX.getBoundingClientRect(), c = cuerpo.getBoundingClientRect();
+      var bx = x + (b.left - c.left), by = y + (b.top - c.top);
+      nota = tapa(bx, by, b.width, b.height, 2, 2) * 0.5;
+    }
+    return nota;
+  }
+
+  function sitios(r) {
+    var W = ancho(), H = window.innerHeight, techo = cabeceraAbajo(), m = margen();
+    var abajo = H - r.h - 8, lista = [];
+    // Márgenes junto al título de la sección (como el modo guía).
+    if (m >= r.w * 0.7) {
+      var s = seccionActual(), t = s && s.querySelector('h1, h2');
+      var y = t ? t.getBoundingClientRect().top + t.getBoundingClientRect().height / 2 - r.h * 0.55 : techo + 20;
+      y = Math.min(Math.max(y, techo), abajo);
+      var xi = Math.max(8, m - r.w + r.w * 0.15), xd = W - m - r.w * 0.15;
+      lista.push({ x: xi, y: y }, { x: xd, y: y }, { x: xd, y: abajo }, { x: xi, y: abajo }, { x: xd, y: techo }, { x: xi, y: techo });
+    }
+    var bordes = [
+      { x: W - r.w - 8, y: abajo, abajo: true }, { x: 8, y: abajo, abajo: true },
+      { x: W - r.w - 8, y: (techo + abajo) / 2 }, { x: 8, y: (techo + abajo) / 2 },
+      { x: W - r.w - 8, y: techo, arriba: true }, { x: 8, y: techo, arriba: true }
+    ];
+    // En el móvil, lejos del dedo.
+    if (ultimoToque != null && estrecho()) {
+      var tocaArriba = ultimoToque < H / 2;
+      bordes.sort(function (a, b) {
+        var pa = tocaArriba ? (a.abajo ? 0 : a.arriba ? 2 : 1) : (a.arriba ? 0 : a.abajo ? 2 : 1);
+        var pb = tocaArriba ? (b.abajo ? 0 : b.arriba ? 2 : 1) : (b.arriba ? 0 : b.abajo ? 2 : 1);
+        return pa - pb;
+      });
+    }
+    return lista.concat(bordes);
+  }
+
+  function libre() {
+    var r = reposo(), mejor = null;
+    var lista = sitios(r);
+    for (var i = 0; i < lista.length; i++) {
+      var p = lista[i], nota = tapaByte(p.x, p.y, r);
+      if (nota === 0) { mejor = p; mejor.nota = 0; break; }
+      if (!mejor || nota < mejor.nota) { mejor = p; mejor.nota = nota; }
+    }
+    var asomado = mejor.nota > 0.05;
+    caja.classList.toggle('asomado', asomado);
+    if (asomado) {
+      // Sin hueco: al borde derecho, abajo, casi fuera de la pantalla.
+      mejor = { x: ancho() - r.w * 0.42, y: window.innerHeight - r.h * 0.8 };
+    }
+    var dx = mejor.x - (r.x + pos.x), dy = mejor.y - (r.y + pos.y);
+    if (asomado) { obj.x = mejor.x - r.x; obj.y = mejor.y - r.y; despertar(); }
+    else irA(mejor.x, mejor.y, 0);
+    // Si el viaje es largo, no cruza la página por encima de nada: desaparece y aparece.
+    if (sinAnimar || Math.abs(dx) + Math.abs(dy) > 220) saltar();
+  }
+
+  function saltar() {
+    caja.classList.add('apartado');
+    apartadoHasta = performance.now() + 200;
+    setTimeout(function () {
+      pos.x = obj.x; pos.y = obj.y; vel.x = vel.y = 0;
+      caja.style.transform = 'translate3d(' + pos.x.toFixed(1) + 'px,' + pos.y.toFixed(1) + 'px,0)';
+      setTimeout(function () { caja.classList.remove('apartado'); comprobarBocadillo(); }, 30);
+    }, 180);
+  }
+
+  // Mientras se desplaza la página: si algo pasa por debajo de Byte, se esconde.
+  var finScroll = null;
+  function alDesplazar() {
+    if (enFicha || caja.classList.contains('oculto')) return;
+    var b = cuerpo.getBoundingClientRect();
+    var r = { w: b.width, h: b.height };
+    if (!caja.classList.contains('asomado') && tapaByte(b.left, b.top, r) > 0) caja.classList.add('apartado');
+    else comprobarBocadillo();
+    clearTimeout(finScroll);
+    finScroll = setTimeout(function () {
+      caja.classList.remove('apartado');
+      libre();
+    }, 260);
+  }
+
+  // El bocadillo: a un lado con sitio; si tapa algo en todos, no se enseña
+  // (salvo que la persona haya pulsado a Byte, que entonces lo pide ella).
+  var pidio = 0;
+  var bocadillo = document.getElementById('bitBocadillo');
+  function comprobarBocadillo() {
+    if (modo !== 'libre' || !bocadillo || bocadillo.hidden || enFicha) return;
+    if (performance.now() - pidio < 1500) return;
+    var combos = [[false, false], [true, false], [false, true], [true, true]];
+    var b = cuerpo.getBoundingClientRect();
+    var prefIzq = b.left + b.width / 2 < ancho() / 2, prefAbajo = b.top < 190;
+    combos.sort(function (a, c) { return (a[0] !== prefIzq) + (a[1] !== prefAbajo) - ((c[0] !== prefIzq) + (c[1] !== prefAbajo)); });
+    for (var i = 0; i < combos.length; i++) {
+      caja.classList.toggle('izq', combos[i][0]);
+      caja.classList.toggle('abajo', combos[i][1]);
+      var q = bocadillo.getBoundingClientRect();
+      var fuera = q.left < 4 || q.top < cabeceraAbajo() - 4 || q.right > ancho() - 4 || q.bottom > window.innerHeight - 4;
+      if (!fuera && tapa(q.left, q.top, q.width, q.height, 5, 3) === 0) { fijoBocadillo = true; return; }
+    }
+    bocadillo.hidden = true;
+  }
+  var fijoBocadillo = false, fotogramas = 0;
+  if (bocadillo && modo === 'libre') {
+    new MutationObserver(function () {
+      fijoBocadillo = false;
+      if (!bocadillo.hidden) requestAnimationFrame(comprobarBocadillo);
+    }).observe(bocadillo, { attributes: true, attributeFilter: ['hidden'], childList: true });
+    cuerpo.addEventListener('pointerdown', function () {
+      pidio = performance.now();
+      // Asomado: al pulsarlo sale un momento entero.
+      if (caja.classList.contains('asomado')) {
+        caja.classList.remove('asomado');
+        irA(ancho() - reposo().w - 8, window.innerHeight - reposo().h - 8, 0);
+        setTimeout(libre, 7000);
+      }
+    });
+    window.addEventListener('pointerdown', function (e) {
+      if (caja.contains(e.target)) return;
+      ultimoToque = e.clientY;
+      if (!estrecho()) return;
+      // Si el dedo cae en la mitad donde está Byte, se cambia de mitad.
+      var b = cuerpo.getBoundingClientRect();
+      if ((b.top + b.height / 2 < window.innerHeight / 2) === (e.clientY < window.innerHeight / 2)) setTimeout(libre, 120);
+    }, { passive: true });
+  }
+
   // ---- Ficha de proyecto: Byte entra a su lado y la explica ----
   var ficha = document.getElementById('ficha');
   var enFicha = false, ladoFicha = 'izq', turnos = [];
@@ -201,7 +391,8 @@
   function calcular(ahora) {
     if (caja.classList.contains('oculto')) { obj.x = obj.y = 0; return; }
     if (enFicha) return sitioFicha();
-    if (modo === 'guia') guia();
+    if (modo === 'libre') libre();
+    else if (modo === 'guia') guia();
     else if (modo === 'ascensor') ascensor();
     else paseo(ahora || performance.now());
   }
@@ -227,6 +418,8 @@
     var inclina = Math.max(-16, Math.min(16, vel.x * 0.025));
     var estira = 1 + Math.max(-0.05, Math.min(0.05, -vel.y * 0.00012));
     caja.style.transform = 'translate3d(' + pos.x.toFixed(1) + 'px,' + pos.y.toFixed(1) + 'px,0)';
+    // En marcha, el bocadillo se revisa cada pocos fotogramas: si empieza a tapar algo, se va.
+    if (modo === 'libre' && bocadillo && !bocadillo.hidden && (++fotogramas % 5 === 0)) comprobarBocadillo();
     cuerpo.style.transform = 'rotate(' + inclina.toFixed(2) + 'deg) scale(' + (2 - estira).toFixed(3) + ',' + estira.toFixed(3) + ')';
 
     // El bocadillo, al lado que tenga sitio.
@@ -235,13 +428,14 @@
       // Junto a la ficha, el bocadillo se abre hacia fuera; dentro, hacia abajo.
       caja.classList.toggle('izq', ladoFicha !== 'izq');
       caja.classList.toggle('abajo', ladoFicha === 'dentro' || r.top < 130);
-    } else {
+    } else if (modo !== 'libre') {
       caja.classList.toggle('izq', r.left + r.width / 2 < ancho() / 2);
       caja.classList.toggle('abajo', r.top < 190);
     }
 
     var parado = Math.abs(obj.x - pos.x) < 0.5 && Math.abs(obj.y - pos.y) < 0.5 && Math.abs(vel.x) < 2 && Math.abs(vel.y) < 2;
     if (parado) {
+      if (!quietoDesde && modo === 'libre') comprobarBocadillo();
       quietoDesde = quietoDesde || ahora;
       // En «paseo» el bucle sigue (a poco coste) para elegir el siguiente sitio.
       if (modo !== 'paseo' || ahora - quietoDesde > 12000) { activo = false; return; }
@@ -261,6 +455,7 @@
       despertar();
     }
     ultimoScroll = window.scrollY;
+    if (modo === 'libre') return alDesplazar();
     if (pendiente) return;
     pendiente = true;
     requestAnimationFrame(function () { pendiente = false; calcular(); });
@@ -295,7 +490,7 @@
 
   // Un saltito de lado y vuelta a su sitio (acompaña a la voltereta).
   function saltito() {
-    if (estrecho() || enFicha) return;
+    if (estrecho() || enFicha || modo === 'libre') return;
     var r = cuerpo.getBoundingClientRect();
     obj.x += r.left > ancho() / 2 ? -120 : 120;
     obj.y -= 50;

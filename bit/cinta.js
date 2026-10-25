@@ -7,11 +7,13 @@
 // js/cinta-arranque.js cuando la sección está cerca de verse.
 
 import {
-  Scene, PerspectiveCamera, WebGLRenderer, HemisphereLight, DirectionalLight,
-  SRGBColorSpace, Group, Mesh, BoxGeometry, CylinderGeometry, TorusGeometry,
-  SphereGeometry, PlaneGeometry, MeshStandardMaterial, MeshBasicMaterial,
-  DoubleSide, Clock, MathUtils
+  Scene, PerspectiveCamera, WebGLRenderer, HemisphereLight, DirectionalLight, PointLight,
+  Group, Mesh, BoxGeometry, CylinderGeometry, SphereGeometry, PlaneGeometry,
+  MeshStandardMaterial, MeshBasicMaterial, InstancedMesh, Object3D, Shape, Path,
+  ExtrudeGeometry, DoubleSide, Clock, MathUtils
 } from 'three';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda } from './calidad.js';
 
 const COLOR = {
   tinta: 0x15202B, azul: 0x1D4F7A, cielo: 0x2E6C9E, pizarra: 0x3F5266,
@@ -19,24 +21,54 @@ const COLOR = {
 };
 
 function mat(color, extra) {
-  return new MeshStandardMaterial(Object.assign({ color: color, roughness: 0.55, metalness: 0.08 }, extra || {}));
+  return new MeshStandardMaterial(Object.assign({ color: color, roughness: 0.5, metalness: 0.08 }, extra || {}));
+}
+
+// Engranaje de verdad: perfil con dientes trapezoidales, agujero y biselado.
+function geoEngranaje(dientes, rRaiz, rPunta, grosor) {
+  const forma = new Shape();
+  const paso = (Math.PI * 2) / dientes;
+  for (let i = 0; i < dientes; i++) {
+    const a = i * paso;
+    const pts = [[a, rRaiz], [a + paso * 0.18, rPunta], [a + paso * 0.48, rPunta], [a + paso * 0.66, rRaiz]];
+    pts.forEach(function (p, k) {
+      const x = Math.cos(p[0]) * p[1], y = Math.sin(p[0]) * p[1];
+      if (i === 0 && k === 0) forma.moveTo(x, y); else forma.lineTo(x, y);
+    });
+    forma.absarc(0, 0, rRaiz, a + paso * 0.66, a + paso, false);
+  }
+  const agujero = new Path();
+  agujero.absarc(0, 0, rRaiz * 0.32, 0, Math.PI * 2, true);
+  forma.holes.push(agujero);
+  // Aligeramientos: cuatro ventanas redondas, como en un engranaje mecanizado.
+  for (let k = 0; k < 4; k++) {
+    const a = k * Math.PI / 2 + Math.PI / 4;
+    const v = new Path();
+    v.absarc(Math.cos(a) * rRaiz * 0.62, Math.sin(a) * rRaiz * 0.62, rRaiz * 0.16, 0, Math.PI * 2, true);
+    forma.holes.push(v);
+  }
+  const g = new ExtrudeGeometry(forma, { depth: grosor, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.025, bevelSegments: 2, curveSegments: 10 });
+  g.translate(0, 0, -grosor / 2);
+  return g;
 }
 
 export function iniciarCinta(opciones) {
   const lienzo = opciones.lienzo;
   const quieto = !!opciones.quieto;
 
-  const renderer = new WebGLRenderer({ canvas: lienzo, alpha: true, antialias: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-  renderer.outputColorSpace = SRGBColorSpace;
+  const renderer = new WebGLRenderer({ canvas: lienzo, alpha: true, antialias: true, powerPreference: 'high-performance' });
 
   const escena = new Scene();
   const camara = new PerspectiveCamera(30, 1, 0.1, 200);
+  prepararRenderer(renderer, escena, { exposicion: 1.05, entorno: 0.6 });
 
-  escena.add(new HemisphereLight(0xffffff, 0x8a99aa, 1.9));
-  const sol = new DirectionalLight(0xffffff, 1.6);
+  escena.add(new HemisphereLight(0xffffff, 0x8a99aa, 1.0));
+  const sol = new DirectionalLight(0xffffff, 1.7);
   sol.position.set(4, 9, 6);
   escena.add(sol);
+  const contra = new DirectionalLight(0x9fd8ff, 0.7);
+  contra.position.set(-6, 4, -6);
+  escena.add(contra);
 
   // Separación entre estaciones: menos en pantallas estrechas.
   let S = 6;
@@ -49,29 +81,39 @@ export function iniciarCinta(opciones) {
   // ---- Cinta ----
   const cinta = new Group();
   mundo.add(cinta);
-  const base = new Mesh(new BoxGeometry(1, 0.2, 1.4), mat(COLOR.tinta, { roughness: 0.8 }));
+  const base = new Mesh(new BoxGeometry(1, 0.2, 1.4), mat(COLOR.tinta, { roughness: 0.75 }));
   base.position.y = -0.12;
   cinta.add(base);
+  // Barandillas a los lados, con un brillo metálico.
+  const matBarandilla = mat(0x8796A6, { metalness: 0.7, roughness: 0.3 });
+  const barandillas = [-0.74, 0.74].map(function (z) {
+    const b = new Mesh(new BoxGeometry(1, 0.08, 0.06), matBarandilla);
+    b.position.set(0, 0.0, z);
+    cinta.add(b);
+    return b;
+  });
+  const sombraCinta = sombra(1, 2.6, 0.7);
+  sombraCinta.position.y = -0.235;
+  cinta.add(sombraCinta);
   const rodillos = [new Mesh(new CylinderGeometry(0.16, 0.16, 1.44, 20), mat(COLOR.pizarra)), new Mesh(new CylinderGeometry(0.16, 0.16, 1.44, 20), mat(COLOR.pizarra))];
   rodillos.forEach(function (r) { r.rotation.x = Math.PI / 2; r.position.y = -0.12; cinta.add(r); });
-  const listones = [];
-  const geoListon = new BoxGeometry(0.07, 0.02, 1.3);
-  const matListon = mat(COLOR.pizarra, { roughness: 0.9 });
-  for (let i = 0; i < 40; i++) {
-    const l = new Mesh(geoListon, matListon);
-    l.position.y = -0.01;
-    cinta.add(l);
-    listones.push(l);
-  }
+  // Listones: 40 piezas en una sola llamada de dibujo.
+  const LISTONES = 40;
+  const listones = new InstancedMesh(new BoxGeometry(0.07, 0.02, 1.3), mat(COLOR.pizarra, { roughness: 0.6, metalness: 0.3 }), LISTONES);
+  cinta.add(listones);
+  const muñeco = new Object3D();
 
   // ---- Entrada: bandeja con papeles ----
   const entrada = new Group();
   mundo.add(entrada);
-  const bandeja = new Mesh(new BoxGeometry(1.3, 0.12, 1.3), mat(COLOR.pizarra));
+  const bandeja = new Mesh(cajaRedonda(1.3, 0.14, 1.3, 0.05), mat(COLOR.pizarra, { metalness: 0.25, roughness: 0.45 }));
   bandeja.position.y = 0.06;
   entrada.add(bandeja);
+  const sombraEntrada = sombra(1.9, 1.9, 0.8);
+  sombraEntrada.position.y = 0.005;
+  entrada.add(sombraEntrada);
   for (let i = 0; i < 4; i++) {
-    const p = new Mesh(new BoxGeometry(0.8, 0.05, 1), mat(COLOR.papel));
+    const p = new Mesh(cajaRedonda(0.8, 0.05, 1, 0.012, 2), mat(COLOR.papel, { roughness: 0.85 }));
     p.position.set(Math.sin(i * 2.1) * 0.05, 0.15 + i * 0.06, Math.cos(i * 1.7) * 0.05);
     p.rotation.y = Math.sin(i * 3.3) * 0.18;
     entrada.add(p);
@@ -80,28 +122,37 @@ export function iniciarCinta(opciones) {
   // ---- Arco del flujo, con engranaje y luz que escanea ----
   const arco = new Group();
   mundo.add(arco);
-  const matArco = mat(COLOR.azul, { metalness: 0.2 });
+  const matArco = mat(COLOR.azul, { metalness: 0.35, roughness: 0.35 });
   [-0.85, 0.85].forEach(function (z) {
-    const pilar = new Mesh(new BoxGeometry(0.32, 2.1, 0.32), matArco);
+    const pilar = new Mesh(cajaRedonda(0.32, 2.1, 0.32, 0.07), matArco);
     pilar.position.set(0, 1.0, z);
     arco.add(pilar);
+    const pie = sombra(0.9, 0.9, 0.9);
+    pie.position.set(0, -0.215, z);
+    arco.add(pie);
   });
-  const viga = new Mesh(new BoxGeometry(0.42, 0.4, 2.1), matArco);
+  const viga = new Mesh(cajaRedonda(0.42, 0.4, 2.1, 0.08), matArco);
   viga.position.y = 2.2;
   arco.add(viga);
+  // Tira de luz bajo la viga: se enciende cada vez que una hoja pasa a dato.
+  const matTira = new MeshBasicMaterial({ color: COLOR.cian, toneMapped: false });
+  const tira = new Mesh(new BoxGeometry(0.08, 0.03, 1.5), matTira);
+  tira.position.y = 1.99;
+  arco.add(tira);
+  const luzEscaner = new PointLight(COLOR.cian, 0, 4, 1.6);
+  luzEscaner.position.set(0, 1.4, 0);
+  arco.add(luzEscaner);
   const engranaje = new Group();
   engranaje.position.set(0, 2.85, 0.15);
   arco.add(engranaje);
-  const matEngranaje = mat(COLOR.tostado, { metalness: 0.3, roughness: 0.4 });
-  engranaje.add(new Mesh(new TorusGeometry(0.42, 0.13, 10, 28), matEngranaje));
-  for (let i = 0; i < 10; i++) {
-    const diente = new Mesh(new BoxGeometry(0.16, 0.2, 0.2), matEngranaje);
-    const a = (i / 10) * Math.PI * 2;
-    diente.position.set(Math.cos(a) * 0.6, Math.sin(a) * 0.6, 0);
-    diente.rotation.z = a;
-    engranaje.add(diente);
-  }
-  const eje = new Mesh(new CylinderGeometry(0.12, 0.12, 0.3, 16), mat(COLOR.tinta));
+  const matEngranaje = mat(COLOR.tostado, { metalness: 0.55, roughness: 0.32 });
+  engranaje.add(new Mesh(geoEngranaje(12, 0.52, 0.68, 0.2), matEngranaje));
+  // Un piñón pequeño engranado al grande, girando al revés.
+  const piñon = new Mesh(geoEngranaje(8, 0.26, 0.38, 0.16), mat(COLOR.cielo, { metalness: 0.55, roughness: 0.32 }));
+  piñon.position.set(0.98, 0.32, -0.02);
+  arco.add(piñon);
+  piñon.position.add(engranaje.position);
+  const eje = new Mesh(new CylinderGeometry(0.1, 0.1, 0.34, 20), mat(COLOR.tinta, { metalness: 0.6, roughness: 0.3 }));
   eje.rotation.x = Math.PI / 2;
   engranaje.add(eje);
   const matLuz = new MeshBasicMaterial({ color: COLOR.cian, transparent: true, opacity: 0.12, side: DoubleSide, depthWrite: false });
@@ -118,12 +169,15 @@ export function iniciarCinta(opciones) {
   // ---- Salida: informe de barras ----
   const salida = new Group();
   mundo.add(salida);
-  const peana = new Mesh(new BoxGeometry(2.1, 0.12, 1.3), mat(COLOR.pizarra));
+  const peana = new Mesh(cajaRedonda(2.1, 0.14, 1.3, 0.05), mat(COLOR.pizarra, { metalness: 0.25, roughness: 0.45 }));
   peana.position.y = 0.06;
   salida.add(peana);
+  const sombraSalida = sombra(2.8, 1.9, 0.8);
+  sombraSalida.position.y = 0.005;
+  salida.add(sombraSalida);
   const coloresBarra = [COLOR.azul, COLOR.cielo, COLOR.verde, COLOR.tostado];
   const barras = coloresBarra.map(function (c, i) {
-    const b = new Mesh(new BoxGeometry(0.34, 1, 0.5), mat(c));
+    const b = new Mesh(cajaRedonda(0.34, 1, 0.5, 0.04, 2), mat(c, { roughness: 0.35, metalness: 0.15 }));
     b.position.set(-0.69 + i * 0.46, 0.12, 0);
     b.userData = { alto: 0.3 + i * 0.12, objetivo: 0.3 + i * 0.12 };
     salida.add(b);
@@ -131,9 +185,12 @@ export function iniciarCinta(opciones) {
   });
 
   // ---- Piezas que viajan: papel antes del arco, cubo de datos después ----
-  const geoPapel = new BoxGeometry(0.62, 0.04, 0.8);
-  const geoRenglon = new BoxGeometry(0.42, 0.012, 0.05);
-  const geoCubo = new BoxGeometry(0.4, 0.4, 0.4);
+  const geoPapel = cajaRedonda(0.62, 0.04, 0.8, 0.012, 2);
+  // Los tres renglones de cada hoja, unidos en una sola pieza.
+  const geoRenglon = mergeGeometries([0, 1, 2].map(function (k) {
+    return new BoxGeometry(0.42, 0.012, 0.05).translate(-0.04 + (k === 2 ? -0.08 : 0), 0.027, -0.22 + k * 0.2);
+  }));
+  const geoCubo = cajaRedonda(0.4, 0.4, 0.4, 0.07);
   const matPapel = mat(COLOR.papel);
   const matRenglon = mat(COLOR.raya);
   const matSobre = mat(0xF3E3D3);
@@ -143,26 +200,27 @@ export function iniciarCinta(opciones) {
     const papel = new Group();
     const hoja = new Mesh(geoPapel, i % 3 === 2 ? matSobre : matPapel);
     papel.add(hoja);
-    for (let k = 0; k < 3; k++) {
-      const r = new Mesh(geoRenglon, matRenglon);
-      r.position.set(-0.04 + (k === 2 ? -0.08 : 0), 0.027, -0.22 + k * 0.2);
-      papel.add(r);
-    }
-    const cubo = new Mesh(geoCubo, mat(coloresBarra[i % 4], { emissive: coloresBarra[i % 4], emissiveIntensity: 0.25 }));
+    papel.add(new Mesh(geoRenglon, matRenglon));
+    const cubo = new Mesh(geoCubo, mat(coloresBarra[i % 4], { emissive: coloresBarra[i % 4], emissiveIntensity: 0.3, roughness: 0.28, metalness: 0.1 }));
     cubo.position.y = 0.2;
-    g.add(papel, cubo);
+    const sombraPieza = sombra(0.95, 1.05, 0.75);
+    g.add(papel, cubo, sombraPieza);
     g.visible = false;
-    g.userData = { papel: papel, cubo: cubo, x: 0, fase: 'libre', barra: i % 4, t: 0, giro: (Math.random() - 0.5) * 0.4 };
+    g.userData = { papel: papel, cubo: cubo, sombra: sombraPieza, x: 0, fase: 'libre', barra: i % 4, t: 0, giro: (Math.random() - 0.5) * 0.4 };
     mundo.add(g);
     piezas.push(g);
   }
 
   // ---- Paquetes de datos que saltan del arco al informe ----
   const geoPaquete = new SphereGeometry(0.07, 10, 8);
-  const matPaquete = new MeshBasicMaterial({ color: COLOR.cian });
+  const matPaquete = new MeshBasicMaterial({ color: COLOR.cian, toneMapped: false });
+  const matHalo = new MeshBasicMaterial({ color: COLOR.cian, transparent: true, opacity: 0.18, depthWrite: false, toneMapped: false });
   const paquetes = [];
   for (let i = 0; i < 5; i++) {
     const p = new Mesh(geoPaquete, matPaquete);
+    const halo = new Mesh(geoPaquete, matHalo);
+    halo.scale.setScalar(2.4);
+    p.add(halo);
     p.userData.desfase = i / 5;
     mundo.add(p);
     paquetes.push(p);
@@ -174,6 +232,8 @@ export function iniciarCinta(opciones) {
     salida.position.x = S;
     const largo = 2 * S + 3.2;
     base.scale.x = largo;
+    barandillas.forEach(function (b) { b.scale.x = largo; });
+    sombraCinta.scale.x = largo + 1.2;
     rodillos[0].position.x = -largo / 2;
     rodillos[1].position.x = largo / 2;
     cinta.userData.largo = largo;
@@ -194,6 +254,7 @@ export function iniciarCinta(opciones) {
     camara.lookAt(0, 0.75, 0);
     camara.updateProjectionMatrix();
   }
+  const resolucion = resolucionAdaptativa(renderer, ajustar);
   ajustar();
   window.addEventListener('resize', ajustar);
 
@@ -221,18 +282,24 @@ export function iniciarCinta(opciones) {
   function paso(t, dt) {
     const largo = cinta.userData.largo;
     // Listones de la cinta en marcha.
-    listones.forEach(function (l, i) {
+    for (let i = 0; i < LISTONES; i++) {
       const x = ((i * 0.55 + t * VELOCIDAD) % 22);
-      l.position.x = -largo / 2 + (x % largo);
-      l.visible = x < largo;
-    });
+      muñeco.position.set(-largo / 2 + (x % largo), -0.01, 0);
+      muñeco.scale.setScalar(x < largo ? 1 : 0);
+      muñeco.updateMatrix();
+      listones.setMatrixAt(i, muñeco.matrix);
+    }
+    listones.instanceMatrix.needsUpdate = true;
     rodillos.forEach(function (r) { r.rotation.y = t * 4; });
     engranaje.rotation.z = -t * 1.4;
+    piñon.rotation.z = t * 1.4 * (12 / 8) + 0.2;
 
     if (t > siguiente) { lanzar(); siguiente = t + 1.5 + Math.random() * 0.5; }
 
     pulso = Math.max(0, pulso - dt * 2.2);
     matLuz.opacity = 0.1 + pulso * 0.45;
+    luzEscaner.intensity = pulso * 6;
+    matTira.color.setHex(COLOR.cian).multiplyScalar(0.55 + pulso * 1.2);
     luz.position.z = Math.sin(t * 3) * 0.85;
 
     piezas.forEach(function (p) {
@@ -279,6 +346,16 @@ export function iniciarCinta(opciones) {
       }
     });
 
+    // Cada pieza lleva su sombra pegada a la cinta; más tenue cuanto más alto vuela.
+    piezas.forEach(function (p) {
+      const u = p.userData;
+      if (u.fase === 'libre') return;
+      const suelo = u.fase === 'vuelo' ? 0.14 : -0.005;
+      u.sombra.position.y = suelo - p.position.y + 0.02;
+      u.sombra.material.opacity = MathUtils.clamp(0.8 - (p.position.y - suelo) * 0.35, 0.1, 0.8);
+      u.sombra.rotation.z = -p.rotation.y;
+    });
+
     // Barras: crecen hacia su objetivo y, al llenarse, vuelven a empezar.
     let llenas = 0;
     barras.forEach(function (b, i) {
@@ -315,7 +392,9 @@ export function iniciarCinta(opciones) {
   } else {
     renderer.setAnimationLoop(function () {
       if (!visible || !enPantalla) { reloj.getDelta(); return; }
-      const dt = Math.min(0.05, reloj.getDelta());
+      const real = reloj.getDelta();
+      resolucion.medir(real);
+      const dt = Math.min(0.05, real);
       paso(reloj.elapsedTime, dt);
       renderer.render(escena, camara);
     });

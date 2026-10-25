@@ -90,7 +90,7 @@ module.exports = {
     serviciosSub: 'What I can do for your company, through Arce Data Lab',
     serviciosLista: [
       ['flujo', 'Process automation', 'I remove repetitive manual work: reports that build themselves, data that moves between programs on its own, automatic alerts and emails.', 'Python, Power Automate, Apps Script, APIs', 'From €290'],
-      ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL', 'From €490 · your report ready in 7 days'],
+      ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL', 'From €490'],
       ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL', 'Fixed price after the review'],
       ['escritorio', 'Custom applications', 'ERP, CRM, appointments, tickets or an online shop: web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'Booking websites from €590']
     ],
@@ -142,7 +142,7 @@ module.exports = {
     ],
     faqServicios: [
       ['How much does a project cost?', 'A Power BI dashboard starts at €490, an automation at €290 and a booking website at €590, excluding VAT; the exact price is fixed after a free 45-minute review.'],
-      ['How long does it take?', 'A dashboard is usually ready in 7 days and a simple automation in one or two weeks, depending on the state of the data.'],
+      ['How long does it take?', 'It depends a lot on each case: how many data sources there are, what state they are in and what needs to be built. That is why the deadline is agreed in writing after the free review, once I have seen your data, and then kept.'],
       ['How do we start?', 'With a free 45-minute video call: we review the data and the tasks, and you get a proposal with a fixed price.']
     ],
     soporte: 'App support',
