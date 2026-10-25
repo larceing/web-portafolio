@@ -88,7 +88,8 @@ const ICONOS = {
   servidor: '<rect x="9" y="8" width="30" height="12" rx="2"/><rect x="9" y="28" width="30" height="12" rx="2"/><circle cx="15" cy="14" r="1.5"/><circle cx="15" cy="34" r="1.5"/><path d="M24 20v8M22 14h11M22 34h11"/>',
   fabrica: '<path d="M6 40V22l9 6v-6l9 6v-6l9 6V10h8v30z"/><path d="M14 34h4M24 34h4"/>',
   sobre: '<rect x="7" y="12" width="34" height="24" rx="2"/><path d="M7 14l17 13 17-13"/>',
-  video: '<rect x="6" y="11" width="36" height="26" rx="5"/><path d="M21 18v12l10-6z"/>'
+  video: '<rect x="6" y="11" width="36" height="26" rx="5"/><path d="M21 18v12l10-6z"/>',
+  ciclo: '<path d="M38 19a15 15 0 0 0-26-6M10 29a15 15 0 0 0 26 6"/><path d="M11 7v6h6M37 41v-6h-6"/><path d="M21 18v12l9-6z"/>'
 };
 
 const icono = clave => '<svg viewBox="0 0 48 48" aria-hidden="true">' + ICONOS[clave] + '</svg>';
@@ -105,6 +106,18 @@ const AREAS = [
 const C = { tinta: '#15202B', azul: '#1D4F7A', cielo: '#2E6C9E', pizarra: '#3F5266', tostado: '#A94F0E', verde: '#2C6259' };
 
 const PROYECTOS = [
+  {
+    id: 'ada', corto: 'Ada, marketing', titulo: 'Ada: el marketing de mis canales con n8n e IA',
+    tipo: 'producto', etiqueta: 'Producto propio · en marcha · 2026', icono: 'ciclo', color: C.verde,
+    resumen: 'Prepara, revisa y publica los vídeos y posts de cinco canales. Un ciclo semanal, un repaso cada noche y una cola en la que nada sale sin revisión.',
+    probar: 'Haz de Ada una semana: historias, cupo agotado, revisión de las 20:00 y publicación.',
+    caso: [
+      ['Problema', 'Llevar YouTube, Instagram, TikTok y LinkedIn con vídeos, portadas y textos cada día se come las tardes, y el día que algo falla, ese día no se publica.'],
+      ['Qué hice', 'Ada, un sistema en n8n que trabaja en dos ciclos. Cada semana pide las historias a ChatGPT y prepara capítulos, reels, posts y campañas; cada noche repasa lo que ha pasado y, si merece la pena, prepara un vídeo de actualidad. ChatGPT escribe las historias y hace las imágenes, Google AI Studio pone las voces, y el montaje, los clips y las portadas salen de un motor de vídeo propio. Todo entra en una cola: la víspera a las 20:00 se comprueba portada, textos, hora, un máximo de tres publicaciones al día por red y que no se repita tema en 14 días, y llega un correo con un botón «Parar» por publicación.'],
+      ['Resultado', 'Lo aprobado sale por Buffer y por la API de YouTube, y el vídeo se archiva solo. Un registro de errores y avisos: si se acaba el cupo de imágenes o de voces, apunta la hora y retoma el trabajo cuando vuelve a haber cupo; si una red falla, avisa para subirlo a mano. La revisión y los avisos ya funcionan; la publicación automática está en pruebas.']
+    ],
+    tec: ['n8n', 'API de OpenAI', 'Google AI Studio', 'Buffer', 'API de YouTube', 'rclone']
+  },
   {
     id: 'clubbyte', corto: 'Club Byte', titulo: 'Club Byte: tecnología explicada a niños de 8 a 12 años',
     tipo: 'producto', etiqueta: 'Proyecto personal · animación 3D · 2026', icono: 'video', color: C.tostado,
@@ -130,6 +143,8 @@ const PROYECTOS = [
   {
     id: 'sindri', corto: 'Sindri ERP', titulo: 'Sindri: ERP para pymes industriales',
     tipo: 'producto', etiqueta: 'Producto propio · open source · 2026', icono: 'fabrica', color: C.azul,
+    resumen: 'ERP para fábricas pequeñas: pedidos, almacén con lotes, facturas para VERI*FACTU y la planta conectada con Efesto.',
+    probar: 'Del comercial a la planta: oportunidad, pedido, hoja de ruta, palé con su lote y albarán.',
     texto: 'ERP para fábricas pequeñas: clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, el CRM. Recibe las horas de soporte por facturar desde Odin y genera sus PDF con Report Server.',
     tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'API REST', 'Docker'],
     enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
@@ -206,12 +221,16 @@ const PROYECTOS = [
   {
     id: 'asistente', corto: 'Lin-AI, asistente', titulo: 'Lin-AI: asistente de IA sobre el ERP',
     tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · 2026', icono: 'bot', color: C.tostado,
+    resumen: 'Preguntas de negocio al ERP en lenguaje normal, con consultas cerradas para que no invente datos.',
+    probar: 'Pregunta al ERP, mira qué consulta elige y descarga la respuesta.',
     texto: 'Un asistente que responde preguntas de negocio consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada; el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa, y responde en texto o en Excel.',
     tec: ['Python', 'Agentes', 'Base de conocimiento', 'SQL Server']
   },
   {
     id: 'reporting', corto: 'Reporting BI', titulo: 'Reporting de ventas, cobros y stock',
     tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · 2025–2026', icono: 'grafico', color: C.pizarra,
+    resumen: 'Ventas, cobros y stock en Power BI, migrados a Microsoft Fabric y comprobados antes y después.',
+    probar: 'Filtra, cambia de página y actualiza el modelo paso a paso.',
     texto: 'Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.',
     tec: ['Power BI', 'DAX', 'Microsoft Fabric', 'A3 ERP']
   },
@@ -242,6 +261,8 @@ const PROYECTOS = [
   {
     id: 'tareas', corto: 'Aris, tareas', titulo: 'Aris: tareas y proyectos para equipos',
     tipo: 'abierto', etiqueta: 'Open source · app web', icono: 'tablero', color: C.azul,
+    resumen: 'Kanban, Scrum, wiki y calendario para equipos, con una API pensada para agentes de IA.',
+    probar: 'Una incidencia de Odin llega como tarjeta y la llevas hasta «Hecho».',
     texto: 'Aplicación web para organizar el trabajo de un equipo: tableros Kanban y Scrum, calendario y agenda, wiki, notas, pizarra, SLA, notas entre personas, muros de actividad y una API pensada para agentes de IA. Es una versión base sin datos de ninguna empresa: la marca, el inicio de sesión (local o Keycloak) y los módulos opcionales se configuran en un fichero, y se instala con Docker y datos de demostración.',
     tec: ['Python', 'FastAPI', 'MariaDB', 'Keycloak', 'Docker'],
     enlaces: [['Ver en GitHub', GITHUB + '/aris']]
@@ -374,7 +395,13 @@ const UI = {
   serviciosDescripcion: 'Automatización con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes, con diagnóstico gratis de 45 minutos.',
   whatsappDiagnostico: WHATSAPP_DIAGNOSTICO,
   proyectos: 'Proyectos',
-  proyectosSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
+  proyectosSub: 'Los principales se pueden probar en el laboratorio, con datos inventados. El resto, más abajo y en corto.',
+  principales: 'Principales',
+  masProyectos: 'Más proyectos',
+  masSub: 'Pulsa en cualquiera para ver qué problema resolvía y cómo lo hice',
+  enLab: 'En el laboratorio',
+  verCaso: 'Ver el caso',
+  tambien: 'También en el laboratorio',
   filtrosAria: 'Filtrar proyectos',
   todos: 'Todos',
   tipos: { producto: 'Producto propio', empresa: 'Para empresa', abierto: 'Open source' },
@@ -567,7 +594,7 @@ UI.calc = {
 // Laboratorio de demos (carpeta lab/, lo compila el hilo de demos): botón
 // «Probarlo» en las fichas de estos proyectos. El enlace es relativo
 // (…/lab/#id) para que funcione igual en DEV (/web/lab/) y en arcedatalab.com/lab/.
-const LAB_DEMOS = ['sindri', 'brokkr', 'efesto', 'tareas', 'servicios', 'reporting', 'asistente'];
+const LAB_DEMOS = ['ada', 'sindri', 'brokkr', 'efesto', 'tareas', 'servicios', 'reporting', 'asistente'];
 
 // Una página por servicio, en /servicios/<id>/. El título es lo que escribe el
 // cliente en Google. proyectos: ids de PROYECTOS que se enlazan desde aquí (y
@@ -598,7 +625,7 @@ const SERVICIOS = [
   },
   {
     id: 'automatizacion-n8n', icono: 'flujo',
-    proyectos: ['whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
+    proyectos: ['ada', 'whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
     titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
     corto: 'Automatización con n8n',
     h1: 'Automatización de procesos con n8n',
@@ -861,7 +888,12 @@ function datosProyecto(d, p) {
 // Orden de los proyectos en la portada: primero los que más dicen a una pyme
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
 const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'plantillas', 'whatsapp', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
-const PROYECTOS_A_LA_VISTA = 9;
+
+// Proyectos principales: tarjeta grande con su demo del laboratorio. El primero
+// ocupa todo el ancho. Los demás proyectos salen en la lista corta de debajo.
+// RELACIONADOS: otras demos que se enseñan dentro de la tarjeta de un principal.
+const PRINCIPALES = ['ada', 'sindri', 'asistente', 'reporting', 'tareas'];
+const RELACIONADOS = { sindri: ['efesto', 'brokkr'] };
 
 // Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
 const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp', brokkr: 'img/logo-brokkr.webp' };
@@ -890,12 +922,29 @@ function botonPlantillas(t) {
   return '<p class="probar"><a class="boton" href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">' + t.serv.verPlantillas + '</a></p>';
 }
 
-function tesela(p, t, extra, base) {
-  return '      <button type="button" class="tesela" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '"' + (extra ? ' data-extra' : '') + ' style="--c:' + p.color + '">\n' +
-    '        <span class="tesela-cara">' + (LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="76" height="76" loading="lazy">' : icono(p.icono)) + '</span>\n' +
-    '        <span class="tesela-titulo">' + p.corto + '</span>\n' +
-    '        <span class="tesela-tipo">' + t.tipos[p.tipo] + '</span>\n' +
-    '      </button>';
+function cara(p, base, tam) {
+  return LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="' + tam + '" height="' + tam + '" loading="lazy">' : icono(p.icono);
+}
+
+function principal(p, t, todos, base) {
+  const rel = (RELACIONADOS[p.id] || []).map(id => todos.find(o => o.id === id)).filter(Boolean);
+  return '      <article class="principal' + (p.id === PRINCIPALES[0] ? ' ancha' : '') + '" style="--c:' + p.color + '">\n' +
+    '        <span class="tesela-cara principal-cara">' + cara(p, base, 76) + '</span>\n' +
+    '        <div class="principal-cuerpo">\n' +
+    '          <p class="principal-etiqueta">' + p.etiqueta + '</p>\n' +
+    '          <h3>' + p.titulo + '</h3>\n' +
+    '          <p>' + p.resumen + '</p>\n' +
+    '          <p class="principal-lab"><b>' + t.enLab + ':</b> ' + p.probar + '</p>\n' +
+    (rel.length ? '          <p class="principal-rel">' + t.tambien + ': ' + rel.map(o => '<a href="' + base + 'lab/#' + o.id + '">' + o.corto + '</a>').join(' · ') + '</p>\n' : '') +
+    '          <p class="principal-botones"><a class="boton" href="' + base + 'lab/#' + p.id + '">' + t.serv.probar + '</a>' +
+    '<button type="button" class="ver-caso" data-detalle="d-' + p.id + '">' + t.verCaso + ' →</button></p>\n' +
+    '        </div>\n      </article>';
+}
+
+function mini(p, t, base) {
+  return '        <li><button type="button" class="mini" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '" style="--c:' + p.color + '">' +
+    '<span class="tesela-cara">' + cara(p, base, 40) + '</span>' +
+    '<span class="mini-texto"><b>' + p.corto + '</b><span>' + t.tipos[p.tipo] + '</span></span></button></li>';
 }
 
 function detalle(p, t, base) {
@@ -1003,6 +1052,13 @@ ${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
       <h2>${t.proyectos}</h2>
       <p class="sub">${t.proyectosSub}</p>
 
+      <h3 class="proyectos-grupo">${t.principales}</h3>
+      <div class="principales">
+${PRINCIPALES.map(id => principal(d.proyectos.find(p => p.id === id), t, d.proyectos, base)).join('\n')}
+      </div>
+
+      <h3 class="proyectos-grupo">${t.masProyectos}</h3>
+      <p class="sub">${t.masSub}</p>
       <div class="filtros" role="group" aria-label="${t.filtrosAria}">
         <button type="button" class="filtro activo" data-filtro="todos">${t.todos}</button>
         <button type="button" class="filtro" data-filtro="empresa">${t.tipos.empresa}</button>
@@ -1010,11 +1066,10 @@ ${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[
         <button type="button" class="filtro" data-filtro="abierto">${t.tipos.abierto}</button>
       </div>
 
-      <div class="cuadricula">
-${enPortada(d.proyectos).map((p, i) => tesela(p, t, i >= PROYECTOS_A_LA_VISTA, base)).join('\n')}
-      </div>
+      <ul class="minis">
+${enPortada(d.proyectos).filter(p => !PRINCIPALES.includes(p.id)).map(p => mini(p, t, base)).join('\n')}
+      </ul>
       <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="#contacto">${t.inicioBotones[1]} →</a></p>
-      <button type="button" class="ver-todos" id="verTodos">${t.verTodos.replace('{n}', d.proyectos.length)}</button>
     </section>
 
 ${d.proyectos.map(p => detalle(p, t, '')).join('\n')}

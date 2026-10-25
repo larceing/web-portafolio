@@ -85,6 +85,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/linkedin/"/>
   </url>
   <url>
+    <loc>https://arcedatalab.com/proyectos/ada/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/ada/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/en/proyectos/ada/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/ada/"/>
+  </url>
+  <url>
     <loc>https://arcedatalab.com/proyectos/clubbyte/</loc>
     <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/clubbyte/"/>
