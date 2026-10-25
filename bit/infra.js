@@ -12,6 +12,7 @@ import {
   MathUtils, BufferGeometry, Float32BufferAttribute, Points, PointsMaterial
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { prepararRenderer, resolucionAdaptativa, sombra, cajaRedonda } from './calidad.js';
 
 const COLOR = {
   tinta: 0x15202B, azul: 0x1D4F7A, cielo: 0x2E6C9E, pizarra: 0x3F5266,
@@ -22,25 +23,33 @@ const DIA = new Color(0xEAF2FA), NOCHE = new Color(0x15202B);
 function mat(color, extra) {
   return new MeshStandardMaterial(Object.assign({ color: color, roughness: 0.55, metalness: 0.1 }, extra || {}));
 }
-function caja(w, h, d, m) { return new Mesh(new BoxGeometry(w, h, d), m); }
+function caja(w, h, d, m, radio) { return new Mesh(radio ? cajaRedonda(w, h, d, radio) : new BoxGeometry(w, h, d), m); }
+function conSombra(padre, ancho, fondo, opacidad) {
+  const s = sombra(ancho, fondo, opacidad);
+  s.position.y = 0.006;
+  padre.add(s);
+  return s;
+}
 
 export function iniciarInfra(opciones) {
   const lienzo = opciones.lienzo;
   const quieto = !!opciones.quieto;
 
-  const renderer = new WebGLRenderer({ canvas: lienzo, antialias: true, powerPreference: 'low-power' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-  renderer.outputColorSpace = SRGBColorSpace;
+  const renderer = new WebGLRenderer({ canvas: lienzo, antialias: true, powerPreference: 'high-performance' });
   const fondo = DIA.clone();
   renderer.setClearColor(fondo, 1);
 
   const escena = new Scene();
   const camara = new PerspectiveCamera(30, 1, 0.1, 200);
-  const cielo = new HemisphereLight(0xffffff, 0x8a99aa, 1.8);
+  prepararRenderer(renderer, escena, { exposicion: 1.05, entorno: 0.6 });
+  const cielo = new HemisphereLight(0xffffff, 0x8a99aa, 1.0);
   escena.add(cielo);
-  const sol = new DirectionalLight(0xffffff, 1.5);
+  const sol = new DirectionalLight(0xffffff, 1.6);
   sol.position.set(4, 9, 6);
   escena.add(sol);
+  const contra = new DirectionalLight(0x9fd8ff, 0.6);
+  contra.position.set(-6, 4, -6);
+  escena.add(contra);
 
   const GIRO = -0.32;
   const mundo = new Group();
@@ -48,7 +57,7 @@ export function iniciarInfra(opciones) {
   escena.add(mundo);
 
   // ---- Suelo ----
-  const suelo = caja(15, 0.2, 4.2, mat(COLOR.suelo, { roughness: 0.9 }));
+  const suelo = caja(15, 0.2, 4.2, mat(COLOR.suelo, { roughness: 0.75 }), 0.08);
   suelo.position.y = -0.1;
   mundo.add(suelo);
 
@@ -57,15 +66,18 @@ export function iniciarInfra(opciones) {
   proxy.position.x = -5.2;
   mundo.add(proxy);
   const matProxy = mat(COLOR.pizarra);
-  [-0.75, 0.75].forEach(function (z) { const p = caja(0.3, 1.8, 0.3, matProxy); p.position.set(0, 0.9, z); proxy.add(p); });
-  const viga = caja(0.4, 0.3, 1.85, matProxy);
+  [-0.75, 0.75].forEach(function (z) {
+    const p = caja(0.3, 1.8, 0.3, matProxy, 0.06); p.position.set(0, 0.9, z); proxy.add(p);
+    const s = conSombra(proxy, 0.8, 0.8, 0.8); s.position.z = z;
+  });
+  const viga = caja(0.4, 0.3, 1.85, matProxy, 0.06);
   viga.position.y = 1.9;
   proxy.add(viga);
   const candado = new Group();
   candado.position.set(0, 2.55, 0);
   proxy.add(candado);
   const matOro = mat(COLOR.oro, { metalness: 0.5, roughness: 0.35 });
-  candado.add(caja(0.5, 0.42, 0.2, matOro));
+  candado.add(caja(0.5, 0.42, 0.2, matOro, 0.06));
   const asa = new Mesh(new TorusGeometry(0.17, 0.05, 8, 20, Math.PI), matOro);
   asa.position.y = 0.2;
   candado.add(asa);
@@ -74,17 +86,19 @@ export function iniciarInfra(opciones) {
   const servidor = new Group();
   servidor.position.x = -2.2;
   mundo.add(servidor);
-  const armario = caja(1.3, 2.8, 1.2, mat(COLOR.tinta, { roughness: 0.7 }));
+  const armario = caja(1.3, 2.8, 1.2, mat(COLOR.tinta, { roughness: 0.45, metalness: 0.35 }), 0.06);
   armario.position.y = 1.4;
   servidor.add(armario);
+  conSombra(servidor, 2.1, 2.0, 0.9);
   const luces = [];
+  const matPlaca = mat(COLOR.pizarra, { metalness: 0.5, roughness: 0.35 });
+  const matLed = [new MeshBasicMaterial({ color: 0x5fe0a0, toneMapped: false }), new MeshBasicMaterial({ color: COLOR.cian, toneMapped: false })];
   for (let i = 0; i < 6; i++) {
-    const placa = caja(1.1, 0.3, 0.05, mat(COLOR.pizarra));
+    const placa = caja(1.1, 0.3, 0.05, matPlaca, 0.02);
     placa.position.set(0, 0.45 + i * 0.4, 0.61);
     servidor.add(placa);
     for (let k = 0; k < 3; k++) {
-      const m = new MeshBasicMaterial({ color: k === 0 ? 0x5fe0a0 : COLOR.cian });
-      const led = caja(0.07, 0.07, 0.03, m);
+      const led = caja(0.07, 0.07, 0.03, matLed[k === 0 ? 0 : 1]);
       led.position.set(0.3 + k * 0.13, 0.45 + i * 0.4, 0.645);
       led.userData.fase = Math.random() * 10;
       led.userData.ritmo = 2 + Math.random() * 5;
@@ -99,11 +113,11 @@ export function iniciarInfra(opciones) {
   for (let fila = 0; fila < 2; fila++) {
     for (let col = 0; col < 3; col++) huecos.push({ x: 0.3 + col * 1.15, y: 0.35 + fila * 0.72, z: 0 });
   }
-  const geoCont = new BoxGeometry(1.05, 0.66, 1.3);
+  const geoCont = cajaRedonda(1.05, 0.66, 1.3, 0.05);
   const geoNervio = new BoxGeometry(0.04, 0.6, 1.32);
   function contenedor(color) {
     const g = new Group();
-    const m = mat(color, { metalness: 0.25, roughness: 0.5 });
+    const m = mat(color, { metalness: 0.35, roughness: 0.4 });
     g.add(new Mesh(geoCont, m));
     for (let i = 0; i < 5; i++) {
       const n = new Mesh(geoNervio, m);
@@ -120,18 +134,22 @@ export function iniciarInfra(opciones) {
     return c;
   });
   let siguienteDespliegue = 4;
+  const sombraApps = sombra(4.3, 2.1, 0.85);
+  sombraApps.position.set(1.45, 0.006, 0);
+  mundo.add(sombraApps);
 
   // ---- Caja fuerte de las copias ----
   const fuerte = new Group();
   fuerte.position.x = 5.4;
   mundo.add(fuerte);
-  const cuerpoFuerte = caja(1.3, 1.4, 1.2, mat(0x5b6b7c, { metalness: 0.5, roughness: 0.35 }));
+  const cuerpoFuerte = caja(1.3, 1.4, 1.2, mat(0x5b6b7c, { metalness: 0.65, roughness: 0.3 }), 0.08);
   cuerpoFuerte.position.y = 0.7;
   fuerte.add(cuerpoFuerte);
+  conSombra(fuerte, 2.0, 1.9, 0.9);
   const puerta = new Group();
   puerta.position.set(-0.5, 0.7, 0.62);
   fuerte.add(puerta);
-  const hoja = new Mesh(new CylinderGeometry(0.45, 0.45, 0.08, 28), mat(0x7d8c9c, { metalness: 0.6, roughness: 0.3 }));
+  const hoja = new Mesh(new CylinderGeometry(0.45, 0.45, 0.08, 40), mat(0x7d8c9c, { metalness: 0.75, roughness: 0.25 }));
   hoja.rotation.x = Math.PI / 2;
   hoja.position.x = 0.5;
   puerta.add(hoja);
@@ -141,7 +159,7 @@ export function iniciarInfra(opciones) {
 
   // ---- Paquetes: peticiones que entran por el proxy ----
   const geoPaq = new SphereGeometry(0.08, 10, 8);
-  const matPaq = new MeshBasicMaterial({ color: COLOR.cian });
+  const matPaq = new MeshBasicMaterial({ color: COLOR.cian, toneMapped: false });
   const paquetes = [];
   for (let i = 0; i < 6; i++) {
     const p = new Mesh(geoPaq, matPaq);
@@ -163,7 +181,7 @@ export function iniciarInfra(opciones) {
 
   // ---- Byte en miniatura (el mismo modelo, de la caché) ----
   const byte = { obj: null, carga: null };
-  const paquete = caja(0.32, 0.26, 0.32, mat(COLOR.tostado));
+  const paquete = caja(0.32, 0.26, 0.32, mat(COLOR.tostado), 0.04);
   paquete.visible = false;
   mundo.add(paquete);
   if (opciones.modelo) {
@@ -189,6 +207,7 @@ export function iniciarInfra(opciones) {
     camara.lookAt(0, 1.2, 0);
     camara.updateProjectionMatrix();
   }
+  const resolucion = resolucionAdaptativa(renderer, ajustar);
   ajustar();
   window.addEventListener('resize', ajustar);
 
@@ -205,8 +224,10 @@ export function iniciarInfra(opciones) {
     const noche = MathUtils.smoothstep(fase, DESDE_NOCHE - 0.06, DESDE_NOCHE + 0.04) * (1 - MathUtils.smoothstep(fase, 0.93, 1));
     fondo.copy(DIA).lerp(NOCHE, noche);
     renderer.setClearColor(fondo, 1);
-    cielo.intensity = 1.8 - noche * 1.0;
-    sol.intensity = 1.5 - noche * 1.1;
+    cielo.intensity = 1.0 - noche * 0.55;
+    sol.intensity = 1.6 - noche * 1.2;
+    contra.intensity = 0.6 + noche * 0.5;
+    escena.environmentIntensity = 0.6 - noche * 0.4;
     matEstrellas.opacity = noche * 0.9;
     luna.material.opacity = noche;
 
@@ -311,7 +332,9 @@ export function iniciarInfra(opciones) {
   } else {
     renderer.setAnimationLoop(function () {
       if (!visible || !enPantalla) { reloj.getDelta(); return; }
-      const dt = Math.min(0.05, reloj.getDelta());
+      const real = reloj.getDelta();
+      resolucion.medir(real);
+      const dt = Math.min(0.05, real);
       paso(reloj.elapsedTime, dt);
       renderer.render(escena, camara);
     });
