@@ -121,8 +121,22 @@ module.exports = {
         ['Automatic refresh', 'The report refreshes every morning through the gateway, with nobody copying anything.'],
         ['Documentation', 'What each figure measures and where it comes from, so your team trusts it and can maintain it.']
       ],
+      lotesTitulo: 'Analysis packs',
+      lotesIntro: 'Reports already designed for each area, adapted to your ERP and your own names. Start with the pack that hurts most and add the others whenever you like. Try them with made-up data in the lab (the demos are in Spanish).',
+      lotesBoton: 'Try the example',
+      lotes: [
+        ['bi-comercial', 'Sales', 'For management and sales teams', 'Are we selling more than last year, who owes us money and what needs reordering?',
+          ['Sales by month, customer and product family against last year', 'Receivables by age and average collection days', 'Stock below minimum and turnover']],
+        ['bi-fabricacion', 'Manufacturing and OEE', 'For the plant manager', 'Where do the machines lose time, and why?',
+          ['OEE with availability, performance and quality, by machine and line', 'Minor and major stoppages by day, cause and machine, with mean time between stoppages', 'Hours lost by product']],
+        ['bi-pedidos', 'Orders and deliveries', 'For logistics and customer service', 'How many orders arrive on time, and why are the others late?',
+          ['On-time % by week, warehouse and carrier', 'Delays by reason and by customer', 'Open orders with their status']],
+        ['bi-calidad', 'Quality and scrap', 'For quality and production', 'How many parts do we scrap, what does it cost and why?',
+          ['Scrap % by month and work centre', 'Rejected parts by defect and cost of scrap', 'Actual against expected by part number, and the orders with most scrap']]
+      ],
       faq: [
         ['How much does a Power BI dashboard cost?', 'It depends on the data sources, the number of pages and the calculations. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
+        ['What is an analysis pack?', 'A set of Power BI pages designed for one area (sales, plant, logistics or quality) with its indicators already defined. I connect it to your data and adjust it to the way you work, so you don’t start from scratch. Tell me which packs interest you and I’ll send you a fixed quote.'],
         ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
         ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.']
