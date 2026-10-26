@@ -582,7 +582,7 @@ UI.p = {
   seguir: 'Reanudar el pase',
   diapo: 'Mensaje {n} de {t}',
   carrusel: [
-    { ante: 'Oficina virtual Ada', titulo: 'Tu empresa, organizada en una oficina virtual.', texto: 'Ada reúne comercial, pedidos, producción y planta, y los conecta con tu ERP, tu CRM y tus informes. Tú revisas; el trabajo pasa solo de un puesto a otro.', boton: 'Pide presupuesto', href: 'cta', img: 'img/ada/pedidos.webp', alt: 'Oficina virtual Ada de pedidos: buzón, gestión, incidencias y alta en el ERP' },
+    { ante: 'Oficina virtual Ada', titulo: 'Tu empresa, organizada en una oficina virtual.', texto: 'Ada reúne comercial, pedidos, producción y planta, y los conecta con tu ERP, tu CRM y tus informes. Tú revisas; el trabajo pasa solo de un puesto a otro.', boton: 'Pide presupuesto', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada en el centro de una tablet con los puestos de comercial, pedidos, producción y planta, y un móvil con las tareas del día' },
     { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM y planta, hablando entre sí.', texto: 'Lo que cierra el comercial llega al ERP, y la fábrica lo produce y lo registra sin copiar nada.', boton: 'Probarlo en el laboratorio', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: máquinas de la planta conectadas con Sindri' },
     { ante: 'Datos y reporting', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' }
   ],
