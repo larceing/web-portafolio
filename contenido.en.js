@@ -50,7 +50,7 @@ module.exports = {
     seguir: 'Resume the slideshow',
     diapo: 'Message {n} of {t}',
     carrusel: [
-      { ante: 'Ada virtual office', titulo: 'Your company, organised in a virtual office.', texto: 'Ada brings sales, orders, production and the plant together and connects them with your ERP, your CRM and your reports. You review; the work moves from desk to desk on its own.', boton: 'Ask for a quote', href: 'cta', img: 'img/ada/pedidos.webp', alt: 'Ada virtual orders office: inbox, order handling, issues and ERP entry' },
+      { ante: 'Ada virtual office', titulo: 'Your company, organised in a virtual office.', texto: 'Ada brings sales, orders, production and the plant together and connects them with your ERP, your CRM and your reports. You review; the work moves from desk to desk on its own.', boton: 'Ask for a quote', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada at the centre of a tablet with the sales, orders, production and plant desks, and a phone with the day’s tasks' },
       { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM and plant, talking to each other.', texto: 'What sales closes reaches the ERP, and the factory makes it and records it without copying anything.', boton: 'Try it in the lab', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: plant machines connected to Sindri' },
       { ante: 'Data and reporting', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' }
     ],
