@@ -1139,17 +1139,18 @@ code {
   max-width: 250px;
   margin: 0 18px 2px 0;
   padding: 12px 15px;
-  background: var(--tinta);
-  color: #FFFFFF;
+  background: var(--tarjeta);
+  color: var(--texto);
+  border: 1px solid var(--raya);
   font-size: 14.5px;
   line-height: 1.45;
   border-radius: 14px 14px 4px 14px;
-  box-shadow: 0 8px 24px rgba(21, 32, 43, 0.22);
+  box-shadow: 0 10px 28px -8px rgba(21, 32, 43, 0.18);
   pointer-events: auto;
 }
 
 .bit-bocadillo a {
-  color: #8FD3FF;
+  color: var(--azul);
   font-weight: 600;
   white-space: nowrap;
 }
