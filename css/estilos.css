@@ -2021,25 +2021,12 @@ h1, h2, h3,
   padding: 14px 26px;
 }
 
-/* La foto, pasada a boceto, va de fondo a la derecha; en su sitio, el logo */
+/* Portada sin foto de fondo: solo el texto y el logo */
 .portada {
   position: relative;
   overflow: hidden;
 }
 
-.portada-boceto {
-  position: absolute;
-  top: 0;
-  right: max(0px, calc((100vw - var(--ancho)) / 2 - 40px));
-  width: min(720px, 62vw);
-  height: auto;
-  opacity: 0.55;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 80%, transparent 100%), linear-gradient(180deg, #000 70%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 80%, transparent 100%), linear-gradient(180deg, #000 70%, transparent 100%);
-  mask-composite: intersect;
-}
 
 .portada-dentro {
   position: relative;
@@ -2499,13 +2486,6 @@ h1, h2, h3,
     gap: 24px;
   }
 
-  .portada-boceto {
-    top: 0;
-    right: -40px;
-    width: 120vw;
-    max-width: none;
-    opacity: 0.32;
-  }
 
   .portada-logo {
     grid-row: 1;
