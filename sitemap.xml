@@ -15,6 +15,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/"/>
   </url>
   <url>
+    <loc>https://arcedatalab.com/proyectos/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/en/proyectos/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/sobre-mi/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/sobre-mi/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/en/sobre-mi/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/sobre-mi/"/>
+  </url>
+  <url>
     <loc>https://arcedatalab.com/servicios/</loc>
     <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/"/>

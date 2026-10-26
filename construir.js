@@ -23,7 +23,7 @@ const VERSION_JS_LINKEDIN = huella('js/linkedin.js');
 const VERSION_JS_BIT = huella('js/bit-arranque.js');
 const VERSION_JS_PASEO = huella('js/bit-paseo.js');
 const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
-const VERSION_JS_CALC = huella('js/calculadora.js');
+const VERSION_JS_PORTADA = huella('js/portada.js');
 const VERSION_JS_ANTES = huella('js/antes-ahora.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
@@ -43,7 +43,7 @@ const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
-const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, me interesa el diagnóstico gratis de 45 minutos para mi negocio.');
+const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
 const CLUBBYTE_YOUTUBE = 'https://www.youtube.com/@clubbyte_es';
 const CLUBBYTE_CANAL = 'https://www.youtube.com/channel/UCGf6S4beoxCkjF3Fyl2XIrA';
 const CLUBBYTE_BLOG = 'https://clubbyte.arcedatalab.com';
@@ -367,7 +367,7 @@ const UI = {
   antetitulo: 'Analista de datos y desarrollador · Alicante',
   lema2: 'LA MEDIDA ES LO MEJOR',
   h1: 'Automatizo procesos y pongo la IA a trabajar <em>con los datos del negocio.</em>',
-  intro: 'Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de <a href="#arcedatalab">Arce Data Lab</a>. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.',
+  intro: 'Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de <a href="sobre-mi/">Arce Data Lab</a>. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana. Desde 2019, primero en consultoras y ahora dentro de la industria.',
   fotoAlt: 'Henry Arce en la Ciudad de las Artes y las Ciencias de Valencia',
   areasAria: 'Áreas de trabajo',
   verProyectos: 'Ver proyectos',
@@ -392,7 +392,7 @@ const UI = {
   verTodos: 'Ver los {n} proyectos',
   verProyectosHechos: 'Ver proyectos hechos',
   serviciosTitulo: 'Servicios',
-  serviciosDescripcion: 'Automatización con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes, con diagnóstico gratis de 45 minutos.',
+  serviciosDescripcion: 'Automatización con n8n, cuadros de mando de Power BI, asistentes de IA y webs a medida para pymes. Pide presupuesto sin compromiso.',
   whatsappDiagnostico: WHATSAPP_DIAGNOSTICO,
   proyectos: 'Proyectos',
   proyectosSub: 'Los principales se pueden probar en el laboratorio, con datos inventados. El resto, más abajo y en corto.',
@@ -440,8 +440,8 @@ const UI = {
     ['escritorio', 'Webs y aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'webs']
   ],
   verServicio: 'Ver el servicio',
-  serviciosNota: 'Cada proyecto es distinto, así que no hay tarifa fija: el precio se cierra por escrito, sin IVA, tras un diagnóstico gratis de 45 minutos. Si quieres una idea antes, la <a href="power-bi/#calculadora">calculadora</a> te da un rango orientativo para un cuadro de mando. Y si buscas una web, mira las <a href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">plantillas de ejemplo</a>.',
-  serviciosCta: 'Pide tu diagnóstico gratis',
+  serviciosNota: 'Cada proyecto es distinto, así que no publico tarifas: cuéntame qué necesitas y te paso un presupuesto cerrado por escrito, sin compromiso. Si buscas una web, mira las <a href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">plantillas de ejemplo</a>.',
+  serviciosCta: 'Pide presupuesto',
   serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
   cintaSub: 'Lo que hace un flujo automático, en pequeño',
@@ -487,9 +487,9 @@ const UI = {
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
   ],
   faqServicios: [
-    ['¿Cuánto cuesta un proyecto?', 'Depende de cuántas fuentes de datos haya, de cómo estén y de lo que haya que construir. Para un cuadro de mando de Power BI, la calculadora de esta web da un rango orientativo en un minuto; el precio exacto se cierra por escrito tras un diagnóstico gratis de 45 minutos.'],
+    ['¿Cuánto cuesta un proyecto?', 'Depende de cuántas fuentes de datos haya, de cómo estén y de lo que haya que construir. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
     ['¿Cuánto tarda?', 'Depende mucho de cada caso: de cuántas fuentes de datos hay, de cómo están y de lo que haga falta construir. Por eso el plazo se cierra por escrito después del diagnóstico gratis, cuando ya he visto tus datos, y se cumple.'],
-    ['¿Cómo se empieza?', 'Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.']
+    ['¿Cómo se empieza?', 'Me escribes por WhatsApp o por correo, vemos tu caso (si hace falta, en una videollamada gratis de 45 minutos) y te paso el presupuesto por escrito.']
   ],
   soporte: 'Soporte de las aplicaciones',
   bit: {
@@ -568,27 +568,82 @@ UI.porque = {
   ]
 };
 
-// Calculadora «¿Cuánto cuesta mi dashboard?». Cada respuesta suma horas; el
-// rango sale de las horas × TARIFA_HORA (y × 1,2 para el tope), redondeado a
-// 50 €. Los precios no se enseñan en ningún otro sitio de la web.
-const TARIFA_HORA = 40;
-UI.calc = {
-  titulo: '¿Cuánto cuesta mi dashboard?',
-  sub: 'Seis preguntas y te doy un rango orientativo. No se guarda nada: si quieres, el resultado se abre en tu WhatsApp para mandármelo.',
-  preguntas: [
-    ['¿De dónde salen los datos?', [['Un Excel o una sola fuente', 6], ['Dos o tres fuentes (ERP, Excel, CRM…)', 12], ['Cuatro fuentes o más', 20], ['Bases de datos SQL, API o SharePoint', 30]]],
-    ['¿Cuántas páginas tendrá el informe?', [['1 o 2', 4], ['De 3 a 5', 12], ['6 o más', 22]]],
-    ['¿Qué cálculos necesitas?', [['Totales y comparaciones sencillas', 2], ['Año anterior, objetivos y márgenes', 8], ['Cálculos a medida, previsiones o permisos por usuario', 18]]],
-    ['¿Cómo se actualiza?', [['A mano, cuando haga falta', 0], ['Sola, cada día', 3]]],
-    ['¿Cuántas rondas de cambios?', [['Dos, lo normal', 0], ['Cuatro', 4]]],
-    ['¿Para cuándo lo necesitas?', [['Sin prisa', 1], ['Es urgente', 1.25]]]
+// Portada simple (26/10/2026): un mensaje por bloque y un solo botón,
+// «Pide presupuesto», que abre WhatsApp. Sin precios en ningún sitio.
+const WHATSAPP_PRESUPUESTO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
+UI.p = {
+  menu: { hacemos: 'Qué hacemos', lab: 'Laboratorio', proyectos: 'Proyectos', sobre: 'Sobre mí' },
+  cta: 'Pide presupuesto',
+  ctaHref: WHATSAPP_PRESUPUESTO,
+  carruselAria: 'Lo que hace Arce Data Lab',
+  anterior: 'Mensaje anterior',
+  siguiente: 'Mensaje siguiente',
+  pausar: 'Pausar el pase',
+  seguir: 'Reanudar el pase',
+  diapo: 'Mensaje {n} de {t}',
+  carrusel: [
+    { ante: 'Arce Data Lab · Alicante', titulo: 'Que la IA haga el trabajo repetitivo de tu empresa.', texto: 'Automatizo tareas, conecto tus programas y pongo la IA a trabajar con tus datos. Tú decides; lo pesado se hace solo.', boton: 'Pide presupuesto', href: 'cta', img: 'logo' },
+    { ante: 'Oficinas Ada', titulo: 'Una oficina online que lee tus pedidos y los lleva al ERP.', texto: 'Cada departamento tiene sus puestos y se pasan el trabajo solos. Tú solo revisas lo que no está claro.', boton: 'Verla funcionando', href: 'lab/#sindri', img: 'img/ada/pedidos.webp', alt: 'Oficina Ada de pedidos: buzón, gestión, incidencias y alta en el ERP' },
+    { ante: 'Datos y Power BI', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' }
   ],
-  resultado: 'Rango orientativo',
-  rango: 'Entre {a} y {b} €',
-  nota: 'Sin IVA. Es una estimación: el precio cerrado sale del diagnóstico gratis de 45 minutos, cuando ya he visto tus datos.',
-  enviar: 'Mandarme el resultado por WhatsApp',
-  sinJs: 'La calculadora necesita JavaScript. Escríbeme por WhatsApp y te doy el rango igualmente.',
-  whatsapp: 'Hola Henry, he usado la calculadora de arcedatalab.com:'
+  ada: {
+    titulo: 'Mira a Ada trabajar',
+    sub: 'La familia Ada es una oficina online: cada departamento tiene sus puestos (recepción, gestión, supervisión, registro) y se pasan el trabajo hasta tu ERP.',
+    oficinas: [
+      ['Comercial', 'comercial', 'Cierra la oportunidad y da de alta al cliente nuevo. La jefa comercial lo aprueba con un clic y el pedido pasa solo a Pedidos.'],
+      ['Pedidos', 'pedidos', 'Lee los pedidos que llegan por correo, con PDF, Excel o sin adjunto, saca los datos y los lleva al ERP. Si una referencia no está clara, te pregunta.'],
+      ['Producción', 'produccion', 'Separa lo que sale del almacén de lo que hay que fabricar y prepara la orden para que el jefe de producción la apruebe.'],
+      ['Planta y almacén', 'planta', 'Fabrica, pide el material que falta y, cuando la línea termina, hace el albarán. El pedido queda servido.']
+    ],
+    alt: 'Oficina Ada de {o} en el laboratorio',
+    boton: 'Pruébalo en el laboratorio',
+    nota: 'Simulación con datos inventados: no se guarda nada.'
+  },
+  hacemos: {
+    titulo: 'Qué hacemos',
+    lista: [
+      ['flujo', 'Automatización con IA', 'Correos, pedidos, avisos e informes que pasan solos entre tus programas.', 'servicios/automatizacion-n8n/'],
+      ['grafico', 'Datos y Power BI', 'Un cuadro de mando con las cifras cuadradas, que se actualiza solo cada mañana.', 'servicios/power-bi/'],
+      ['escritorio', 'Webs y aplicaciones', 'Una web que trae clientes o una aplicación hecha a la medida de cómo trabajas.', 'servicios/webs/']
+    ],
+    ver: 'Saber más'
+  },
+  pasos: {
+    titulo: 'Cómo empezamos',
+    lista: [
+      ['Me cuentas tu caso', 'Por WhatsApp o en una videollamada gratis de 45 minutos.'],
+      ['Te paso el presupuesto', 'Por escrito: qué se hace, cuánto cuesta y para cuándo.'],
+      ['Lo dejo funcionando', 'Documentado y explicado a tu equipo.']
+    ]
+  },
+  proyectos: {
+    titulo: 'Proyectos',
+    sub: 'Hechos para empresas de verdad. Los marcados se pueden probar en el laboratorio, con datos inventados.',
+    lista: [['sindri', 'img/ada/planta.webp'], ['asistente', 'img/ada/asistente.webp'], ['reporting', 'img/ada/informe.webp']],
+    ver: 'Ver el caso',
+    probar: 'Probarlo',
+    todos: 'Ver todos los proyectos'
+  },
+  faq: [
+    ['¿Cuánto cuesta?', 'Depende de lo que haya que construir. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
+    ['¿Trabajas con pymes?', 'Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.'],
+    ['¿Mis datos están seguros?', 'Se trabaja en solo lectura siempre que se puede y las aplicaciones viven en servidores de la UE con copias cada noche.'],
+    ['¿Qué es Arce Data Lab?', 'Es mi marca: el laboratorio desde el que construyo automatizaciones, cuadros de mando, asistentes de IA y aplicaciones a medida para pymes e industria.']
+  ],
+  final: {
+    titulo: 'Cuéntame tu caso',
+    texto: 'Si en tu equipo hay tareas que se repiten o datos que no cuadran, escríbeme y te paso presupuesto sin compromiso.',
+    cliente: '¿Ya eres cliente?',
+    clienteTexto: 'Para dudas o incidencias con tu aplicación, escribe a soporte y te respondo en el día.',
+    clienteBoton: 'Escribir a soporte'
+  },
+  sobre: {
+    titulo: 'Sobre mí',
+    descripcion: 'Henry Arce, analista de datos y desarrollador en Alicante: trayectoria, tecnologías, infraestructura propia y lo que escribo en LinkedIn.',
+    sub: 'Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arce Data Lab. Trabajo con datos desde 2019, primero en consultoras y hoy dentro de la industria.'
+  },
+  todosTitulo: 'Todos los proyectos',
+  todosDescripcion: 'Proyectos de Henry Arce y Arce Data Lab: ERP, CRM, asistentes de IA, automatizaciones y cuadros de mando, con el problema que resolvían y el resultado.'
 };
 
 // Laboratorio de demos (carpeta lab/, lo compila el hilo de demos): botón
@@ -601,12 +656,12 @@ const LAB_DEMOS = ['ada', 'sindri', 'brokkr', 'efesto', 'tareas', 'servicios', '
 // que enlazan de vuelta a este servicio).
 const SERVICIOS = [
   {
-    id: 'power-bi', icono: 'grafico', calculadora: true,
+    id: 'power-bi', icono: 'grafico',
     proyectos: ['reporting', 'escritorio', 'comercial', 'grafo', 'reader', 'themelab', 'calculate'],
     titulo: 'Consultor de Power BI para pymes | Arce Data Lab',
     corto: 'Power BI',
     h1: 'Consultor de Power BI para pymes',
-    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL, con las cifras cuadradas. Calcula en un minuto cuánto cuesta tu dashboard.',
+    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL, con las cifras cuadradas y actualizados cada mañana. Pide presupuesto sin compromiso.',
     intro: 'Si los números de tu empresa viven en varios Excel y cada mes alguien pasa horas juntándolos, un cuadro de mando de Power BI lo hace solo. Lo conecto a tu ERP, a tus hojas o a tu base de datos, cuadro las cifras con contabilidad y te lo entrego documentado.',
     incluye: [
       ['Datos ordenados', 'Limpieza y modelo de datos con Power Query: una sola versión de cada cifra, aunque venga de varios sitios.'],
@@ -617,7 +672,7 @@ const SERVICIOS = [
     ],
     tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, A3 ERP, SharePoint',
     faq: [
-      ['¿Cuánto cuesta un dashboard de Power BI?', 'Depende de las fuentes de datos, del número de páginas y de los cálculos. La calculadora de esta página da un rango orientativo en un minuto, y el precio cerrado sale del diagnóstico gratis.'],
+      ['¿Cuánto cuesta un dashboard de Power BI?', 'Depende de las fuentes de datos, del número de páginas y de los cálculos. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
       ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
       ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.']
@@ -642,7 +697,7 @@ const SERVICIOS = [
     faq: [
       ['¿Qué es n8n?', 'n8n es una herramienta de automatización que conecta programas entre sí con flujos visuales. Se puede instalar en tu propio servidor, así tus datos no salen de la UE.'],
       ['¿Qué tareas se pueden automatizar?', 'Las que se repiten y siguen siempre los mismos pasos: copiar datos entre programas, enviar avisos o correos, generar informes o PDF, revisar formularios y clasificar mensajes.'],
-      ['¿Cuánto cuesta una automatización?', 'Depende de cuántas aplicaciones se conectan y de los casos especiales. El precio se cierra por escrito tras el diagnóstico gratis de 45 minutos.'],
+      ['¿Cuánto cuesta una automatización?', 'Depende de cuántas aplicaciones se conectan y de los casos especiales. Cuéntame tu caso y te paso un presupuesto cerrado por escrito.'],
       ['¿Qué pasa si cambia un programa?', 'El flujo avisa cuando algo deja de funcionar y se ajusta. Con el mantenimiento mensual, lo hago yo.']
     ]
   },
@@ -663,7 +718,7 @@ const SERVICIOS = [
     ],
     tec: 'HTML y CSS, Node.js, Next.js, Python, PostgreSQL, Docker',
     faq: [
-      ['¿Cuánto cuesta una web?', 'Depende de las páginas y de lo que tenga que hacer: no es lo mismo una web de presentación que una con reservas o tienda. El precio se cierra por escrito tras el diagnóstico gratis.'],
+      ['¿Cuánto cuesta una web?', 'Depende de las páginas y de lo que tenga que hacer: no es lo mismo una web de presentación que una con reservas o tienda. Cuéntame qué necesitas y te paso un presupuesto cerrado por escrito.'],
       ['¿Usas WordPress?', 'No por defecto: hago webs a medida, más rápidas y con menos mantenimiento de seguridad. Si ya tienes WordPress y te funciona, lo miramos.'],
       ['¿Dónde se aloja?', 'En mi servidor en Alemania (UE), con HTTPS, copias cada noche y comprobación continua de que responde. También puedo dejarla en tu propio hosting.'],
       ['¿Puedo cambiar los textos yo?', 'Si lo necesitas, la web lleva un panel sencillo para cambiar textos y fotos; si no, me lo pides y lo cambio con el mantenimiento mensual.']
@@ -712,9 +767,7 @@ const IDIOMAS = [
       datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]]),
       serv: EN.SERV,
       porque: EN.PORQUE,
-      calc: Object.assign({}, EN.CALC, {
-        preguntas: UI.calc.preguntas.map((q, i) => [EN.CALC.preguntas[2 * i], q[1].map((o, j) => [EN.CALC.preguntas[2 * i + 1][j], o[1]])])
-      })
+      p: EN.PORTADA
     }),
     servicios: SERVICIOS.map(s => {
       if (!EN.SERVICIOS[s.id]) throw new Error('Falta la traducción del servicio ' + s.id + ' en contenido.en.js');
@@ -858,7 +911,7 @@ function datosPortada(d) {
       },
       {
         '@type': 'FAQPage', '@id': SITIO + (d.carpeta ? d.carpeta + '/' : '') + '#preguntas',
-        mainEntity: t.faq.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }))
+        mainEntity: t.p.faq.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } }))
       }
     ]
   };
@@ -876,7 +929,7 @@ function datosProyecto(d, p) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: t.migas, item: inicio },
-          { '@type': 'ListItem', position: 2, name: t.proyectos, item: inicio + '#proyectos' },
+          { '@type': 'ListItem', position: 2, name: t.proyectos, item: inicio + 'proyectos/' },
           { '@type': 'ListItem', position: 3, name: plano(p.corto) }
         ]
       },
@@ -1015,12 +1068,12 @@ function cabeza(d, p) {
   <header class="cabecera">
     <a class="marca" href="${p.inicio}#inicio">${hojita()}Henry Arce <span>${t.lema}</span></a>
     <nav class="menu" aria-label="${t.secciones}">
-      <a href="${p.inicio}#proyectos">${t.menu.proyectos}</a>
-      <a class="menu-extra" href="${p.inicio}#trayectoria">${t.menu.trayectoria}</a>
-      <a class="menu-extra" href="${p.inicio}#arcedatalab">${t.menu.arce}</a>
-      <a href="${p.inicio}servicios/"${p.ruta.startsWith('servicios/') ? ' aria-current="page"' : ''}>${t.menu.servicios}</a>
+      <a href="${p.inicio}servicios/"${p.ruta.startsWith('servicios/') ? ' aria-current="page"' : ''}>${t.p.menu.hacemos}</a>
+      <a class="menu-extra" href="${p.raiz}lab/#sindri">${t.p.menu.lab}</a>
+      <a href="${p.inicio}proyectos/"${p.ruta.startsWith('proyectos/') ? ' aria-current="page"' : ''}>${t.p.menu.proyectos}</a>
+      <a class="menu-extra" href="${p.inicio}sobre-mi/"${p.ruta === 'sobre-mi/' ? ' aria-current="page"' : ''}>${t.p.menu.sobre}</a>
       <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
-      <a class="menu-cta" href="${p.inicio}#contacto">${t.inicioBotones[1]}</a>
+      <a class="menu-cta" href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta}</a>
     </nav>
   </header>
 `;
@@ -1029,34 +1082,135 @@ function cabeza(d, p) {
 function pagina(d) {
   const t = d.t;
   const base = d.base;
+  const p = t.p;
+  const enlace = h => h === 'cta' ? p.ctaHref : base + h;
+  const fuera = h => h === 'cta' ? ' target="_blank" rel="noopener"' : '';
+  const n = p.carrusel.length;
+  const destacados = p.proyectos.lista.map(x => [d.proyectos.find(o => o.id === x[0]), x[1]]).filter(x => x[0]);
 
   return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
-  <main id="contenido" class="portadilla">
-    <section class="portada" id="inicio">
-      <div class="portada-dentro">
-        <div class="portada-texto">
-          <p class="antetitulo">${t.antetitulo}</p>
-          <h1>${t.h1}</h1>
-          <p class="intro">${t.intro}</p>
-          <p class="botones"><a class="boton" href="#proyectos">${t.inicioBotones[0]}</a><a class="boton secundario" href="#contacto">${t.inicioBotones[1]}</a></p>
-        </div>
-        <div class="portada-logo">${logoArce(t.lema2)}</div>
-        <ul class="datos-clave">
-${t.datosClave.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
-        </ul>
+  <main id="contenido" class="portadilla simple">
+    <section class="heroe" id="inicio" aria-roledescription="carrusel" aria-label="${p.carruselAria}">
+      <div class="heroe-pista">
+${p.carrusel.map((s, i) => `        <article class="heroe-diapo${i === 0 ? ' activa' : ''}" id="diapo${i}" aria-roledescription="diapositiva" aria-label="${attr(p.diapo.replace('{n}', i + 1).replace('{t}', n))}"${i === 0 ? '' : ' aria-hidden="true"'}>
+          <div class="heroe-imagen${s.img === 'logo' ? ' heroe-logo' : ''}">${s.img === 'logo' ? logoArce(t.lema2) : '<img src="' + base + s.img + '" alt="' + attr(s.alt) + '" width="969" height="603"' + (i === 0 ? '' : ' loading="lazy"') + '>'}</div>
+          <div class="heroe-texto">
+            <p class="heroe-ante">${s.ante}</p>
+            ${i === 0 ? '<h1>' + s.titulo + '</h1>' : '<p class="heroe-titulo">' + s.titulo + '</p>'}
+            <p class="heroe-intro">${s.texto}</p>
+            <p class="botones"><a class="boton grande" href="${enlace(s.href)}"${fuera(s.href)}${i === 0 ? '' : ' tabindex="-1"'}>${s.boton}</a></p>
+          </div>
+        </article>`).join('\n')}
+      </div>
+      <button type="button" class="heroe-flecha heroe-ant" aria-label="${p.anterior}" hidden>‹</button>
+      <button type="button" class="heroe-flecha heroe-sig" aria-label="${p.siguiente}" hidden>›</button>
+      <div class="heroe-mandos" hidden>
+${p.carrusel.map((s, i) => '        <button type="button" class="heroe-punto' + (i === 0 ? ' activo' : '') + '" data-ir="' + i + '" aria-label="' + attr(p.diapo.replace('{n}', i + 1).replace('{t}', n)) + '"' + (i === 0 ? ' aria-current="true"' : '') + '></button>').join('\n')}
+        <button type="button" class="heroe-pausa" data-pausar="${attr(p.pausar)}" data-seguir="${attr(p.seguir)}" aria-label="${p.pausar}"><span aria-hidden="true">❚❚</span></button>
       </div>
     </section>
 
+    <section class="bloque simple-bloque" id="ada" data-bit="arcedatalab">
+      <h2 class="titular">${p.ada.titulo}</h2>
+      <p class="sub centrada">${p.ada.sub}</p>
+      <div class="pestanas" role="tablist" aria-label="${p.ada.titulo}">
+${p.ada.oficinas.map((o, i) => '        <button type="button" role="tab" class="pestana" id="pest-' + o[1] + '" aria-controls="ofi-' + o[1] + '" aria-selected="' + (i === 0) + '"' + (i === 0 ? '' : ' tabindex="-1"') + '>' + o[0] + '</button>').join('\n')}
+      </div>
+${p.ada.oficinas.map((o, i) => `      <div class="oficina" role="tabpanel" id="ofi-${o[1]}" aria-labelledby="pest-${o[1]}"${i === 0 ? '' : ' hidden'}>
+        <img src="${base}img/ada/${o[1]}.webp" alt="${attr(p.ada.alt.replace('{o}', o[0]))}" width="957" height="591" loading="lazy">
+        <div class="oficina-texto">
+          <h3>Ada ${o[0]}</h3>
+          <p>${o[2]}</p>
+          <p class="enlace-flecha"><a href="${base}lab/#sindri">${p.ada.boton} →</a></p>
+          <p class="nota">${p.ada.nota}</p>
+        </div>
+      </div>`).join('\n')}
+    </section>
+
+    <section class="bloque simple-bloque" id="que-hacemos" data-bit="servicios">
+      <h2 class="titular">${p.hacemos.titulo}</h2>
+      <div class="tres">
+${p.hacemos.lista.map(x => '        <article class="tres-item"><span class="tres-icono">' + icono(x[0]) + '</span><h3>' + x[1] + '</h3><p>' + x[2] + '</p><p class="enlace-flecha"><a href="' + base + x[3] + '">' + p.hacemos.ver + ' →</a></p></article>').join('\n')}
+      </div>
+      <p class="botones centrados"><a class="boton grande" href="${p.ctaHref}" target="_blank" rel="noopener">${p.cta}</a></p>
+    </section>
+
+    <section class="bloque simple-bloque tostado" id="como">
+      <h2 class="titular">${p.pasos.titulo}</h2>
+      <ol class="pasos-simple">
+${p.pasos.lista.map((x, i) => '        <li><span class="paso-num">' + (i + 1) + '</span><h3>' + x[0] + '</h3><p>' + x[1] + '</p></li>').join('\n')}
+      </ol>
+    </section>
+
+    <section class="bloque simple-bloque" id="proyectos" data-bit="proyectos">
+      <h2 class="titular">${p.proyectos.titulo}</h2>
+      <p class="sub centrada">${p.proyectos.sub}</p>
+      <div class="recursos">
+${destacados.map(x => '        <article class="recurso"><a class="recurso-imagen" href="' + base + 'proyectos/' + x[0].id + '/" tabindex="-1" aria-hidden="true"><img src="' + base + x[1] + '" alt="" width="969" height="603" loading="lazy"></a><h3><a href="' + base + 'proyectos/' + x[0].id + '/">' + x[0].titulo + '</a></h3><p>' + x[0].resumen + '</p><p class="recurso-enlaces"><a href="' + base + 'proyectos/' + x[0].id + '/">' + p.proyectos.ver + '</a>' + (LAB_DEMOS.includes(x[0].id) ? '<a href="' + base + 'lab/#' + x[0].id + '">' + p.proyectos.probar + ' →</a>' : '') + '</p></article>').join('\n')}
+      </div>
+      <p class="botones centrados"><a class="boton secundario" href="${base}proyectos/">${p.proyectos.todos}</a></p>
+    </section>
+
+    <section class="bloque simple-bloque" id="preguntas" data-bit="preguntas">
+      <h2 class="titular">${t.preguntas}</h2>
+      <div class="acordeon">
+${p.faq.map(f => '        <details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>').join('\n')}
+      </div>
+    </section>
+
+    <section class="final" id="contacto" data-bit="contacto">
+      <div class="final-dentro">
+        <article class="final-tarjeta">
+          <h2>${p.final.titulo}</h2>
+          <p>${p.final.texto}</p>
+          <p class="botones"><a class="boton grande" href="${p.ctaHref}" target="_blank" rel="noopener">${p.cta}</a></p>
+          <p class="final-otros"><a href="mailto:${CORREO}">${CORREO}</a> · <a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a></p>
+        </article>
+        <article class="final-tarjeta">
+          <h2>${p.final.cliente}</h2>
+          <p>${p.final.clienteTexto}</p>
+          <p class="botones"><a class="boton contorno grande" href="mailto:${SOPORTE}">${p.final.clienteBoton}</a></p>
+          <p class="final-otros"><a href="mailto:${SOPORTE}">${SOPORTE}</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  ${pie(t, base, '')}
+
+${bitHtml(t, base)}
+  <script src="${base}js/portada.js?v=${VERSION_JS_PORTADA}" defer></script>
+  <script src="${base}js/app.js?v=${VERSION_JS}"></script>
+</body>
+</html>
+`;
+}
+
+// Página /proyectos/: todos los proyectos, con los principales arriba, los
+// filtros y la ficha que se abre al pulsar (lo que antes iba en la portada).
+function paginaProyectos(d) {
+  const t = d.t;
+  const raiz = '../' + d.base;
+  const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'proyectos/';
+  return cabeza(d, {
+    titulo: t.p.todosTitulo + ' · Henry Arce', descripcion: attr(t.p.todosDescripcion), ogDescripcion: attr(t.p.todosDescripcion), ogTipo: 'website',
+    ruta: 'proyectos/', raiz: raiz, inicio: '../', otro: '../' + d.otro + 'proyectos/',
+    datos: { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'CollectionPage', '@id': url, url: url, name: plano(t.p.todosTitulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } },
+      { '@type': 'ItemList', name: t.proyectos, itemListElement: d.proyectos.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: urlProyecto(d, p), name: plano(p.titulo) })) }
+    ] }
+  }) + `
+  <main id="contenido" class="portadilla">
     <section class="bloque" id="proyectos" data-bit="proyectos">
-      <h2>${t.proyectos}</h2>
+      <h1>${t.p.todosTitulo}</h1>
       <p class="sub">${t.proyectosSub}</p>
 
-      <h3 class="proyectos-grupo">${t.principales}</h3>
+      <h2 class="proyectos-grupo">${t.principales}</h2>
       <div class="principales">
-${PRINCIPALES.map(id => principal(d.proyectos.find(p => p.id === id), t, d.proyectos, base)).join('\n')}
+${PRINCIPALES.map(id => principal(d.proyectos.find(p => p.id === id), t, d.proyectos, raiz)).join('\n')}
       </div>
 
-      <h3 class="proyectos-grupo">${t.masProyectos}</h3>
+      <h2 class="proyectos-grupo">${t.masProyectos}</h2>
       <p class="sub">${t.masSub}</p>
       <div class="filtros" role="group" aria-label="${t.filtrosAria}">
         <button type="button" class="filtro activo" data-filtro="todos">${t.todos}</button>
@@ -1066,64 +1220,59 @@ ${PRINCIPALES.map(id => principal(d.proyectos.find(p => p.id === id), t, d.proye
       </div>
 
       <ul class="minis">
-${enPortada(d.proyectos).filter(p => !PRINCIPALES.includes(p.id)).map(p => mini(p, t, base)).join('\n')}
+${enPortada(d.proyectos).filter(p => !PRINCIPALES.includes(p.id)).map(p => mini(p, t, raiz)).join('\n')}
       </ul>
-      <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="#contacto">${t.inicioBotones[1]} →</a></p>
+      <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta} →</a></p>
     </section>
 
-${d.proyectos.map(p => detalle(p, t, '')).join('\n')}
+${d.proyectos.map(p => detalle(p, t, raiz)).join('\n')}
+  </main>
 
-    <section class="bloque" id="que-hago" data-bit="servicios">
-      <h2>${t.queHago}</h2>
-      <p class="sub">${t.queHagoSub}</p>
-      <div class="niveles">
-${t.niveles.map(n => '        <article class="nivel" data-icono="' + n[0] + '">\n          <div class="nivel-cabeza"><span class="nivel-icono">' + icono(n[0]) + '</span><h3>' + n[1] + '</h3></div>\n          <ol class="escalera">' + n[2].map((x, i) => '<li style="--i:' + i + '"><span class="peldano"><em>' + t.nivelesNombres[i] + '</em>' + x + '</span></li>').join('') + '</ol>\n        </article>').join('\n')}
-      </div>
-    </section>
-${porqueHtml(t)}
-    <section class="bloque cinta" id="automatizacion" data-bit="cinta">
-      <h2>${t.cinta}</h2>
-      <p class="sub">${t.cintaSub}</p>
-      <div class="cinta-escena" id="cinta" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}">
-        <canvas class="cinta-lienzo" id="cintaLienzo" aria-hidden="true" hidden></canvas>
-        <ol class="cinta-pasos">
-${t.cintaPasos.map(x => '          <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
-        </ol>
-      </div>
-    </section>
+  ${pie(t, raiz, '../')}
 
-    <section class="bloque" id="arcedatalab" data-bit="arcedatalab">
-      <h2>${t.arce}</h2>
-      <p class="sub">${t.arceSub}</p>
+  <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
+    <div class="ficha-cabecera" id="fichaCabecera"></div>
+    <div class="ficha-cuerpo" id="fichaCuerpo"></div>
+    <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="${t.cerrar}">×</button>
+  </dialog>
 
+${bitHtml(t, raiz)}
+  <script src="${raiz}js/app.js?v=${VERSION_JS}"></script>
+</body>
+</html>
+`;
+}
+
+// Página /sobre-mi/: lo que antes alargaba la portada (trayectoria,
+// tecnologías, infraestructura, Arce Data Lab y divulgación), sin el 3D.
+function paginaSobreMi(d) {
+  const t = d.t;
+  const raiz = '../' + d.base;
+  const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'sobre-mi/';
+  return cabeza(d, {
+    titulo: t.p.sobre.titulo + ' · Henry Arce', descripcion: attr(t.p.sobre.descripcion), ogDescripcion: attr(t.p.sobre.descripcion),
+    ruta: 'sobre-mi/', raiz: raiz, inicio: '../', otro: '../' + d.otro + 'sobre-mi/',
+    datos: { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'AboutPage', '@id': url, url: url, name: plano(t.p.sobre.titulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA }, mainEntity: { '@id': ID_PERSONA } },
+      persona(d)
+    ] }
+  }) + `
+  <main id="contenido" class="portadilla sobre-mi">
+    <section class="bloque">
+      <h1>${t.p.sobre.titulo}</h1>
+      <p class="sub">${t.p.sobre.sub}</p>
       <div class="marcas">
         <article class="marca-tarjeta">
-          <h3>Arce Data Lab</h3>
+          <h2>Arce Data Lab</h2>
           <p>${t.arceTexto}</p>
           <p class="enlaces">${t.arceEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
         </article>
       </div>
     </section>
 
-    <section class="bloque" id="infraestructura" data-bit="infraestructura">
-      <h2>${t.infra}</h2>
-      <p class="sub">${t.infraSub}</p>
-      <p class="infra-texto">${t.infraTexto}</p>
-      <div class="infra-escena" id="infraEscena" data-js="${d.base}js/bit.js?v=${VERSION_JS_BIT3D}" data-modelo="${d.base}img/bit.glb?v=${huella('img/bit.glb')}">
-        <canvas class="infra-lienzo" id="infraLienzo" aria-hidden="true" hidden></canvas>
-        <ul class="infra-leyenda" aria-hidden="true">${t.infraLeyenda.map(x => '<li>' + x + '</li>').join('')}</ul>
-      </div>
-
-      <dl class="infra">
-${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
-      </dl>
-      <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="proyectos/plataforma/">${t.verFicha}</a></p>
-    </section>
-
     <section class="bloque" id="trayectoria" data-bit="trayectoria">
       <h2>${t.trayectoria}</h2>
       <p class="sub">${t.trayectoriaSub}</p>
-
       <ol class="lista">
 ${d.trayectoria.map(x => '        <li><span class="cuando">' + x[0] + '</span><div><h3>' + x[1] + ' <span>· ' + x[2] + '</span></h3><p>' + x[3] + '</p></div></li>').join('\n')}
       </ol>
@@ -1132,58 +1281,36 @@ ${d.trayectoria.map(x => '        <li><span class="cuando">' + x[0] + '</span><d
     <section class="bloque" id="tecnologias" data-bit="tecnologias">
       <h2>${t.tecnologias}</h2>
       <p class="sub">${t.tecnologiasSub}</p>
-
       <dl class="lista">
 ${d.tecnologias.map(x => '        <div><dt class="cuando">' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
       </dl>
     </section>
 
+    <section class="bloque" id="infraestructura" data-bit="infraestructura">
+      <h2>${t.infra}</h2>
+      <p class="sub">${t.infraSub}</p>
+      <p class="infra-texto">${t.infraTexto}</p>
+      <dl class="infra">
+${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
+      </dl>
+      <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="../proyectos/plataforma/">${t.verFicha}</a></p>
+    </section>
+
     <section class="bloque" id="divulgacion">
       <h2>${t.divulgacion}</h2>
       <p class="sub">${t.divulgacionSub}</p>
-
       <div class="cifras">
 ${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
       </div>
-      <p class="mas"><a href="linkedin/">${t.verPublicaciones}</a></p>
-    </section>
-
-    <section class="bloque" id="preguntas" data-bit="preguntas">
-      <h2>${t.preguntas}</h2>
-      <p class="sub">${t.preguntasSub}</p>
-
-      <dl class="preguntas">
-${t.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>').join('\n')}
-      </dl>
-    </section>
-
-    <section class="bloque contacto" id="contacto" data-bit="contacto">
-      <h2>${t.contacto}</h2>
-      <p class="sub">${t.contactoSub}</p>
-      <a class="correo" href="mailto:${CORREO}">${CORREO}</a>
-      <p class="botones"><a class="boton" href="${WHATSAPP}" target="_blank" rel="noopener">${t.escribemeWhatsapp}</a></p>
-      <p class="redes">
-        <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
-        <a href="${GITHUB}" target="_blank" rel="noopener">GitHub</a>
-        <a href="${TIKTOK}" target="_blank" rel="noopener">TikTok</a>
-      </p>
-      <p class="telefono"><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a> · ${t.telefono}</p>
-      <p class="telefono">${t.soporte}: <a href="mailto:${SOPORTE}">${SOPORTE}</a></p>
-      <p class="contacto-servicios"><a href="servicios/">${t.verServicios} →</a></p>
+      <p class="mas"><a href="../linkedin/">${t.verPublicaciones}</a></p>
+      <p class="botones"><a class="boton grande" href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta}</a></p>
     </section>
   </main>
 
-  ${pie(t, base, '')}
+  ${pie(t, raiz, '../')}
 
-  <dialog class="ficha" id="ficha" aria-labelledby="fichaTitulo">
-    <div class="ficha-cabecera" id="fichaCabecera"></div>
-    <div class="ficha-cuerpo" id="fichaCuerpo"></div>
-    <button type="button" class="ficha-cerrar" id="fichaCerrar" aria-label="${t.cerrar}">×</button>
-  </dialog>
-
-${bitHtml(t, base)}
-  <script src="${base}js/app.js?v=${VERSION_JS}"></script>
+${bitHtml(t, raiz)}
+  <script src="${raiz}js/app.js?v=${VERSION_JS}"></script>
 </body>
 </html>
 `;
@@ -1256,7 +1383,7 @@ ${porqueHtml(t)}
       <dl class="preguntas">
 ${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>').join('\n')}
       </dl>
-      <p class="mas"><a href="../#proyectos">${t.verProyectosHechos} →</a></p>
+      <p class="mas"><a href="../proyectos/">${t.verProyectosHechos} →</a></p>
     </section>
   </main>
 
@@ -1292,10 +1419,10 @@ function pie(t, raiz, inicio) {
         <p><a href="mailto:${CORREO}">${CORREO}</a><br><a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a></p>
       </div>
       ${col(t.pieNav, [
-        '<a href="' + inicio + '#proyectos">' + t.menu.proyectos + '</a>',
-        '<a href="' + inicio + '#trayectoria">' + t.menu.trayectoria + '</a>',
-        '<a href="' + inicio + '#arcedatalab">' + t.menu.arce + '</a>',
-        '<a href="' + inicio + 'servicios/">' + t.menu.servicios + '</a>',
+        '<a href="' + inicio + 'servicios/">' + t.p.menu.hacemos + '</a>',
+        '<a href="' + raiz + 'lab/#sindri">' + t.p.menu.lab + '</a>',
+        '<a href="' + inicio + 'proyectos/">' + t.p.menu.proyectos + '</a>',
+        '<a href="' + inicio + 'sobre-mi/">' + t.p.menu.sobre + '</a>',
         '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
       ])}
       ${col(t.menu.servicios, SERVICIOS.map(x => '<a href="' + inicio + 'servicios/' + x.id + '/">' + (t.lang === 'en' ? EN.SERVICIOS[x.id].corto : x.corto) + '</a>'))}
@@ -1408,7 +1535,7 @@ function paginaProyecto(d, p) {
     datos: datosProyecto(d, p)
   }) + `
   <main id="contenido">
-    <nav class="migas" aria-label="Breadcrumb"><a href="../../">${t.migas}</a> › <a href="../../#proyectos">${t.proyectos}</a> › <span>${p.corto}</span></nav>
+    <nav class="migas" aria-label="Breadcrumb"><a href="../../">${t.migas}</a> › <a href="../">${t.proyectos}</a> › <span>${p.corto}</span></nav>
 
     <article class="bloque proyecto" data-bit="proyectos">
       <div class="proyecto-cabecera" style="--c:${p.color}">${icono(p.icono)}</div>
@@ -1426,7 +1553,7 @@ function paginaProyecto(d, p) {
       <ul class="otros">
 ${otros.map(o => '        <li><a href="../' + o.id + '/">' + o.titulo + '</a> <span>· ' + t.tipos[o.tipo] + '</span></li>').join('\n')}
       </ul>
-      <p class="mas"><a href="../../#proyectos">${t.volver}</a></p>
+      <p class="mas"><a href="../">${t.volver}</a></p>
     </section>
   </main>
 
@@ -1438,44 +1565,7 @@ ${bitHtml(t, raiz)}
 `;
 }
 
-// ---------- Páginas de cada servicio y calculadora ----------
-
-// Rango de la calculadora con la respuesta por defecto (la primera de cada
-// pregunta), para que sin JavaScript tampoco salga vacío. Misma cuenta que js/calculadora.js.
-function rangoCalc(calc, lang) {
-  let horas = 0, factor = 1;
-  calc.preguntas.forEach((q, i) => { if (i === calc.preguntas.length - 1) factor *= q[1][0][1]; else horas += q[1][0][1]; });
-  const r = n => (Math.round(n / 50) * 50).toLocaleString(lang === 'en' ? 'en-GB' : 'es-ES');
-  return calc.rango.replace('{a}', r(horas * TARIFA_HORA * factor)).replace('{b}', r(horas * TARIFA_HORA * 1.2 * factor));
-}
-
-function calculadoraHtml(t, raiz) {
-  const c = t.calc;
-  const ultima = c.preguntas.length - 1;
-  const grupos = c.preguntas.map((q, i) =>
-    '        <fieldset' + (i === ultima ? ' data-factor' : '') + '>\n          <legend>' + q[0] + '</legend>\n' +
-    q[1].map((o, j) => '          <label><input type="radio" name="p' + i + '" value="' + o[1] + '" data-texto="' + attr(o[0]) + '"' + (j === 0 ? ' checked' : '') + '><span>' + o[0] + '</span></label>').join('\n') +
-    '\n        </fieldset>').join('\n');
-  return `
-    <section class="bloque calculadora" id="calculadora" aria-labelledby="calc-titulo">
-      <h2 id="calc-titulo">${c.titulo}</h2>
-      <p class="sub">${c.sub}</p>
-      <form class="calc" id="calc" data-tarifa="${TARIFA_HORA}" data-whatsapp="${WHATSAPP}" data-texto="${attr(c.whatsapp)}" data-rango="${attr(c.rango)}">
-        <div class="calc-preguntas">
-${grupos}
-        </div>
-        <div class="calc-resultado">
-          <p class="calc-etiqueta">${c.resultado}</p>
-          <output id="calcRango" for="calc" aria-live="polite">${rangoCalc(c, t.lang)}</output>
-          <p class="calc-nota">${c.nota}</p>
-          <a class="boton" id="calcEnviar" href="${WHATSAPP}" target="_blank" rel="noopener">${c.enviar}</a>
-        </div>
-      </form>
-      <noscript><p class="servicios-nota">${c.sinJs}</p></noscript>
-    </section>
-    <script src="${raiz}js/calculadora.js?v=${VERSION_JS_CALC}" defer></script>
-`;
-}
+// ---------- Páginas de cada servicio ----------
 
 function porqueHtml(t) {
   const p = t.porque;
@@ -1548,7 +1638,7 @@ function paginaServicio(d, s) {
       <span class="servicio-icono">${icono(s.icono)}</span>
       <h1>${s.h1}</h1>
       <p class="sub">${s.intro}</p>
-      <p class="botones">${s.calculadora ? '<a class="boton" href="#calculadora">' + t.serv.calcular + '</a>' : ''}<a class="boton${s.calculadora ? ' secundario' : ''}" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a></p>
+      <p class="botones"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a></p>
     </section>
 
     <section class="bloque">
@@ -1565,7 +1655,7 @@ ${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>
 ${t.serv.pasos.map(x => '        <li><strong>' + x[0] + '</strong><span>' + x[1] + '</span></li>').join('\n')}
       </ol>
     </section>
-${s.calculadora ? calculadoraHtml(t, raiz) : ''}${s.antesAhora ? antesAhoraHtml(t, raiz) : ''}${porqueHtml(t)}
+${s.antesAhora ? antesAhoraHtml(t, raiz) : ''}${porqueHtml(t)}
     <section class="bloque">
       <h2>${t.serv.relacionados}</h2>
       <ul class="otros">
@@ -1593,7 +1683,7 @@ ${bitHtml(t, raiz)}
 
 // sitemap.xml con las dos versiones de cada página enlazadas entre sí.
 function sitemap() {
-  const rutas = [''].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
+  const rutas = ['', 'proyectos/', 'sobre-mi/'].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
   const entrada = ruta => ['', 'en/'].map(pre =>
     '  <url>\n    <loc>' + SITIO + pre + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
     '    <xhtml:link rel="alternate" hreflang="es" href="' + SITIO + ruta + '"/>\n' +
@@ -1639,7 +1729,7 @@ function llms() {
    .concat(['', '## Proyectos']).concat(PROYECTOS.map(p => '- [' + plano(p.titulo) + '](' + urlProyecto(es, p) + '): ' + resumen(p)))
    .concat(['', '## Preguntas frecuentes']).concat(UI.faq.concat(UI.faqServicios).map(f => '- **' + f[0] + '** ' + plano(f[1])))
    .concat(['', '## Trayectoria']).concat(TRAYECTORIA.map(x => '- ' + plano(x[0]) + ': ' + plano(x[1]) + ', ' + plano(x[2])))
-   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios](' + SITIO + 'servicios/)'])
+   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios](' + SITIO + 'servicios/)', '- [Proyectos](' + SITIO + 'proyectos/)', '- [Sobre mí](' + SITIO + 'sobre-mi/)', '- [Laboratorio de demos](' + SITIO + 'lab/)'])
    .concat(SERVICIOS.map(x => '- [' + plano(x.h1) + '](' + SITIO + 'servicios/' + x.id + '/)'))
    .concat(['- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
   return lineas.join('\n');
@@ -1655,6 +1745,12 @@ IDIOMAS.forEach(d => {
   fs.mkdirSync(carpetaLinkedin, { recursive: true });
   fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), paginaLinkedin(d));
   console.log(path.join(d.carpeta, 'linkedin', 'index.html') + ' generado: ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones');
+
+  fs.mkdirSync(path.join(carpeta, 'proyectos'), { recursive: true });
+  fs.writeFileSync(path.join(carpeta, 'proyectos', 'index.html'), paginaProyectos(d));
+  fs.mkdirSync(path.join(carpeta, 'sobre-mi'), { recursive: true });
+  fs.writeFileSync(path.join(carpeta, 'sobre-mi', 'index.html'), paginaSobreMi(d));
+  console.log(path.join(d.carpeta, 'proyectos') + ' y ' + path.join(d.carpeta, 'sobre-mi') + ' generados');
 
   const carpetaServicios = path.join(carpeta, 'servicios');
   fs.mkdirSync(carpetaServicios, { recursive: true });
@@ -1701,7 +1797,7 @@ fs.writeFileSync(path.join(__dirname, '404.html'), `<!DOCTYPE html>
     <p class="codigo">404</p>
     <h1>Esta página no existe</h1>
     <p>Puede que el enlace esté mal escrito o que la página se haya movido. / This page doesn’t exist.</p>
-    <nav><a href="${SITIO}">Ir al inicio</a><a href="${SITIO}#proyectos">Ver proyectos</a><a href="mailto:${CORREO}">${CORREO}</a></nav>
+    <nav><a href="${SITIO}">Ir al inicio</a><a href="${SITIO}proyectos/">Ver proyectos</a><a href="mailto:${CORREO}">${CORREO}</a></nav>
   </main>
 </body>
 </html>

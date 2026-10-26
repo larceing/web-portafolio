@@ -26,6 +26,7 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
   const ficha = document.getElementById('ficha');
   const cabecera = document.getElementById('fichaCabecera');
   const cuerpo = document.getElementById('fichaCuerpo');
+  if (!ficha) return;
 
   document.querySelectorAll('[data-detalle]').forEach(function(tesela) {
     tesela.addEventListener('click', function() {
