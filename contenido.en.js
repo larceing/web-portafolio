@@ -39,30 +39,86 @@ module.exports = {
       ['Delivery and training', 'I leave it working, documented and explained to your team. If you like, I carry on with monthly maintenance.']
     ]
   },
-  CALC: {
-    titulo: 'How much does my dashboard cost?',
-    sub: 'Six questions and I give you a guide range. Nothing is stored: if you like, the result opens in your WhatsApp so you can send it to me.',
-    preguntas: [
-      'Where does the data come from?', ['One Excel file or a single source', 'Two or three sources (ERP, Excel, CRM…)', 'Four sources or more', 'SQL databases, APIs or SharePoint'],
-      'How many pages will the report have?', ['1 or 2', '3 to 5', '6 or more'],
-      'What calculations do you need?', ['Totals and simple comparisons', 'Previous year, targets and margins', 'Custom calculations, forecasts or per-user permissions'],
-      'How is it refreshed?', ['By hand, when needed', 'On its own, every day'],
-      'How many rounds of changes?', ['Two, the usual', 'Four'],
-      'When do you need it?', ['No rush', 'It’s urgent']
+  PORTADA: {
+    menu: { hacemos: 'What we do', lab: 'Lab', proyectos: 'Projects', sobre: 'About' },
+    cta: 'Ask for a quote',
+    ctaHref: 'https://wa.me/34633424223?text=' + encodeURIComponent('Hi Henry, I’d like a quote for my company. Here is what I need: '),
+    carruselAria: 'What Arce Data Lab does',
+    anterior: 'Previous message',
+    siguiente: 'Next message',
+    pausar: 'Pause the slideshow',
+    seguir: 'Resume the slideshow',
+    diapo: 'Message {n} of {t}',
+    carrusel: [
+      { ante: 'Arce Data Lab · Alicante, Spain', titulo: 'Let AI do your company’s repetitive work.', texto: 'I automate tasks, connect your software and put AI to work on your data. You decide; the heavy lifting happens on its own.', boton: 'Ask for a quote', href: 'cta', img: 'logo' },
+      { ante: 'Ada offices', titulo: 'An online office that reads your orders and puts them into the ERP.', texto: 'Each department has its own desks and they pass the work along by themselves. You only check what isn’t clear.', boton: 'See it working', href: 'lab/#sindri', img: 'img/ada/pedidos.webp', alt: 'Ada orders office: inbox, order handling, issues and ERP entry' },
+      { ante: 'Data and Power BI', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' }
     ],
-    resultado: 'Guide range',
-    rango: 'Between €{a} and €{b}',
-    nota: 'Excluding VAT. It is an estimate: the fixed price comes from the free 45-minute review, once I have seen your data.',
-    enviar: 'Send me the result on WhatsApp',
-    sinJs: 'The calculator needs JavaScript. Message me on WhatsApp and I will give you the range anyway.',
-    whatsapp: 'Hi Henry, I used the calculator on arcedatalab.com:'
+    ada: {
+      titulo: 'Watch Ada at work',
+      sub: 'The Ada family is an online office: each department has its desks (reception, handling, supervision, records) and they pass the work along to your ERP.',
+      oficinas: [
+        ['Sales', 'comercial', 'Closes the opportunity and registers the new customer. The sales manager approves it in one click and the order moves on to Orders.'],
+        ['Orders', 'pedidos', 'Reads the orders that arrive by email, with a PDF, an Excel file or no attachment, extracts the data and enters it in the ERP. If a product code isn’t clear, it asks you.'],
+        ['Production', 'produccion', 'Splits what ships from stock from what has to be made and prepares the order for the production manager to approve.'],
+        ['Plant and warehouse', 'planta', 'Makes the goods, requests missing material and, when the line finishes, issues the delivery note. The order is fulfilled.']
+      ],
+      alt: 'Ada {o} office in the lab',
+      boton: 'Try it in the lab',
+      nota: 'Simulation with made-up data: nothing is stored.'
+    },
+    hacemos: {
+      titulo: 'What we do',
+      lista: [
+        ['flujo', 'Automation with AI', 'Emails, orders, alerts and reports that move on their own between your programs.', 'servicios/automatizacion-n8n/'],
+        ['grafico', 'Data and Power BI', 'A dashboard with figures that add up, refreshing itself every morning.', 'servicios/power-bi/'],
+        ['escritorio', 'Websites and apps', 'A website that brings in customers, or an app built around the way you work.', 'servicios/webs/']
+      ],
+      ver: 'Learn more'
+    },
+    pasos: {
+      titulo: 'How we start',
+      lista: [
+        ['You tell me about your case', 'On WhatsApp or in a free 45-minute video call.'],
+        ['I send you a quote', 'In writing: what gets done, what it costs and when.'],
+        ['I leave it working', 'Documented and explained to your team.']
+      ]
+    },
+    proyectos: {
+      titulo: 'Projects',
+      sub: 'Built for real companies. You can try the marked ones in the lab, with made-up data.',
+      lista: [['sindri', 'img/ada/planta.webp'], ['asistente', 'img/ada/asistente.webp'], ['reporting', 'img/ada/informe.webp']],
+      ver: 'See the case',
+      probar: 'Try it',
+      todos: 'See all projects'
+    },
+    faq: [
+      ['How much does it cost?', 'It depends on what needs building. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
+      ['Do you work with SMEs?', 'Yes: with SMEs and factories that have manual tasks or figures that don’t add up, remotely or from Alicante.'],
+      ['Is my data safe?', 'I work read-only whenever possible and the applications live on EU servers with nightly backups.'],
+      ['What is Arce Data Lab?', 'It’s my brand: the lab where I build automations, dashboards, AI assistants and custom applications for SMEs and industry.']
+    ],
+    final: {
+      titulo: 'Tell me about your case',
+      texto: 'If your team has tasks that keep repeating or figures that don’t add up, message me and I’ll send you a quote, with no obligation.',
+      cliente: 'Already a client?',
+      clienteTexto: 'For questions or issues with your application, email support and I’ll reply the same day.',
+      clienteBoton: 'Email support'
+    },
+    sobre: {
+      titulo: 'About me',
+      descripcion: 'Henry Arce, data analyst and developer in Alicante, Spain: career, technologies, own infrastructure and what I write on LinkedIn.',
+      sub: 'I’m Henry Arce, a data analyst and developer in Alicante, Spain, and the founder of Arce Data Lab. I’ve worked with data since 2019, first in consulting firms and now inside industry.'
+    },
+    todosTitulo: 'All projects',
+    todosDescripcion: 'Projects by Henry Arce and Arce Data Lab: ERP, CRM, AI assistants, automations and dashboards, with the problem they solved and the result.'
   },
   SERVICIOS: {
     'power-bi': {
       titulo: 'Power BI consultant for SMEs | Arce Data Lab',
       corto: 'Power BI',
       h1: 'Power BI consultant for SMEs',
-      descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL, with figures that add up. Work out what your dashboard costs in a minute.',
+      descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL, with figures that add up and refreshed every morning. Ask for a quote with no obligation.',
       intro: 'If your company’s numbers live in several Excel files and someone spends hours every month pulling them together, a Power BI dashboard does it on its own. I connect it to your ERP, your spreadsheets or your database, reconcile the figures with accounting and hand it over documented.',
       incluye: [
         ['Tidy data', 'Cleaning and a data model with Power Query: one version of every figure, even when it comes from several places.'],
@@ -72,7 +128,7 @@ module.exports = {
         ['Documentation', 'What each figure measures and where it comes from, so your team trusts it and can maintain it.']
       ],
       faq: [
-        ['How much does a Power BI dashboard cost?', 'It depends on the data sources, the number of pages and the calculations. The calculator on this page gives you a guide range in a minute, and the fixed price comes from the free review.'],
+        ['How much does a Power BI dashboard cost?', 'It depends on the data sources, the number of pages and the calculations. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
         ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
         ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.']
@@ -94,7 +150,7 @@ module.exports = {
       faq: [
         ['What is n8n?', 'n8n is an automation tool that connects programs with visual flows. It can be installed on your own server, so your data stays in the EU.'],
         ['Which tasks can be automated?', 'The ones that repeat and always follow the same steps: copying data between programs, sending alerts or emails, generating reports or PDFs, checking forms and sorting messages.'],
-        ['How much does an automation cost?', 'It depends on how many applications are connected and on the special cases. The price is agreed in writing after the free 45-minute review.'],
+        ['How much does an automation cost?', 'It depends on how many applications are connected and on the special cases. Tell me about your case and I’ll send you a fixed quote in writing.'],
         ['What if a program changes?', 'The flow warns you when something stops working and gets adjusted. With monthly maintenance, I do it.']
       ]
     },
@@ -112,7 +168,7 @@ module.exports = {
         ['Legal pages', 'Legal notice, privacy and cookies, adapted to what your site does.']
       ],
       faq: [
-        ['How much does a website cost?', 'It depends on the pages and on what it has to do: a brochure site is not the same as one with bookings or a shop. The price is agreed in writing after the free review.'],
+        ['How much does a website cost?', 'It depends on the pages and on what it has to do: a brochure site is not the same as one with bookings or a shop. Tell me what you need and I’ll send you a fixed quote in writing.'],
         ['Do you use WordPress?', 'Not by default: I build custom sites, which are faster and need less security maintenance. If you already have WordPress and it works for you, we can look at it.'],
         ['Where is it hosted?', 'On my server in Germany (EU), with HTTPS, nightly backups and continuous checks that it responds. I can also put it on your own hosting.'],
         ['Can I change the text myself?', 'If you need to, the site comes with a simple panel to change text and photos; if not, ask me and I change it as part of monthly maintenance.']
@@ -169,8 +225,8 @@ module.exports = {
     verTodos: 'See all {n} projects',
     verProyectosHechos: 'See finished projects',
     serviciosTitulo: 'Services',
-    serviciosDescripcion: 'Process automation with n8n, Power BI dashboards, AI assistants and custom websites for SMEs, with a guide price calculator and a free 45-minute review.',
-    whatsappDiagnostico: 'https://wa.me/34633424223?text=' + encodeURIComponent('Hi Henry, I’m interested in the free 45-minute review for my business.'),
+    serviciosDescripcion: 'Process automation with n8n, Power BI dashboards, AI assistants and custom websites for SMEs. Ask for a quote with no obligation.',
+    whatsappDiagnostico: 'https://wa.me/34633424223?text=' + encodeURIComponent('Hi Henry, I’d like a quote for my company. Here is what I need: '),
     proyectos: 'Projects',
     proyectosSub: 'You can try the main ones in the lab, with made-up data. The rest are below, in short.',
     principales: 'Main projects',
@@ -217,8 +273,8 @@ module.exports = {
       ['escritorio', 'Custom websites and applications', 'ERP, CRM, appointments, tickets or an online shop: websites and web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'webs']
     ],
     verServicio: 'See the service',
-    serviciosNota: 'Every project is different, so there is no fixed rate: the price is agreed in writing, excluding VAT, after a free 45-minute review. If you want an idea first, the <a href="power-bi/#calculadora">calculator</a> gives you a guide range for a dashboard. And if you need a website, have a look at the <a href="https://pro.luiscontacto03.com/demos/catalogo/" data-dev="https://dev.luiscontacto03.com/demos/catalogo/" target="_blank" rel="noopener">example templates</a>.',
-    serviciosCta: 'Book your free review',
+    serviciosNota: 'Every project is different, so I don’t publish rates: tell me what you need and I’ll send you a fixed quote in writing, with no obligation. If you need a website, have a look at the <a href="https://pro.luiscontacto03.com/demos/catalogo/" data-dev="https://dev.luiscontacto03.com/demos/catalogo/" target="_blank" rel="noopener">example templates</a>.',
+    serviciosCta: 'Ask for a quote',
     serviciosPago: 'You pay 50% to start and 50% on delivery, by bank transfer or card, always with an invoice.',
     cinta: 'Automation at work',
     cintaSub: 'What an automated flow does, in miniature',
@@ -264,9 +320,9 @@ module.exports = {
       ['How can I get in touch?', 'By email at info@arcedatalab.com, by WhatsApp at +34 633 42 42 23 or on LinkedIn; for support with the apps, soporte@arcedatalab.com.']
     ],
     faqServicios: [
-      ['How much does a project cost?', 'It depends on how many data sources there are, what state they are in and what needs to be built. For a Power BI dashboard, the calculator on this site gives you a guide range in a minute; the exact price is agreed in writing after a free 45-minute review.'],
+      ['How much does a project cost?', 'It depends on how many data sources there are, what state they are in and what needs to be built. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
       ['How long does it take?', 'It depends a lot on each case: how many data sources there are, what state they are in and what needs to be built. That is why the deadline is agreed in writing after the free review, once I have seen your data, and then kept.'],
-      ['How do we start?', 'With a free 45-minute video call: we review the data and the tasks, and you get a proposal with a fixed price.']
+      ['How do we start?', 'You message me on WhatsApp or by email, we look at your case (in a free 45-minute video call if needed) and I send you the quote in writing.']
     ],
     soporte: 'App support',
     bit: {

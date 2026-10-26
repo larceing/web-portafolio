@@ -3607,3 +3607,538 @@ h1, h2, h3,
     font-size: 21px;
   }
 }
+
+/* ---------- Portada simple (26/10/2026) ----------
+   Un mensaje por bloque, titulares grandes y mucho aire. Fondo blanco y una
+   banda tostada; el único botón es «Pide presupuesto». */
+body:has(.simple) {
+  background: #FFFFFF;
+}
+
+.simple .bloque.simple-bloque {
+  padding-top: 112px;
+}
+
+.simple .bloque > .titular,
+.simple .titular {
+  font-size: clamp(32px, 4.4vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: none;
+}
+
+.simple .bloque > .sub.centrada,
+.simple .sub.centrada {
+  max-width: 62ch;
+  margin: 16px auto 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.boton.grande {
+  padding: 14px 28px;
+  font-size: 17px;
+}
+
+.boton.contorno {
+  border: 1.5px solid var(--azul);
+  background: transparent;
+  color: var(--azul);
+}
+
+.boton.contorno:hover,
+.boton.contorno:focus-visible {
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+}
+
+.botones.centrados {
+  justify-content: center;
+}
+
+.enlace-flecha {
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+.enlace-flecha a {
+  text-decoration: none;
+}
+
+.enlace-flecha a:hover {
+  text-decoration: underline;
+}
+
+/* Carrusel del principio */
+.heroe {
+  position: relative;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 56px 72px 0;
+}
+
+.heroe-diapo {
+  display: none;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 56px;
+  min-height: 460px;
+}
+
+.heroe-diapo.activa {
+  display: grid;
+}
+
+.heroe.con-js .heroe-diapo.activa {
+  animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.heroe-imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 18px 48px rgba(15, 35, 60, 0.12);
+}
+
+.heroe-logo {
+  padding: 40px 36px;
+  border-radius: 28px;
+  background: var(--fondo);
+}
+
+.heroe-ante {
+  color: var(--tinta);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.heroe h1,
+.heroe-titulo {
+  margin-top: 16px;
+  color: var(--tinta);
+  font-family: var(--titulos);
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heroe-intro {
+  max-width: 46ch;
+  margin-top: 20px;
+  color: #43474E;
+  font-size: 18px;
+}
+
+.heroe .botones {
+  margin-top: 32px;
+}
+
+.heroe-flecha {
+  position: absolute;
+  top: calc(56px + 230px);
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #3A3F45;
+  color: #FFFFFF;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.heroe-flecha:hover,
+.heroe-flecha:focus-visible {
+  background: var(--azul);
+}
+
+.heroe-ant { left: 16px; }
+.heroe-sig { right: 16px; }
+
+.heroe-mandos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.heroe-punto {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 1.5px solid #3A3F45;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.heroe-punto.activo {
+  background: #3A3F45;
+}
+
+.heroe-pausa {
+  margin-left: 10px;
+  padding: 2px 8px;
+  border: 0;
+  border-left: 1px solid var(--raya);
+  background: transparent;
+  color: #3A3F45;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* «Mira a Ada trabajar»: pestañas como las de LinkedIn Ads */
+.pestanas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 36px auto 0;
+  padding: 8px;
+  border-radius: 999px;
+  background: #EDF1F6;
+}
+
+.pestana {
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--azul);
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pestana[aria-selected="true"] {
+  background: #FFFFFF;
+  color: var(--tinta);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(15, 35, 60, 0.12);
+}
+
+.oficina {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  gap: 64px;
+  margin-top: 48px;
+}
+
+.oficina[hidden] {
+  display: none;
+}
+
+.oficina img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+.oficina-texto h3 {
+  font-size: clamp(26px, 2.6vw, 32px);
+  font-weight: 500;
+}
+
+.oficina-texto p {
+  margin-top: 16px;
+  font-size: 17px;
+}
+
+.oficina-texto .nota {
+  color: var(--tenue);
+  font-size: 14px;
+}
+
+/* «Qué hacemos»: tres columnas con icono */
+.tres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 56px;
+  text-align: center;
+}
+
+.tres-icono {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--tonal);
+  color: var(--azul);
+}
+
+.tres-item:nth-child(2) .tres-icono { background: #FBE3C8; color: #A94F0E; }
+.tres-item:nth-child(3) .tres-icono { background: #D6EBE5; color: #2C6259; }
+
+.tres-icono svg {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tres-item h3 {
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.tres-item p {
+  max-width: 32ch;
+  margin: 12px auto 0;
+}
+
+.simple #que-hacemos .botones {
+  margin-top: 48px;
+}
+
+/* «Cómo empezamos»: banda tostada con tres pasos */
+.simple .bloque.tostado {
+  max-width: none;
+  margin-top: 112px;
+  padding: 88px 28px;
+  background: #EEE9E3;
+}
+
+.pasos-simple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: var(--ancho);
+  margin: 48px auto 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.paso-num {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.pasos-simple h3 {
+  margin-top: 16px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.pasos-simple p {
+  margin-top: 8px;
+}
+
+/* Proyectos destacados: tarjetas como los «recursos» */
+.recursos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.recurso-imagen {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--fondo);
+  aspect-ratio: 16 / 9;
+}
+
+.recurso-imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.3s;
+}
+
+.recurso:hover .recurso-imagen img {
+  transform: scale(1.03);
+}
+
+.recurso h3 {
+  margin-top: 22px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.recurso h3 a {
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.recurso p {
+  margin-top: 10px;
+}
+
+.recurso > p:not(.recurso-enlaces) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.recurso-enlaces {
+  margin-top: 14px;
+}
+
+.recurso-enlaces {
+  display: flex;
+  gap: 20px;
+  font-weight: 600;
+}
+
+.recurso-enlaces a {
+  text-decoration: none;
+}
+
+.simple #proyectos .botones {
+  margin-top: 44px;
+}
+
+/* Preguntas en acordeón */
+.acordeon {
+  max-width: 880px;
+  margin: 40px auto 0;
+  border-top: 1px solid var(--raya);
+}
+
+.acordeon details {
+  border-bottom: 1px solid var(--raya);
+}
+
+.acordeon summary {
+  position: relative;
+  padding: 22px 40px 22px 4px;
+  color: var(--tinta);
+  font-size: 19px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.acordeon summary::-webkit-details-marker {
+  display: none;
+}
+
+.acordeon summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.acordeon details[open] summary::after {
+  transform: translateY(-30%) rotate(-135deg);
+}
+
+.acordeon details p {
+  padding: 0 4px 22px;
+}
+
+/* Bloque final oscuro con dos tarjetas */
+.final {
+  margin-top: 112px;
+  padding: 56px 28px;
+  background: #4A433D;
+}
+
+.final-dentro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: var(--ancho);
+  margin: 0 auto;
+}
+
+.final-tarjeta {
+  padding: 52px 56px;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+.final-tarjeta h2 {
+  font-size: clamp(26px, 2.8vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-align: left;
+  text-transform: none;
+}
+
+.final-tarjeta > p {
+  margin-top: 18px;
+}
+
+.final-otros {
+  color: var(--tenue);
+  font-size: 15px;
+}
+
+.simple + .pie,
+.simple ~ .pie {
+  margin-top: 0;
+}
+
+/* Sobre mí y Todos los proyectos: títulos de página */
+.portadilla .bloque > h1 {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .heroe { padding: 32px 28px 0; }
+  .heroe-diapo { grid-template-columns: 1fr; gap: 32px; min-height: 0; }
+  .heroe-imagen { order: 2; }
+  .heroe-flecha { display: none; }
+  .oficina { grid-template-columns: 1fr; gap: 28px; }
+  .tres, .pasos-simple, .recursos { grid-template-columns: 1fr; gap: 44px; }
+  .final-dentro { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .heroe { padding: 24px 16px 0; }
+  .simple .bloque.simple-bloque { padding: 80px 16px 0; }
+  .simple .bloque.tostado { margin-top: 80px; padding: 64px 16px; }
+  .final { margin-top: 80px; padding: 40px 16px; }
+  .final-tarjeta { padding: 32px 24px; }
+  .pestanas { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; width: auto; margin-left: -16px; margin-right: -16px; border-radius: 0; scrollbar-width: none; }
+  .pestana { flex: none; padding: 8px 14px; font-size: 15px; }
+  .heroe-logo { max-width: 300px; padding: 20px 18px; }
+  .tres-icono { width: 88px; height: 88px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroe.con-js .heroe-diapo.activa { animation: none; }
+  .recurso-imagen img { transition: none; }
+}

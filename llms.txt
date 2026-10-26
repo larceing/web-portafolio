@@ -66,9 +66,9 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 - **¿Mis datos están seguros?** Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.
 - **¿Dónde publica contenido?** En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en Instagram (@henry_arce_dev). Pronto también en YouTube, en el canal Imagina en IT.
 - **¿Cómo contactar?** Por correo a info@arcedatalab.com, por WhatsApp al +34 633 42 42 23 o por LinkedIn; para soporte de las aplicaciones, soporte@arcedatalab.com.
-- **¿Cuánto cuesta un proyecto?** Depende de cuántas fuentes de datos haya, de cómo estén y de lo que haya que construir. Para un cuadro de mando de Power BI, la calculadora de esta web da un rango orientativo en un minuto; el precio exacto se cierra por escrito tras un diagnóstico gratis de 45 minutos.
+- **¿Cuánto cuesta un proyecto?** Depende de cuántas fuentes de datos haya, de cómo estén y de lo que haya que construir. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.
 - **¿Cuánto tarda?** Depende mucho de cada caso: de cuántas fuentes de datos hay, de cómo están y de lo que haga falta construir. Por eso el plazo se cierra por escrito después del diagnóstico gratis, cuando ya he visto tus datos, y se cumple.
-- **¿Cómo se empieza?** Con un diagnóstico gratis de 45 minutos por videollamada: se revisan los datos y las tareas y sale una propuesta con precio cerrado.
+- **¿Cómo se empieza?** Me escribes por WhatsApp o por correo, vemos tu caso (si hace falta, en una videollamada gratis de 45 minutos) y te paso el presupuesto por escrito.
 
 ## Trayectoria
 - Abr 2026 – actualidad: Business Applications Administrator, F&D Shower Tray (ES Group)
@@ -81,6 +81,9 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 ## Otras páginas
 - [English version](https://arcedatalab.com/en/)
 - [Servicios](https://arcedatalab.com/servicios/)
+- [Proyectos](https://arcedatalab.com/proyectos/)
+- [Sobre mí](https://arcedatalab.com/sobre-mi/)
+- [Laboratorio de demos](https://arcedatalab.com/lab/)
 - [Consultor de Power BI para pymes](https://arcedatalab.com/servicios/power-bi/)
 - [Automatización de procesos con n8n](https://arcedatalab.com/servicios/automatizacion-n8n/)
 - [Webs y aplicaciones a medida para pymes](https://arcedatalab.com/servicios/webs/)
