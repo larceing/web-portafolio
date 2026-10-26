@@ -4144,3 +4144,26 @@ body:has(.simple) {
   .heroe.con-js .heroe-diapo.activa { animation: none; }
   .recurso-imagen img { transition: none; }
 }
+
+/* Lotes de análisis (/servicios/power-bi/) */
+.lotes-intro { max-width: 68ch; margin-top: 10px; }
+.lotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.lote {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--tarjeta);
+  border: 1px solid var(--raya);
+}
+.lote h3 { margin: 0; font-size: 20px; }
+.lote-para { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--tenue); }
+.lote-pregunta { margin: 0; color: var(--tinta); }
+.lote ul { margin: 4px 0 0; padding-left: 18px; color: var(--texto); font-size: 15px; display: grid; gap: 6px; }
+.lote .enlace-flecha { margin: 8px 0 0; }

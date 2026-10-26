@@ -665,8 +665,23 @@ const SERVICIOS = [
       ['Documentación', 'Qué mide cada cifra y de dónde sale, para que tu equipo confíe en ella y la pueda mantener.']
     ],
     tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, A3 ERP, SharePoint',
+    // Lotes de análisis: paquetes de informes por área, cada uno con su demo en lab/#<id>.
+    lotesTitulo: 'Lotes de análisis',
+    lotesIntro: 'Informes ya pensados por área, que adapto a tu ERP y a tus nombres. Empiezas por el lote que más te duele y añades los demás cuando quieras. Pruébalos con datos inventados en el laboratorio.',
+    lotesBoton: 'Probar el ejemplo',
+    lotes: [
+      ['bi-comercial', 'Comercial', 'Para dirección y comerciales', '¿Vendemos más que el año pasado, quién nos debe y qué hay que pedir?',
+        ['Ventas por mes, cliente y familia frente al año anterior', 'Cobros por antigüedad y días medios de cobro', 'Stock bajo mínimo y rotación']],
+      ['bi-fabricacion', 'Fabricación y OEE', 'Para el jefe de planta', '¿Dónde pierden tiempo las máquinas y por qué?',
+        ['OEE con disponibilidad, rendimiento y calidad, por máquina y línea', 'Paradas menores y mayores por día, causa y máquina, con el tiempo medio entre paradas', 'Horas perdidas por producto']],
+      ['bi-pedidos', 'Pedidos y entregas', 'Para logística y atención al cliente', '¿Cuántos pedidos llegan a tiempo y por qué se retrasan los demás?',
+        ['% a tiempo por semana, almacén y transporte', 'Retrasos por motivo y por cliente', 'Pedidos en curso con su estado']],
+      ['bi-calidad', 'Calidad y scrap', 'Para calidad y producción', '¿Cuántas piezas tiramos, cuánto nos cuesta y por qué?',
+        ['% de scrap por mes y centro de trabajo', 'Piezas rechazadas por defecto y coste del scrap', 'Real frente a previsto por referencia y órdenes con más scrap']]
+    ],
     faq: [
       ['¿Cuánto cuesta un dashboard de Power BI?', 'Depende de las fuentes de datos, del número de páginas y de los cálculos. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
+      ['¿Qué es un lote de análisis?', 'Un conjunto de páginas de Power BI pensado para un área (ventas, planta, logística o calidad) con sus indicadores ya definidos. Lo conecto a tus datos y lo ajusto a cómo trabajas, así no se empieza de cero. Cuéntame qué lotes te interesan y te paso un presupuesto cerrado.'],
       ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
       ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.']
@@ -1589,6 +1604,25 @@ function servicioDe(d, id) {
   return d.servicios.find(s => s.proyectos.includes(id));
 }
 
+// Lotes de análisis de un servicio: tarjetas con su pregunta, lo que trae y el enlace a su demo.
+function lotesHtml(s, raiz) {
+  return `
+    <section class="bloque" id="lotes">
+      <h2>${s.lotesTitulo}</h2>
+      <p class="sub lotes-intro">${s.lotesIntro}</p>
+      <div class="lotes">
+${s.lotes.map(l => `        <article class="lote">
+          <p class="lote-para">${l[2]}</p>
+          <h3>${l[1]}</h3>
+          <p class="lote-pregunta">${l[3]}</p>
+          <ul>${l[4].map(x => '<li>' + x + '</li>').join('')}</ul>
+          <p class="enlace-flecha"><a href="${raiz}lab/#${l[0]}">${s.lotesBoton} →</a></p>
+        </article>`).join('\n')}
+      </div>
+    </section>
+`;
+}
+
 function paginaServicio(d, s) {
   const t = d.t;
   const ruta = 'servicios/' + s.id + '/';
@@ -1632,7 +1666,7 @@ ${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>
       </div>
       <p class="servicios-nota">${s.tec}</p>
     </section>
-
+${s.lotes ? lotesHtml(s, raiz) : ''}
     <section class="bloque">
       <h2>${t.serv.como}</h2>
       <ol class="pasos-servicio">
