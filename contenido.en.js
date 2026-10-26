@@ -50,15 +50,15 @@ module.exports = {
     seguir: 'Resume the slideshow',
     diapo: 'Message {n} of {t}',
     carrusel: [
-      { ante: 'Ada virtual office', titulo: 'Your company, organised in a virtual office.', texto: 'Ada brings sales, orders, production and the plant together and connects them with your ERP, your CRM and your reports. You review; the work moves from desk to desk on its own.', boton: 'Ask for a quote', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada at the centre of the office, connected to the Sindri ERP on a PC, the Aris task board on a tablet, an Efesto operator’s handheld and the campaigns on a phone' },
+      { ante: 'Data analyst and developer · Alicante, Spain', titulo: 'I automate processes and put AI to work on business data.', texto: 'I’m Henry Arce, founder of Arce Data Lab. I find the manual tasks in a team, turn them into workflows, assistants and reports, and measure what is gained.', boton: 'Ask for a quote', href: 'cta', img: 'logo', alt: '' },
       { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM and plant, talking to each other.', texto: 'What sales closes reaches the ERP, and the factory makes it and records it without copying anything.', boton: 'Try it in the lab', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: plant machines connected to Sindri' },
       { ante: 'Data and reporting', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' }
     ],
     lab: {
       titulo: 'Try it in the lab',
-      sub: 'The Ada virtual office and the products behind it, with made-up data. Nothing is stored.',
+      sub: 'Ada and the products I work with, with made-up data. Nothing is stored.',
       pestanas: [
-        ['Ada office', 'ada', 'pedidos', 'Each department has its desks (reception, handling, supervision and records) and they pass the work along to the ERP. You only check what isn’t clear.', 'sindri'],
+        ['Ada', 'ada', 'pedidos', 'Each department has its desks (reception, handling, supervision and records) and they pass the work along to the ERP. You only check what isn’t clear.', 'sindri'],
         ['Sindri · ERP', 'sindri', 'sindri', 'Orders, stock with batches, manufacturing and invoices ready for VERI*FACTU.', 'sindri'],
         ['Brokkr · CRM', 'brokkr', 'brokkr', 'Sales reps work on a tablet and what they close reaches the ERP on its own.', 'brokkr'],
         ['Efesto · plant', 'efesto', 'efesto', 'Reads the factory machines and sends production to the ERP, even if the network drops.', 'efesto'],

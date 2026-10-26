@@ -582,15 +582,15 @@ UI.p = {
   seguir: 'Reanudar el pase',
   diapo: 'Mensaje {n} de {t}',
   carrusel: [
-    { ante: 'Oficina virtual Ada', titulo: 'Tu empresa, organizada en una oficina virtual.', texto: 'Ada reúne comercial, pedidos, producción y planta, y los conecta con tu ERP, tu CRM y tus informes. Tú revisas; el trabajo pasa solo de un puesto a otro.', boton: 'Pide presupuesto', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada en el centro de la oficina, conectada con el PC del ERP Sindri, la tablet de tareas Aris, la PDA de un operario de Efesto y el móvil con las campañas' },
+    { ante: 'Analista de datos y desarrollador · Alicante', titulo: 'Automatizo procesos y pongo la IA a trabajar con los datos del negocio.', texto: 'Soy Henry Arce, fundador de Arce Data Lab. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana.', boton: 'Pide presupuesto', href: 'cta', img: 'logo', alt: '' },
     { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM y planta, hablando entre sí.', texto: 'Lo que cierra el comercial llega al ERP, y la fábrica lo produce y lo registra sin copiar nada.', boton: 'Probarlo en el laboratorio', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: máquinas de la planta conectadas con Sindri' },
     { ante: 'Datos y reporting', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' }
   ],
   lab: {
     titulo: 'Pruébalo en el laboratorio',
-    sub: 'La oficina virtual Ada y los productos que la mueven, con datos inventados. No se guarda nada.',
+    sub: 'Ada y los productos con los que trabajo, con datos inventados. No se guarda nada.',
     pestanas: [
-      ['Oficina Ada', 'ada', 'pedidos', 'Cada departamento tiene sus puestos (recepción, gestión, supervisión y registro) y se pasan el trabajo hasta el ERP. Tú solo revisas lo que no está claro.', 'sindri'],
+      ['Ada', 'ada', 'pedidos', 'Cada departamento tiene sus puestos (recepción, gestión, supervisión y registro) y se pasan el trabajo hasta el ERP. Tú solo revisas lo que no está claro.', 'sindri'],
       ['Sindri · ERP', 'sindri', 'sindri', 'Pedidos, almacén con lotes, fabricación y facturas preparadas para VERI*FACTU.', 'sindri'],
       ['Brokkr · CRM', 'brokkr', 'brokkr', 'El comercial trabaja en la tablet y lo que cierra llega solo al ERP.', 'brokkr'],
       ['Efesto · planta', 'efesto', 'efesto', 'Lee las máquinas de la fábrica y lleva la producción al ERP, aunque se corte la red.', 'efesto'],
