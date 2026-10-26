@@ -1033,7 +1033,6 @@ function pagina(d) {
   return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
   <main id="contenido" class="portadilla">
     <section class="portada" id="inicio">
-      <img class="portada-boceto" src="${base}img/boceto.webp" alt="" width="720" height="720" aria-hidden="true">
       <div class="portada-dentro">
         <div class="portada-texto">
           <p class="antetitulo">${t.antetitulo}</p>
