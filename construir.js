@@ -582,29 +582,31 @@ UI.p = {
   seguir: 'Reanudar el pase',
   diapo: 'Mensaje {n} de {t}',
   carrusel: [
-    { ante: 'Arce Data Lab · Alicante', titulo: 'Que la IA haga el trabajo repetitivo de tu empresa.', texto: 'Automatizo tareas, conecto tus programas y pongo la IA a trabajar con tus datos. Tú decides; lo pesado se hace solo.', boton: 'Pide presupuesto', href: 'cta', img: 'logo' },
-    { ante: 'Oficinas Ada', titulo: 'Una oficina online que lee tus pedidos y los lleva al ERP.', texto: 'Cada departamento tiene sus puestos y se pasan el trabajo solos. Tú solo revisas lo que no está claro.', boton: 'Verla funcionando', href: 'lab/#sindri', img: 'img/ada/pedidos.webp', alt: 'Oficina Ada de pedidos: buzón, gestión, incidencias y alta en el ERP' },
-    { ante: 'Datos y Power BI', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' }
+    { ante: 'Oficina virtual Ada', titulo: 'Tu empresa, organizada en una oficina virtual.', texto: 'Ada reúne comercial, pedidos, producción y planta, y los conecta con tu ERP, tu CRM y tus informes. Tú revisas; el trabajo pasa solo de un puesto a otro.', boton: 'Pide presupuesto', href: 'cta', img: 'img/ada/pedidos.webp', alt: 'Oficina virtual Ada de pedidos: buzón, gestión, incidencias y alta en el ERP' },
+    { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM y planta, hablando entre sí.', texto: 'Lo que cierra el comercial llega al ERP, y la fábrica lo produce y lo registra sin copiar nada.', boton: 'Probarlo en el laboratorio', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: máquinas de la planta conectadas con Sindri' },
+    { ante: 'Datos y reporting', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' }
   ],
-  ada: {
-    titulo: 'Mira a Ada trabajar',
-    sub: 'La familia Ada es una oficina online: cada departamento tiene sus puestos (recepción, gestión, supervisión, registro) y se pasan el trabajo hasta tu ERP.',
-    oficinas: [
-      ['Comercial', 'comercial', 'Cierra la oportunidad y da de alta al cliente nuevo. La jefa comercial lo aprueba con un clic y el pedido pasa solo a Pedidos.'],
-      ['Pedidos', 'pedidos', 'Lee los pedidos que llegan por correo, con PDF, Excel o sin adjunto, saca los datos y los lleva al ERP. Si una referencia no está clara, te pregunta.'],
-      ['Producción', 'produccion', 'Separa lo que sale del almacén de lo que hay que fabricar y prepara la orden para que el jefe de producción la apruebe.'],
-      ['Planta y almacén', 'planta', 'Fabrica, pide el material que falta y, cuando la línea termina, hace el albarán. El pedido queda servido.']
+  lab: {
+    titulo: 'Pruébalo en el laboratorio',
+    sub: 'La oficina virtual Ada y los productos que la mueven, con datos inventados. No se guarda nada.',
+    pestanas: [
+      ['Oficina Ada', 'ada', 'pedidos', 'Cada departamento tiene sus puestos (recepción, gestión, supervisión y registro) y se pasan el trabajo hasta el ERP. Tú solo revisas lo que no está claro.', 'sindri'],
+      ['Sindri · ERP', 'sindri', 'sindri', 'Pedidos, almacén con lotes, fabricación y facturas preparadas para VERI*FACTU.', 'sindri'],
+      ['Brokkr · CRM', 'brokkr', 'brokkr', 'El comercial trabaja en la tablet y lo que cierra llega solo al ERP.', 'brokkr'],
+      ['Efesto · planta', 'efesto', 'efesto', 'Lee las máquinas de la fábrica y lleva la producción al ERP, aunque se corte la red.', 'efesto'],
+      ['Aris · tareas', 'aris', 'aris', 'Kanban, sprints y wiki para tu equipo. Las incidencias de Odin entran como tareas.', 'tareas'],
+      ['Reporting', 'reporting', 'informe', 'Ventas, cobros y stock en Power BI, al día cada mañana.', 'reporting']
     ],
-    alt: 'Oficina Ada de {o} en el laboratorio',
-    boton: 'Pruébalo en el laboratorio',
-    nota: 'Simulación con datos inventados: no se guarda nada.'
+    alt: '{o} en el laboratorio',
+    boton: 'Probarlo en el laboratorio',
+    todos: 'Ver todos los proyectos'
   },
   hacemos: {
     titulo: 'Qué hacemos',
     lista: [
-      ['flujo', 'Automatización con IA', 'Correos, pedidos, avisos e informes que pasan solos entre tus programas.', 'servicios/automatizacion-n8n/'],
-      ['grafico', 'Datos y Power BI', 'Un cuadro de mando con las cifras cuadradas, que se actualiza solo cada mañana.', 'servicios/power-bi/'],
-      ['escritorio', 'Webs y aplicaciones', 'Una web que trae clientes o una aplicación hecha a la medida de cómo trabajas.', 'servicios/webs/']
+      ['escritorio', 'Software de gestión', 'ERP, CRM, tareas e incidencias a la medida de tu empresa, o conectados a los que ya usas.', 'servicios/webs/'],
+      ['grafico', 'Datos y reporting', 'Power BI y Fabric sobre tu ERP o tus Excel, con las cifras cuadradas y al día.', 'servicios/power-bi/'],
+      ['flujo', 'Automatización', 'Correos, pedidos, avisos e informes que pasan solos entre tus programas.', 'servicios/automatizacion-n8n/']
     ],
     ver: 'Saber más'
   },
@@ -615,14 +617,6 @@ UI.p = {
       ['Te paso el presupuesto', 'Por escrito: qué se hace, cuánto cuesta y para cuándo.'],
       ['Lo dejo funcionando', 'Documentado y explicado a tu equipo.']
     ]
-  },
-  proyectos: {
-    titulo: 'Proyectos',
-    sub: 'Hechos para empresas de verdad. Los marcados se pueden probar en el laboratorio, con datos inventados.',
-    lista: [['sindri', 'img/ada/planta.webp'], ['asistente', 'img/ada/asistente.webp'], ['reporting', 'img/ada/informe.webp']],
-    ver: 'Ver el caso',
-    probar: 'Probarlo',
-    todos: 'Ver todos los proyectos'
   },
   faq: [
     ['¿Cuánto cuesta?', 'Depende de lo que haya que construir. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
@@ -1086,7 +1080,6 @@ function pagina(d) {
   const enlace = h => h === 'cta' ? p.ctaHref : base + h;
   const fuera = h => h === 'cta' ? ' target="_blank" rel="noopener"' : '';
   const n = p.carrusel.length;
-  const destacados = p.proyectos.lista.map(x => [d.proyectos.find(o => o.id === x[0]), x[1]]).filter(x => x[0]);
 
   return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
   <main id="contenido" class="portadilla simple">
@@ -1110,21 +1103,21 @@ ${p.carrusel.map((s, i) => '        <button type="button" class="heroe-punto' + 
       </div>
     </section>
 
-    <section class="bloque simple-bloque" id="ada" data-bit="arcedatalab">
-      <h2 class="titular">${p.ada.titulo}</h2>
-      <p class="sub centrada">${p.ada.sub}</p>
-      <div class="pestanas" role="tablist" aria-label="${p.ada.titulo}">
-${p.ada.oficinas.map((o, i) => '        <button type="button" role="tab" class="pestana" id="pest-' + o[1] + '" aria-controls="ofi-' + o[1] + '" aria-selected="' + (i === 0) + '"' + (i === 0 ? '' : ' tabindex="-1"') + '>' + o[0] + '</button>').join('\n')}
+    <section class="bloque simple-bloque" id="laboratorio" data-bit="proyectos">
+      <h2 class="titular">${p.lab.titulo}</h2>
+      <p class="sub centrada">${p.lab.sub}</p>
+      <div class="pestanas" role="tablist" aria-label="${p.lab.titulo}">
+${p.lab.pestanas.map((o, i) => '        <button type="button" role="tab" class="pestana" id="pest-' + o[1] + '" aria-controls="ofi-' + o[1] + '" aria-selected="' + (i === 0) + '"' + (i === 0 ? '' : ' tabindex="-1"') + '>' + o[0] + '</button>').join('\n')}
       </div>
-${p.ada.oficinas.map((o, i) => `      <div class="oficina" role="tabpanel" id="ofi-${o[1]}" aria-labelledby="pest-${o[1]}"${i === 0 ? '' : ' hidden'}>
-        <img src="${base}img/ada/${o[1]}.webp" alt="${attr(p.ada.alt.replace('{o}', o[0]))}" width="957" height="591" loading="lazy">
+${p.lab.pestanas.map((o, i) => `      <div class="oficina" role="tabpanel" id="ofi-${o[1]}" aria-labelledby="pest-${o[1]}"${i === 0 ? '' : ' hidden'}>
+        <img src="${base}img/ada/${o[2]}.webp" alt="${attr(p.lab.alt.replace('{o}', o[0]))}" loading="lazy">
         <div class="oficina-texto">
-          <h3>Ada ${o[0]}</h3>
-          <p>${o[2]}</p>
-          <p class="enlace-flecha"><a href="${base}lab/#sindri">${p.ada.boton} →</a></p>
-          <p class="nota">${p.ada.nota}</p>
+          <h3>${o[0]}</h3>
+          <p>${o[3]}</p>
+          <p class="enlace-flecha"><a href="${base}lab/#${o[4]}">${p.lab.boton} →</a></p>
         </div>
       </div>`).join('\n')}
+      <p class="botones centrados"><a class="boton secundario" href="${base}proyectos/">${p.lab.todos}</a></p>
     </section>
 
     <section class="bloque simple-bloque" id="que-hacemos" data-bit="servicios">
@@ -1140,15 +1133,6 @@ ${p.hacemos.lista.map(x => '        <article class="tres-item"><span class="tres
       <ol class="pasos-simple">
 ${p.pasos.lista.map((x, i) => '        <li><span class="paso-num">' + (i + 1) + '</span><h3>' + x[0] + '</h3><p>' + x[1] + '</p></li>').join('\n')}
       </ol>
-    </section>
-
-    <section class="bloque simple-bloque" id="proyectos" data-bit="proyectos">
-      <h2 class="titular">${p.proyectos.titulo}</h2>
-      <p class="sub centrada">${p.proyectos.sub}</p>
-      <div class="recursos">
-${destacados.map(x => '        <article class="recurso"><a class="recurso-imagen" href="' + base + 'proyectos/' + x[0].id + '/" tabindex="-1" aria-hidden="true"><img src="' + base + x[1] + '" alt="" width="969" height="603" loading="lazy"></a><h3><a href="' + base + 'proyectos/' + x[0].id + '/">' + x[0].titulo + '</a></h3><p>' + x[0].resumen + '</p><p class="recurso-enlaces"><a href="' + base + 'proyectos/' + x[0].id + '/">' + p.proyectos.ver + '</a>' + (LAB_DEMOS.includes(x[0].id) ? '<a href="' + base + 'lab/#' + x[0].id + '">' + p.proyectos.probar + ' →</a>' : '') + '</p></article>').join('\n')}
-      </div>
-      <p class="botones centrados"><a class="boton secundario" href="${base}proyectos/">${p.proyectos.todos}</a></p>
     </section>
 
     <section class="bloque simple-bloque" id="preguntas" data-bit="preguntas">

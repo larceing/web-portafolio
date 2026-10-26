@@ -55,27 +55,27 @@
     <section class="heroe" id="inicio" aria-roledescription="carrusel" aria-label="Lo que hace Arce Data Lab">
       <div class="heroe-pista">
         <article class="heroe-diapo activa" id="diapo0" aria-roledescription="diapositiva" aria-label="Mensaje 1 de 3">
-          <div class="heroe-imagen heroe-logo"><svg class="logo-arce" viewBox="-12 -162 330 290" role="img" aria-label="Arce Data Lab"><path class="logo-hoja" d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/><text class="logo-nombre" x="18" y="18">ARCE</text><text class="logo-lab" x="22" y="56">DATA LAB</text><text class="logo-lema" x="22" y="88">ΜΕΤΡΟΝ ΑΡΙΣΤΟΝ</text><text class="logo-lema" x="22" y="108">LA MEDIDA ES LO MEJOR</text></svg></div>
+          <div class="heroe-imagen"><img src="img/ada/pedidos.webp" alt="Oficina virtual Ada de pedidos: buzón, gestión, incidencias y alta en el ERP" width="969" height="603"></div>
           <div class="heroe-texto">
-            <p class="heroe-ante">Arce Data Lab · Alicante</p>
-            <h1>Que la IA haga el trabajo repetitivo de tu empresa.</h1>
-            <p class="heroe-intro">Automatizo tareas, conecto tus programas y pongo la IA a trabajar con tus datos. Tú decides; lo pesado se hace solo.</p>
+            <p class="heroe-ante">Oficina virtual Ada</p>
+            <h1>Tu empresa, organizada en una oficina virtual.</h1>
+            <p class="heroe-intro">Ada reúne comercial, pedidos, producción y planta, y los conecta con tu ERP, tu CRM y tus informes. Tú revisas; el trabajo pasa solo de un puesto a otro.</p>
             <p class="botones"><a class="boton grande" href="https://wa.me/34633424223?text=Hola%20Henry%2C%20quiero%20pedir%20presupuesto%20para%20mi%20empresa.%20Te%20cuento%3A%20" target="_blank" rel="noopener">Pide presupuesto</a></p>
           </div>
         </article>
         <article class="heroe-diapo" id="diapo1" aria-roledescription="diapositiva" aria-label="Mensaje 2 de 3" aria-hidden="true">
-          <div class="heroe-imagen"><img src="img/ada/pedidos.webp" alt="Oficina Ada de pedidos: buzón, gestión, incidencias y alta en el ERP" width="969" height="603" loading="lazy"></div>
+          <div class="heroe-imagen"><img src="img/ada/efesto.webp" alt="Efesto: máquinas de la planta conectadas con Sindri" width="969" height="603" loading="lazy"></div>
           <div class="heroe-texto">
-            <p class="heroe-ante">Oficinas Ada</p>
-            <p class="heroe-titulo">Una oficina online que lee tus pedidos y los lleva al ERP.</p>
-            <p class="heroe-intro">Cada departamento tiene sus puestos y se pasan el trabajo solos. Tú solo revisas lo que no está claro.</p>
-            <p class="botones"><a class="boton grande" href="lab/#sindri" tabindex="-1">Verla funcionando</a></p>
+            <p class="heroe-ante">Sindri · Brokkr · Efesto</p>
+            <p class="heroe-titulo">ERP, CRM y planta, hablando entre sí.</p>
+            <p class="heroe-intro">Lo que cierra el comercial llega al ERP, y la fábrica lo produce y lo registra sin copiar nada.</p>
+            <p class="botones"><a class="boton grande" href="lab/#efesto" tabindex="-1">Probarlo en el laboratorio</a></p>
           </div>
         </article>
         <article class="heroe-diapo" id="diapo2" aria-roledescription="diapositiva" aria-label="Mensaje 3 de 3" aria-hidden="true">
           <div class="heroe-imagen"><img src="img/ada/informe.webp" alt="Informe comercial de ejemplo con ventas por mes y mejores clientes" width="969" height="603" loading="lazy"></div>
           <div class="heroe-texto">
-            <p class="heroe-ante">Datos y Power BI</p>
+            <p class="heroe-ante">Datos y reporting</p>
             <p class="heroe-titulo">Tus números, al día cada mañana.</p>
             <p class="heroe-intro">Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.</p>
             <p class="botones"><a class="boton grande" href="lab/#reporting" tabindex="-1">Ver un informe de ejemplo</a></p>
@@ -92,59 +92,74 @@
       </div>
     </section>
 
-    <section class="bloque simple-bloque" id="ada" data-bit="arcedatalab">
-      <h2 class="titular">Mira a Ada trabajar</h2>
-      <p class="sub centrada">La familia Ada es una oficina online: cada departamento tiene sus puestos (recepción, gestión, supervisión, registro) y se pasan el trabajo hasta tu ERP.</p>
-      <div class="pestanas" role="tablist" aria-label="Mira a Ada trabajar">
-        <button type="button" role="tab" class="pestana" id="pest-comercial" aria-controls="ofi-comercial" aria-selected="true">Comercial</button>
-        <button type="button" role="tab" class="pestana" id="pest-pedidos" aria-controls="ofi-pedidos" aria-selected="false" tabindex="-1">Pedidos</button>
-        <button type="button" role="tab" class="pestana" id="pest-produccion" aria-controls="ofi-produccion" aria-selected="false" tabindex="-1">Producción</button>
-        <button type="button" role="tab" class="pestana" id="pest-planta" aria-controls="ofi-planta" aria-selected="false" tabindex="-1">Planta y almacén</button>
+    <section class="bloque simple-bloque" id="laboratorio" data-bit="proyectos">
+      <h2 class="titular">Pruébalo en el laboratorio</h2>
+      <p class="sub centrada">La oficina virtual Ada y los productos que la mueven, con datos inventados. No se guarda nada.</p>
+      <div class="pestanas" role="tablist" aria-label="Pruébalo en el laboratorio">
+        <button type="button" role="tab" class="pestana" id="pest-ada" aria-controls="ofi-ada" aria-selected="true">Oficina Ada</button>
+        <button type="button" role="tab" class="pestana" id="pest-sindri" aria-controls="ofi-sindri" aria-selected="false" tabindex="-1">Sindri · ERP</button>
+        <button type="button" role="tab" class="pestana" id="pest-brokkr" aria-controls="ofi-brokkr" aria-selected="false" tabindex="-1">Brokkr · CRM</button>
+        <button type="button" role="tab" class="pestana" id="pest-efesto" aria-controls="ofi-efesto" aria-selected="false" tabindex="-1">Efesto · planta</button>
+        <button type="button" role="tab" class="pestana" id="pest-aris" aria-controls="ofi-aris" aria-selected="false" tabindex="-1">Aris · tareas</button>
+        <button type="button" role="tab" class="pestana" id="pest-reporting" aria-controls="ofi-reporting" aria-selected="false" tabindex="-1">Reporting</button>
       </div>
-      <div class="oficina" role="tabpanel" id="ofi-comercial" aria-labelledby="pest-comercial">
-        <img src="img/ada/comercial.webp" alt="Oficina Ada de Comercial en el laboratorio" width="957" height="591" loading="lazy">
+      <div class="oficina" role="tabpanel" id="ofi-ada" aria-labelledby="pest-ada">
+        <img src="img/ada/pedidos.webp" alt="Oficina Ada en el laboratorio" loading="lazy">
         <div class="oficina-texto">
-          <h3>Ada Comercial</h3>
-          <p>Cierra la oportunidad y da de alta al cliente nuevo. La jefa comercial lo aprueba con un clic y el pedido pasa solo a Pedidos.</p>
-          <p class="enlace-flecha"><a href="lab/#sindri">Pruébalo en el laboratorio →</a></p>
-          <p class="nota">Simulación con datos inventados: no se guarda nada.</p>
+          <h3>Oficina Ada</h3>
+          <p>Cada departamento tiene sus puestos (recepción, gestión, supervisión y registro) y se pasan el trabajo hasta el ERP. Tú solo revisas lo que no está claro.</p>
+          <p class="enlace-flecha"><a href="lab/#sindri">Probarlo en el laboratorio →</a></p>
         </div>
       </div>
-      <div class="oficina" role="tabpanel" id="ofi-pedidos" aria-labelledby="pest-pedidos" hidden>
-        <img src="img/ada/pedidos.webp" alt="Oficina Ada de Pedidos en el laboratorio" width="957" height="591" loading="lazy">
+      <div class="oficina" role="tabpanel" id="ofi-sindri" aria-labelledby="pest-sindri" hidden>
+        <img src="img/ada/sindri.webp" alt="Sindri · ERP en el laboratorio" loading="lazy">
         <div class="oficina-texto">
-          <h3>Ada Pedidos</h3>
-          <p>Lee los pedidos que llegan por correo, con PDF, Excel o sin adjunto, saca los datos y los lleva al ERP. Si una referencia no está clara, te pregunta.</p>
-          <p class="enlace-flecha"><a href="lab/#sindri">Pruébalo en el laboratorio →</a></p>
-          <p class="nota">Simulación con datos inventados: no se guarda nada.</p>
+          <h3>Sindri · ERP</h3>
+          <p>Pedidos, almacén con lotes, fabricación y facturas preparadas para VERI*FACTU.</p>
+          <p class="enlace-flecha"><a href="lab/#sindri">Probarlo en el laboratorio →</a></p>
         </div>
       </div>
-      <div class="oficina" role="tabpanel" id="ofi-produccion" aria-labelledby="pest-produccion" hidden>
-        <img src="img/ada/produccion.webp" alt="Oficina Ada de Producción en el laboratorio" width="957" height="591" loading="lazy">
+      <div class="oficina" role="tabpanel" id="ofi-brokkr" aria-labelledby="pest-brokkr" hidden>
+        <img src="img/ada/brokkr.webp" alt="Brokkr · CRM en el laboratorio" loading="lazy">
         <div class="oficina-texto">
-          <h3>Ada Producción</h3>
-          <p>Separa lo que sale del almacén de lo que hay que fabricar y prepara la orden para que el jefe de producción la apruebe.</p>
-          <p class="enlace-flecha"><a href="lab/#sindri">Pruébalo en el laboratorio →</a></p>
-          <p class="nota">Simulación con datos inventados: no se guarda nada.</p>
+          <h3>Brokkr · CRM</h3>
+          <p>El comercial trabaja en la tablet y lo que cierra llega solo al ERP.</p>
+          <p class="enlace-flecha"><a href="lab/#brokkr">Probarlo en el laboratorio →</a></p>
         </div>
       </div>
-      <div class="oficina" role="tabpanel" id="ofi-planta" aria-labelledby="pest-planta" hidden>
-        <img src="img/ada/planta.webp" alt="Oficina Ada de Planta y almacén en el laboratorio" width="957" height="591" loading="lazy">
+      <div class="oficina" role="tabpanel" id="ofi-efesto" aria-labelledby="pest-efesto" hidden>
+        <img src="img/ada/efesto.webp" alt="Efesto · planta en el laboratorio" loading="lazy">
         <div class="oficina-texto">
-          <h3>Ada Planta y almacén</h3>
-          <p>Fabrica, pide el material que falta y, cuando la línea termina, hace el albarán. El pedido queda servido.</p>
-          <p class="enlace-flecha"><a href="lab/#sindri">Pruébalo en el laboratorio →</a></p>
-          <p class="nota">Simulación con datos inventados: no se guarda nada.</p>
+          <h3>Efesto · planta</h3>
+          <p>Lee las máquinas de la fábrica y lleva la producción al ERP, aunque se corte la red.</p>
+          <p class="enlace-flecha"><a href="lab/#efesto">Probarlo en el laboratorio →</a></p>
         </div>
       </div>
+      <div class="oficina" role="tabpanel" id="ofi-aris" aria-labelledby="pest-aris" hidden>
+        <img src="img/ada/aris.webp" alt="Aris · tareas en el laboratorio" loading="lazy">
+        <div class="oficina-texto">
+          <h3>Aris · tareas</h3>
+          <p>Kanban, sprints y wiki para tu equipo. Las incidencias de Odin entran como tareas.</p>
+          <p class="enlace-flecha"><a href="lab/#tareas">Probarlo en el laboratorio →</a></p>
+        </div>
+      </div>
+      <div class="oficina" role="tabpanel" id="ofi-reporting" aria-labelledby="pest-reporting" hidden>
+        <img src="img/ada/informe.webp" alt="Reporting en el laboratorio" loading="lazy">
+        <div class="oficina-texto">
+          <h3>Reporting</h3>
+          <p>Ventas, cobros y stock en Power BI, al día cada mañana.</p>
+          <p class="enlace-flecha"><a href="lab/#reporting">Probarlo en el laboratorio →</a></p>
+        </div>
+      </div>
+      <p class="botones centrados"><a class="boton secundario" href="proyectos/">Ver todos los proyectos</a></p>
     </section>
 
     <section class="bloque simple-bloque" id="que-hacemos" data-bit="servicios">
       <h2 class="titular">Qué hacemos</h2>
       <div class="tres">
-        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="18" width="10" height="12" rx="2"/><rect x="19" y="18" width="10" height="12" rx="2"/><rect x="33" y="18" width="10" height="12" rx="2"/><path d="M15 24h4M29 24h4"/></svg></span><h3>Automatización con IA</h3><p>Correos, pedidos, avisos e informes que pasan solos entre tus programas.</p><p class="enlace-flecha"><a href="servicios/automatizacion-n8n/">Saber más →</a></p></article>
-        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32M8 34l8-9 8 4 8-14 8 5"/></svg></span><h3>Datos y Power BI</h3><p>Un cuadro de mando con las cifras cuadradas, que se actualiza solo cada mañana.</p><p class="enlace-flecha"><a href="servicios/power-bi/">Saber más →</a></p></article>
-        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M24 32v6M17 38h14"/></svg></span><h3>Webs y aplicaciones</h3><p>Una web que trae clientes o una aplicación hecha a la medida de cómo trabajas.</p><p class="enlace-flecha"><a href="servicios/webs/">Saber más →</a></p></article>
+        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="10" width="32" height="22" rx="2"/><path d="M24 32v6M17 38h14"/></svg></span><h3>Software de gestión</h3><p>ERP, CRM, tareas e incidencias a la medida de tu empresa, o conectados a los que ya usas.</p><p class="enlace-flecha"><a href="servicios/webs/">Saber más →</a></p></article>
+        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32M8 34l8-9 8 4 8-14 8 5"/></svg></span><h3>Datos y reporting</h3><p>Power BI y Fabric sobre tu ERP o tus Excel, con las cifras cuadradas y al día.</p><p class="enlace-flecha"><a href="servicios/power-bi/">Saber más →</a></p></article>
+        <article class="tres-item"><span class="tres-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="18" width="10" height="12" rx="2"/><rect x="19" y="18" width="10" height="12" rx="2"/><rect x="33" y="18" width="10" height="12" rx="2"/><path d="M15 24h4M29 24h4"/></svg></span><h3>Automatización</h3><p>Correos, pedidos, avisos e informes que pasan solos entre tus programas.</p><p class="enlace-flecha"><a href="servicios/automatizacion-n8n/">Saber más →</a></p></article>
       </div>
       <p class="botones centrados"><a class="boton grande" href="https://wa.me/34633424223?text=Hola%20Henry%2C%20quiero%20pedir%20presupuesto%20para%20mi%20empresa.%20Te%20cuento%3A%20" target="_blank" rel="noopener">Pide presupuesto</a></p>
     </section>
@@ -156,17 +171,6 @@
         <li><span class="paso-num">2</span><h3>Te paso el presupuesto</h3><p>Por escrito: qué se hace, cuánto cuesta y para cuándo.</p></li>
         <li><span class="paso-num">3</span><h3>Lo dejo funcionando</h3><p>Documentado y explicado a tu equipo.</p></li>
       </ol>
-    </section>
-
-    <section class="bloque simple-bloque" id="proyectos" data-bit="proyectos">
-      <h2 class="titular">Proyectos</h2>
-      <p class="sub centrada">Hechos para empresas de verdad. Los marcados se pueden probar en el laboratorio, con datos inventados.</p>
-      <div class="recursos">
-        <article class="recurso"><a class="recurso-imagen" href="proyectos/sindri/" tabindex="-1" aria-hidden="true"><img src="img/ada/planta.webp" alt="" width="969" height="603" loading="lazy"></a><h3><a href="proyectos/sindri/">Sindri: ERP para pymes industriales</a></h3><p>ERP para fábricas pequeñas: pedidos, almacén con lotes, facturas para VERI*FACTU y la planta conectada con Efesto.</p><p class="recurso-enlaces"><a href="proyectos/sindri/">Ver el caso</a><a href="lab/#sindri">Probarlo →</a></p></article>
-        <article class="recurso"><a class="recurso-imagen" href="proyectos/asistente/" tabindex="-1" aria-hidden="true"><img src="img/ada/asistente.webp" alt="" width="969" height="603" loading="lazy"></a><h3><a href="proyectos/asistente/">Lin-AI: asistente de IA sobre el ERP</a></h3><p>Preguntas de negocio al ERP en lenguaje normal, con consultas cerradas para que no invente datos.</p><p class="recurso-enlaces"><a href="proyectos/asistente/">Ver el caso</a><a href="lab/#asistente">Probarlo →</a></p></article>
-        <article class="recurso"><a class="recurso-imagen" href="proyectos/reporting/" tabindex="-1" aria-hidden="true"><img src="img/ada/informe.webp" alt="" width="969" height="603" loading="lazy"></a><h3><a href="proyectos/reporting/">Reporting de ventas, cobros y stock</a></h3><p>Ventas, cobros y stock en Power BI, migrados a Microsoft Fabric y comprobados antes y después.</p><p class="recurso-enlaces"><a href="proyectos/reporting/">Ver el caso</a><a href="lab/#reporting">Probarlo →</a></p></article>
-      </div>
-      <p class="botones centrados"><a class="boton secundario" href="proyectos/">Ver todos los proyectos</a></p>
     </section>
 
     <section class="bloque simple-bloque" id="preguntas" data-bit="preguntas">

@@ -50,29 +50,31 @@ module.exports = {
     seguir: 'Resume the slideshow',
     diapo: 'Message {n} of {t}',
     carrusel: [
-      { ante: 'Arce Data Lab · Alicante, Spain', titulo: 'Let AI do your company’s repetitive work.', texto: 'I automate tasks, connect your software and put AI to work on your data. You decide; the heavy lifting happens on its own.', boton: 'Ask for a quote', href: 'cta', img: 'logo' },
-      { ante: 'Ada offices', titulo: 'An online office that reads your orders and puts them into the ERP.', texto: 'Each department has its own desks and they pass the work along by themselves. You only check what isn’t clear.', boton: 'See it working', href: 'lab/#sindri', img: 'img/ada/pedidos.webp', alt: 'Ada orders office: inbox, order handling, issues and ERP entry' },
-      { ante: 'Data and Power BI', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' }
+      { ante: 'Ada virtual office', titulo: 'Your company, organised in a virtual office.', texto: 'Ada brings sales, orders, production and the plant together and connects them with your ERP, your CRM and your reports. You review; the work moves from desk to desk on its own.', boton: 'Ask for a quote', href: 'cta', img: 'img/ada/pedidos.webp', alt: 'Ada virtual orders office: inbox, order handling, issues and ERP entry' },
+      { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM and plant, talking to each other.', texto: 'What sales closes reaches the ERP, and the factory makes it and records it without copying anything.', boton: 'Try it in the lab', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: plant machines connected to Sindri' },
+      { ante: 'Data and reporting', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' }
     ],
-    ada: {
-      titulo: 'Watch Ada at work',
-      sub: 'The Ada family is an online office: each department has its desks (reception, handling, supervision, records) and they pass the work along to your ERP.',
-      oficinas: [
-        ['Sales', 'comercial', 'Closes the opportunity and registers the new customer. The sales manager approves it in one click and the order moves on to Orders.'],
-        ['Orders', 'pedidos', 'Reads the orders that arrive by email, with a PDF, an Excel file or no attachment, extracts the data and enters it in the ERP. If a product code isn’t clear, it asks you.'],
-        ['Production', 'produccion', 'Splits what ships from stock from what has to be made and prepares the order for the production manager to approve.'],
-        ['Plant and warehouse', 'planta', 'Makes the goods, requests missing material and, when the line finishes, issues the delivery note. The order is fulfilled.']
+    lab: {
+      titulo: 'Try it in the lab',
+      sub: 'The Ada virtual office and the products behind it, with made-up data. Nothing is stored.',
+      pestanas: [
+        ['Ada office', 'ada', 'pedidos', 'Each department has its desks (reception, handling, supervision and records) and they pass the work along to the ERP. You only check what isn’t clear.', 'sindri'],
+        ['Sindri · ERP', 'sindri', 'sindri', 'Orders, stock with batches, manufacturing and invoices ready for VERI*FACTU.', 'sindri'],
+        ['Brokkr · CRM', 'brokkr', 'brokkr', 'Sales reps work on a tablet and what they close reaches the ERP on its own.', 'brokkr'],
+        ['Efesto · plant', 'efesto', 'efesto', 'Reads the factory machines and sends production to the ERP, even if the network drops.', 'efesto'],
+        ['Aris · tasks', 'aris', 'aris', 'Kanban, sprints and a wiki for your team. Odin tickets come in as tasks.', 'tareas'],
+        ['Reporting', 'reporting', 'informe', 'Sales, collections and stock in Power BI, up to date every morning.', 'reporting']
       ],
-      alt: 'Ada {o} office in the lab',
+      alt: '{o} in the lab',
       boton: 'Try it in the lab',
-      nota: 'Simulation with made-up data: nothing is stored.'
+      todos: 'See all projects'
     },
     hacemos: {
       titulo: 'What we do',
       lista: [
-        ['flujo', 'Automation with AI', 'Emails, orders, alerts and reports that move on their own between your programs.', 'servicios/automatizacion-n8n/'],
-        ['grafico', 'Data and Power BI', 'A dashboard with figures that add up, refreshing itself every morning.', 'servicios/power-bi/'],
-        ['escritorio', 'Websites and apps', 'A website that brings in customers, or an app built around the way you work.', 'servicios/webs/']
+        ['escritorio', 'Business software', 'ERP, CRM, tasks and ticketing built around your company, or connected to what you already use.', 'servicios/webs/'],
+        ['grafico', 'Data and reporting', 'Power BI and Fabric on top of your ERP or your Excel files, with figures that add up.', 'servicios/power-bi/'],
+        ['flujo', 'Automation', 'Emails, orders, alerts and reports that move on their own between your programs.', 'servicios/automatizacion-n8n/']
       ],
       ver: 'Learn more'
     },
@@ -83,14 +85,6 @@ module.exports = {
         ['I send you a quote', 'In writing: what gets done, what it costs and when.'],
         ['I leave it working', 'Documented and explained to your team.']
       ]
-    },
-    proyectos: {
-      titulo: 'Projects',
-      sub: 'Built for real companies. You can try the marked ones in the lab, with made-up data.',
-      lista: [['sindri', 'img/ada/planta.webp'], ['asistente', 'img/ada/asistente.webp'], ['reporting', 'img/ada/informe.webp']],
-      ver: 'See the case',
-      probar: 'Try it',
-      todos: 'See all projects'
     },
     faq: [
       ['How much does it cost?', 'It depends on what needs building. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
