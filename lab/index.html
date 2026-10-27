@@ -17,14 +17,25 @@
 <link rel="icon" href="icono.svg" type="image/svg+xml">
 <link rel="preload" href="fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="lab.css?v=202610262238">
+<link rel="stylesheet" href="cabecera.css?v=202610271600">
 </head>
 <body>
 <a class="saltar" href="#escenario">Saltar a la demo</a>
-<header class="cab">
-  <a class="marca" href="https://arcedatalab.com/"><img src="icono.svg" alt="" width="32" height="32"><span>Arce Data Lab<small>Laboratorio de proyectos</small></span></a>
-  <button class="abrir-lista" id="abrirLista" type="button" aria-expanded="false" aria-controls="catalogo">Proyectos</button>
-  <a class="volver" href="https://arcedatalab.com/#proyectos">Volver a la web</a>
+<header class="cabecera">
+  <a class="marca" href="../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce <span>automatización · IA · datos</span></a>
+  <nav class="menu" aria-label="Secciones">
+    <a href="../servicios/">Qué hacemos</a>
+    <a class="menu-extra" href="./" aria-current="page">Laboratorio</a>
+    <a href="../proyectos/">Proyectos</a>
+    <a class="menu-extra" href="../sobre-mi/">Sobre mí</a>
+    <a class="idioma" href="../en/" lang="en" hreflang="en" aria-label="English version">English</a>
+    <a class="menu-cta" href="https://wa.me/34633424223?text=Hola%20Henry%2C%20quiero%20pedir%20presupuesto%20para%20mi%20empresa.%20Te%20cuento%3A%20" target="_blank" rel="noopener">Pide presupuesto</a>
+  </nav>
 </header>
+<div class="lab-barra">
+  <span>Laboratorio de proyectos</span>
+  <button class="abrir-lista" id="abrirLista" type="button" aria-expanded="false" aria-controls="catalogo">Elegir proyecto</button>
+</div>
 <div class="lab">
   <nav class="catalogo" id="catalogo" aria-label="Proyectos del laboratorio"></nav>
   <main class="escenario" id="escenario" tabindex="-1" aria-live="polite">
@@ -37,6 +48,7 @@
   </main>
 </div>
 <noscript><p class="sin-js">El laboratorio necesita JavaScript para simular los sistemas.</p></noscript>
+<script src="cabecera.js?v=202610271600" defer></script>
 <script type="module" src="lab.js?v=202610262238"></script>
 </body>
 </html>

@@ -79,6 +79,15 @@ marco vacío: hay que quitarla de la lista.
 `css/estilos.css`. Los colores y las tipografías están al principio, en `:root`: página blanca,
 tinta oscura, un azul de acento, titulares en Barlow Condensed y texto en IBM Plex Sans.
 
+## Laboratorio (`lab/`)
+
+Lo compila el hilo de demos (fuente en `DESARROLLO\demos\laboratorio\`). Lleva la misma cabecera
+que el resto de páginas: el HTML está en `lab/index.html` y su estilo en `lab/cabecera.css` (copia
+de las reglas de `css/estilos.css`; el laboratorio no carga esa hoja para no mezclar estilos con las
+demos). `lab/cabecera.js` mide la cabecera (`--cab`) para colocar debajo la lista de proyectos. En
+pantallas estrechas, la barra «Laboratorio de proyectos · Elegir proyecto» abre la lista. Si cambia
+el menú de `construir.js`, cambiarlo también en `lab/index.html`.
+
 ## Cabeceras de seguridad
 
 `cabeceras.conf` reúne las cabeceras (CSP incluida) y se incluye en `nginx.conf` en el `server` y

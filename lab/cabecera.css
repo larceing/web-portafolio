@@ -1,0 +1,74 @@
+/* Cabecera de la web (la misma que en el resto de páginas) dentro del laboratorio.
+   Copia de las reglas de css/estilos.css: el laboratorio no carga esa hoja para que
+   sus estilos generales no choquen con las demos. --cab lo pone cabecera.js con la
+   altura real de la cabecera (cambia si el menú ocupa dos líneas). */
+:root { --cab: 61px; --cab-raya: #E3E8EE; --tonal: #D3E4F5; --sobre-tonal: #0B2E4B; }
+
+.cabecera {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 8px 24px;
+  padding: 10px max(28px, calc((100vw - 1160px) / 2 + 28px));
+  background: rgba(243, 246, 250, .92);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s, box-shadow .2s;
+  font-family: var(--letra); line-height: 1.55;
+}
+.cabecera.con-sombra { border-bottom-color: var(--cab-raya); box-shadow: 0 6px 24px rgba(25, 28, 32, .06); }
+.cabecera .marca {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--tinta); font-size: 19px; font-weight: 600; line-height: 1.55; text-decoration: none;
+}
+.cabecera .marca span { color: var(--tenue); font-size: 13px; font-weight: 400; }
+.cabecera .hojita { display: block; width: auto; height: 34px; fill: var(--azul); flex: 0 0 auto; }
+.cabecera .menu { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
+.cabecera .menu a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px;
+  color: #43474E; font-size: 15px; font-weight: 500; text-decoration: none;
+}
+.cabecera .menu a:hover { background: var(--capa); color: var(--tinta); }
+.cabecera .menu a[aria-current="page"] { background: var(--capa); color: var(--tinta); }
+.cabecera .menu .idioma { margin-left: 8px; padding-left: 14px; background: var(--tonal); color: var(--sobre-tonal); }
+.cabecera .menu .menu-cta { margin-left: 6px; background: var(--azul); color: #fff; font-weight: 600; }
+.cabecera .menu .menu-cta:hover,
+.cabecera .menu .menu-cta:focus-visible { background: var(--sobre-tonal); color: #fff; }
+
+/* lab.css fija body a la altura de la pantalla y así nada se queda pegado arriba al bajar. */
+html, body { height: auto; }
+body { min-height: 100vh; }
+
+/* El laboratorio debajo de la cabecera, con su altura real. */
+.lab { min-height: calc(100vh - var(--cab)); }
+.catalogo { top: var(--cab); max-height: calc(100vh - var(--cab)); }
+
+/* Barra propia del laboratorio: solo en pantallas estrechas, para abrir la lista. */
+.lab-barra { display: none; }
+
+@media (max-width: 900px) {
+  .lab-barra {
+    position: sticky; top: var(--cab); z-index: 40;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--e3);
+    min-height: 56px; padding: var(--e2) var(--e5);
+    background: var(--tarjeta); border-top: 1px solid var(--raya); border-bottom: 1px solid var(--raya);
+    font-weight: 600; color: var(--tinta);
+  }
+  .lab-barra .abrir-lista { display: inline-flex; margin-left: 0; }
+  /* La lista se abre en su sitio, debajo de la barra, sin tapar la cabecera. */
+  .catalogo, body.lista-abierta .catalogo {
+    position: static; inset: auto; max-height: none; z-index: auto;
+    border-bottom: 1px solid var(--raya);
+    scroll-margin-top: calc(var(--cab) + 56px);
+  }
+}
+
+@media (max-width: 640px) {
+  .cabecera { position: static; padding: 10px 16px; }
+  .cabecera .marca span { display: none; }
+  .cabecera .hojita { height: 28px; }
+  .cabecera .menu a { min-height: 36px; padding: 0 10px; font-size: 14px; }
+  .cabecera .menu .menu-cta { margin-left: 0; }
+  .cabecera .menu .menu-extra { display: none; }
+  .lab-barra { top: 0; padding: var(--e2) var(--e4); }
+  .catalogo, body.lista-abierta .catalogo { scroll-margin-top: 56px; }
+}
