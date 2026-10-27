@@ -652,7 +652,8 @@ UI.p = {
       ['Brokkr · CRM', 'brokkr', 'brokkr', 'El comercial trabaja en la tablet y lo que cierra llega solo al ERP.', 'brokkr'],
       ['Efesto · planta', 'efesto', 'efesto', 'Lee las máquinas de la fábrica y lleva la producción al ERP, aunque se corte la red.', 'efesto'],
       ['Aris · tareas', 'aris', 'aris', 'Kanban, sprints y wiki para tu equipo. Las incidencias de Odin entran como tareas.', 'tareas'],
-      ['Reporting', 'reporting', 'informe', 'Ventas, cobros y stock en Power BI, al día cada mañana.', 'reporting']
+      ['Reporting', 'reporting', 'informe', 'Ventas, cobros y stock en Power BI, al día cada mañana.', 'reporting'],
+      ['Webs · plantillas', 'webs', 'webs', 'Webs para negocios pensadas para el móvil: reservas, citas y pedidos. 28 ejemplos con negocios inventados que puedes abrir y probar.', '', 'plantillas/', 'Ver las plantillas']
     ],
     alt: '{o} en el laboratorio',
     boton: 'Probarlo en el laboratorio',
@@ -1187,7 +1188,7 @@ ${p.lab.pestanas.map((o, i) => `      <div class="oficina" role="tabpanel" id="o
         <div class="oficina-texto">
           <h3>${o[0]}</h3>
           <p>${o[3]}</p>
-          <p class="enlace-flecha"><a href="${base}lab/#${o[4]}">${p.lab.boton} →</a></p>
+          <p class="enlace-flecha"><a href="${base}${o[5] || 'lab/#' + o[4]}">${o[6] || p.lab.boton} →</a></p>
         </div>
       </div>`).join('\n')}
       <p class="botones centrados"><a class="boton secundario" href="${base}proyectos/">${p.lab.todos}</a></p>

@@ -64,7 +64,8 @@ module.exports = {
         ['Brokkr · CRM', 'brokkr', 'brokkr', 'Sales reps work on a tablet and what they close reaches the ERP on its own.', 'brokkr'],
         ['Efesto · plant', 'efesto', 'efesto', 'Reads the factory machines and sends production to the ERP, even if the network drops.', 'efesto'],
         ['Aris · tasks', 'aris', 'aris', 'Kanban, sprints and a wiki for your team. Odin tickets come in as tasks.', 'tareas'],
-        ['Reporting', 'reporting', 'informe', 'Sales, collections and stock in Power BI, up to date every morning.', 'reporting']
+        ['Reporting', 'reporting', 'informe', 'Sales, collections and stock in Power BI, up to date every morning.', 'reporting'],
+        ['Websites · templates', 'webs', 'webs', 'Mobile-first websites for businesses: bookings, appointments and orders. 28 examples with made-up businesses you can open and try.', '', 'plantillas/', 'See the templates']
       ],
       alt: '{o} in the lab',
       boton: 'Try it in the lab',
