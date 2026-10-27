@@ -60,10 +60,11 @@ const PUBLICACIONES = [
 ];
 
 // Pictogramas de línea (lienzo de 48 x 48).
-// Catálogo de plantillas de ejemplo (repo demos). En DEV, js/bit-arranque.js
-// cambia el enlace por el de DEV (atributo data-dev).
-const CATALOGO_PLANTILLAS = 'https://pro.luiscontacto03.com/demos/catalogo/';
-const CATALOGO_PLANTILLAS_DEV = 'https://dev.luiscontacto03.com/demos/catalogo/';
+// Catálogo de plantillas de ejemplo: vive en esta web, en plantillas/ (se copia desde el
+// repo demos con catalogo/a_la_web.py). En DEV, js/bit-arranque.js cambia el enlace por
+// el de DEV (atributo data-dev).
+const CATALOGO_PLANTILLAS = 'https://arcedatalab.com/plantillas/';
+const CATALOGO_PLANTILLAS_DEV = 'https://dev.luiscontacto03.com/web/plantillas/';
 
 const ICONOS = {
   ticket: '<rect x="8" y="12" width="32" height="24" rx="3"/><path d="M16 20h16M16 28h10"/>',
@@ -495,7 +496,7 @@ const UI = {
     ['escritorio', 'Webs y aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'webs']
   ],
   verServicio: 'Ver el servicio',
-  serviciosNota: 'Cada proyecto es distinto, así que no publico tarifas: cuéntame qué necesitas y te paso un presupuesto cerrado por escrito, sin compromiso. Si buscas una web, mira las <a href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">plantillas de ejemplo</a>.',
+  serviciosNota: 'Cada proyecto es distinto, así que no publico tarifas: cuéntame qué necesitas y te paso un presupuesto cerrado por escrito, sin compromiso. Si buscas una web, mira las <a href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '">plantillas de ejemplo</a>.',
   serviciosCta: 'Pide presupuesto',
   serviciosPago: 'Se paga el 50 % al empezar y el 50 % a la entrega, por transferencia, tarjeta o Bizum, siempre con factura.',
   cinta: 'Automatización en marcha',
@@ -1037,7 +1038,7 @@ function enPortada(lista) {
 
 // Botón al catálogo de plantillas. En DEV, js/bit-arranque.js lo cambia por data-dev.
 function botonPlantillas(t) {
-  return '<p class="probar"><a class="boton" href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '" target="_blank" rel="noopener">' + t.serv.verPlantillas + '</a></p>';
+  return '<p class="probar"><a class="boton" href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '">' + t.serv.verPlantillas + '</a></p>';
 }
 
 function cara(p, base, tam) {
@@ -1702,7 +1703,7 @@ function antesAhoraHtml(t, raiz) {
         <input type="range" min="0" max="100" value="50" aria-label="${s.deslizar}">
       </figure>
       <p class="sub">${s.plantillasSub}</p>
-      <p class="botones"><a class="boton secundario" href="${CATALOGO_PLANTILLAS}" data-dev="${CATALOGO_PLANTILLAS_DEV}" target="_blank" rel="noopener">${s.plantillas}</a></p>
+      <p class="botones"><a class="boton secundario" href="${CATALOGO_PLANTILLAS}" data-dev="${CATALOGO_PLANTILLAS_DEV}">${s.plantillas}</a></p>
     </section>
     <script src="${raiz}js/antes-ahora.js?v=${VERSION_JS_ANTES}" defer></script>
 `;
@@ -1818,7 +1819,7 @@ function sitemap() {
     '    <xhtml:link rel="alternate" hreflang="x-default" href="' + SITIO + ruta + '"/>\n  </url>').join('\n');
   const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n  </url>';
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-    rutas.map(entrada).join('\n') + '\n' + LEGALES.map(legal).join('\n') + '\n</urlset>\n';
+    rutas.map(entrada).join('\n') + '\n' + legal({ ruta: 'plantillas/' }) + '\n' + LEGALES.map(legal).join('\n') + '\n</urlset>\n';
 }
 
 // robots.txt: todo abierto, también a los rastreadores de IA (GEO).

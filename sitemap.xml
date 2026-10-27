@@ -505,6 +505,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nifi/"/>
   </url>
   <url>
+    <loc>https://arcedatalab.com/plantillas/</loc>
+    <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
     <loc>https://arcedatalab.com/privacidad/</loc>
     <lastmod>2026-10-27</lastmod>
   </url>
