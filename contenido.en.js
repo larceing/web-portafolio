@@ -281,7 +281,7 @@ module.exports = {
       ['escritorio', 'Custom websites and applications', 'ERP, CRM, appointments, tickets or an online shop: websites and web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'webs']
     ],
     verServicio: 'See the service',
-    serviciosNota: 'Every project is different, so I don’t publish rates: tell me what you need and I’ll send you a fixed quote in writing, with no obligation. If you need a website, have a look at the <a href="https://pro.luiscontacto03.com/demos/catalogo/" data-dev="https://dev.luiscontacto03.com/demos/catalogo/" target="_blank" rel="noopener">example templates</a>.',
+    serviciosNota: 'Every project is different, so I don’t publish rates: tell me what you need and I’ll send you a fixed quote in writing, with no obligation. If you need a website, have a look at the <a href="https://arcedatalab.com/plantillas/" data-dev="https://dev.luiscontacto03.com/web/plantillas/">example templates</a>.',
     serviciosCta: 'Ask for a quote',
     serviciosPago: 'You pay 50% to start and 50% on delivery, by bank transfer or card, always with an invoice.',
     cinta: 'Automation at work',
