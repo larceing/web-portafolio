@@ -341,6 +341,61 @@ const TECNOLOGIAS = [
   ['Desarrollo', 'Node.js, Next.js, TypeScript, React Native, Django, Docker, Linux, Git']
 ];
 
+// Página /sobre-mi/: la «carrera» de Henry, tipo CV, para mandarla a quien
+// quiera conocer su trayectoria. Sin precios ni «Pide presupuesto».
+// La experiencia y la formación salen de TRAYECTORIA (mismo orden): aquí van
+// los logros de cada puesto. Lo inglés, en contenido.en.js (CARRERA).
+const CARRERA = {
+  descripcion: 'Henry Arce (Luis Henry Arce Inga), analista de datos y desarrollador en Alicante: experiencia, habilidades, formación y proyectos.',
+  puesto: 'Analista de datos y desarrollador',
+  lema: 'Automatización, IA aplicada y Power BI',
+  lugar: 'Alicante, España · presencial o en remoto',
+  fotoAlt: 'Henry Arce',
+  resumen: 'Trabajo con datos desde 2019: primero en consultoras (NTT DATA e Inforges), después en la transformación digital de un fabricante y hoy como responsable de los ERP de un grupo industrial con dos plantas. Me muevo entre el dato, el código y el negocio: encuentro las tareas manuales de un equipo, las convierto en informes, flujos y asistentes de IA, y mido lo que se gana.',
+  botones: { correo: 'Escríbeme', linkedin: 'LinkedIn', github: 'GitHub', pdf: 'Guardar en PDF' },
+  datos: [
+    ['2019', 'trabajando con datos'],
+    ['4', 'empresas, de la consultoría a la industria'],
+    ['2', 'plantas de producción con sus ERP a mi cargo'],
+    ['8,8', 'nota media y Premio a la Excelencia Académica']
+  ],
+  experiencia: 'Experiencia',
+  experienciaSub: 'De la consultora a la fábrica',
+  logros: [
+    ['Responsable de los ERP del grupo (Clavei y Cybermax) en dos plantas de producción.', 'Facturación unificada entre las dos plantas.', 'Integraciones con SAP y EDI con clientes y proveedores.', 'Lectura de datos de las máquinas de planta.', 'Helpdesk propio, control horario y control de costes de IT.', 'Apoyo a la migración a Azure.'],
+    ['Microsoft Fabric para centralizar y gobernar el dato de la empresa.', 'Cuadros de mando en Power BI para dirección y equipo comercial.', 'Aplicaciones de escritorio en Python para logística y aprovisionamiento.', 'Automatización de tareas repetitivas entre departamentos.'],
+    ['Procesos ETL y almacenes de datos.', 'Informes en Power BI y Excel.', 'Indicadores de proveedores: SLA, disponibilidad, MTBF y MTTR.', 'Documentación funcional y técnica de cada entrega.'],
+    ['Cuadros de mando de indicadores financieros y operativos para banca.', 'Procesos ETL e integración de datos desde Azure Databricks, AWS, SharePoint y Oracle.'],
+    ['Nota media 8,8.', 'Premio a la Excelencia Académica 2022.', 'Premiado en el campeonato CV Skills 2021, modalidad de Electrónica.'],
+    ['Paneles de ventas, inventario y producción.', 'Automatización de informes con Python y macros de Excel.']
+  ],
+  formacion: 'Formación y premios',
+  formacionSub: 'Ciclo superior y competiciones',
+  habilidades: 'Lo que sé hacer',
+  habilidadesSub: 'Habilidades y herramientas que uso en el día a día',
+  competencias: [
+    ['Datos y BI', 'Modelos de datos, DAX y cuadros de mando que la dirección usa de verdad.'],
+    ['Automatización', 'Quitar tareas manuales con flujos, scripts e integraciones entre sistemas.'],
+    ['IA aplicada', 'Asistentes y agentes que trabajan con los datos del negocio, con control humano.'],
+    ['ERP e integración', 'Administrar ERP, conectar SAP, EDI y máquinas de planta.'],
+    ['Desarrollo', 'Aplicaciones web y de escritorio, de la base de datos a la pantalla.'],
+    ['Infraestructura', 'Servidor propio con Docker, inicio de sesión único, DEV/PRO y despliegue continuo.']
+  ],
+  herramientas: 'Herramientas',
+  propios: 'Proyectos propios',
+  propiosSub: 'Lo que construyo por mi cuenta con Arce Data Lab',
+  propiosTexto: 'Además de mi trabajo, tengo <strong>Arce Data Lab</strong>, mi laboratorio: ahí construyo y pruebo mis propias aplicaciones y hago proyectos freelance.',
+  proyectos: [
+    ['ada', 'Ada', 'Automatización con n8n e IA: prepara, revisa y publica los vídeos y posts de cinco canales, y nada sale sin revisión.'],
+    ['sindri', 'Sindri', 'ERP para fábricas pequeñas: pedidos, almacén con lotes, facturas para VERI*FACTU y la planta conectada.'],
+    ['plataforma', 'Mi plataforma', 'Servidor con Docker, Keycloak, DEV/PRO, copias y despliegue con GitHub Actions.'],
+    ['github', 'Open source', 'Auditor de Power BI, calendario de Outlook para tus programas, manual de Apache NiFi y más, en GitHub.']
+  ],
+  verProyectos: 'Ver todos los proyectos',
+  contacto: '¿Hablamos?',
+  contactoTexto: 'Si quieres conocerme para un puesto, una colaboración o un proyecto, escríbeme y te respondo.'
+};
+
 // Textos de la página en español. Los de inglés están en contenido.en.js.
 const UI = {
   lang: 'es',
@@ -768,7 +823,7 @@ const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(public
 // Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
 // hasta la raíz (para css, js e img) y hasta la página del otro idioma.
 const IDIOMAS = [
-  { t: UI, areas: AREAS, proyectos: PROYECTOS, servicios: SERVICIOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carpeta: '', base: '', otro: 'en/' },
+  { t: UI, areas: AREAS, proyectos: PROYECTOS, servicios: SERVICIOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carrera: CARRERA, carpeta: '', base: '', otro: 'en/' },
   {
     t: Object.assign({}, EN.UI, {
       arceEnlaces: UI.arceEnlaces.map((e, i) => [EN.UI.arceEnlacesTextos[i], e[1]]),
@@ -789,6 +844,7 @@ const IDIOMAS = [
     }),
     trayectoria: EN.TRAYECTORIA,
     tecnologias: EN.TECNOLOGIAS,
+    carrera: EN.CARRERA,
     carpeta: 'en', base: '../', otro: '../'
   }
 ];
@@ -1242,67 +1298,120 @@ ${bitHtml(t, raiz)}
 `;
 }
 
-// Página /sobre-mi/: lo que antes alargaba la portada (trayectoria,
-// tecnologías, infraestructura, Arce Data Lab y divulgación), sin el 3D.
+// Página /sobre-mi/: la carrera de Henry, tipo CV, para mandarla a quien
+// quiera conocer su trayectoria (experiencia, habilidades, formación y
+// proyectos). Sin precios ni «Pide presupuesto». Se puede guardar en PDF:
+// el botón llama a window.print() y la hoja de impresión quita menú y pie.
 function paginaSobreMi(d) {
   const t = d.t;
+  const c = d.carrera;
   const raiz = '../' + d.base;
   const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'sobre-mi/';
+  const puesto = (x, i) => {
+    const logros = c.logros[i] || [];
+    return '        <li class="cv-puesto">\n' +
+      '          <p class="cuando">' + x[0] + '</p>\n' +
+      '          <div>\n' +
+      '            <h3>' + x[1] + ' <span>· ' + x[2] + '</span></h3>\n' +
+      (logros.length ? '' : '            <p>' + x[3] + '</p>\n') +
+      (logros.length ? '            <ul>' + logros.map(l => '<li>' + l + '</li>').join('') + '</ul>\n' : '') +
+      '          </div>\n' +
+      '        </li>';
+  };
+  // La formación es la entrada de IES El Palmeral; el resto, experiencia.
+  const esFormacion = x => /IES /.test(x[2]);
+  const experiencia = d.trayectoria.map((x, i) => [x, i]).filter(([x]) => !esFormacion(x));
+  const formacion = d.trayectoria.map((x, i) => [x, i]).filter(([x]) => esFormacion(x));
+  const enlaceProyecto = id => id === 'github' ? GITHUB : '../proyectos/' + id + '/';
+  const fuera = id => id === 'github' ? ' target="_blank" rel="noopener"' : '';
+
   return cabeza(d, {
-    titulo: t.p.sobre.titulo + ' · Henry Arce', descripcion: attr(t.p.sobre.descripcion), ogDescripcion: attr(t.p.sobre.descripcion),
+    titulo: t.p.sobre.titulo + ' · Henry Arce', descripcion: attr(c.descripcion), ogDescripcion: attr(c.descripcion),
     ruta: 'sobre-mi/', raiz: raiz, inicio: '../', otro: '../' + d.otro + 'sobre-mi/',
     datos: { '@context': 'https://schema.org', '@graph': [
-      { '@type': 'AboutPage', '@id': url, url: url, name: plano(t.p.sobre.titulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA }, mainEntity: { '@id': ID_PERSONA } },
+      { '@type': 'ProfilePage', '@id': url, url: url, name: plano(t.p.sobre.titulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA }, mainEntity: { '@id': ID_PERSONA } },
       persona(d)
     ] }
   }) + `
-  <main id="contenido" class="portadilla sobre-mi">
-    <section class="bloque">
-      <h1>${t.p.sobre.titulo}</h1>
-      <p class="sub">${t.p.sobre.sub}</p>
-      <div class="marcas">
-        <article class="marca-tarjeta">
-          <h2>Arce Data Lab</h2>
-          <p>${t.arceTexto}</p>
-          <p class="enlaces">${t.arceEnlaces.map(e => '<a href="' + e[1] + '" target="_blank" rel="noopener">' + e[0] + '</a>').join('')}</p>
-        </article>
+  <main id="contenido" class="portadilla sobre-mi cv">
+    <section class="bloque cv-cabeza">
+      <img class="cv-foto" src="${raiz}img/henry.webp" alt="${c.fotoAlt}" width="160" height="160">
+      <div>
+        <p class="cv-antetitulo">${t.p.sobre.titulo}</p>
+        <h1>Henry Arce</h1>
+        <p class="cv-puesto-actual">${c.puesto} · ${c.lema}</p>
+        <p class="cv-lugar">${c.lugar}</p>
+        <p class="cv-resumen">${c.resumen}</p>
+        <p class="botones cv-botones">
+          <a class="boton" href="mailto:${CORREO}">${c.botones.correo}</a>
+          <a class="boton contorno" href="${LINKEDIN}" target="_blank" rel="noopener">${c.botones.linkedin}</a>
+          <a class="boton contorno" href="${GITHUB}" target="_blank" rel="noopener">${c.botones.github}</a>
+          <button class="boton contorno cv-pdf" type="button" hidden>${c.botones.pdf}</button>
+        </p>
+        <p class="cv-solo-papel">${CORREO} · ${LINKEDIN.replace('https://www.', '')} · ${GITHUB.replace('https://', '')} · ${SITIO.replace(/^https:\/\/|\/$/g, '')}</p>
       </div>
     </section>
 
-    <section class="bloque" id="trayectoria" data-bit="trayectoria">
-      <h2>${t.trayectoria}</h2>
-      <p class="sub">${t.trayectoriaSub}</p>
-      <ol class="lista">
-${d.trayectoria.map(x => '        <li><span class="cuando">' + x[0] + '</span><div><h3>' + x[1] + ' <span>· ' + x[2] + '</span></h3><p>' + x[3] + '</p></div></li>').join('\n')}
+    <section class="bloque cv-datos-bloque" aria-label="${c.puesto}">
+      <dl class="cv-datos">
+${c.datos.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
+      </dl>
+    </section>
+
+    <section class="bloque" id="experiencia">
+      <h2>${c.experiencia}</h2>
+      <p class="sub">${c.experienciaSub}</p>
+      <ol class="lista cv-lista">
+${experiencia.map(([x, i]) => puesto(x, i)).join('\n')}
       </ol>
     </section>
 
-    <section class="bloque" id="tecnologias" data-bit="tecnologias">
-      <h2>${t.tecnologias}</h2>
-      <p class="sub">${t.tecnologiasSub}</p>
-      <dl class="lista">
-${d.tecnologias.map(x => '        <div><dt class="cuando">' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
+    <section class="bloque" id="habilidades">
+      <h2>${c.habilidades}</h2>
+      <p class="sub">${c.habilidadesSub}</p>
+      <div class="cv-competencias">
+${c.competencias.map(x => '        <div><h3>' + x[0] + '</h3><p>' + x[1] + '</p></div>').join('\n')}
+      </div>
+      <h3 class="cv-herramientas-titulo">${c.herramientas}</h3>
+      <dl class="cv-herramientas">
+${d.tecnologias.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1].split(', ').map(h => '<span>' + h + '</span>').join('') + '</dd></div>').join('\n')}
       </dl>
     </section>
 
-    <section class="bloque" id="infraestructura" data-bit="infraestructura">
-      <h2>${t.infra}</h2>
-      <p class="sub">${t.infraSub}</p>
-      <p class="infra-texto">${t.infraTexto}</p>
-      <dl class="infra">
-${t.infraLista.map(x => '        <div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('\n')}
-      </dl>
-      <p class="mas"><a href="${GITHUB}/servidor" target="_blank" rel="noopener">${t.infraEnlace}</a> · <a href="../proyectos/plataforma/">${t.verFicha}</a></p>
+    <section class="bloque" id="formacion">
+      <h2>${c.formacion}</h2>
+      <p class="sub">${c.formacionSub}</p>
+      <ol class="lista cv-lista">
+${formacion.map(([x, i]) => puesto(x, i)).join('\n')}
+      </ol>
+    </section>
+
+    <section class="bloque" id="proyectos-propios">
+      <h2>${c.propios}</h2>
+      <p class="sub">${c.propiosSub}</p>
+      <p class="cv-texto">${c.propiosTexto}</p>
+      <div class="cv-proyectos">
+${c.proyectos.map(x => '        <a class="cv-proyecto" href="' + enlaceProyecto(x[0]) + '"' + fuera(x[0]) + '><h3>' + x[1] + '</h3><p>' + x[2] + '</p></a>').join('\n')}
+      </div>
+      <p class="mas"><a href="../proyectos/">${c.verProyectos}</a></p>
     </section>
 
     <section class="bloque" id="divulgacion">
       <h2>${t.divulgacion}</h2>
       <p class="sub">${t.divulgacionSub}</p>
       <div class="cifras">
-${t.cifras.map((c, i) => '        <div><strong>' + c[0] + '</strong><span>' + c[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
+${t.cifras.map((x, i) => '        <div><strong>' + x[0] + '</strong><span>' + x[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
       </div>
       <p class="mas"><a href="../linkedin/">${t.verPublicaciones}</a></p>
-      <p class="botones"><a class="boton grande" href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta}</a></p>
+    </section>
+
+    <section class="bloque cv-contacto" id="contacto">
+      <h2>${c.contacto}</h2>
+      <p class="sub">${c.contactoTexto}</p>
+      <p class="botones">
+        <a class="boton grande" href="mailto:${CORREO}">${CORREO}</a>
+        <a class="boton contorno" href="${LINKEDIN}" target="_blank" rel="noopener">${c.botones.linkedin}</a>
+      </p>
     </section>
   </main>
 
