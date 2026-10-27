@@ -165,3 +165,11 @@ document.getElementById('anio').textContent = new Date().getFullYear();
     ojo.observe(el);
   });
 })();
+
+// Sobre mí: botón «Guardar en PDF» (abre la ventana de imprimir del navegador).
+(function () {
+  const boton = document.querySelector('.cv-pdf');
+  if (!boton || !window.print) return;
+  boton.hidden = false;
+  boton.addEventListener('click', function () { window.print(); });
+})();

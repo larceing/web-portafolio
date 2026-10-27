@@ -536,12 +536,64 @@ module.exports = {
     }
   },
 
+  // /sobre-mi/ (About): the career page, CV style. Same order as CARRERA in construir.js.
+  CARRERA: {
+    descripcion: 'Henry Arce (Luis Henry Arce Inga), data analyst and developer in Alicante, Spain: experience, skills, education and projects.',
+    puesto: 'Data analyst and developer',
+    lema: 'Automation, applied AI and Power BI',
+    lugar: 'Alicante, Spain · on site or remote',
+    fotoAlt: 'Henry Arce',
+    resumen: 'I’ve worked with data since 2019: first in consulting firms (NTT DATA and Inforges), then on the digital transformation of a manufacturer, and today in charge of the ERP systems of an industrial group with two plants. I move between data, code and the business: I find a team’s manual tasks, turn them into reports, workflows and AI assistants, and measure what is gained.',
+    botones: { correo: 'Email me', linkedin: 'LinkedIn', github: 'GitHub', pdf: 'Save as PDF' },
+    datos: [
+      ['2019', 'working with data'],
+      ['4', 'companies, from consulting to industry'],
+      ['2', 'production plants with their ERP in my care'],
+      ['SPSIL', 'in charge of the group’s data system, on Microsoft Fabric']
+    ],
+    experiencia: 'Experience',
+    experienciaSub: 'From consulting to the factory floor',
+    logros: [
+      ['In charge of the group’s ERP systems (Clavei and Cybermax) across two production plants.', 'Unified invoicing between both plants.', 'Integrations with SAP and EDI with customers and suppliers.', 'Machine data collection on the shop floor.', 'In-house helpdesk, time tracking and IT cost control.', 'Support for the migration to Azure.'],
+      ['In charge of the group’s data system: Microsoft Fabric to centralise and govern the data.', 'Power BI dashboards for management and the sales team.', 'Python desktop applications for logistics and procurement.', 'Automation of repetitive tasks between departments.'],
+      ['ETL processes and data warehouses.', 'Reports in Power BI and Excel.', 'Supplier indicators: SLA, availability, MTBF and MTTR.', 'Functional and technical documentation for every delivery.'],
+      ['Financial and operational KPI dashboards for banking.', 'ETL processes and data integration from Azure Databricks, AWS, SharePoint and Oracle.'],
+      ['Academic Excellence Award 2022.', 'Prize winner at the CV Skills 2021 championship, Electronics category.'],
+      ['Sales, inventory and production dashboards.', 'Report automation with Python and Excel macros.']
+    ],
+    formacion: 'Education and awards',
+    formacionSub: 'Higher vocational diploma and competitions',
+    habilidades: 'What I do',
+    habilidadesSub: 'Skills and the tools I use every day',
+    competencias: [
+      ['Data &amp; BI', 'Data models, DAX and dashboards that management actually uses.'],
+      ['Automation', 'Removing manual tasks with workflows, scripts and integrations between systems.'],
+      ['Applied AI', 'Assistants and agents that work with business data, with a human in control.'],
+      ['ERP &amp; integration', 'Running ERP systems and connecting SAP, EDI and shop-floor machines.'],
+      ['Development', 'Web and desktop applications, from the database to the screen.'],
+      ['Infrastructure', 'My own server with Docker, single sign-on, DEV/PRO and continuous deployment.']
+    ],
+    herramientas: 'Tools',
+    propios: 'Own projects',
+    propiosSub: 'What I build on my own with Arce Data Lab',
+    propiosTexto: 'Alongside my job I run <strong>Arce Data Lab</strong>, my lab: it’s where I build and test my own applications and take on freelance projects.',
+    proyectos: [
+      ['ada', 'Ada', 'Automation with n8n and AI: prepares, reviews and publishes the videos and posts of five channels, and nothing goes out unreviewed.'],
+      ['sindri', 'Sindri', 'ERP for small factories: orders, stock with batches, invoices ready for VERI*FACTU and the shop floor connected.'],
+      ['plataforma', 'My platform', 'Server with Docker, Keycloak, DEV/PRO, backups and deployment with GitHub Actions.'],
+      ['github', 'Open source', 'Power BI auditor, Outlook calendar for your own programs, an Apache NiFi manual and more, on GitHub.']
+    ],
+    verProyectos: 'See all projects',
+    contacto: 'Let’s talk',
+    contactoTexto: 'If you’d like to get to know me for a role, a collaboration or a project, email me and I’ll get back to you.'
+  },
+
   TRAYECTORIA: [
     ['Apr 2026 – present', 'Business Applications Administrator', 'F&amp;D Shower Tray (ES Group)', 'In charge of the group’s ERP systems for two production plants. Integrations with SAP, machine data collection, EDI, an in-house helpdesk, time tracking and IT costs, and support for the migration to Azure.'],
     ['Jan 2025 – Mar 2026', 'Data Analyst · Digital transformation', 'Grupo SPSIL', 'Data analysis, automation and development for a manufacturer: Microsoft Fabric to centralise and govern the data, Power BI for management and sales, and Python desktop applications for logistics and procurement.'],
     ['Nov 2023 – Jul 2024', 'Analyst programmer', 'Inforges', 'Innovation and digital transformation area: ETL and data warehouses, reports in Power BI and Excel, and supplier indicators (SLA, availability, MTBF, MTTR) with their functional and technical documentation.'],
     ['Feb 2022 – Nov 2023', 'Business Intelligence Developer', 'NTT DATA', 'BI solutions for the banking sector: dashboards of financial and operational indicators, ETL processes and data integration from Azure Databricks, AWS, SharePoint and Oracle.'],
-    ['2020 – 2022', 'Vocational diploma in Telecommunications and IT Systems', 'IES El Palmeral', 'Average grade 8.8 out of 10. Academic Excellence Award 2022 and prize winner at the CV Skills 2021 championship, Electronics category.'],
+    ['2020 – 2022', 'Vocational diploma in Telecommunications and IT Systems', 'IES El Palmeral', 'Academic Excellence Award 2022 and prize winner at the CV Skills 2021 championship, Electronics category.'],
     ['Sep 2019 – Feb 2020', 'Data analyst', 'Freelance', 'First projects on my own: sales, inventory and production dashboards, and report automation with Python and Excel macros.']
   ],
 
