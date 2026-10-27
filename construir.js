@@ -328,7 +328,7 @@ const TRAYECTORIA = [
   ['Ene 2025 – mar 2026', 'Data Analyst · Transformación digital', 'Grupo SPSIL', 'Análisis de datos, automatización y desarrollo para un fabricante: Microsoft Fabric para centralizar y gobernar el dato, Power BI para dirección y comerciales, y aplicaciones de escritorio en Python para logística y aprovisionamiento.'],
   ['Nov 2023 – jul 2024', 'Analista programador', 'Inforges', 'Área de innovación y transformación digital: ETL y almacenes de datos, informes en Power BI y Excel, e indicadores de proveedores (SLA, disponibilidad, MTBF, MTTR) con su documentación funcional y técnica.'],
   ['Feb 2022 – nov 2023', 'Business Intelligence Developer', 'NTT DATA', 'Soluciones de BI para el sector bancario: cuadros de mando de indicadores financieros y operativos, procesos ETL e integración de datos desde Azure Databricks, AWS, SharePoint y Oracle.'],
-  ['2020 – 2022', 'Técnico en Sistemas de Telecomunicaciones e Informáticos', 'IES El Palmeral', 'Nota media 8,8. Premio a la Excelencia Académica 2022 y premiado en el campeonato CV Skills 2021, modalidad de Electrónica.'],
+  ['2020 – 2022', 'Técnico en Sistemas de Telecomunicaciones e Informáticos', 'IES El Palmeral', 'Premio a la Excelencia Académica 2022 y premiado en el campeonato CV Skills 2021, modalidad de Electrónica.'],
   ['Sep 2019 – feb 2020', 'Analista de datos', 'Autónomo', 'Primeros proyectos por cuenta propia: paneles de ventas, inventario y producción, y automatización de informes con Python y macros de Excel.']
 ];
 
@@ -357,16 +357,16 @@ const CARRERA = {
     ['2019', 'trabajando con datos'],
     ['4', 'empresas, de la consultoría a la industria'],
     ['2', 'plantas de producción con sus ERP a mi cargo'],
-    ['8,8', 'nota media y Premio a la Excelencia Académica']
+    ['SPSIL', 'a cargo del sistema de datos del grupo, en Microsoft Fabric']
   ],
   experiencia: 'Experiencia',
   experienciaSub: 'De la consultora a la fábrica',
   logros: [
     ['Responsable de los ERP del grupo (Clavei y Cybermax) en dos plantas de producción.', 'Facturación unificada entre las dos plantas.', 'Integraciones con SAP y EDI con clientes y proveedores.', 'Lectura de datos de las máquinas de planta.', 'Helpdesk propio, control horario y control de costes de IT.', 'Apoyo a la migración a Azure.'],
-    ['Microsoft Fabric para centralizar y gobernar el dato de la empresa.', 'Cuadros de mando en Power BI para dirección y equipo comercial.', 'Aplicaciones de escritorio en Python para logística y aprovisionamiento.', 'Automatización de tareas repetitivas entre departamentos.'],
+    ['A cargo del sistema de datos del grupo: Microsoft Fabric para centralizar y gobernar el dato.', 'Cuadros de mando en Power BI para dirección y equipo comercial.', 'Aplicaciones de escritorio en Python para logística y aprovisionamiento.', 'Automatización de tareas repetitivas entre departamentos.'],
     ['Procesos ETL y almacenes de datos.', 'Informes en Power BI y Excel.', 'Indicadores de proveedores: SLA, disponibilidad, MTBF y MTTR.', 'Documentación funcional y técnica de cada entrega.'],
     ['Cuadros de mando de indicadores financieros y operativos para banca.', 'Procesos ETL e integración de datos desde Azure Databricks, AWS, SharePoint y Oracle.'],
-    ['Nota media 8,8.', 'Premio a la Excelencia Académica 2022.', 'Premiado en el campeonato CV Skills 2021, modalidad de Electrónica.'],
+    ['Premio a la Excelencia Académica 2022.', 'Premiado en el campeonato CV Skills 2021, modalidad de Electrónica.'],
     ['Paneles de ventas, inventario y producción.', 'Automatización de informes con Python y macros de Excel.']
   ],
   formacion: 'Formación y premios',

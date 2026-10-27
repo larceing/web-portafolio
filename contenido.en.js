@@ -549,16 +549,16 @@ module.exports = {
       ['2019', 'working with data'],
       ['4', 'companies, from consulting to industry'],
       ['2', 'production plants with their ERP in my care'],
-      ['8.8', 'average grade and Academic Excellence Award']
+      ['SPSIL', 'in charge of the group’s data system, on Microsoft Fabric']
     ],
     experiencia: 'Experience',
     experienciaSub: 'From consulting to the factory floor',
     logros: [
       ['In charge of the group’s ERP systems (Clavei and Cybermax) across two production plants.', 'Unified invoicing between both plants.', 'Integrations with SAP and EDI with customers and suppliers.', 'Machine data collection on the shop floor.', 'In-house helpdesk, time tracking and IT cost control.', 'Support for the migration to Azure.'],
-      ['Microsoft Fabric to centralise and govern the company’s data.', 'Power BI dashboards for management and the sales team.', 'Python desktop applications for logistics and procurement.', 'Automation of repetitive tasks between departments.'],
+      ['In charge of the group’s data system: Microsoft Fabric to centralise and govern the data.', 'Power BI dashboards for management and the sales team.', 'Python desktop applications for logistics and procurement.', 'Automation of repetitive tasks between departments.'],
       ['ETL processes and data warehouses.', 'Reports in Power BI and Excel.', 'Supplier indicators: SLA, availability, MTBF and MTTR.', 'Functional and technical documentation for every delivery.'],
       ['Financial and operational KPI dashboards for banking.', 'ETL processes and data integration from Azure Databricks, AWS, SharePoint and Oracle.'],
-      ['Average grade 8.8 out of 10.', 'Academic Excellence Award 2022.', 'Prize winner at the CV Skills 2021 championship, Electronics category.'],
+      ['Academic Excellence Award 2022.', 'Prize winner at the CV Skills 2021 championship, Electronics category.'],
       ['Sales, inventory and production dashboards.', 'Report automation with Python and Excel macros.']
     ],
     formacion: 'Education and awards',
@@ -593,7 +593,7 @@ module.exports = {
     ['Jan 2025 – Mar 2026', 'Data Analyst · Digital transformation', 'Grupo SPSIL', 'Data analysis, automation and development for a manufacturer: Microsoft Fabric to centralise and govern the data, Power BI for management and sales, and Python desktop applications for logistics and procurement.'],
     ['Nov 2023 – Jul 2024', 'Analyst programmer', 'Inforges', 'Innovation and digital transformation area: ETL and data warehouses, reports in Power BI and Excel, and supplier indicators (SLA, availability, MTBF, MTTR) with their functional and technical documentation.'],
     ['Feb 2022 – Nov 2023', 'Business Intelligence Developer', 'NTT DATA', 'BI solutions for the banking sector: dashboards of financial and operational indicators, ETL processes and data integration from Azure Databricks, AWS, SharePoint and Oracle.'],
-    ['2020 – 2022', 'Vocational diploma in Telecommunications and IT Systems', 'IES El Palmeral', 'Average grade 8.8 out of 10. Academic Excellence Award 2022 and prize winner at the CV Skills 2021 championship, Electronics category.'],
+    ['2020 – 2022', 'Vocational diploma in Telecommunications and IT Systems', 'IES El Palmeral', 'Academic Excellence Award 2022 and prize winner at the CV Skills 2021 championship, Electronics category.'],
     ['Sep 2019 – Feb 2020', 'Data analyst', 'Freelance', 'First projects on my own: sales, inventory and production dashboards, and report automation with Python and Excel macros.']
   ],
 
