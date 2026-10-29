@@ -29,7 +29,16 @@
 }
 .cabecera .menu a:hover { background: var(--capa); color: var(--tinta); }
 .cabecera .menu a[aria-current="page"] { background: var(--capa); color: var(--tinta); }
-.cabecera .menu .idioma { margin-left: 8px; padding-left: 14px; background: var(--tonal); color: var(--sobre-tonal); }
+.cabecera .menu .idiomas { display: inline-flex; align-items: center; gap: 2px; margin-left: 8px; padding: 3px; border-radius: 22px; background: var(--tonal); }
+.cabecera .menu .idiomas a { min-height: 34px; padding: 0 11px; border-radius: 18px; color: var(--sobre-tonal); font-size: 14px; font-weight: 600; }
+.cabecera .menu .idiomas a:hover { background: rgba(255, 255, 255, 0.6); color: var(--tinta); }
+.cabecera .menu .idiomas a[aria-current="true"] { background: #fff; color: var(--tinta); box-shadow: 0 1px 3px rgba(25, 28, 32, 0.12); }
+/* El idioma se elige en la cabecera: fuera los botones repetidos de la lista y de la barra (los del anuncio se quedan). */
+.catalogo > .lab-idiomas, .lab-barra > .lab-idiomas { display: none; }
+@media (max-width: 640px) {
+  .cabecera .menu .idiomas { margin-left: 0; }
+  .cabecera .menu .idiomas a { min-height: 30px; padding: 0 8px; font-size: 13px; }
+}
 .cabecera .menu .menu-cta { margin-left: 6px; background: var(--azul); color: #fff; font-weight: 600; }
 .cabecera .menu .menu-cta:hover,
 .cabecera .menu .menu-cta:focus-visible { background: var(--sobre-tonal); color: #fff; }

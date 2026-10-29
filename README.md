@@ -40,9 +40,13 @@ Todo el texto en español está en `construir.js`: la lista `PROYECTOS`, `AREAS`
 node construir.js
 ```
 
-Eso regenera `index.html` (español) y `en/index.html` (inglés). Los textos en inglés están en
-`contenido.en.js`: al añadir un proyecto hay que poner allí su traducción con el mismo `id`, o
-`construir.js` avisa de que falta. Cada página enlaza a la otra desde el menú.
+Eso regenera la web en tres idiomas: español (raíz), inglés (`en/`) y chino simplificado (`zh/`).
+Los textos en inglés están en `contenido.en.js` y los chinos en `contenido.zh.js`, con la misma
+estructura: al añadir un proyecto hay que poner en los dos su traducción con el mismo `id`, o
+`construir.js` avisa de que falta. La cabecera lleva el selector **ES · EN · 中文**, que lleva a la
+misma página en el otro idioma (las legales solo existen en español y llevan a la portada). En
+inglés y chino, los enlaces al laboratorio llevan `?lang=` para abrirlo en el mismo idioma.
+Si se añade una carpeta de primer nivel nueva, hay que añadir su `COPY` al `Dockerfile`.
 
 Cada proyecto tiene `tipo` (`producto`, `empresa` o `abierto`, que decide el filtro), `icono`
 (uno de los de `ICONOS`) y `color` (uno de los seis de `C`). Con `caso` sale en formato

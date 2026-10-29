@@ -1,12 +1,12 @@
-// Genera index.html (español) y en/index.html (inglés) a partir de los datos
-// de este fichero y de las traducciones de contenido.en.js, y la página de
-// publicaciones de LinkedIn (linkedin/ y en/linkedin/) a partir de
-// publicaciones-linkedin.js.
+// Genera la web en español (raíz), inglés (en/) y chino (zh/) a partir de los
+// datos de este fichero y de las traducciones de contenido.en.js y
+// contenido.zh.js, y la página de publicaciones de LinkedIn (linkedin/,
+// en/linkedin/ y zh/linkedin/) a partir de publicaciones-linkedin.js.
 //
 //   node construir.js
 //
 // Para añadir o cambiar un proyecto, edita la lista PROYECTOS, añade su
-// traducción en contenido.en.js y vuelve a ejecutarlo. El resultado es HTML
+// traducción en contenido.en.js y en contenido.zh.js y vuelve a ejecutarlo. El resultado es HTML
 // estático: no hace falta nada más para verlo.
 
 const fs = require('fs');
@@ -794,6 +794,7 @@ const SERVICIOS = [
 ];
 
 const EN = require('./contenido.en.js');
+const ZH = require('./contenido.zh.js');
 
 // Publicaciones de la página /linkedin/. Cada elemento es el código de
 // «Insertar esta publicación» o el enlace de la publicación; de él solo se
@@ -824,33 +825,54 @@ function publicacionLinkedin(entrada, i) {
 const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(publicacionLinkedin);
 
 // Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
-// hasta la raíz (para css, js e img) y hasta la página del otro idioma.
-const IDIOMAS = [
-  { t: UI, areas: AREAS, proyectos: PROYECTOS, servicios: SERVICIOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carrera: CARRERA, carpeta: '', base: '', otro: 'en/' },
-  {
-    t: Object.assign({}, EN.UI, {
-      arceEnlaces: UI.arceEnlaces.map((e, i) => [EN.UI.arceEnlacesTextos[i], e[1]]),
-      clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [EN.UI.clubbyteEnlacesTextos[i], e[1]]),
-      datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : EN.UI.datosClave[i][0], EN.UI.datosClave[i][1]]),
-      serv: EN.SERV,
-      porque: EN.PORQUE,
-      p: EN.PORTADA
+// hasta la raíz (para css, js e img). Las traducciones (contenido.en.js y
+// contenido.zh.js) se combinan con los datos en español: lo que no traducen
+// (iconos, colores, enlaces) sale de aquí.
+const TRADUCCIONES = { en: EN, zh: ZH };
+
+function idiomaTraducido(id) {
+  const X = TRADUCCIONES[id];
+  const fichero = 'contenido.' + id + '.js';
+  return {
+    id: id,
+    t: Object.assign({}, X.UI, {
+      arceEnlaces: UI.arceEnlaces.map((e, i) => [X.UI.arceEnlacesTextos[i], e[1]]),
+      clubbyteEnlaces: UI.clubbyteEnlaces.map((e, i) => [X.UI.clubbyteEnlacesTextos[i], e[1]]),
+      datosClave: UI.datosClave.map((x, i) => [i === 1 ? x[0] : X.UI.datosClave[i][0], X.UI.datosClave[i][1]]),
+      serv: X.SERV,
+      porque: X.PORQUE,
+      p: X.PORTADA
     }),
     servicios: SERVICIOS.map(s => {
-      if (!EN.SERVICIOS[s.id]) throw new Error('Falta la traducción del servicio ' + s.id + ' en contenido.en.js');
-      return Object.assign({}, s, EN.SERVICIOS[s.id]);
+      if (!X.SERVICIOS[s.id]) throw new Error('Falta la traducción del servicio ' + s.id + ' en ' + fichero);
+      return Object.assign({}, s, X.SERVICIOS[s.id]);
     }),
-    areas: AREAS.map((a, i) => Object.assign({}, a, EN.AREAS[i])),
+    areas: AREAS.map((a, i) => Object.assign({}, a, X.AREAS[i])),
     proyectos: PROYECTOS.map(p => {
-      if (!EN.PROYECTOS[p.id]) throw new Error('Falta la traducción del proyecto ' + p.id + ' en contenido.en.js');
-      return Object.assign({}, p, EN.PROYECTOS[p.id]);
+      if (!X.PROYECTOS[p.id]) throw new Error('Falta la traducción del proyecto ' + p.id + ' en ' + fichero);
+      return Object.assign({}, p, X.PROYECTOS[p.id]);
     }),
-    trayectoria: EN.TRAYECTORIA,
-    tecnologias: EN.TECNOLOGIAS,
-    carrera: EN.CARRERA,
-    carpeta: 'en', base: '../', otro: '../'
-  }
+    trayectoria: X.TRAYECTORIA,
+    tecnologias: X.TECNOLOGIAS,
+    carrera: X.CARRERA,
+    carpeta: id, base: '../'
+  };
+}
+
+const IDIOMAS = [
+  { id: 'es', t: UI, areas: AREAS, proyectos: PROYECTOS, servicios: SERVICIOS, trayectoria: TRAYECTORIA, tecnologias: TECNOLOGIAS, carrera: CARRERA, carpeta: '', base: '' },
+  idiomaTraducido('en'),
+  idiomaTraducido('zh')
 ];
+
+// Selector de idioma de la cabecera: código de la carpeta, texto del botón,
+// atributo lang/hreflang y nombre completo.
+const SELECTOR = [
+  { id: 'es', boton: 'ES', lang: 'es', nombre: 'Español' },
+  { id: 'en', boton: 'EN', lang: 'en', nombre: 'English' },
+  { id: 'zh', boton: '中文', lang: 'zh-Hans', nombre: '中文' }
+];
+const prefijo = id => id === 'es' ? '' : id + '/';
 
 
 // ---------- SEO: textos planos, datos estructurados y ficheros para buscadores ----------
@@ -887,7 +909,7 @@ function persona(d) {
     image: SITIO + 'img/foto.webp',
     email: 'mailto:' + CORREO,
     telephone: TELEFONO.replace(/\s/g, ''),
-    jobTitle: t.lang === 'es' ? 'Analista de datos y desarrollador · automatización e IA aplicada' : 'Data analyst and developer · automation and applied AI',
+    jobTitle: { es: 'Analista de datos y desarrollador · automatización e IA aplicada', en: 'Data analyst and developer · automation and applied AI', zh: '数据分析师与开发者 · 自动化与 AI 应用' }[d.id],
     description: plano(t.descripcion),
     address: { '@type': 'PostalAddress', addressLocality: 'Alicante', addressRegion: 'Comunidad Valenciana', addressCountry: 'ES' },
     worksFor: { '@id': ID_ORG },
@@ -963,7 +985,7 @@ function datosPortada(d) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'WebSite', '@id': ID_WEB, url: SITIO, name: 'Henry Arce · Arce Data Lab', inLanguage: ['es', 'en'], publisher: { '@id': ID_PERSONA } },
+      { '@type': 'WebSite', '@id': ID_WEB, url: SITIO, name: 'Henry Arce · Arce Data Lab', inLanguage: ['es', 'en', 'zh-Hans'], publisher: { '@id': ID_PERSONA } },
       {
         '@type': 'ProfilePage', '@id': SITIO + (d.carpeta ? d.carpeta + '/' : '') + '#pagina',
         url: SITIO + (d.carpeta ? d.carpeta + '/' : ''), name: plano(t.titulo), description: plano(t.descripcion),
@@ -1086,7 +1108,19 @@ function detalle(p, t, base) {
 // Cabecera HTML y menú, comunes a la portada y a la página de LinkedIn.
 // p.ruta: la página dentro de cada idioma ('' o 'linkedin/'). p.raiz: camino
 // hasta la raíz del sitio (css, js, img). p.inicio: camino hasta la portada
-// del mismo idioma. p.otro: la misma página en el otro idioma.
+// del mismo idioma. p.soloEs: la página solo existe en español (legales).
+// Botones ES · EN · 中文 que llevan a la misma página en cada idioma, con
+// rutas relativas para que funcionen igual en arcedatalab.com y en DEV.
+function selectorIdioma(d, p) {
+  const raizSitio = '../'.repeat((d.carpeta ? 1 : 0) + p.ruta.split('/').filter(Boolean).length);
+  const enlaces = SELECTOR.map(x => {
+    const actual = x.id === d.id;
+    const href = raizSitio + prefijo(x.id) + (p.soloEs ? '' : p.ruta);
+    return '<a href="' + (href || './') + '" lang="' + x.lang + '" hreflang="' + x.lang + '" title="' + x.nombre + '"' + (actual ? ' aria-current="true"' : '') + '>' + x.boton + '</a>';
+  });
+  return '<span class="idiomas" role="group" aria-label="Idioma · Language · 语言">' + enlaces.join('') + '</span>';
+}
+
 function cabeza(d, p) {
   const t = d.t;
   const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + p.ruta;
@@ -1102,9 +1136,7 @@ function cabeza(d, p) {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="author" content="Henry Arce">
   <link rel="canonical" href="${url}">
-  <link rel="alternate" hreflang="es" href="${SITIO}${p.ruta}">
-  <link rel="alternate" hreflang="en" href="${SITIO}en/${p.ruta}">
-  <link rel="alternate" hreflang="x-default" href="${SITIO}${p.ruta}">
+${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lang + '" href="' + SITIO + prefijo(x.id) + p.ruta + '">\n').join('')}  <link rel="alternate" hreflang="x-default" href="${SITIO}${p.ruta}">
   <meta property="og:title" content="${p.titulo}">
   <meta property="og:description" content="${p.ogDescripcion}">
   <meta property="og:type" content="${p.ogTipo || 'profile'}">
@@ -1140,7 +1172,7 @@ function cabeza(d, p) {
       <a class="menu-extra" href="${p.raiz}lab/#sindri">${t.p.menu.lab}</a>
       <a href="${p.inicio}proyectos/"${p.ruta.startsWith('proyectos/') ? ' aria-current="page"' : ''}>${t.p.menu.proyectos}</a>
       <a class="menu-extra" href="${p.inicio}sobre-mi/"${p.ruta === 'sobre-mi/' ? ' aria-current="page"' : ''}>${t.p.menu.sobre}</a>
-      <a class="idioma" href="${p.otro}" lang="${t.lang === 'es' ? 'en' : 'es'}" hreflang="${t.lang === 'es' ? 'en' : 'es'}" aria-label="${t.otroIdiomaAria}">${t.otroIdioma}</a>
+      ${selectorIdioma(d, p)}
       <a class="menu-cta" href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta}</a>
     </nav>
   </header>
@@ -1155,7 +1187,7 @@ function pagina(d) {
   const fuera = h => h === 'cta' ? ' target="_blank" rel="noopener"' : '';
   const n = p.carrusel.length;
 
-  return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', otro: d.otro, datos: datosPortada(d) }) + `
+  return cabeza(d, { titulo: t.titulo, descripcion: t.descripcion, ogDescripcion: t.ogDescripcion, ruta: '', raiz: base, inicio: '', datos: datosPortada(d) }) + `
   <main id="contenido" class="portadilla simple">
     <section class="heroe" id="inicio" aria-roledescription="carrusel" aria-label="${p.carruselAria}">
       <div class="heroe-pista">
@@ -1252,7 +1284,7 @@ function paginaProyectos(d) {
   const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'proyectos/';
   return cabeza(d, {
     titulo: t.p.todosTitulo + ' · Henry Arce', descripcion: attr(t.p.todosDescripcion), ogDescripcion: attr(t.p.todosDescripcion), ogTipo: 'website',
-    ruta: 'proyectos/', raiz: raiz, inicio: '../', otro: '../' + d.otro + 'proyectos/',
+    ruta: 'proyectos/', raiz: raiz, inicio: '../',
     datos: { '@context': 'https://schema.org', '@graph': [
       { '@type': 'CollectionPage', '@id': url, url: url, name: plano(t.p.todosTitulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } },
       { '@type': 'ItemList', name: t.proyectos, itemListElement: d.proyectos.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: urlProyecto(d, p), name: plano(p.titulo) })) }
@@ -1330,7 +1362,7 @@ function paginaSobreMi(d) {
 
   return cabeza(d, {
     titulo: t.p.sobre.titulo + ' · Henry Arce', descripcion: attr(c.descripcion), ogDescripcion: attr(c.descripcion),
-    ruta: 'sobre-mi/', raiz: raiz, inicio: '../', otro: '../' + d.otro + 'sobre-mi/',
+    ruta: 'sobre-mi/', raiz: raiz, inicio: '../',
     datos: { '@context': 'https://schema.org', '@graph': [
       { '@type': 'ProfilePage', '@id': url, url: url, name: plano(t.p.sobre.titulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA }, mainEntity: { '@id': ID_PERSONA } },
       persona(d)
@@ -1434,7 +1466,7 @@ function paginaLinkedin(d) {
 
   return cabeza(d, {
     titulo: t.linkedinTitulo + ' · Henry Arce', descripcion: t.linkedinDescripcion, ogDescripcion: t.linkedinDescripcion,
-    ruta: 'linkedin/', raiz: '../' + d.base, inicio: '../', otro: '../' + d.otro + 'linkedin/',
+    ruta: 'linkedin/', raiz: '../' + d.base, inicio: '../',
     datos: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', url: SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'linkedin/', name: plano(t.linkedinTitulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } }, persona(d)] }
   }) + `
   <main id="contenido">
@@ -1466,7 +1498,7 @@ function paginaServicios(d) {
 
   return cabeza(d, {
     titulo: t.serviciosTitulo + ' · Henry Arce', descripcion: t.serviciosDescripcion, ogDescripcion: t.serviciosDescripcion, ogTipo: 'website',
-    ruta: 'servicios/', raiz: '../' + d.base, inicio: '../', otro: '../' + d.otro + 'servicios/',
+    ruta: 'servicios/', raiz: '../' + d.base, inicio: '../',
     datos: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -1508,8 +1540,8 @@ ${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</d
 // en legal/*.md y aquí se pasan a HTML. Las piden TikTok, Google y Meta para
 // dar acceso a sus API.
 const LEGALES = [
-  { ruta: 'privacidad/', fichero: 'legal/privacidad.md', es: 'Privacidad', en: 'Privacy' },
-  { ruta: 'condiciones/', fichero: 'legal/condiciones.md', es: 'Condiciones', en: 'Terms' }
+  { ruta: 'privacidad/', fichero: 'legal/privacidad.md', es: 'Privacidad', en: 'Privacy', zh: '隐私政策' },
+  { ruta: 'condiciones/', fichero: 'legal/condiciones.md', es: 'Condiciones', en: 'Terms', zh: '使用条款' }
 ];
 
 // Enlaces del pie a las páginas legales. raiz: camino hasta la raíz del sitio.
@@ -1536,9 +1568,9 @@ function pie(t, raiz, inicio) {
         '<a href="' + inicio + 'sobre-mi/">' + t.p.menu.sobre + '</a>',
         '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
       ])}
-      ${col(t.menu.servicios, SERVICIOS.map(x => '<a href="' + inicio + 'servicios/' + x.id + '/">' + (t.lang === 'en' ? EN.SERVICIOS[x.id].corto : x.corto) + '</a>'))}
+      ${col(t.menu.servicios, SERVICIOS.map(x => '<a href="' + inicio + 'servicios/' + x.id + '/">' + (TRADUCCIONES[t.lang.slice(0, 2)] ? TRADUCCIONES[t.lang.slice(0, 2)].SERVICIOS[x.id].corto : x.corto) + '</a>'))}
       ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub')])}
-      ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (t.lang === 'en' ? l.en : l.es) + '</a>'))}
+      ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (l[t.lang.slice(0, 2)] || l.es) + '</a>'))}
     </div>
     <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
   </footer>`;
@@ -1575,7 +1607,7 @@ function paginaLegal(l) {
   const url = SITIO + l.ruta;
   return cabeza(d, {
     titulo: titulo + ' · Arce Data Lab', descripcion: titulo + ' de arcedatalab.com y de las herramientas de Arce Data Lab.', ogDescripcion: titulo + ' de Arce Data Lab.', ogTipo: 'website',
-    ruta: l.ruta, raiz: '../', inicio: '../', otro: '../',
+    ruta: l.ruta, raiz: '../', inicio: '../', soloEs: true,
     datos: { '@context': 'https://schema.org', '@graph': [{ '@type': 'WebPage', '@id': url, url: url, name: titulo, inLanguage: 'es', isPartOf: { '@id': ID_WEB } }] }
   }) + `
   <main id="contenido">
@@ -1642,7 +1674,7 @@ function paginaProyecto(d, p) {
 
   return cabeza(d, {
     titulo: plano(p.titulo) + ' · Henry Arce', descripcion: attr(resumen(p)), ogDescripcion: attr(resumen(p)), ogTipo: 'article',
-    ruta: 'proyectos/' + p.id + '/', raiz: raiz, inicio: '../../', otro: '../../' + d.otro + 'proyectos/' + p.id + '/',
+    ruta: 'proyectos/' + p.id + '/', raiz: raiz, inicio: '../../',
     datos: datosProyecto(d, p)
   }) + `
   <main id="contenido">
@@ -1746,7 +1778,7 @@ function paginaServicio(d, s) {
 
   return cabeza(d, {
     titulo: s.titulo, descripcion: attr(s.descripcion), ogDescripcion: attr(s.descripcion), ogTipo: 'website',
-    ruta: ruta, raiz: raiz, inicio: '../../', otro: '../../' + d.otro + ruta,
+    ruta: ruta, raiz: raiz, inicio: '../../',
     datos: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -1811,13 +1843,12 @@ ${bitHtml(t, raiz)}
 `;
 }
 
-// sitemap.xml con las dos versiones de cada página enlazadas entre sí.
+// sitemap.xml con las tres versiones (es, en, zh) de cada página enlazadas entre sí.
 function sitemap() {
   const rutas = ['', 'proyectos/', 'sobre-mi/'].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
-  const entrada = ruta => ['', 'en/'].map(pre =>
-    '  <url>\n    <loc>' + SITIO + pre + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
-    '    <xhtml:link rel="alternate" hreflang="es" href="' + SITIO + ruta + '"/>\n' +
-    '    <xhtml:link rel="alternate" hreflang="en" href="' + SITIO + 'en/' + ruta + '"/>\n' +
+  const entrada = ruta => SELECTOR.map(pre =>
+    '  <url>\n    <loc>' + SITIO + prefijo(pre.id) + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
+    SELECTOR.map(x => '    <xhtml:link rel="alternate" hreflang="' + x.lang + '" href="' + SITIO + prefijo(x.id) + ruta + '"/>\n').join('') +
     '    <xhtml:link rel="alternate" hreflang="x-default" href="' + SITIO + ruta + '"/>\n  </url>').join('\n');
   const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n  </url>';
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
@@ -1859,45 +1890,52 @@ function llms() {
    .concat(['', '## Proyectos']).concat(PROYECTOS.map(p => '- [' + plano(p.titulo) + '](' + urlProyecto(es, p) + '): ' + resumen(p)))
    .concat(['', '## Preguntas frecuentes']).concat(UI.faq.concat(UI.faqServicios).map(f => '- **' + f[0] + '** ' + plano(f[1])))
    .concat(['', '## Trayectoria']).concat(TRAYECTORIA.map(x => '- ' + plano(x[0]) + ': ' + plano(x[1]) + ', ' + plano(x[2])))
-   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [Servicios](' + SITIO + 'servicios/)', '- [Proyectos](' + SITIO + 'proyectos/)', '- [Sobre mí](' + SITIO + 'sobre-mi/)', '- [Laboratorio de demos](' + SITIO + 'lab/)'])
+   .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [中文版](' + SITIO + 'zh/)', '- [Servicios](' + SITIO + 'servicios/)', '- [Proyectos](' + SITIO + 'proyectos/)', '- [Sobre mí](' + SITIO + 'sobre-mi/)', '- [Laboratorio de demos](' + SITIO + 'lab/)'])
    .concat(SERVICIOS.map(x => '- [' + plano(x.h1) + '](' + SITIO + 'servicios/' + x.id + '/)'))
    .concat(['- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
   return lineas.join('\n');
 }
 
+// En inglés y en chino, los enlaces al laboratorio llevan ?lang= para que
+// se abra en el mismo idioma aunque el visitante eligiera otro antes.
+function conIdiomaLab(d, html) {
+  if (d.id === 'es') return html;
+  return html.replace(/(href="[^"]*lab\/)(#[^"]*)?"/g, (m, ruta, ancla) => ruta + '?lang=' + d.id + (ancla || '') + '"');
+}
+
 IDIOMAS.forEach(d => {
   const carpeta = path.join(__dirname, d.carpeta);
   fs.mkdirSync(carpeta, { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'index.html'), pagina(d));
+  fs.writeFileSync(path.join(carpeta, 'index.html'), conIdiomaLab(d, pagina(d)));
   console.log(path.join(d.carpeta, 'index.html') + ' generado: ' + d.proyectos.length + ' proyectos');
 
   const carpetaLinkedin = path.join(carpeta, 'linkedin');
   fs.mkdirSync(carpetaLinkedin, { recursive: true });
-  fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), paginaLinkedin(d));
+  fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), conIdiomaLab(d, paginaLinkedin(d)));
   console.log(path.join(d.carpeta, 'linkedin', 'index.html') + ' generado: ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones');
 
   fs.mkdirSync(path.join(carpeta, 'proyectos'), { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'proyectos', 'index.html'), paginaProyectos(d));
+  fs.writeFileSync(path.join(carpeta, 'proyectos', 'index.html'), conIdiomaLab(d, paginaProyectos(d)));
   fs.mkdirSync(path.join(carpeta, 'sobre-mi'), { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'sobre-mi', 'index.html'), paginaSobreMi(d));
+  fs.writeFileSync(path.join(carpeta, 'sobre-mi', 'index.html'), conIdiomaLab(d, paginaSobreMi(d)));
   console.log(path.join(d.carpeta, 'proyectos') + ' y ' + path.join(d.carpeta, 'sobre-mi') + ' generados');
 
   const carpetaServicios = path.join(carpeta, 'servicios');
   fs.mkdirSync(carpetaServicios, { recursive: true });
-  fs.writeFileSync(path.join(carpetaServicios, 'index.html'), paginaServicios(d));
+  fs.writeFileSync(path.join(carpetaServicios, 'index.html'), conIdiomaLab(d, paginaServicios(d)));
   console.log(path.join(d.carpeta, 'servicios', 'index.html') + ' generado');
 
   d.servicios.forEach(x => {
     const carpetaServicio = path.join(carpetaServicios, x.id);
     fs.mkdirSync(carpetaServicio, { recursive: true });
-    fs.writeFileSync(path.join(carpetaServicio, 'index.html'), paginaServicio(d, x));
+    fs.writeFileSync(path.join(carpetaServicio, 'index.html'), conIdiomaLab(d, paginaServicio(d, x)));
   });
   console.log(path.join(d.carpeta, 'servicios') + ': ' + d.servicios.length + ' páginas de servicio');
 
   d.proyectos.forEach(p => {
     const carpetaProyecto = path.join(carpeta, 'proyectos', p.id);
     fs.mkdirSync(carpetaProyecto, { recursive: true });
-    fs.writeFileSync(path.join(carpetaProyecto, 'index.html'), paginaProyecto(d, p));
+    fs.writeFileSync(path.join(carpetaProyecto, 'index.html'), conIdiomaLab(d, paginaProyecto(d, p)));
   });
   console.log(path.join(d.carpeta, 'proyectos') + ': ' + d.proyectos.length + ' páginas de proyecto');
 });
