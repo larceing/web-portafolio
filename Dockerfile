@@ -9,6 +9,7 @@ COPY cabeceras.conf /etc/nginx/cabeceras.conf
 COPY index.html 404.html robots.txt sitemap.xml llms.txt googleb6a158ff17d4d746.html /usr/share/nginx/html/
 COPY fuentes /usr/share/nginx/html/fuentes
 COPY en /usr/share/nginx/html/en
+COPY zh /usr/share/nginx/html/zh
 COPY linkedin /usr/share/nginx/html/linkedin
 COPY servicios /usr/share/nginx/html/servicios
 COPY privacidad /usr/share/nginx/html/privacidad

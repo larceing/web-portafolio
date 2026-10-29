@@ -2,518 +2,878 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arcedatalab.com/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/sobre-mi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/sobre-mi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/sobre-mi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/sobre-mi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/sobre-mi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/sobre-mi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/sobre-mi/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/sobre-mi/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/sobre-mi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/sobre-mi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/sobre-mi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/servicios/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/servicios/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/servicios/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/servicios/power-bi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/power-bi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/power-bi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/power-bi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/power-bi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/servicios/power-bi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/power-bi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/power-bi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/power-bi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/power-bi/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/servicios/power-bi/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/power-bi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/power-bi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/power-bi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/power-bi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/servicios/automatizacion-n8n/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/automatizacion-n8n/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/automatizacion-n8n/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/servicios/automatizacion-n8n/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/automatizacion-n8n/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/automatizacion-n8n/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/servicios/automatizacion-n8n/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/automatizacion-n8n/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/automatizacion-n8n/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/automatizacion-n8n/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/servicios/webs/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/webs/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/webs/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/webs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/webs/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/servicios/webs/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/webs/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/webs/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/webs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/webs/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/servicios/webs/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/webs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/webs/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/webs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/webs/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/linkedin/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/linkedin/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/linkedin/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/linkedin/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/linkedin/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/linkedin/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/linkedin/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/linkedin/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/linkedin/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/linkedin/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/linkedin/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/linkedin/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/linkedin/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/linkedin/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/linkedin/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/ada/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/ada/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/ada/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/ada/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/ada/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/ada/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/ada/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/ada/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/ada/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/ada/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/ada/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/clubbyte/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/clubbyte/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/clubbyte/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/clubbyte/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/clubbyte/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/clubbyte/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/clubbyte/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/clubbyte/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/clubbyte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/clubbyte/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/clubbyte/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/clubbyte/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/clubbyte/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/clubbyte/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/clubbyte/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/plataforma/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plataforma/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plataforma/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plataforma/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plataforma/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/plataforma/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plataforma/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plataforma/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plataforma/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plataforma/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/plataforma/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plataforma/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plataforma/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plataforma/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plataforma/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/sindri/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/sindri/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/sindri/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/sindri/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/sindri/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/sindri/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/sindri/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/sindri/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/sindri/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/sindri/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/sindri/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/sindri/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/sindri/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/sindri/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/sindri/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/efesto/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/efesto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/efesto/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/efesto/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/efesto/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/efesto/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/efesto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/efesto/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/efesto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/efesto/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/efesto/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/efesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/efesto/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/efesto/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/efesto/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/brokkr/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/brokkr/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/brokkr/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/brokkr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/brokkr/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/brokkr/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/brokkr/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/brokkr/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/brokkr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/brokkr/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/brokkr/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/brokkr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/brokkr/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/brokkr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/brokkr/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/plantillas/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plantillas/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plantillas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plantillas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plantillas/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/plantillas/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plantillas/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plantillas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plantillas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plantillas/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/plantillas/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/plantillas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/plantillas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/plantillas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/plantillas/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/whatsapp/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/whatsapp/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/whatsapp/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/whatsapp/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/whatsapp/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/whatsapp/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/whatsapp/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/whatsapp/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/whatsapp/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/whatsapp/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/gestor/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gestor/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gestor/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gestor/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gestor/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/gestor/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gestor/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gestor/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gestor/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gestor/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/gestor/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gestor/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gestor/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gestor/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gestor/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/servicios/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/servicios/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/servicios/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/servicios/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/servicios/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/servicios/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/servicios/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/servicios/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/servicios/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/servicios/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/gateway/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gateway/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gateway/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gateway/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gateway/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/gateway/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gateway/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gateway/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gateway/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gateway/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/gateway/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gateway/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gateway/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gateway/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gateway/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/crm/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/crm/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/crm/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/crm/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/crm/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/crm/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/crm/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/crm/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/crm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/crm/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/crm/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/crm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/crm/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/crm/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/crm/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/asistente/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/asistente/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/asistente/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/asistente/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/asistente/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/asistente/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/asistente/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/asistente/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/asistente/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/asistente/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/asistente/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/asistente/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/asistente/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/asistente/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/asistente/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/reporting/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reporting/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reporting/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reporting/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reporting/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/reporting/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reporting/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reporting/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reporting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reporting/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/reporting/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reporting/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reporting/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reporting/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reporting/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/nutricion/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nutricion/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nutricion/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nutricion/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nutricion/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/nutricion/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nutricion/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nutricion/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nutricion/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nutricion/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/nutricion/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nutricion/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nutricion/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nutricion/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nutricion/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/escritorio/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/escritorio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/escritorio/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/escritorio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/escritorio/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/escritorio/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/escritorio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/escritorio/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/escritorio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/escritorio/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/escritorio/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/escritorio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/escritorio/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/escritorio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/escritorio/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/tienda/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tienda/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tienda/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tienda/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tienda/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/tienda/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tienda/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tienda/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tienda/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tienda/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/tienda/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tienda/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tienda/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tienda/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tienda/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/helpdesk/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/helpdesk/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/helpdesk/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/helpdesk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/helpdesk/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/helpdesk/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/helpdesk/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/helpdesk/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/helpdesk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/helpdesk/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/helpdesk/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/helpdesk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/helpdesk/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/helpdesk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/helpdesk/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/tareas/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tareas/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tareas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tareas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tareas/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/tareas/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tareas/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tareas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tareas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tareas/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/tareas/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/tareas/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/tareas/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/tareas/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/tareas/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/themelab/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/themelab/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/themelab/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/themelab/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/themelab/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/themelab/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/themelab/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/themelab/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/themelab/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/themelab/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/themelab/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/themelab/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/themelab/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/themelab/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/themelab/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/calculate/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/calculate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/calculate/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/calculate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/calculate/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/calculate/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/calculate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/calculate/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/calculate/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/calculate/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/calculate/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/calculate/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/calculate/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/calculate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/calculate/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/grafo/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/grafo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/grafo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/grafo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/grafo/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/grafo/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/grafo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/grafo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/grafo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/grafo/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/grafo/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/grafo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/grafo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/grafo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/grafo/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/gobernanza/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gobernanza/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gobernanza/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gobernanza/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gobernanza/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/gobernanza/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gobernanza/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gobernanza/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gobernanza/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gobernanza/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/gobernanza/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/gobernanza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/gobernanza/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/gobernanza/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/gobernanza/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/modelo/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/modelo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/modelo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/modelo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/modelo/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/modelo/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/modelo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/modelo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/modelo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/modelo/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/modelo/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/modelo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/modelo/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/modelo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/modelo/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/outlook/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/outlook/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/outlook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/outlook/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/outlook/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/outlook/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/outlook/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/outlook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/outlook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/outlook/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/outlook/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/outlook/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/outlook/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/outlook/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/outlook/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/reader/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reader/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reader/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reader/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reader/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/reader/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reader/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reader/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reader/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/reader/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/reader/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/reader/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/reader/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/reader/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/comercial/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/comercial/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/comercial/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/comercial/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/comercial/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/comercial/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/comercial/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/comercial/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/comercial/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/comercial/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/comercial/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/proyectos/nifi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nifi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nifi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nifi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nifi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/en/proyectos/nifi/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nifi/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nifi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nifi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nifi/"/>
+  </url>
+  <url>
+    <loc>https://arcedatalab.com/zh/proyectos/nifi/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://arcedatalab.com/proyectos/nifi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/proyectos/nifi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/proyectos/nifi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/proyectos/nifi/"/>
   </url>
   <url>
     <loc>https://arcedatalab.com/plantillas/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://arcedatalab.com/privacidad/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://arcedatalab.com/condiciones/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
 </urlset>

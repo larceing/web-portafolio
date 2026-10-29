@@ -80,6 +80,7 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 
 ## Otras páginas
 - [English version](https://arcedatalab.com/en/)
+- [中文版](https://arcedatalab.com/zh/)
 - [Servicios](https://arcedatalab.com/servicios/)
 - [Proyectos](https://arcedatalab.com/proyectos/)
 - [Sobre mí](https://arcedatalab.com/sobre-mi/)
