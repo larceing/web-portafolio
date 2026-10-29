@@ -4352,3 +4352,14 @@ body:has(.simple) {
 :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 {
   letter-spacing: 0;
 }
+
+/* Vídeo de YouTube en las fichas de proyecto (carga ligera, js/video.js) */
+.video-yt { margin: 1.5rem 0; max-width: 300px; }
+.video-yt-boton, .video-yt iframe { display: block; width: 100%; aspect-ratio: 9 / 16; height: auto; border: 0; border-radius: 16px; overflow: hidden; background: #0f1d2e; }
+.video-yt-boton { position: relative; padding: 0; cursor: pointer; }
+.video-yt-boton img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-yt-play { position: absolute; inset: 50% auto auto 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px; border-radius: 50%; background: rgba(15, 29, 46, .78); box-shadow: 0 4px 16px rgba(0, 0, 0, .3); transition: transform .15s; }
+.video-yt-play::after { content: ""; position: absolute; left: 27px; top: 21px; border-style: solid; border-width: 13px 0 13px 21px; border-color: transparent transparent transparent #fff; }
+.video-yt-boton:hover .video-yt-play, .video-yt-boton:focus-visible .video-yt-play { transform: scale(1.08); }
+.video-yt-boton:focus-visible { outline: 3px solid #1D4F7A; outline-offset: 3px; }
+.video-yt figcaption { font-size: .85rem; opacity: .75; margin-top: .5rem; }

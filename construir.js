@@ -25,6 +25,7 @@ const VERSION_JS_PASEO = huella('js/bit-paseo.js');
 const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
 const VERSION_JS_PORTADA = huella('js/portada.js');
 const VERSION_JS_ANTES = huella('js/antes-ahora.js');
+const VERSION_JS_VIDEO = huella('js/video.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -1659,6 +1660,42 @@ function bitHtml(t, base) {
   <script src="${base}js/cinta-arranque.js?v=${VERSION_JS_CINTA}"></script>`;
 }
 
+// Vídeos de demostración en YouTube (canal Arce Data Lab), uno por idioma.
+// La ficha enseña la portada (lab/v/<fichero>.jpg) y solo carga YouTube al pulsar.
+// Si falta el id de un idioma, la ficha de ese idioma sale sin vídeo.
+const VIDEOS_YT = {
+  ada: { fichero: 'adl-ada', es: 'DvVfhdMtqGE', en: 'naJsv3coifY', zh: 'BaKiKK_VHfg' },
+  sindri: { fichero: 'adl-sindri', es: 'lMt4t-nAOUo', en: '18_xsvUh2PQ', zh: 'sP6P2hNQkB0' },
+  tareas: { fichero: 'adl-aris', es: '', en: 'qAqpxZ2VrBc', zh: 'hvylhgOrX7Q' },
+  brokkr: { fichero: 'adl-brokkr', es: '', en: 'QHo8zJY6B34', zh: 'uvQd5smJyjc' },
+  efesto: { fichero: 'adl-efesto', es: '', en: '', zh: '' },
+  asistente: { fichero: 'adl-linai', es: '', en: '', zh: '' },
+  reporting: { fichero: 'adl-reporting', es: '', en: '', zh: '' },
+  servicios: { fichero: 'adl-servicios', es: '', en: '', zh: '' }
+};
+const VIDEO_TEXTO = {
+  es: { ver: 'Ver el vídeo', nota: 'Vídeo de 25 segundos grabado en la app real, con datos de prueba. Se abre desde YouTube.' },
+  en: { ver: 'Watch the video', nota: '25-second video recorded in the real app, with test data. It plays from YouTube.' },
+  zh: { ver: '观看视频', nota: '25 秒视频，在真实应用中录制，使用测试数据。视频由 YouTube 播放。' }
+};
+
+function videoProyecto(d, p, raiz) {
+  const v = VIDEOS_YT[p.id];
+  const idioma = d.carpeta || 'es';
+  if (!v || !v[idioma]) return '';
+  const t = VIDEO_TEXTO[idioma];
+  const poster = raiz + 'lab/v/' + v.fichero + (idioma === 'es' ? '' : '-' + idioma) + '.jpg';
+  return `
+      <figure class="video-yt">
+        <button type="button" class="video-yt-boton" data-yt="${v[idioma]}" aria-label="${t.ver}: ${plano(p.corto || p.titulo)}">
+          <img src="${poster}" alt="" width="540" height="960" loading="lazy">
+          <span class="video-yt-play" aria-hidden="true"></span>
+        </button>
+        <figcaption>${t.nota}</figcaption>
+      </figure>
+      <script src="${raiz}js/video.js?v=${VERSION_JS_VIDEO}" defer></script>`;
+}
+
 // Página propia de cada proyecto: /proyectos/<id>/ y /en/proyectos/<id>/.
 function paginaProyecto(d, p) {
   const t = d.t;
@@ -1684,7 +1721,7 @@ function paginaProyecto(d, p) {
       <div class="proyecto-cabecera" style="--c:${p.color}">${icono(p.icono)}</div>
       <p class="etiqueta">${p.etiqueta}</p>
       <h1>${p.titulo}</h1>
-      ${cuerpo}
+      ${cuerpo}${videoProyecto(d, p, raiz)}
       ${tec}${enlaces}
       ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}${p.ver ? botonPlantillas(t) : ''}
       ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
