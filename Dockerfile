@@ -14,6 +14,8 @@ COPY linkedin /usr/share/nginx/html/linkedin
 COPY servicios /usr/share/nginx/html/servicios
 COPY privacidad /usr/share/nginx/html/privacidad
 COPY condiciones /usr/share/nginx/html/condiciones
+COPY aviso-legal /usr/share/nginx/html/aviso-legal
+COPY cookies /usr/share/nginx/html/cookies
 COPY proyectos /usr/share/nginx/html/proyectos
 COPY sobre-mi /usr/share/nginx/html/sobre-mi
 COPY css /usr/share/nginx/html/css

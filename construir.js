@@ -411,6 +411,9 @@ const UI = {
   linkedinMarco: 'Publicación de LinkedIn',
   linkedinVer: 'Abrir en LinkedIn',
   linkedinFallo: 'LinkedIn no ha cargado esta publicación (a veces la bloquea el navegador). Puedes verla en LinkedIn con el enlace de abajo.',
+  linkedinAviso: 'Las publicaciones se ven con el visor de LinkedIn, que guarda sus propias cookies en tu navegador. No se carga nada hasta que pulses el botón; también puedes abrir cada publicación directamente en LinkedIn.',
+  linkedinCookies: 'Política de cookies',
+  linkedinCargar: 'Mostrar publicaciones de LinkedIn',
   sinProyectos: 'Todavía no hay proyectos de este tipo. Si tienes uno en mente, cuéntamelo.',
   linkedinPerfil: 'Ver todas en mi perfil de LinkedIn',
   verPublicaciones: 'Leer las publicaciones aquí',
@@ -1474,8 +1477,13 @@ function paginaLinkedin(d) {
       <h1>${t.linkedinTitulo}</h1>
       <p class="sub">${t.linkedinSub}</p>
 
+      <div class="linkedin-permiso" id="linkedinPermiso">
+        <p>${t.linkedinAviso} <a href="${'../' + d.base}cookies/">${t.linkedinCookies}</a></p>
+        <button type="button" class="boton" id="linkedinCargar">${t.linkedinCargar}</button>
+      </div>
+
       <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
-${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
+${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe data-src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
       </div>
 
       <p class="mas"><a href="${LINKEDIN}" target="_blank" rel="noopener">${t.linkedinPerfil}</a></p>
@@ -1536,11 +1544,15 @@ ${t.faqServicios.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</d
 `;
 }
 
-// Páginas legales (/privacidad/ y /condiciones/), solo en español: se escriben
-// en legal/*.md y aquí se pasan a HTML. Las piden TikTok, Google y Meta para
-// dar acceso a sus API.
+// Páginas legales, solo en español: se escriben en legal/*.md y aquí se pasan
+// a HTML. Aviso legal (LSSI art. 10), privacidad (RGPD art. 13), cookies
+// (LSSI art. 22.2) y condiciones. Privacidad y condiciones las piden también
+// TikTok, Google y Meta para dar acceso a sus API. Si se añade una, hay que
+// añadir su carpeta al Dockerfile.
 const LEGALES = [
+  { ruta: 'aviso-legal/', fichero: 'legal/aviso-legal.md', es: 'Aviso legal', en: 'Legal notice', zh: '法律声明' },
   { ruta: 'privacidad/', fichero: 'legal/privacidad.md', es: 'Privacidad', en: 'Privacy', zh: '隐私政策' },
+  { ruta: 'cookies/', fichero: 'legal/cookies.md', es: 'Cookies', en: 'Cookies', zh: 'Cookie 政策' },
   { ruta: 'condiciones/', fichero: 'legal/condiciones.md', es: 'Condiciones', en: 'Terms', zh: '使用条款' }
 ];
 

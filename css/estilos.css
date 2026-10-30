@@ -915,6 +915,39 @@ code {
   background: var(--suave);
 }
 
+/* Hasta pulsar «Mostrar publicaciones» el marco no tiene src: solo se ve el enlace */
+.embebida iframe:not([src]) {
+  display: none;
+}
+
+.linkedin-permiso {
+  margin: 24px 0;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: var(--tonal);
+  color: var(--sobre-tonal);
+  line-height: 1.5;
+}
+
+.linkedin-permiso p {
+  margin: 0 0 16px;
+}
+
+.linkedin-permiso a {
+  color: inherit;
+}
+
+.linkedin-permiso .boton {
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.linkedin-permiso[hidden] {
+  display: none;
+}
+
 .embebida figcaption {
   margin-top: 8px;
   font-size: 14.5px;
