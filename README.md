@@ -73,8 +73,16 @@ Una sola página (`/novedades/`, `/en/novedades/`, `/zh/novedades/`, en el menú
 «Ahora mismo» (en qué trabajamos), «Lo último» (novedades con fecha), «Dónde publicamos» (YouTube
 @arcedatalab, LinkedIn, Instagram henry_arce_dev, TikTok @arcedatalab, GitHub y Club Byte; nunca la
 cuenta personal luis_arce_3) y las publicaciones de LinkedIn (sección `#linkedin`). Los textos en
-los tres idiomas están en `novedades.js`: para añadir una novedad, ponla arriba de `NOVEDADES` y
-ejecuta `node construir.js`. `/linkedin/` se queda como redirección a `/novedades/#linkedin`.
+los tres idiomas están en `novedades.js`. `/linkedin/` se queda como redirección a `/novedades/#linkedin`.
+
+«Lo último» sale de n8n: la tabla `novedades` (filas con `publicar_en` = web y estado Aprobada o
+Publicada) y el flujo «Ada · Novedades web», que da las 7 últimas en
+`https://n8n.luiscontacto03.com/webhook/novedades-web` y cada domingo archiva las que sobran. La
+página las pide al abrirse (`js/novedades.js`, sin cookies) y pinta tarjetas con el color del
+producto y su vídeo de `lab/v/` o una imagen (columnas `video` e `imagen` de la tabla). Caben
+productos nuevos o mejorados, vídeos y capítulos que salen y otras cosas interesantes; nunca
+detalles internos. `NOVEDADES` en `novedades.js` es la copia que se ve si n8n no responde (y la que
+leen los buscadores): mantenla igual que la tabla y ejecuta `node construir.js`.
 
 ## Tarjetas de proyecto
 

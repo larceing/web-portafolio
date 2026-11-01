@@ -25,6 +25,8 @@ const VERSION_JS_PASEO = huella('js/bit-paseo.js');
 const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
 const VERSION_JS_PORTADA = huella('js/portada.js');
 const VERSION_JS_ANTES = huella('js/antes-ahora.js');
+const VERSION_JS_NOVEDADES = huella('js/novedades.js');
+const NovWeb = require('./js/novedades.js');
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -1531,12 +1533,13 @@ function paginaNovedades(d) {
   const raiz = '../' + d.base;
   const enlace = u => !u ? '' : /^https?:/.test(u) ? u : raiz + (d.id !== 'es' && !/^(lab|plantillas|cookies)\b/.test(u) ? d.id + '/' : '') + u;
   const url = SITIO + prefijo(d.id) + 'novedades/';
+  const ctxNov = { lang: d.id, raiz: raiz, medios: NV.MEDIOS, textos: { ver: n.ver, play: n.play, tipos: n.tipos } };
   return cabeza(d, {
     titulo: n.titulo + ' · Henry Arce', descripcion: attr(n.descripcion), ogDescripcion: attr(n.descripcion), ogTipo: 'website',
     ruta: 'novedades/', raiz: raiz, inicio: '../',
     datos: { '@context': 'https://schema.org', '@graph': [
       { '@type': 'CollectionPage', '@id': url, url: url, name: n.titulo, description: n.descripcion, inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } },
-      { '@type': 'ItemList', name: n.ultimas, itemListElement: NV.NOVEDADES.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[d.id][0], description: x[d.id][1] })) },
+      { '@type': 'ItemList', name: n.ultimas, itemListElement: NV.NOVEDADES.slice(0, 7).map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[d.id][0], description: x[d.id][1] })) },
       persona(d)
     ] }
   }) + `
@@ -1547,13 +1550,13 @@ function paginaNovedades(d) {
 
       <h2 class="proyectos-grupo">${n.ahora}</h2>
       <div class="ahora">
-${NV.AHORA.map(x => '        <a class="ahora-item" href="' + enlace(x.enlace) + '"><b>' + x[d.id][0] + '</b><span>' + x[d.id][1] + '</span></a>').join('\n')}
+${NV.AHORA.map(x => '        <a class="ahora-item" style="--c:' + ((NV.MEDIOS[x.producto] || NV.MEDIOS.otro).color) + '" href="' + enlace(x.enlace) + '"><b>' + x[d.id][0] + '</b><span>' + x[d.id][1] + '</span></a>').join('\n')}
       </div>
 
       <h2 class="proyectos-grupo">${n.ultimas}</h2>
-      <ol class="linea">
-${NV.NOVEDADES.map(x => '        <li><time datetime="' + x.fecha + '">' + fechaLarga(x.fecha, d.id) + '</time><div><h3>' + x[d.id][0] + '</h3><p>' + x[d.id][1] + (x.enlace ? ' <a href="' + enlace(x.enlace) + '">' + n.ver + ' →</a>' : '') + '</p></div></li>').join('\n')}
-      </ol>
+      <div class="novedades-lista" id="novedadesLista" data-fuente="${NV.N8N_NOVEDADES}" data-ctx="${attr(JSON.stringify(ctxNov))}">
+${NovWeb.pintar(NV.NOVEDADES, ctxNov)}
+      </div>
 
       <h2 class="proyectos-grupo" id="canales">${n.canales}</h2>
       <p class="sub">${n.canalesSub}</p>
@@ -1589,6 +1592,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => {
 
   ${pie(t, raiz, '../')}
 
+  <script src="${raiz}js/novedades.js?v=${VERSION_JS_NOVEDADES}" defer></script>
   <script src="${raiz}js/publicaciones.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
 </html>
