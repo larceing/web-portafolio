@@ -4986,3 +4986,53 @@ body:has(.simple) {
     padding-top: 20px;
   }
 }
+
+/* Pantallas grandes: el contenido aprovecha más ancho a los lados (01/11/2026). */
+@media (min-width: 1500px) {
+  :root {
+    --ancho: 1360px;
+  }
+
+  .cabecera {
+    padding-inline: calc((100% - 1400px) / 2 + 20px);
+  }
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --ancho: 1480px;
+  }
+
+  .cabecera {
+    padding-inline: calc((100% - 1520px) / 2 + 20px);
+  }
+}
+
+/* Móvil: todo el menú en una fila que se desliza de lado (01/11/2026), así
+   Laboratorio, Novedades y Sobre mí también están a mano. */
+@media (max-width: 640px) {
+  .cabecera .menu .menu-extra {
+    display: inline-flex;
+  }
+
+  .cabecera .menu {
+    flex-wrap: nowrap;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+    padding: 0 20px 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+    mask-image: linear-gradient(to right, #000 88%, transparent);
+  }
+
+  .cabecera .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cabecera .menu > *,
+  .cabecera .menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}

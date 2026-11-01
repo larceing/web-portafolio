@@ -87,3 +87,17 @@ body { min-height: 100vh; }
   .cabecera .menu a { white-space: nowrap; }
 }
 @media (max-width: 1240px) { .cabecera .marca span { display: none; } }
+/* Pantallas grandes: la cabecera, igual de ancha que en el resto de la web. */
+@media (min-width: 1500px) { .cabecera { padding-inline: calc((100% - 1400px) / 2 + 20px); } }
+@media (min-width: 1800px) { .cabecera { padding-inline: calc((100% - 1520px) / 2 + 20px); } }
+/* Móvil: todo el menú en una fila que se desliza de lado. */
+@media (max-width: 640px) {
+  .cabecera .menu .menu-extra { display: inline-flex; }
+  .cabecera .menu {
+    flex-wrap: nowrap; width: calc(100% + 32px); margin: 0 -16px; padding: 0 16px 2px;
+    overflow-x: auto; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent);
+  }
+  .cabecera .menu::-webkit-scrollbar { display: none; }
+  .cabecera .menu > *, .cabecera .menu a { flex: 0 0 auto; white-space: nowrap; }
+}

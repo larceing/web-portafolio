@@ -225,7 +225,7 @@
   }
 
   function libre() {
-    if (presentando()) return;
+    if (presentando() || !caja.classList.contains('listo')) return;
     var r = reposo(), mejor = null;
     var lista = sitios(r);
     for (var i = 0; i < lista.length; i++) {
@@ -528,6 +528,10 @@
     if (!caja.classList.contains('listo')) return;
     vigia.disconnect();
     if (modo === 'libre' && !caja.classList.contains('oculto')) {
+      // Se presenta en su esquina, entero y a la vista.
+      pos.x = pos.y = obj.x = obj.y = vel.x = vel.y = 0;
+      caja.style.transform = '';
+      caja.classList.remove('asomado', 'apartado');
       presentaHasta = performance.now() + PRESENTACION;
       setTimeout(calcular, PRESENTACION + 200);
     } else setTimeout(calcular, 1600);
