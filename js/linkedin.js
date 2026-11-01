@@ -28,14 +28,27 @@
   });
 })();
 
-// Estados de las publicaciones: «cargando» con un brillo hasta que llega el
-// marco, y si a los 12 segundos no ha llegado, un aviso con el enlace directo.
+// Los marcos de LinkedIn ponen cookies de terceros, así que no se piden hasta
+// que la persona pulsa «Mostrar publicaciones» (Guía de cookies de la AEPD).
+// Sin pulsar, cada publicación sigue teniendo su enlace directo a LinkedIn.
+// Estados: «cargando» con un brillo hasta que llega el marco, y si a los 12
+// segundos no ha llegado, un aviso con el enlace directo.
 (function() {
   const caja = document.querySelector('.embebidas');
-  if (!caja) return;
+  const permiso = document.getElementById('linkedinPermiso');
+  const boton = document.getElementById('linkedinCargar');
+  if (!caja || !boton) return;
+  boton.addEventListener('click', function() {
+    if (permiso) permiso.hidden = true;
+    cargar();
+  });
+
+  function cargar() {
   caja.querySelectorAll('.embebida').forEach(function(figura) {
     const marco = figura.querySelector('iframe');
-    if (!marco) return;
+    if (!marco || !marco.dataset.src) return;
+    marco.src = marco.dataset.src;
+    marco.removeAttribute('data-src');
     figura.classList.add('cargando');
     let listo = false;
     marco.addEventListener('load', function() {
@@ -66,4 +79,5 @@
       vigilar();
     }
   });
+  }
 })();
