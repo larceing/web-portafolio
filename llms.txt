@@ -88,4 +88,4 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 - [Consultor de Power BI para pymes](https://arcedatalab.com/servicios/power-bi/)
 - [Automatización de procesos con n8n](https://arcedatalab.com/servicios/automatizacion-n8n/)
 - [Webs y aplicaciones a medida para pymes](https://arcedatalab.com/servicios/webs/)
-- [Publicaciones de LinkedIn](https://arcedatalab.com/linkedin/)
+- [Novedades: en qué trabajamos, dónde publicamos y LinkedIn](https://arcedatalab.com/novedades/)

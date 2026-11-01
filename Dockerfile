@@ -11,6 +11,7 @@ COPY fuentes /usr/share/nginx/html/fuentes
 COPY en /usr/share/nginx/html/en
 COPY zh /usr/share/nginx/html/zh
 COPY linkedin /usr/share/nginx/html/linkedin
+COPY novedades /usr/share/nginx/html/novedades
 COPY servicios /usr/share/nginx/html/servicios
 COPY privacidad /usr/share/nginx/html/privacidad
 COPY condiciones /usr/share/nginx/html/condiciones

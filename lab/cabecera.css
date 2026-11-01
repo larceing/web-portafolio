@@ -24,7 +24,7 @@
 .cabecera .hojita { display: block; width: auto; height: 34px; fill: var(--azul); flex: 0 0 auto; }
 .cabecera .menu { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
 .cabecera .menu a {
-  display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px;
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 10px; border-radius: 20px;
   color: #43474E; font-size: 15px; font-weight: 500; text-decoration: none;
 }
 .cabecera .menu a:hover { background: var(--capa); color: var(--tinta); }
