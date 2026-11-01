@@ -41,6 +41,7 @@ const WHATSAPP = 'https://wa.me/34633424223';
 const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
+const YOUTUBE = 'https://www.youtube.com/@arcedatalab';
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
 const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
@@ -847,6 +848,7 @@ function tarjetaLinkedin(t, p) {
 }
 
 const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(publicacionLinkedin);
+const NV = require('./novedades.js');
 
 // Cada idioma: sus textos, sus datos, la carpeta donde se escribe y la ruta
 // hasta la raíz (para css, js e img). Las traducciones (contenido.en.js y
@@ -960,7 +962,7 @@ function organizacion() {
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
       { '@type': 'ContactPoint', contactType: 'technical support', email: SOPORTE, availableLanguage: ['es'] }
     ],
-    sameAs: [TIKTOK, INSTAGRAM, LINKEDIN],
+    sameAs: [YOUTUBE, TIKTOK, INSTAGRAM, LINKEDIN],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
       itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
@@ -1089,16 +1091,23 @@ function botonPlantillas(t) {
   return '<p class="probar"><a class="boton" href="' + CATALOGO_PLANTILLAS + '" data-dev="' + CATALOGO_PLANTILLAS_DEV + '">' + t.serv.verPlantillas + '</a></p>';
 }
 
+// Sello de cada proyecto: todos con la misma pieza (cuadrado claro con borde),
+// y dentro su logo real, su monograma (productos sin logo todavía) o su
+// pictograma en el color del proyecto. Así cada uno tiene su cara sin romper
+// la unidad de la página.
+const MONOGRAMAS = { ada: 'Ad', asistente: 'Li', reporting: 'R', efesto: 'Ef', servicios: 'Rs', crm: 'Fo', plataforma: 'Pl', clubbyte: 'CB' };
 function cara(p, base, tam) {
-  return LOGOS[p.id] ? '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="' + tam + '" height="' + tam + '" loading="lazy">' : icono(p.icono);
+  if (LOGOS[p.id]) return '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="' + tam + '" height="' + tam + '" loading="lazy">';
+  if (MONOGRAMAS[p.id]) return '<span class="monograma" aria-hidden="true">' + MONOGRAMAS[p.id] + '</span>';
+  return icono(p.icono);
 }
 
 function principal(p, t, todos, base) {
   const rel = (RELACIONADOS[p.id] || []).map(id => todos.find(o => o.id === id)).filter(Boolean);
   return '      <article class="principal' + (p.id === PRINCIPALES[0] ? ' ancha' : '') + '" style="--c:' + p.color + '">\n' +
-    '        <span class="tesela-cara principal-cara">' + cara(p, base, 76) + '</span>\n' +
     '        <div class="principal-cuerpo">\n' +
-    '          <p class="principal-etiqueta">' + p.etiqueta + '</p>\n' +
+    '          <div class="principal-cab"><span class="tesela-cara sello">' + cara(p, base, 64) + '</span>' +
+    '<p class="principal-etiqueta">' + p.etiqueta + '</p></div>\n' +
     '          <h3>' + p.titulo + '</h3>\n' +
     '          <p>' + p.resumen + '</p>\n' +
     '          <p class="principal-lab"><b>' + t.enLab + ':</b> ' + p.probar + '</p>\n' +
@@ -1110,7 +1119,7 @@ function principal(p, t, todos, base) {
 
 function mini(p, t, base) {
   return '        <li><button type="button" class="mini" data-tipo="' + p.tipo + '" data-detalle="d-' + p.id + '" style="--c:' + p.color + '">' +
-    '<span class="tesela-cara">' + cara(p, base, 40) + '</span>' +
+    '<span class="tesela-cara sello">' + cara(p, base, 40) + '</span>' +
     '<span class="mini-texto"><b>' + p.corto + '</b><span>' + t.tipos[p.tipo] + '</span></span></button></li>';
 }
 
@@ -1195,6 +1204,7 @@ ${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lan
       <a href="${p.inicio}servicios/"${p.ruta.startsWith('servicios/') ? ' aria-current="page"' : ''}>${t.p.menu.hacemos}</a>
       <a class="menu-extra" href="${p.raiz}lab/#sindri">${t.p.menu.lab}</a>
       <a href="${p.inicio}proyectos/"${p.ruta.startsWith('proyectos/') ? ' aria-current="page"' : ''}>${t.p.menu.proyectos}</a>
+      <a class="menu-extra" href="${p.inicio}novedades/"${p.ruta === 'novedades/' ? ' aria-current="page"' : ''}>${NV.TEXTOS[d.id].menu}</a>
       <a class="menu-extra" href="${p.inicio}sobre-mi/"${p.ruta === 'sobre-mi/' ? ' aria-current="page"' : ''}>${t.p.menu.sobre}</a>
       ${selectorIdioma(d, p)}
       <a class="menu-cta" href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta}</a>
@@ -1461,7 +1471,7 @@ ${c.proyectos.map(x => '        <a class="cv-proyecto" href="' + enlaceProyecto(
       <div class="cifras">
 ${t.cifras.map((x, i) => '        <div><strong>' + x[0] + '</strong><span>' + x[1] + '</span>' + (PUBLICACIONES[i] ? '<a href="' + PUBLICACIONES[i] + '" target="_blank" rel="noopener">' + t.verPublicacion + '</a>' : '') + '</div>').join('\n')}
       </div>
-      <p class="mas"><a href="../linkedin/">${t.verPublicaciones}</a></p>
+      <p class="mas"><a href="../novedades/#linkedin">${t.verPublicaciones}</a></p>
     </section>
 
     <section class="bloque cv-contacto" id="contacto">
@@ -1488,16 +1498,72 @@ ${bitHtml(t, raiz)}
 // se carga si la persona lo pide (cookies de terceros). Las clases e ids no
 // llevan «linkedin»: los filtros de Brave y uBlock esconden lo que lo lleva.
 function paginaLinkedin(d) {
-  const t = d.t;
+  // /linkedin/ ya no es una página propia: sus publicaciones están en
+  // /novedades/. Se deja esta para no romper enlaces antiguos.
+  const destino = '../novedades/#linkedin';
+  return `<!DOCTYPE html>
+<html lang="${d.t.lang}">
+<head>
+  <meta charset="utf-8">
+  <title>${NV.TEXTOS[d.id].titulo} · Henry Arce</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="${SITIO}${prefijo(d.id)}novedades/">
+  <meta http-equiv="refresh" content="0; url=${destino}">
+</head>
+<body>
+  <p><a href="${destino}">${NV.TEXTOS[d.id].titulo}</a></p>
+</body>
+</html>
+`;
+}
 
+// Página /novedades/: en qué estamos trabajando, lo último, dónde publicamos
+// y las publicaciones de LinkedIn (las tarjetas propias de antes). Los textos
+// están en novedades.js.
+function fechaLarga(iso, id) {
+  const loc = { es: 'es-ES', en: 'en-GB', zh: 'zh-CN' }[id];
+  return new Date(iso + 'T12:00:00Z').toLocaleDateString(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+function paginaNovedades(d) {
+  const t = d.t;
+  const n = NV.TEXTOS[d.id];
+  const raiz = '../' + d.base;
+  const enlace = u => !u ? '' : /^https?:/.test(u) ? u : raiz + (d.id !== 'es' && !/^(lab|plantillas|cookies)\b/.test(u) ? d.id + '/' : '') + u;
+  const url = SITIO + prefijo(d.id) + 'novedades/';
   return cabeza(d, {
-    titulo: t.linkedinTitulo + ' · Henry Arce', descripcion: t.linkedinDescripcion, ogDescripcion: t.linkedinDescripcion,
-    ruta: 'linkedin/', raiz: '../' + d.base, inicio: '../',
-    datos: { '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', url: SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'linkedin/', name: plano(t.linkedinTitulo), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } }, persona(d)] }
+    titulo: n.titulo + ' · Henry Arce', descripcion: attr(n.descripcion), ogDescripcion: attr(n.descripcion), ogTipo: 'website',
+    ruta: 'novedades/', raiz: raiz, inicio: '../',
+    datos: { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'CollectionPage', '@id': url, url: url, name: n.titulo, description: n.descripcion, inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': ID_PERSONA } },
+      { '@type': 'ItemList', name: n.ultimas, itemListElement: NV.NOVEDADES.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[d.id][0], description: x[d.id][1] })) },
+      persona(d)
+    ] }
   }) + `
   <main id="contenido">
-    <section class="bloque publicaciones">
-      <h1>${t.linkedinTitulo}</h1>
+    <section class="bloque novedades">
+      <h1>${n.titulo}</h1>
+      <p class="sub">${n.sub}</p>
+
+      <h2 class="proyectos-grupo">${n.ahora}</h2>
+      <div class="ahora">
+${NV.AHORA.map(x => '        <a class="ahora-item" href="' + enlace(x.enlace) + '"><b>' + x[d.id][0] + '</b><span>' + x[d.id][1] + '</span></a>').join('\n')}
+      </div>
+
+      <h2 class="proyectos-grupo">${n.ultimas}</h2>
+      <ol class="linea">
+${NV.NOVEDADES.map(x => '        <li><time datetime="' + x.fecha + '">' + fechaLarga(x.fecha, d.id) + '</time><div><h3>' + x[d.id][0] + '</h3><p>' + x[d.id][1] + (x.enlace ? ' <a href="' + enlace(x.enlace) + '">' + n.ver + ' →</a>' : '') + '</p></div></li>').join('\n')}
+      </ol>
+
+      <h2 class="proyectos-grupo" id="canales">${n.canales}</h2>
+      <p class="sub">${n.canalesSub}</p>
+      <ul class="canales">
+${NV.CANALES.map(c => '        <li><a href="' + c.url + '" target="_blank" rel="noopener"><span class="canal-red">' + c.red + '</span><b>' + c.usuario + '</b><span>' + c[d.id] + '</span><span class="canal-ir">' + n.seguir + ' →</span></a></li>').join('\n')}
+      </ul>
+    </section>
+
+    <section class="bloque publicaciones" id="linkedin">
+      <h2>${n.linkedin}</h2>
       <p class="sub">${t.linkedinSub}</p>
 
       <div class="entradas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
@@ -1505,7 +1571,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => {
   const k = tarjetaLinkedin(t, p);
   return '        <article class="entrada"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + ' data-marco="' + p.marco + '" data-alto="' + p.alto + '" data-titulo="' + attr(t.linkedinMarco + ': ' + plano(k.titulo)) + '">\n' +
     '          <p class="entrada-meta"><span class="entrada-sello" aria-hidden="true">in</span><time datetime="' + k.iso + '">' + k.fecha + '</time></p>\n' +
-    '          <h2>' + k.titulo + '</h2>\n' +
+    '          <h3>' + k.titulo + '</h3>\n' +
     (k.cifra ? '          <p class="entrada-cifra">' + k.cifra + '</p>\n' : '') +
     '          <p class="entrada-ir"><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + ' →</a></p>\n' +
     '        </article>';
@@ -1513,7 +1579,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => {
       </div>
 
       <div class="visor-aviso" id="visorAviso">
-        <p>${t.linkedinAviso} <a href="${'../' + d.base}cookies/">${t.linkedinCookies}</a></p>
+        <p>${t.linkedinAviso} <a href="${raiz}cookies/">${t.linkedinCookies}</a></p>
         <button type="button" class="boton" id="visorCargar">${t.linkedinCargar}</button>
       </div>
 
@@ -1521,9 +1587,9 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => {
     </section>
   </main>
 
-  ${pie(t, '../' + d.base, '../')}
+  ${pie(t, raiz, '../')}
 
-  <script src="${'../' + d.base}js/publicaciones.js?v=${VERSION_JS_LINKEDIN}"></script>
+  <script src="${raiz}js/publicaciones.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
 </html>
 `;
@@ -1608,11 +1674,12 @@ function pie(t, raiz, inicio) {
         '<a href="' + inicio + 'servicios/">' + t.p.menu.hacemos + '</a>',
         '<a href="' + raiz + 'lab/#sindri">' + t.p.menu.lab + '</a>',
         '<a href="' + inicio + 'proyectos/">' + t.p.menu.proyectos + '</a>',
+        '<a href="' + inicio + 'novedades/">' + NV.TEXTOS[t.lang.slice(0, 2)].menu + '</a>',
         '<a href="' + inicio + 'sobre-mi/">' + t.p.menu.sobre + '</a>',
         '<a href="' + inicio + '#contacto">' + t.menu.contacto + '</a>'
       ])}
       ${col(t.menu.servicios, SERVICIOS.map(x => '<a href="' + inicio + 'servicios/' + x.id + '/">' + (TRADUCCIONES[t.lang.slice(0, 2)] ? TRADUCCIONES[t.lang.slice(0, 2)].SERVICIOS[x.id].corto : x.corto) + '</a>'))}
-      ${col(t.pieRedes, [fuera(LINKEDIN, 'LinkedIn'), fuera(WHATSAPP, 'WhatsApp'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub')])}
+      ${col(t.pieRedes, [fuera(YOUTUBE, 'YouTube'), fuera(LINKEDIN, 'LinkedIn'), fuera(INSTAGRAM, 'Instagram'), fuera(TIKTOK, 'TikTok'), fuera(GITHUB, 'GitHub'), fuera(WHATSAPP, 'WhatsApp')])}
       ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (l[t.lang.slice(0, 2)] || l.es) + '</a>'))}
     </div>
     <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
@@ -1724,7 +1791,7 @@ function paginaProyecto(d, p) {
     <nav class="migas" aria-label="Breadcrumb"><a href="../../">${t.migas}</a> › <a href="../">${t.proyectos}</a> › <span>${p.corto}</span></nav>
 
     <article class="bloque proyecto" data-bit="proyectos">
-      <div class="proyecto-cabecera" style="--c:${p.color}">${icono(p.icono)}</div>
+      <div class="proyecto-cabecera" style="--c:${p.color}"><span class="tesela-cara sello">${cara(p, raiz, 72)}</span></div>
       <p class="etiqueta">${p.etiqueta}</p>
       <h1>${p.titulo}</h1>
       ${cuerpo}
@@ -1888,7 +1955,7 @@ ${bitHtml(t, raiz)}
 
 // sitemap.xml con las tres versiones (es, en, zh) de cada página enlazadas entre sí.
 function sitemap() {
-  const rutas = ['', 'proyectos/', 'sobre-mi/'].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['linkedin/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
+  const rutas = ['', 'proyectos/', 'sobre-mi/'].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['novedades/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
   const entrada = ruta => SELECTOR.map(pre =>
     '  <url>\n    <loc>' + SITIO + prefijo(pre.id) + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
     SELECTOR.map(x => '    <xhtml:link rel="alternate" hreflang="' + x.lang + '" href="' + SITIO + prefijo(x.id) + ruta + '"/>\n').join('') +
@@ -1935,7 +2002,7 @@ function llms() {
    .concat(['', '## Trayectoria']).concat(TRAYECTORIA.map(x => '- ' + plano(x[0]) + ': ' + plano(x[1]) + ', ' + plano(x[2])))
    .concat(['', '## Otras páginas', '- [English version](' + SITIO + 'en/)', '- [中文版](' + SITIO + 'zh/)', '- [Servicios](' + SITIO + 'servicios/)', '- [Proyectos](' + SITIO + 'proyectos/)', '- [Sobre mí](' + SITIO + 'sobre-mi/)', '- [Laboratorio de demos](' + SITIO + 'lab/)'])
    .concat(SERVICIOS.map(x => '- [' + plano(x.h1) + '](' + SITIO + 'servicios/' + x.id + '/)'))
-   .concat(['- [Publicaciones de LinkedIn](' + SITIO + 'linkedin/)', '']);
+   .concat(['- [Novedades: en qué trabajamos, dónde publicamos y LinkedIn](' + SITIO + 'novedades/)', '']);
   return lineas.join('\n');
 }
 
@@ -1956,7 +2023,10 @@ IDIOMAS.forEach(d => {
   const carpetaLinkedin = path.join(carpeta, 'linkedin');
   fs.mkdirSync(carpetaLinkedin, { recursive: true });
   fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), conIdiomaLab(d, paginaLinkedin(d)));
-  console.log(path.join(d.carpeta, 'linkedin', 'index.html') + ' generado: ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones');
+  const carpetaNovedades = path.join(carpeta, 'novedades');
+  fs.mkdirSync(carpetaNovedades, { recursive: true });
+  fs.writeFileSync(path.join(carpetaNovedades, 'index.html'), conIdiomaLab(d, paginaNovedades(d)));
+  console.log(path.join(d.carpeta, 'novedades', 'index.html') + ' generado: ' + NV.NOVEDADES.length + ' novedades y ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones (linkedin/ lleva a novedades/)');
 
   fs.mkdirSync(path.join(carpeta, 'proyectos'), { recursive: true });
   fs.writeFileSync(path.join(carpeta, 'proyectos', 'index.html'), conIdiomaLab(d, paginaProyectos(d)));

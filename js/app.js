@@ -35,7 +35,7 @@ document.querySelectorAll('.filtro').forEach(function(boton) {
       const tarjeta = tesela.closest('.principal') || tesela;
 
       cabecera.style.setProperty('--c', detalle.dataset.color);
-      cabecera.innerHTML = tarjeta.querySelector('.tesela-cara').innerHTML;
+      cabecera.innerHTML = tarjeta.querySelector('.tesela-cara').outerHTML;
       cuerpo.innerHTML = detalle.innerHTML;
       cuerpo.querySelector('h3').id = 'fichaTitulo';
 

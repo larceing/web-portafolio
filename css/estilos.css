@@ -4437,3 +4437,325 @@ body:has(.simple) {
 :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 {
   letter-spacing: 0;
 }
+
+/* ---------- Sellos de proyecto (01/11/2026) ----------
+   Una sola pieza para todos los proyectos: cuadrado claro con borde y, dentro,
+   el logo real, el monograma o el pictograma en el color del proyecto. Las
+   tarjetas ya no llevan bloques de color: solo una raya fina arriba. */
+.sello {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--raya, #DCE3EB);
+  border-radius: 16px;
+  background: #FFFFFF;
+  color: var(--c, var(--azul));
+  overflow: hidden;
+}
+
+.sello svg,
+.principal-cara svg,
+.mini .sello svg {
+  width: 60%;
+  height: 60%;
+  fill: none;
+  stroke: var(--c, var(--azul));
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sello .tesela-logo,
+.mini .sello .tesela-logo,
+.ficha-cabecera .sello .tesela-logo {
+  width: 80%;
+  height: 80%;
+  padding: 0;
+  border-radius: 10px;
+  background: none;
+  object-fit: contain;
+}
+
+.monograma {
+  font-family: var(--titulos, inherit);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--c, var(--azul));
+}
+
+.principal {
+  grid-template-rows: none;
+  border-top: 4px solid var(--c);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.principal.ancha {
+  grid-template-columns: none;
+}
+
+.principal-cab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.principal-cab .principal-etiqueta {
+  margin: 0;
+}
+
+.principal.ancha .sello {
+  width: 72px;
+  height: 72px;
+}
+
+.principal.ancha .principal-cuerpo {
+  padding: 26px 30px;
+}
+
+.mini .tesela-cara.sello {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+.mini .monograma {
+  font-size: 17px;
+}
+
+.mini .sello svg {
+  width: 26px;
+  height: 26px;
+}
+
+.mini {
+  box-shadow: inset 3px 0 0 var(--c);
+}
+
+.ficha-cabecera,
+.proyecto-cabecera {
+  height: 130px;
+  background: color-mix(in srgb, var(--c, var(--azul)) 10%, #FFFFFF);
+  border-top: 4px solid var(--c, var(--azul));
+}
+
+.ficha-cabecera .sello,
+.proyecto-cabecera .sello {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+}
+
+.ficha-cabecera .monograma,
+.proyecto-cabecera .monograma {
+  font-size: 34px;
+}
+
+.ficha-cabecera .sello svg,
+.proyecto-cabecera .sello svg {
+  width: 56%;
+  height: 56%;
+  stroke: var(--c, var(--azul));
+  stroke-width: 2;
+}
+
+/* ---------- Novedades (01/11/2026) ----------
+   En qué trabajamos, lo último, dónde publicamos y LinkedIn en una página. */
+.novedades {
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+
+.novedades h1 {
+  margin-bottom: 8px;
+}
+
+.ahora {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ahora-item {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid var(--raya);
+  border-top: 4px solid var(--azul);
+  border-radius: 18px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+
+.ahora-item:hover,
+.ahora-item:focus-visible {
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
+}
+
+.ahora-item b {
+  color: var(--tinta);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.ahora-item span {
+  color: var(--tenue);
+  font-size: 15px;
+}
+
+.linea {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linea li {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--raya);
+}
+
+.linea li:last-child {
+  border-bottom: 0;
+}
+
+.linea time {
+  padding-top: 2px;
+  color: var(--tenue);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.linea h3 {
+  margin: 0 0 4px;
+  color: var(--tinta);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.linea p {
+  margin: 0;
+}
+
+.linea a {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.canales {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.canales a {
+  display: grid;
+  gap: 2px;
+  height: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--raya);
+  border-radius: 16px;
+  background: var(--tarjeta);
+  color: var(--texto);
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+
+.canales a:hover,
+.canales a:focus-visible {
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.1);
+}
+
+.canal-red {
+  color: var(--tenue);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.canales b {
+  color: var(--tinta);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.canales span:not(.canal-red):not(.canal-ir) {
+  color: var(--tenue);
+  font-size: 14.5px;
+}
+
+.canal-ir {
+  margin-top: 6px;
+  color: var(--azul);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.novedades + .publicaciones {
+  padding-top: 24px;
+}
+
+.publicaciones > h2 {
+  margin-bottom: 4px;
+}
+
+.publicaciones .entrada h3 {
+  margin: 0;
+  color: var(--tinta);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (max-width: 860px) {
+  .ahora,
+  .canales {
+    grid-template-columns: 1fr;
+  }
+
+  .linea li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* Con «Novedades» en el menú, un poco menos de aire entre enlaces para que
+   la cabecera siga en una línea. */
+.cabecera .menu a {
+  padding: 0 10px;
+}
+
+.novedades .sub,
+.novedades h2,
+.publicaciones > h2,
+.publicaciones > .sub {
+  text-align: left;
+}
+
+/* La cabecera de la ficha ya es clara: la X, en oscuro. */
+.ficha-cerrar {
+  background: #FFFFFF;
+  color: var(--tinta);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.15);
+}
+
+.ficha-cerrar:hover,
+.ficha-cerrar:focus-visible {
+  background: var(--capa);
+}

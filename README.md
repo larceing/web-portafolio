@@ -67,6 +67,22 @@ problema / qué hice / resultado; con `texto`, en un párrafo.
 - Search Console: la propiedad de dominio `arcedatalab.com` (cuenta henry@arcedatalab.com)
   ya la cubre. Enviar `https://arcedatalab.com/sitemap.xml`.
 
+## Novedades (`/novedades/`)
+
+Una sola página (`/novedades/`, `/en/novedades/`, `/zh/novedades/`, en el menú y en el pie) con
+«Ahora mismo» (en qué trabajamos), «Lo último» (novedades con fecha), «Dónde publicamos» (YouTube
+@arcedatalab, LinkedIn, Instagram henry_arce_dev, TikTok @arcedatalab, GitHub y Club Byte; nunca la
+cuenta personal luis_arce_3) y las publicaciones de LinkedIn (sección `#linkedin`). Los textos en
+los tres idiomas están en `novedades.js`: para añadir una novedad, ponla arriba de `NOVEDADES` y
+ejecuta `node construir.js`. `/linkedin/` se queda como redirección a `/novedades/#linkedin`.
+
+## Tarjetas de proyecto
+
+Todas usan la misma pieza, el «sello»: un cuadrado claro con borde y, dentro, el logo real del
+proyecto (`LOGOS`), su monograma si aún no tiene logo (`MONOGRAMAS`) o su pictograma, siempre en el
+color del proyecto. Sin bloques de color: solo una raya fina arriba. Cuando haya logo de Ada, Lin-AI,
+Efesto o Reporting, añádelo en `img/` y en `LOGOS`.
+
 ## Publicaciones de LinkedIn (`/linkedin/`)
 
 La página `/linkedin/` (y `/en/linkedin/`) muestra publicaciones de LinkedIn con su código oficial
@@ -97,6 +113,15 @@ de las reglas de `css/estilos.css`; el laboratorio no carga esa hoja para no mez
 demos). `lab/cabecera.js` mide la cabecera (`--cab`) para colocar debajo la lista de proyectos. En
 pantallas estrechas, la barra «Laboratorio de proyectos · Elegir proyecto» abre la lista. Si cambia
 el menú de `construir.js`, cambiarlo también en `lab/index.html`.
+
+### Vídeo de entrada (`lab/presentar.js`)
+
+Al abrir un proyecto con vídeo, el anuncio sale en grande en un marco de móvil que flota sobre el
+laboratorio (que se ve detrás), en silencio hasta que se activa el sonido. La X lo minimiza y lo
+recuerda en el navegador (`localStorage`, clave `adl-lab-video`, sin cookies): en los demás
+proyectos ya no se abre solo. «Ver en grande» en la tarjeta lo reabre y el botón de ampliar lo pone a
+pantalla completa. No toca `lab.js`: si el hilo de demos vuelve a compilar el laboratorio, hay que
+conservar en `lab/index.html` las dos líneas de `presentar.*` y el enlace `menuNovedades`.
 
 ## Cabeceras de seguridad
 
