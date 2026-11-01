@@ -18,7 +18,7 @@ const crypto = require('crypto');
 const huella = f => crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname, f))).digest('hex').slice(0, 10);
 const VERSION_CSS = huella('css/estilos.css');
 const VERSION_JS = huella('js/app.js');
-const VERSION_JS_LINKEDIN = huella('js/linkedin.js');
+const VERSION_JS_LINKEDIN = huella('js/publicaciones.js');
 
 const VERSION_JS_BIT = huella('js/bit-arranque.js');
 const VERSION_JS_PASEO = huella('js/bit-paseo.js');
@@ -409,11 +409,11 @@ const UI = {
   linkedinDescripcion: 'Publicaciones de Henry Arce en LinkedIn sobre BI, datos e IA aplicada.',
   linkedinSub: 'Lo que escribo sobre BI, datos e IA aplicada',
   linkedinMarco: 'Publicación de LinkedIn',
-  linkedinVer: 'Abrir en LinkedIn',
+  linkedinVer: 'Leer en LinkedIn',
   linkedinFallo: 'LinkedIn no ha cargado esta publicación (a veces la bloquea el navegador). Puedes verla en LinkedIn con el enlace de abajo.',
-  linkedinAviso: 'Las publicaciones se ven con el visor de LinkedIn, que guarda sus propias cookies en tu navegador. No se carga nada hasta que pulses el botón; también puedes abrir cada publicación directamente en LinkedIn.',
+  linkedinAviso: '¿Prefieres leerlas completas aquí? Se abre el visor de LinkedIn, que guarda sus propias cookies en tu navegador; hasta que pulses el botón no se carga nada de LinkedIn.',
   linkedinCookies: 'Política de cookies',
-  linkedinCargar: 'Mostrar publicaciones de LinkedIn',
+  linkedinCargar: 'Ver completas aquí',
   sinProyectos: 'Todavía no hay proyectos de este tipo. Si tienes uno en mente, cuéntamelo.',
   linkedinPerfil: 'Ver todas en mi perfil de LinkedIn',
   verPublicaciones: 'Leer las publicaciones aquí',
@@ -805,7 +805,7 @@ const ZH = require('./contenido.zh.js');
 const ALTO_LINKEDIN = 640;
 
 // Cuántas publicaciones se ven a la vez. Si en la lista hay más, cada semana
-// se eligen otras al azar (js/linkedin.js); si hay menos, cambia el orden.
+// se eligen otras al azar (js/publicaciones.js); si hay menos, cambia el orden.
 const LINKEDIN_A_LA_VEZ = 4;
 
 function publicacionLinkedin(entrada, i) {
@@ -822,7 +822,28 @@ function publicacionLinkedin(entrada, i) {
   const alto = Number(entrada.alto) || Number((texto.match(/height="(\d+)"/) || [])[1]) || ALTO_LINKEDIN;
   const marco = 'https://www.linkedin.com/embed/feed/update/' + urn + (/collapsed=1/.test(texto) ? '?collapsed=1' : '');
   const enlace = /^https:\/\/www\.linkedin\.com\/(posts|feed)\/[^\s"'<>]+$/.test(texto) ? texto : 'https://www.linkedin.com/feed/update/' + urn + '/';
-  return { marco: marco, alto: alto, enlace: enlace };
+  // La fecha va dentro del número de la publicación (los primeros 41 bits son milisegundos).
+  const numero = urn.split(':').pop();
+  const fecha = new Date(Number(BigInt(numero) >> 22n));
+  const slug = (legible.match(/\/posts\/[^_]+_(.+)-(?:activity|share|ugcPost)-\d+/) || [])[1] || '';
+  return { marco: marco, alto: alto, enlace: enlace, numero: numero, fecha: fecha, slug: slug };
+}
+
+// Título de cada tarjeta: el de las cifras de divulgación si es una de esas
+// publicaciones (en el idioma de la página) o, si no, el del propio enlace.
+function tarjetaLinkedin(t, p) {
+  const i = PUBLICACIONES.findIndex(u => u && u.includes(p.numero));
+  let titulo, cifra = '';
+  if (i >= 0 && t.cifras[i]) {
+    const partes = t.cifras[i][1].split(' · ');
+    titulo = partes.slice(1).join(' · ') || partes[0];
+    cifra = t.cifras[i][0] + ' ' + partes[0];
+  } else {
+    const texto = p.slug.replace(/-/g, ' ').trim();
+    titulo = texto ? texto.charAt(0).toUpperCase() + texto.slice(1) : t.linkedinMarco;
+  }
+  const fecha = new Intl.DateTimeFormat(t.lang, { day: 'numeric', month: 'long', year: 'numeric' }).format(p.fecha);
+  return { titulo: titulo, cifra: cifra, fecha: fecha, iso: p.fecha.toISOString().slice(0, 10) };
 }
 
 const LINKEDIN_PUBLICACIONES = require('./publicaciones-linkedin.js').map(publicacionLinkedin);
@@ -1462,8 +1483,10 @@ ${bitHtml(t, raiz)}
 `;
 }
 
-// Página /linkedin/: las publicaciones insertadas con el código oficial de
-// LinkedIn, una debajo de otra (dos columnas en pantallas anchas).
+// Página /linkedin/: una tarjeta propia por publicación (fecha, título, cifra y
+// enlace), que se ve aunque el navegador bloquee LinkedIn. El visor oficial solo
+// se carga si la persona lo pide (cookies de terceros). Las clases e ids no
+// llevan «linkedin»: los filtros de Brave y uBlock esconden lo que lo lleva.
 function paginaLinkedin(d) {
   const t = d.t;
 
@@ -1477,13 +1500,21 @@ function paginaLinkedin(d) {
       <h1>${t.linkedinTitulo}</h1>
       <p class="sub">${t.linkedinSub}</p>
 
-      <div class="linkedin-permiso" id="linkedinPermiso">
-        <p>${t.linkedinAviso} <a href="${'../' + d.base}cookies/">${t.linkedinCookies}</a></p>
-        <button type="button" class="boton" id="linkedinCargar">${t.linkedinCargar}</button>
+      <div class="entradas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
+${LINKEDIN_PUBLICACIONES.map((p, i) => {
+  const k = tarjetaLinkedin(t, p);
+  return '        <article class="entrada"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + ' data-marco="' + p.marco + '" data-alto="' + p.alto + '" data-titulo="' + attr(t.linkedinMarco + ': ' + plano(k.titulo)) + '">\n' +
+    '          <p class="entrada-meta"><span class="entrada-sello" aria-hidden="true">in</span><time datetime="' + k.iso + '">' + k.fecha + '</time></p>\n' +
+    '          <h2>' + k.titulo + '</h2>\n' +
+    (k.cifra ? '          <p class="entrada-cifra">' + k.cifra + '</p>\n' : '') +
+    '          <p class="entrada-ir"><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + ' →</a></p>\n' +
+    '        </article>';
+}).join('\n')}
       </div>
 
-      <div class="embebidas" data-a-la-vez="${LINKEDIN_A_LA_VEZ}" data-fallo="${attr(t.linkedinFallo)}">
-${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >= LINKEDIN_A_LA_VEZ ? ' hidden' : '') + '>\n          <iframe data-src="' + p.marco + '" height="' + p.alto + '" title="' + t.linkedinMarco + ' ' + (i + 1) + '" loading="lazy" allowfullscreen></iframe>\n          <figcaption><a href="' + p.enlace + '" target="_blank" rel="noopener">' + t.linkedinVer + '</a></figcaption>\n        </figure>').join('\n')}
+      <div class="visor-aviso" id="visorAviso">
+        <p>${t.linkedinAviso} <a href="${'../' + d.base}cookies/">${t.linkedinCookies}</a></p>
+        <button type="button" class="boton" id="visorCargar">${t.linkedinCargar}</button>
       </div>
 
       <p class="mas"><a href="${LINKEDIN}" target="_blank" rel="noopener">${t.linkedinPerfil}</a></p>
@@ -1492,7 +1523,7 @@ ${LINKEDIN_PUBLICACIONES.map((p, i) => '        <figure class="embebida"' + (i >
 
   ${pie(t, '../' + d.base, '../')}
 
-  <script src="${'../' + d.base}js/linkedin.js?v=${VERSION_JS_LINKEDIN}"></script>
+  <script src="${'../' + d.base}js/publicaciones.js?v=${VERSION_JS_LINKEDIN}"></script>
 </body>
 </html>
 `;

@@ -893,21 +893,87 @@ code {
   text-transform: uppercase;
 }
 
-/* Las publicaciones insertadas miden 504 px de ancho como mucho. */
-.embebidas {
+/* Una tarjeta propia por publicación: se ve aunque el navegador bloquee
+   LinkedIn. Con el visor cargado, cada tarjeta mide 504 px como mucho. */
+.entradas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 504px));
-  justify-content: center;
-  align-items: start;
-  gap: 36px 28px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  align-items: stretch;
+  gap: 24px;
   margin-top: 36px;
 }
 
-.embebida {
-  margin: 0;
+.entradas.con-visor {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 504px));
+  justify-content: center;
+  align-items: start;
 }
 
-.embebida iframe {
+.entrada {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--raya);
+  border-radius: 20px;
+  background: var(--tarjeta);
+  color: var(--texto);
+}
+
+.entrada[hidden] {
+  display: none;
+}
+
+.entrada-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--tenue);
+  font-size: 14px;
+}
+
+.entrada-sello {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--azul);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.publicaciones .entrada h2 {
+  margin: 0;
+  max-width: none;
+  text-align: left;
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: var(--titulos);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--tinta);
+}
+
+.entrada-cifra {
+  margin: 0;
+  color: var(--tenue);
+  font-size: 15px;
+}
+
+.entrada-ir {
+  margin: auto 0 0;
+  padding-top: 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.entrada iframe {
   display: block;
   width: 100%;
   border: 1px solid var(--raya);
@@ -915,13 +981,8 @@ code {
   background: var(--suave);
 }
 
-/* Hasta pulsar «Mostrar publicaciones» el marco no tiene src: solo se ve el enlace */
-.embebida iframe:not([src]) {
-  display: none;
-}
-
-.linkedin-permiso {
-  margin: 24px 0;
+.visor-aviso {
+  margin: 28px 0 0;
   padding: 20px 24px;
   border-radius: 20px;
   background: var(--tonal);
@@ -929,32 +990,26 @@ code {
   line-height: 1.5;
 }
 
-.linkedin-permiso p {
+.visor-aviso p {
   margin: 0 0 16px;
 }
 
-.linkedin-permiso a {
+.visor-aviso a {
   color: inherit;
 }
 
-.linkedin-permiso .boton {
+.visor-aviso .boton {
   border: 0;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
-.linkedin-permiso[hidden] {
+.visor-aviso[hidden] {
   display: none;
 }
 
-.embebida figcaption {
-  margin-top: 8px;
-  font-size: 14.5px;
-  text-align: right;
-}
-
-.embebida a,
+.entrada a,
 .mas a {
   color: var(--azul);
   text-underline-offset: 4px;
@@ -2788,19 +2843,16 @@ h1, h2, h3,
 }
 
 /* Estados: cargando, error y vacío */
-.embebida.cargando iframe {
+.entrada.cargando iframe {
   background: linear-gradient(100deg, var(--capa) 30%, var(--tarjeta) 50%, var(--capa) 70%) 0 0 / 300% 100%;
   animation: brillo 1.4s linear infinite;
 }
 
-.embebida.fallo iframe {
-  display: none;
-}
-
-.embebida-fallo {
+.entrada-fallo {
   margin: 0;
-  padding: 24px;
-  border-radius: 20px;
+  padding: 14px 18px;
+  font-size: 15px;
+  border-radius: 16px;
   background: var(--tonal);
   color: var(--sobre-tonal);
   line-height: 1.5;
@@ -2825,7 +2877,7 @@ h1, h2, h3,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .embebida.cargando iframe {
+  .entrada.cargando iframe {
     animation: none;
   }
 }

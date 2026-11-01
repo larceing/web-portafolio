@@ -74,9 +74,15 @@ de inserción, sin API ni credenciales. La lista está en `publicaciones-linkedi
 tres puntos de la publicación → «Insertar esta publicación», copiar el código, pegarlo en la lista
 entre comillas invertidas y ejecutar `node construir.js`. También vale el enlace de la publicación.
 `construir.js` solo toma de lo pegado la referencia (`urn:li:...`) y la altura, y escribe él el
-`<iframe>`. Cada semana `js/linkedin.js` elige al azar `LINKEDIN_A_LA_VEZ` publicaciones de la
+`<iframe>`. Cada semana `js/publicaciones.js` elige al azar `LINKEDIN_A_LA_VEZ` publicaciones de la
 lista (4, en `construir.js`) y cambia su orden, sin volver a publicar. Solo se pueden insertar publicaciones públicas, y una publicación borrada deja su
 marco vacío: hay que quitarla de la lista.
+
+Cada publicación se ve como una **tarjeta propia** (fecha sacada del número de la publicación,
+título y cifra de impresiones de `cifras` si es una de las de divulgación, o el título del enlace
+si no), así que la página se ve bien aunque Brave o uBlock bloqueen LinkedIn. El visor oficial
+solo se carga dentro de cada tarjeta si se pulsa «Ver completas aquí» (cookies de terceros). Las
+clases, ids y el script no llevan «linkedin» en el nombre: los filtros de Brave esconden lo que lo lleva.
 
 ## Cambiar el aspecto
 
