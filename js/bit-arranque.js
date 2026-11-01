@@ -100,9 +100,9 @@ if (location.hostname.indexOf('dev.') === 0) {
   }
 
   // ---- Doble clic (o doble toque) en Byte: mensaje para Henry ----
-  // No hay servidor de por medio: el mensaje se prepara aquí y se abre el
-  // correo o WhatsApp de la persona con todo escrito. Estados: vacío (falta
-  // texto), abriendo, listo y, si no se abre nada, copiar el mensaje.
+  // «Enviar mensaje» lo manda a n8n («Web · Mensajes de Byte»), que lo hace
+  // llegar a info@ desde no-reply@: la persona no tiene que abrir su correo.
+  // WhatsApp sigue como alternativa. Si el envío falla, se ofrece copiarlo.
   var dialogo = document.getElementById('byteMensaje');
   var m = guion.mensaje || {};
   function abrirMensaje() {
@@ -120,47 +120,83 @@ if (location.hostname.indexOf('dev.') === 0) {
   }
   function textoMensaje(f) {
     var nombre = f.nombre.value.trim(), empresa = f.empresa.value.trim(), texto = f.texto.value.trim();
+    var contacto = f.contacto ? f.contacto.value.trim() : '';
     var cabeza = nombre ? (m.hola || 'Hola Henry, soy') + ' ' + nombre + (empresa ? ' (' + empresa + ')' : '') + '.' : '';
-    return (cabeza ? cabeza + '\n\n' : '') + texto;
+    return (cabeza ? cabeza + '\n\n' : '') + texto + (contacto ? '\n\n' + contacto : '');
+  }
+  function aviso(estado, clase, texto) {
+    estado.textContent = texto || '';
+    estado.className = 'byte-estado ' + clase;
+  }
+  function ofrecerCopia(estado, cuerpoMsg, f) {
+    aviso(estado, 'error', '');
+    var p = document.createElement('span');
+    p.className = 'byte-fallo';
+    p.appendChild(document.createTextNode((m.fallo || '') + guion.correoDestino + '. '));
+    var copiar = document.createElement('button');
+    copiar.type = 'button';
+    copiar.className = 'enlace';
+    copiar.textContent = m.copiar || 'Copiar';
+    copiar.addEventListener('click', function () {
+      var hecho = function () { copiar.textContent = m.copiado || '✓'; };
+      if (navigator.clipboard) navigator.clipboard.writeText(cuerpoMsg).then(hecho, function () { f.texto.select(); });
+      else { f.texto.select(); }
+    });
+    p.appendChild(copiar);
+    estado.appendChild(p);
   }
   if (dialogo) {
     var f = dialogo.querySelector('form');
     var estado = document.getElementById('byteEstado');
+    var enviando = false;
     dialogo.querySelectorAll('[data-via]').forEach(function (b) {
       b.addEventListener('click', function () {
+        if (enviando) return;
         if (f.texto.value.trim().length < 8) {
-          estado.textContent = m.vacio || '';
-          estado.className = 'byte-estado error';
+          aviso(estado, 'error', m.vacio);
           f.texto.focus();
           return;
         }
         var cuerpoMsg = textoMensaje(f);
-        var url = b.getAttribute('data-via') === 'whatsapp'
-          ? (guion.whatsappDestino || '') + '?text=' + encodeURIComponent(cuerpoMsg)
-          : 'mailto:' + guion.correoDestino + '?subject=' + encodeURIComponent(m.asunto || '') + '&body=' + encodeURIComponent(cuerpoMsg);
-        estado.textContent = m.abriendo || '';
-        estado.className = 'byte-estado cargando';
-        if (b.getAttribute('data-via') === 'whatsapp') window.open(url, '_blank', 'noopener');
-        else location.href = url;
-        setTimeout(function () {
-          estado.textContent = '';
-          estado.className = 'byte-estado listo';
-          estado.appendChild(document.createTextNode((m.listo || '') + ' '));
-          var p = document.createElement('span');
-          p.className = 'byte-fallo';
-          p.appendChild(document.createTextNode((m.fallo || '') + guion.correoDestino + '. '));
-          var copiar = document.createElement('button');
-          copiar.type = 'button';
-          copiar.className = 'enlace';
-          copiar.textContent = m.copiar || 'Copiar';
-          copiar.addEventListener('click', function () {
-            var hecho = function () { copiar.textContent = m.copiado || '✓'; };
-            if (navigator.clipboard) navigator.clipboard.writeText(cuerpoMsg).then(hecho, function () { f.texto.select(); });
-            else { f.texto.select(); }
-          });
-          p.appendChild(copiar);
-          estado.appendChild(p);
-        }, 1200);
+        if (b.getAttribute('data-via') === 'whatsapp') {
+          window.open((guion.whatsappDestino || '') + '?text=' + encodeURIComponent(cuerpoMsg), '_blank', 'noopener');
+          return;
+        }
+        var contacto = f.contacto ? f.contacto.value.trim() : '';
+        if (!/@/.test(contacto) && contacto.replace(/\D/g, '').length < 6) {
+          aviso(estado, 'error', m.sinContacto);
+          f.contacto.focus();
+          return;
+        }
+        if (!window.fetch || !guion.contactoUrl) { ofrecerCopia(estado, cuerpoMsg, f); return; }
+        enviando = true;
+        b.disabled = true;
+        aviso(estado, 'cargando', m.abriendo);
+        var datos = new URLSearchParams();
+        ['nombre', 'empresa', 'contacto', 'texto', 'web'].forEach(function (k) { if (f[k]) datos.append(k, f[k].value); });
+        datos.append('idioma', guion.idioma || document.documentElement.lang || 'es');
+        datos.append('pagina', location.pathname);
+        // Formulario normal (sin cabeceras propias ni cookies): el navegador no
+        // tiene que pedir permiso previo a n8n.
+        fetch(guion.contactoUrl, { method: 'POST', body: datos, credentials: 'omit', mode: 'cors' })
+          .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }).then(function (j) { return { r: r, j: j }; }); })
+          .then(function (x) {
+            if (x.j && x.j.ok) {
+              aviso(estado, 'listo', m.listo);
+              f.texto.value = '';
+              setTimeout(function () { if (dialogo.open) dialogo.close(); if (window.ByteWeb) window.ByteWeb.decir(m.listo, 6); }, 2200);
+            } else if (x.r.status === 429) {
+              aviso(estado, 'error', m.muchos);
+            } else if (x.j && x.j.error === 'contacto') {
+              aviso(estado, 'error', m.sinContacto);
+            } else if (x.j && x.j.error === 'texto') {
+              aviso(estado, 'error', m.vacio);
+            } else {
+              ofrecerCopia(estado, cuerpoMsg, f);
+            }
+          })
+          .catch(function () { ofrecerCopia(estado, cuerpoMsg, f); })
+          .then(function () { enviando = false; b.disabled = false; });
       });
     });
     // Clic fuera del cuadro: cerrar.
@@ -214,8 +250,11 @@ if (location.hostname.indexOf('dev.') === 0) {
       cargar3d();
     };
     gestos.forEach(function (g) { window.addEventListener(g, alPrimerGesto, { passive: true }); });
-    setTimeout(function () { decir(guion.hola, true, movil ? 5 : 7); }, 900);
-    observarSecciones();
+    // La presentación dura lo que tarda en leerse con calma (js/bit-paseo.js
+    // tampoco lo aparta mientras tanto).
+    setTimeout(function () { decir(guion.hola, true, movil ? 8 : 10); }, 900);
+    // Los comentarios de cada sección, cuando ya se ha presentado.
+    setTimeout(observarSecciones, movil ? 9000 : 11000);
   }
 
   // Para js/bit-paseo.js: que Byte hable y salude cuando explica una ficha.

@@ -52,6 +52,9 @@ module.exports = {
     carrusel: [
       { ante: 'Data analyst and developer · Alicante, Spain', titulo: 'I automate processes and put AI to work on business data.', texto: 'I’m Henry Arce, founder of Arce Data Lab. I find the manual tasks in a team, turn them into workflows, assistants and reports, and measure what is gained.', boton: 'Ask for a quote', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada at the centre, connected to the Sindri ERP on a PC, Aris tasks on a tablet, an Efesto handheld, the campaigns on a phone, and a report, the schedule and an Odin ticket floating above' },
       { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM and plant, talking to each other.', texto: 'What sales closes reaches the ERP, and the factory makes it and records it without copying anything.', boton: 'Try it in the lab', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: plant machines connected to Sindri' },
+      { ante: 'Ada · orders', titulo: 'Orders that arrive by email, in the ERP on their own.', texto: 'Ada reads the email and the PDF, recognises the customer and the products, and only asks you about what isn’t clear.', boton: 'Try it in the lab', href: 'lab/#ada', img: 'img/ada/pedidos.webp', alt: 'Ada receiving orders by email and passing them to the ERP' },
+      { ante: 'Lin-AI · assistant', titulo: 'Ask your ERP like you’d ask a colleague.', texto: '“How much have we sold to this customer this year?” Lin-AI answers with your company’s data, no reports to open.', boton: 'Try it in the lab', href: 'lab/#asistente', img: 'img/ada/asistente.webp', alt: 'Lin-AI answering questions about ERP data' },
+      { ante: 'Aris · tasks', titulo: 'The whole team, on the same board.', texto: 'Tasks, sprints and a wiki in one place; tickets come in as tasks on their own and nobody loses track.', boton: 'Try it in the lab', href: 'lab/#tareas', img: 'img/ada/aris.webp', alt: 'Aris board with tasks in columns' },
       { ante: 'Data and reporting', titulo: 'Your numbers, up to date every morning.', texto: 'A dashboard with figures that add up, refreshing itself, without copying Excel files.', boton: 'See a sample report', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Sample sales report with monthly sales and top customers' },
       { ante: 'Websites for businesses', titulo: 'A website that brings customers, not just visits.', texto: 'Websites, shops and bookings for your business, built for mobile first: customers book, make an appointment or order in two taps.', boton: 'See example templates', href: 'plantillas/', img: 'img/ada/webs.webp', alt: 'Two example templates: a restaurant on a computer and a barber shop on a phone' }
     ],
@@ -357,14 +360,16 @@ module.exports = {
       pulsar: ['Here I am. Double-click me and I’ll leave Henry a message.', 'Want a summary of a project? Open any of them.', 'Tip: start by automating the task that takes you the most time.', 'When data does not add up, there is almost always a cause that can be fixed.', 'A byte is 8 bits. A good process, zero repeated tasks.'],
       mensaje: {
         titulo: 'Leave Henry a message',
-        sub: 'Byte drafts it and your email or WhatsApp opens with everything written. Nothing is stored on this site.',
-        nombre: 'Your name', empresa: 'Company (optional)', texto: 'How can he help?',
+        sub: 'It goes straight to Henry. Your details are only used to reply to you.',
+        nombre: 'Your name', empresa: 'Company (optional)', contacto: 'Your email or phone', contactoEj: 'So he can reply', texto: 'How can he help?',
         ejemplo: 'E.g. every Monday we copy sales from the ERP into Excel and it takes 3 hours.',
-        correo: 'Send by email', whatsapp: 'Send on WhatsApp', cerrar: 'Close',
+        correo: 'Send message', whatsapp: 'Use WhatsApp instead', cerrar: 'Close',
         vacio: 'Write at least one sentence so Henry knows what you need.',
-        abriendo: 'Opening your app…',
-        listo: 'Done: check the window that opened and press send there. Henry usually replies the same day.',
-        fallo: 'Nothing opened? Copy the message and send it to ',
+        sinContacto: 'Leave an email or phone number so he can reply.',
+        abriendo: 'Sending…',
+        listo: 'Sent! Henry usually replies the same day.',
+        muchos: 'You have sent several messages in a row. Please try again in a while.',
+        fallo: 'It could not be sent. Copy the message and send it to ',
         copiar: 'Copy message', copiado: 'Copied',
         asunto: 'Message from arcedatalab.com', hola: 'Hi Henry, I am'
       },

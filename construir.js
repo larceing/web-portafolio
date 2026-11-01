@@ -27,6 +27,8 @@ const VERSION_JS_PORTADA = huella('js/portada.js');
 const VERSION_JS_ANTES = huella('js/antes-ahora.js');
 const VERSION_JS_NOVEDADES = huella('js/novedades.js');
 const NovWeb = require('./js/novedades.js');
+// Mensajes del cuadro de Byte: n8n «Web · Mensajes de Byte» los manda a info@ desde no-reply@.
+const N8N_CONTACTO = 'https://n8n.luiscontacto03.com/webhook/contacto-web';
 
 // Dirección pública de la web. Si cambia, cambia también nginx.conf (la
 // redirección desde la dirección antigua) y vuelve a ejecutar este script.
@@ -573,14 +575,16 @@ const UI = {
     pulsar: ['Aquí estoy. Si me haces doble clic, le dejo un mensaje a Henry.', '¿Te resumo algún proyecto? Abre cualquiera.', 'Consejo: empieza automatizando la tarea que más tiempo te quita.', 'Si los datos no cuadran, casi siempre hay una causa que se puede corregir.', 'Un byte son 8 bits. Un buen proceso, cero tareas repetidas.'],
     mensaje: {
       titulo: 'Déjale un mensaje a Henry',
-      sub: 'Byte lo prepara y se abre tu correo o WhatsApp con todo escrito. No se guarda nada en esta web.',
-      nombre: 'Tu nombre', empresa: 'Empresa (opcional)', texto: '¿En qué te puede ayudar?',
+      sub: 'Le llega directamente a Henry. Tus datos solo se usan para contestarte.',
+      nombre: 'Tu nombre', empresa: 'Empresa (opcional)', contacto: 'Tu correo o teléfono', contactoEj: 'Para poder contestarte', texto: '¿En qué te puede ayudar?',
       ejemplo: 'Ej.: cada lunes copiamos las ventas del ERP a un Excel y tardamos 3 horas.',
-      correo: 'Enviar por correo', whatsapp: 'Enviar por WhatsApp', cerrar: 'Cerrar',
+      correo: 'Enviar mensaje', whatsapp: 'Mejor por WhatsApp', cerrar: 'Cerrar',
       vacio: 'Escribe al menos una frase para que Henry sepa qué necesitas.',
-      abriendo: 'Abriendo tu aplicación…',
-      listo: 'Listo: revisa la ventana que se ha abierto y pulsa enviar allí. Henry suele contestar en el día.',
-      fallo: '¿No se ha abierto nada? Copia el mensaje y mándalo a ',
+      sinContacto: 'Déjale un correo o un teléfono para que pueda contestarte.',
+      abriendo: 'Enviando…',
+      listo: '¡Enviado! Henry suele contestar en el día.',
+      muchos: 'Has enviado varios mensajes seguidos. Prueba dentro de un rato.',
+      fallo: 'No se ha podido enviar. Copia el mensaje y mándalo a ',
       copiar: 'Copiar mensaje', copiado: 'Copiado',
       asunto: 'Mensaje desde arcedatalab.com', hola: 'Hola Henry, soy'
     },
@@ -646,6 +650,9 @@ UI.p = {
   carrusel: [
     { ante: 'Analista de datos y desarrollador · Alicante', titulo: 'Automatizo procesos y pongo la IA a trabajar con los datos del negocio.', texto: 'Soy Henry Arce, fundador de Arce Data Lab. Encuentro las tareas manuales de un equipo, las convierto en flujos, asistentes e informes, y mido lo que se gana.', boton: 'Pide presupuesto', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada en el centro, conectada con el ERP Sindri en el PC, las tareas de Aris en la tablet, la PDA de Efesto, las campañas en el móvil, y un informe, la agenda y una incidencia de Odin flotando' },
     { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP, CRM y planta, hablando entre sí.', texto: 'Lo que cierra el comercial llega al ERP, y la fábrica lo produce y lo registra sin copiar nada.', boton: 'Probarlo en el laboratorio', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto: máquinas de la planta conectadas con Sindri' },
+    { ante: 'Ada · pedidos', titulo: 'Los pedidos que llegan por correo, dentro del ERP solos.', texto: 'Ada lee el correo y el PDF, reconoce al cliente y los productos, y solo te pregunta lo que no está claro.', boton: 'Probarlo en el laboratorio', href: 'lab/#ada', img: 'img/ada/pedidos.webp', alt: 'Ada recibiendo pedidos por correo y pasándolos al ERP' },
+    { ante: 'Lin-AI · asistente', titulo: 'Pregúntale a tu ERP como a un compañero.', texto: '«¿Cuánto le hemos vendido a este cliente este año?» Lin-AI responde con los datos de tu empresa, sin abrir informes.', boton: 'Probarlo en el laboratorio', href: 'lab/#asistente', img: 'img/ada/asistente.webp', alt: 'Lin-AI respondiendo preguntas sobre los datos del ERP' },
+    { ante: 'Aris · tareas', titulo: 'Todo el equipo, en el mismo tablero.', texto: 'Tareas, sprints y wiki en un sitio; las incidencias entran solas como tareas y nadie pierde el hilo.', boton: 'Probarlo en el laboratorio', href: 'lab/#tareas', img: 'img/ada/aris.webp', alt: 'Tablero de Aris con tareas por columnas' },
     { ante: 'Datos y reporting', titulo: 'Tus números, al día cada mañana.', texto: 'Un cuadro de mando con las cifras cuadradas que se actualiza solo, sin copiar Excel.', boton: 'Ver un informe de ejemplo', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: 'Informe comercial de ejemplo con ventas por mes y mejores clientes' },
     { ante: 'Páginas web para negocios', titulo: 'Una web que trae clientes, no solo visitas.', texto: 'Webs, tiendas y reservas para tu negocio, pensadas primero para el móvil: que el cliente reserve, pida cita o encargue en dos toques.', boton: 'Ver plantillas de ejemplo', href: 'plantillas/', img: 'img/ada/webs.webp', alt: 'Dos plantillas de ejemplo: un restaurante en el ordenador y una barbería en el móvil' }
   ],
@@ -1742,7 +1749,7 @@ function paginaLegal(l) {
 const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
-  const guion = Object.assign({}, t.bit, { correoDestino: CORREO, whatsappDestino: WHATSAPP });
+  const guion = Object.assign({}, t.bit, { correoDestino: CORREO, whatsappDestino: WHATSAPP, contactoUrl: N8N_CONTACTO, idioma: t.lang.slice(0, 2) });
   const m = t.bit.mensaje;
   return `  <aside class="bit" id="bit" data-paseo="libre" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
@@ -1758,6 +1765,8 @@ function bitHtml(t, base) {
       <p class="sub">${m.sub}</p>
       <label>${m.nombre}<input name="nombre" autocomplete="name" maxlength="80"></label>
       <label>${m.empresa}<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>${m.contacto}<input name="contacto" autocomplete="email" maxlength="120" placeholder="${attr(m.contactoEj)}" required></label>
+      <label class="byte-trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
       <label>${m.texto}<textarea name="texto" rows="4" maxlength="1200" placeholder="${attr(m.ejemplo)}" required></textarea></label>
       <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
       <p class="botones">

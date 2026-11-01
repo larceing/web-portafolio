@@ -33,6 +33,10 @@
 
   // Posición: desplazamiento de la caja respecto a su sitio en la esquina (px).
   var pos = { x: 0, y: 0 }, vel = { x: 0, y: 0 }, obj = { x: 0, y: 0 };
+  // Al aparecer, Byte se presenta quieto y a la vista unos segundos (Luis,
+  // 01/11/2026): no se aparta ni esconde su bocadillo hasta que termina.
+  var PRESENTACION = 11000, presentaHasta = 0;
+  function presentando() { return performance.now() < presentaHasta; }
   var activo = false, ultimo = 0, quietoDesde = 0, encima = false;
 
   // Medidas del cuerpo en su sitio de la esquina (esquina superior izquierda).
@@ -221,6 +225,7 @@
   }
 
   function libre() {
+    if (presentando()) return;
     var r = reposo(), mejor = null;
     var lista = sitios(r);
     for (var i = 0; i < lista.length; i++) {
@@ -254,7 +259,7 @@
   // Mientras se desplaza la página: si algo pasa por debajo de Byte, se esconde.
   var finScroll = null;
   function alDesplazar() {
-    if (enFicha || caja.classList.contains('oculto')) return;
+    if (enFicha || caja.classList.contains('oculto') || presentando()) return;
     var b = cuerpo.getBoundingClientRect();
     var r = { w: b.width, h: b.height };
     if (!caja.classList.contains('asomado') && tapaByte(b.left, b.top, r) > 0) caja.classList.add('apartado');
@@ -271,7 +276,7 @@
   var pidio = 0;
   var bocadillo = document.getElementById('bitBocadillo');
   function comprobarBocadillo() {
-    if (modo !== 'libre' || !bocadillo || bocadillo.hidden || enFicha) return;
+    if (modo !== 'libre' || !bocadillo || bocadillo.hidden || enFicha || presentando()) return;
     if (performance.now() - pidio < 1500) return;
     var combos = [[false, false], [true, false], [false, true], [true, true]];
     var b = cuerpo.getBoundingClientRect();
@@ -298,7 +303,7 @@
       if (caja.classList.contains('asomado')) {
         caja.classList.remove('asomado');
         irA(ancho() - reposo().w - 8, window.innerHeight - reposo().h - 8, 0);
-        setTimeout(libre, 7000);
+        setTimeout(libre, 12000);
       }
     });
     window.addEventListener('pointerdown', function (e) {
@@ -520,7 +525,12 @@
 
   // Empieza cuando Bit ya se ve (bit-arranque.js añade .listo).
   var vigia = new MutationObserver(function () {
-    if (caja.classList.contains('listo')) { vigia.disconnect(); setTimeout(calcular, 1600); }
+    if (!caja.classList.contains('listo')) return;
+    vigia.disconnect();
+    if (modo === 'libre' && !caja.classList.contains('oculto')) {
+      presentaHasta = performance.now() + PRESENTACION;
+      setTimeout(calcular, PRESENTACION + 200);
+    } else setTimeout(calcular, 1600);
   });
   vigia.observe(caja, { attributes: true, attributeFilter: ['class'] });
 })();
