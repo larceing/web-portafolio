@@ -34,7 +34,7 @@
   <link rel="me" href="https://github.com/larceing">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://arcedatalab.com/zh/proyectos/gestor/","url":"https://arcedatalab.com/zh/proyectos/gestor/","name":"Odin：工单、文档和技术支持工时","description":"工单靠手工记录，工时记在电子表格里，发票又在别的地方。彼此之间完全没有连接。 我自己的 Web 应用，每张工单都有跟进记录、文档和计时的工作时段。它最初基于 MantisBT，现在已经有了自己的数据表，历史数据也已迁移。","inLanguage":"zh-Hans","isPartOf":{"@id":"https://arcedatalab.com/#web"},"dateModified":"2026-11-01","mainEntity":{"@id":"https://arcedatalab.com/zh/proyectos/gestor/#proyecto"}},{"@type":"SoftwareSourceCode","@id":"https://arcedatalab.com/zh/proyectos/gestor/#proyecto","name":"Odin：工单、文档和技术支持工时","url":"https://arcedatalab.com/zh/proyectos/gestor/","description":"工单靠手工记录，工时记在电子表格里，发票又在别的地方。彼此之间完全没有连接。 我自己的 Web 应用，每张工单都有跟进记录、文档和计时的工作时段。它最初基于 MantisBT，现在已经有了自己的数据表，历史数据也已迁移。","inLanguage":"zh-Hans","author":{"@id":"https://arcedatalab.com/#henry"},"keywords":"Node.js, Express, MariaDB, Keycloak, Docker","codeRepository":"https://github.com/larceing/soporte"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://arcedatalab.com/zh/"},{"@type":"ListItem","position":2,"name":"项目","item":"https://arcedatalab.com/zh/proyectos/"},{"@type":"ListItem","position":3,"name":"Odin，工单"}]},{"@type":"Person","@id":"https://arcedatalab.com/#henry","name":"Henry Arce","alternateName":"Luis Henry Arce Inga","givenName":"Luis Henry","familyName":"Arce Inga","url":"https://arcedatalab.com/","image":"https://arcedatalab.com/img/foto.webp","email":"mailto:info@arcedatalab.com","telephone":"+34633424223","jobTitle":"数据分析师与开发者 · 自动化与 AI 应用","description":"Henry Arce，Arce Data Lab 创始人（西班牙阿利坎特）：为中小企业和制造业提供自动化、AI 应用、Power BI 和定制应用。真实项目与开源作品。","address":{"@type":"PostalAddress","addressLocality":"Alicante","addressRegion":"Comunidad Valenciana","addressCountry":"ES"},"worksFor":{"@id":"https://arcedatalab.com/#organizacion"},"knowsLanguage":["es","en"],"knowsAbout":["Power BI","DAX","Microsoft Fabric","Automatización de procesos","IA aplicada","Agentes de IA","Python","SQL Server","ERP","CRM","Docker","Keycloak","Node.js","Blender","Process automation","Business intelligence"],"alumniOf":{"@type":"EducationalOrganization","name":"IES El Palmeral"},"award":["Premio a la Excelencia Académica 2022","CV Skills 2021, Electrónica"],"sameAs":["https://www.linkedin.com/in/luis-henry-programador","https://github.com/larceing","https://www.tiktok.com/@arcedatalab","https://www.instagram.com/henry_arce_dev/"]}]}</script>
   <link rel="preload" href="../../../fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../../css/estilos.css?v=f767b0813b">
+  <link rel="stylesheet" href="../../../css/estilos.css?v=f3aa9ca7f0">
 </head>
 
 <body>
@@ -128,21 +128,23 @@
   <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
     <form method="dialog" novalidate>
       <h2 id="byteMensajeTitulo">给 Henry 留言</h2>
-      <p class="sub">Byte 帮你写好草稿，然后打开你的邮箱或 WhatsApp，内容都已填好。这个网站不会保存任何内容。</p>
+      <p class="sub">留言会直接发给 Henry。你的信息只用于回复你。</p>
       <label>你的名字<input name="nombre" autocomplete="name" maxlength="80"></label>
       <label>公司（可选）<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>你的邮箱或电话<input name="contacto" autocomplete="email" maxlength="120" placeholder="方便他回复你" required></label>
+      <label class="byte-trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
       <label>他能帮你做什么？<textarea name="texto" rows="4" maxlength="1200" placeholder="例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。" required></textarea></label>
       <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
       <p class="botones">
-        <button type="button" class="boton" data-via="correo">通过邮件发送</button>
-        <button type="button" class="boton secundario" data-via="whatsapp">通过 WhatsApp 发送</button>
+        <button type="button" class="boton" data-via="correo">发送留言</button>
+        <button type="button" class="boton secundario" data-via="whatsapp">改用 WhatsApp</button>
       </p>
       <button type="submit" class="byte-mensaje-cerrar" aria-label="关闭">×</button>
     </form>
   </dialog>
-  <script type="application/json" id="bitGuion">{"nombre":"Byte，Arce Data Lab 的助手","hola":"你好，我是 Byte，Arce Data Lab 的助手。我会带你浏览这个网站，并总结每个项目。","servicios":"如果你公司里有每周都重复的工作，那它很可能可以自动化。","infraestructura":"这个网站和客户的应用都运行在这里：容器、HTTPS 和每晚备份。","arcedatalab":"Arce Data Lab 为中小企业打造软件、数据看板和 AI 助手。","proyectos":"点开任意一个项目，我来总结问题、方案和结果。","ficha":"项目摘要。","jugar":["你阅读的时候，我在检查数据。","系统检查：一切正常。","我还在这儿。需要摘要的话告诉我。","正在检查每个应用是否正常响应。"],"dormir":"节能模式。动一下鼠标，我就回来。","despertar":"我回来了。有什么可以帮你？","cinta":"自动化就是这样工作的：手工数据进去，完整的报表出来，全程无需人手。","trayectoria":"咨询、银行和制造业：用真实数据、赶真实工期的经验。","tecnologias":"经过生产环境检验的工具，按需选择。","preguntas":"开始项目前大家最常问的问题，简短回答。","contacto":"想聊聊你的情况？发邮件到 info@arcedatalab.com，Henry 会回复你。","pulsar":["我在这儿。双击我，我帮你给 Henry 留言。","想看某个项目的摘要？点开任意一个就行。","小建议：先把最花时间的工作自动化。","数据对不上时，几乎总能找到可以解决的原因。","1 个字节是 8 位。好的流程，0 次重复工作。"],"mensaje":{"titulo":"给 Henry 留言","sub":"Byte 帮你写好草稿，然后打开你的邮箱或 WhatsApp，内容都已填好。这个网站不会保存任何内容。","nombre":"你的名字","empresa":"公司（可选）","texto":"他能帮你做什么？","ejemplo":"例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。","correo":"通过邮件发送","whatsapp":"通过 WhatsApp 发送","cerrar":"关闭","vacio":"请至少写一句话，让 Henry 知道你需要什么。","abriendo":"正在打开你的应用……","listo":"好了：请在打开的窗口里点击发送。Henry 通常当天回复。","fallo":"什么都没打开？复制这条消息，发送到 ","copiar":"复制消息","copiado":"已复制","asunto":"来自 arcedatalab.com 的留言","hola":"你好 Henry，我是"},"ocultar":"隐藏 Byte","mostrar":"显示 Byte","canal":"观看 Club Byte","correoDestino":"info@arcedatalab.com","whatsappDestino":"https://wa.me/34633424223"}</script>
-  <script src="../../../js/bit-arranque.js?v=d8cb5e5f25"></script>
-  <script src="../../../js/bit-paseo.js?v=d2a7840ebf"></script>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte，Arce Data Lab 的助手","hola":"你好，我是 Byte，Arce Data Lab 的助手。我会带你浏览这个网站，并总结每个项目。","servicios":"如果你公司里有每周都重复的工作，那它很可能可以自动化。","infraestructura":"这个网站和客户的应用都运行在这里：容器、HTTPS 和每晚备份。","arcedatalab":"Arce Data Lab 为中小企业打造软件、数据看板和 AI 助手。","proyectos":"点开任意一个项目，我来总结问题、方案和结果。","ficha":"项目摘要。","jugar":["你阅读的时候，我在检查数据。","系统检查：一切正常。","我还在这儿。需要摘要的话告诉我。","正在检查每个应用是否正常响应。"],"dormir":"节能模式。动一下鼠标，我就回来。","despertar":"我回来了。有什么可以帮你？","cinta":"自动化就是这样工作的：手工数据进去，完整的报表出来，全程无需人手。","trayectoria":"咨询、银行和制造业：用真实数据、赶真实工期的经验。","tecnologias":"经过生产环境检验的工具，按需选择。","preguntas":"开始项目前大家最常问的问题，简短回答。","contacto":"想聊聊你的情况？发邮件到 info@arcedatalab.com，Henry 会回复你。","pulsar":["我在这儿。双击我，我帮你给 Henry 留言。","想看某个项目的摘要？点开任意一个就行。","小建议：先把最花时间的工作自动化。","数据对不上时，几乎总能找到可以解决的原因。","1 个字节是 8 位。好的流程，0 次重复工作。"],"mensaje":{"titulo":"给 Henry 留言","sub":"留言会直接发给 Henry。你的信息只用于回复你。","nombre":"你的名字","empresa":"公司（可选）","contacto":"你的邮箱或电话","contactoEj":"方便他回复你","texto":"他能帮你做什么？","ejemplo":"例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。","correo":"发送留言","whatsapp":"改用 WhatsApp","cerrar":"关闭","vacio":"请至少写一句话，让 Henry 知道你需要什么。","sinContacto":"请留下邮箱或电话，方便他回复你。","abriendo":"正在发送……","listo":"已发送！Henry 通常当天回复。","muchos":"你连续发送了好几条留言，请稍后再试。","fallo":"发送失败。复制这条消息，发送到 ","copiar":"复制消息","copiado":"已复制","asunto":"来自 arcedatalab.com 的留言","hola":"你好 Henry，我是"},"ocultar":"隐藏 Byte","mostrar":"显示 Byte","canal":"观看 Club Byte","correoDestino":"info@arcedatalab.com","whatsappDestino":"https://wa.me/34633424223","contactoUrl":"https://n8n.luiscontacto03.com/webhook/contacto-web","idioma":"zh"}</script>
+  <script src="../../../js/bit-arranque.js?v=56d8f31d92"></script>
+  <script src="../../../js/bit-paseo.js?v=4de6ab32aa"></script>
   <script src="../../../js/cinta-arranque.js?v=87e19776e9"></script>
 </body>
 </html>

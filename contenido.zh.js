@@ -53,6 +53,9 @@ module.exports = {
     carrusel: [
       { ante: '数据分析师与开发者 · 西班牙阿利坎特', titulo: '我让流程自动化，让 AI 处理业务数据。', texto: '我是 Henry Arce，Arce Data Lab 的创始人。我找出团队里的手工重复工作，把它们变成自动化流程、智能助手和报表，并衡量带来的收益。', boton: '获取报价', href: 'cta', img: 'img/ada/cabecera.svg', alt: 'Ada 位于中央，连接着电脑上的 Sindri ERP、平板上的 Aris 任务、Efesto 手持终端、手机上的营销活动，上方浮着报表、周计划和一张 Odin 工单' },
       { ante: 'Sindri · Brokkr · Efesto', titulo: 'ERP、CRM 和车间，彼此打通。', texto: '销售谈成的订单直接进入 ERP，工厂据此生产并记录，不用重复录入。', boton: '在实验室试用', href: 'lab/#efesto', img: 'img/ada/efesto.webp', alt: 'Efesto：车间设备连接到 Sindri' },
+      { ante: 'Ada · 订单', titulo: '邮件里来的订单，自动进入 ERP。', texto: 'Ada 读取邮件和 PDF，识别客户和产品，只在不确定的地方问你。', boton: '在实验室试用', href: 'lab/#ada', img: 'img/ada/pedidos.webp', alt: 'Ada 接收邮件订单并转入 ERP' },
+      { ante: 'Lin-AI · 助手', titulo: '像问同事一样问你的 ERP。', texto: '“今年我们卖给这个客户多少？”Lin-AI 用你公司的数据直接回答，不用打开报表。', boton: '在实验室试用', href: 'lab/#asistente', img: 'img/ada/asistente.webp', alt: 'Lin-AI 回答关于 ERP 数据的问题' },
+      { ante: 'Aris · 任务', titulo: '整个团队，在同一块看板上。', texto: '任务、迭代和知识库集中在一处；工单自动变成任务，谁也不会跟丢。', boton: '在实验室试用', href: 'lab/#tareas', img: 'img/ada/aris.webp', alt: 'Aris 看板，任务按列排列' },
       { ante: '数据与报表', titulo: '你的数据，每天早上自动更新。', texto: '一个数字对得上、自动刷新的看板，不用再复制 Excel。', boton: '查看示例报表', href: 'lab/#reporting', img: 'img/ada/informe.webp', alt: '示例销售报表，包含月度销售额和主要客户' },
       { ante: '商家网站', titulo: '带来客户，而不只是访问量的网站。', texto: '为你的生意做网站、网店和预约系统，优先适配手机：客户点两下就能预约、挂号或下单。', boton: '查看网站模板示例', href: 'plantillas/', img: 'img/ada/webs.webp', alt: '两个示例模板：电脑上的餐厅网站和手机上的理发店网站' }
     ],
@@ -358,14 +361,16 @@ module.exports = {
       pulsar: ['我在这儿。双击我，我帮你给 Henry 留言。', '想看某个项目的摘要？点开任意一个就行。', '小建议：先把最花时间的工作自动化。', '数据对不上时，几乎总能找到可以解决的原因。', '1 个字节是 8 位。好的流程，0 次重复工作。'],
       mensaje: {
         titulo: '给 Henry 留言',
-        sub: 'Byte 帮你写好草稿，然后打开你的邮箱或 WhatsApp，内容都已填好。这个网站不会保存任何内容。',
-        nombre: '你的名字', empresa: '公司（可选）', texto: '他能帮你做什么？',
+        sub: '留言会直接发给 Henry。你的信息只用于回复你。',
+        nombre: '你的名字', empresa: '公司（可选）', contacto: '你的邮箱或电话', contactoEj: '方便他回复你', texto: '他能帮你做什么？',
         ejemplo: '例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。',
-        correo: '通过邮件发送', whatsapp: '通过 WhatsApp 发送', cerrar: '关闭',
+        correo: '发送留言', whatsapp: '改用 WhatsApp', cerrar: '关闭',
         vacio: '请至少写一句话，让 Henry 知道你需要什么。',
-        abriendo: '正在打开你的应用……',
-        listo: '好了：请在打开的窗口里点击发送。Henry 通常当天回复。',
-        fallo: '什么都没打开？复制这条消息，发送到 ',
+        sinContacto: '请留下邮箱或电话，方便他回复你。',
+        abriendo: '正在发送……',
+        listo: '已发送！Henry 通常当天回复。',
+        muchos: '你连续发送了好几条留言，请稍后再试。',
+        fallo: '发送失败。复制这条消息，发送到 ',
         copiar: '复制消息', copiado: '已复制',
         asunto: '来自 arcedatalab.com 的留言', hola: '你好 Henry，我是'
       },

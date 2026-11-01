@@ -4929,3 +4929,60 @@ body:has(.simple) {
 .ficha-cerrar:focus-visible {
   background: var(--capa);
 }
+
+/* Trampa para robots del cuadro de Byte: invisible para las personas. */
+.byte-trampa {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Cabecera en una sola línea en escritorio (01/11/2026). El ancho se mide sin
+   la barra de scroll (100 %, no 100vw) y es algo más ancho que el contenido;
+   el lema «automatización · IA · datos» se quita antes de que el menú salte
+   a una segunda línea. */
+.cabecera {
+  padding-inline: max(20px, calc((100% - 1240px) / 2 + 20px));
+}
+
+@media (min-width: 1100px) {
+  .cabecera,
+  .cabecera .menu {
+    flex-wrap: nowrap;
+  }
+
+  .cabecera .menu a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1240px) {
+  .marca span {
+    display: none;
+  }
+}
+
+/* Menos aire entre bloques. */
+.bloque {
+  padding-top: 64px;
+}
+
+.heroe {
+  padding-top: 36px;
+}
+
+.heroe-mandos {
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .bloque {
+    padding-top: 48px;
+  }
+
+  .heroe {
+    padding-top: 20px;
+  }
+}
