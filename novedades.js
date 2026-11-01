@@ -7,21 +7,24 @@
 // relativa a la raíz, como 'lab/#sindri') o fuera (https://...). Luego:
 //   node construir.js
 
-// Lo que tenemos entre manos ahora mismo (3 tarjetas).
+// Lo que tenemos entre manos ahora mismo (3 tarjetas). Sin detalles internos.
 const AHORA = [
   {
-    es: ['Ada publica en nuestros canales', 'Cada semana prepara vídeos, reels y posts; cada noche repasa el día. Nada sale sin revisión.'],
-    en: ['Ada publishes on our channels', 'Every week it prepares videos, reels and posts; every night it reviews the day. Nothing goes out unchecked.'],
-    zh: ['Ada 在我们的频道上发布内容', '每周准备视频、短视频和帖子；每晚回顾当天情况。未经审核的内容一律不发。'],
+    producto: 'ada',
+    es: ['Ada, en marcha', 'Nuestro equipo de IA para el marketing ya prepara el contenido de nuestras redes.'],
+    en: ['Ada, up and running', 'Our AI marketing team already prepares the content for our social channels.'],
+    zh: ['Ada 已投入使用', '我们的 AI 营销团队已经在为我们的社交频道准备内容。'],
     enlace: 'lab/#ada'
   },
   {
-    es: ['Brokkr, el CRM en tablet', 'El CRM para el comercial de una pyme industrial, conectado con Sindri. En desarrollo.'],
-    en: ['Brokkr, the tablet CRM', 'The CRM for the sales rep of an industrial SME, connected to Sindri. In development.'],
-    zh: ['Brokkr：平板上的 CRM', '为工业中小企业销售人员打造的 CRM，与 Sindri 相连。开发中。'],
+    producto: 'brokkr',
+    es: ['Brokkr, el CRM en tablet', 'El CRM para el comercial de una pyme industrial, conectado con Sindri. En preparación.'],
+    en: ['Brokkr, the tablet CRM', 'The CRM for the sales rep of an industrial SME, connected to Sindri. Coming soon.'],
+    zh: ['Brokkr：平板上的 CRM', '为工业中小企业销售人员打造的 CRM，与 Sindri 相连。即将推出。'],
     enlace: 'lab/#brokkr'
   },
   {
+    producto: 'clubbyte',
     es: ['Club Byte', 'Tecnología explicada a niños de 8 a 12 años, con capítulos y reels cada semana.'],
     en: ['Club Byte', 'Technology explained to kids aged 8 to 12, with new episodes and reels every week.'],
     zh: ['Club Byte', '给 8 到 12 岁孩子讲解科技，每周更新节目和短视频。'],
@@ -29,64 +32,44 @@ const AHORA = [
   }
 ];
 
-// Lo último, de más nuevo a más antiguo.
+// «Lo último». La fuente de verdad es la tabla «novedades» de n8n (filas con
+// publicar_en = web y estado Aprobada): la página la lee al abrirse desde
+// https://n8n.luiscontacto03.com/webhook/novedades-web (flujo «Ada · Novedades
+// web»), que da las 7 últimas. Esta lista es la copia que sale si n8n no
+// responde (y la que ven los buscadores): mantenla igual que la tabla.
+// Máximo 7: productos nuevos o mejorados, capítulos y vídeos que salen y
+// cosas interesantes. Sin detalles internos de cómo trabajamos.
 const NOVEDADES = [
-  {
-    fecha: '2026-11-01',
-    es: ['Una web sin cookies al entrar', 'Aviso legal, privacidad y cookies publicados. No ponemos cookies propias, así que no hace falta banner; LinkedIn solo carga si tú lo pides.'],
-    en: ['A website with no cookies on arrival', 'Legal notice, privacy and cookie policy are live. We set no cookies of our own, so no banner is needed; LinkedIn only loads if you ask for it.'],
-    zh: ['进入网站时不设置 Cookie', '法律声明、隐私和 Cookie 政策已发布。我们不设置自己的 Cookie，因此无需弹窗；LinkedIn 只有在你要求时才会加载。'],
-    enlace: 'cookies/'
-  },
-  {
-    fecha: '2026-10-29',
-    es: ['La web, también en chino', 'Toda la web en español, inglés y chino, con el selector ES · EN · 中文 en la cabecera.'],
-    en: ['The website, now in Chinese too', 'The whole site in Spanish, English and Chinese, with the ES · EN · 中文 switch in the header.'],
-    zh: ['网站推出中文版', '整个网站提供西班牙语、英语和中文版本，页眉中可切换 ES · EN · 中文。']
-  },
-  {
-    fecha: '2026-10-28',
-    es: ['El laboratorio, en tres idiomas y con vídeo', 'Cada producto tiene un vídeo de 20 a 25 segundos grabado en la app real, y las simulaciones funcionan en español, inglés y chino.'],
-    en: ['The lab, in three languages and with video', 'Each product has a 20–25 second video recorded in the real app, and the simulations work in Spanish, English and Chinese.'],
-    zh: ['实验室：三种语言，配有视频', '每个产品都有一段在真实应用中录制的 20 到 25 秒视频，模拟演示支持西班牙语、英语和中文。'],
-    enlace: 'lab/#sindri'
-  },
-  {
-    fecha: '2026-10-27',
-    es: ['Plantillas de web para negocios locales', 'Un catálogo de webs de ejemplo para bares, clínicas, peluquerías y talleres, listas para adaptar.'],
-    en: ['Website templates for local businesses', 'A catalogue of sample sites for bars, clinics, hair salons and garages, ready to adapt.'],
-    zh: ['本地商家网站模板', '为酒吧、诊所、理发店和修车厂准备的示例网站目录，可直接改用。'],
-    enlace: 'plantillas/'
-  },
-  {
-    fecha: '2026-10-26',
-    es: ['Reporting BI por lotes', 'Análisis comercial, de fabricación y OEE, de pedidos y de calidad y scrap, con su demo en el laboratorio.'],
-    en: ['BI reporting in packs', 'Sales, manufacturing and OEE, orders, and quality and scrap analysis, each with its demo in the lab.'],
-    zh: ['分模块的 BI 报表', '销售、生产与 OEE、订单、质量与报废分析，每个都可以在实验室里试用。'],
-    enlace: 'lab/#reporting'
-  },
-  {
-    fecha: '2026-10-26',
-    es: ['Sindri con la familia Ada', 'Cuatro oficinas Ada (comercial, pedidos, producción y planta) se pasan el trabajo hasta el ERP. Pruébalo en la simulación.'],
-    en: ['Sindri with the Ada family', 'Four Ada offices (sales, orders, production and plant) hand work over to the ERP. Try it in the simulation.'],
-    zh: ['Sindri 与 Ada 家族', '四个 Ada 办公室（销售、订单、生产和车间）把工作一路交给 ERP。在模拟中亲自试试。'],
-    enlace: 'lab/#sindri'
-  },
-  {
-    fecha: '2026-10-25',
-    es: ['La oficina de Ada, en 3D', 'Mira a cada agente de Ada trabajar en una campaña simulada, con sus herramientas y lo que espera tu OK.'],
-    en: ['Ada’s office, in 3D', 'Watch each Ada agent work on a simulated campaign, with its tools and what is waiting for your OK.'],
-    zh: ['Ada 的 3D 办公室', '观看每个 Ada 智能体在模拟营销活动中工作，查看它们的工具以及等待你确认的内容。'],
-    enlace: 'lab/#ada'
-  },
-  {
-    fecha: '2026-10-25',
-    es: ['Abre el laboratorio', 'Simulaciones de nuestros productos que funcionan en tu navegador, con datos inventados: nada se guarda.'],
-    en: ['The lab opens', 'Simulations of our products that run in your browser, with made-up data: nothing is saved.'],
-    zh: ['实验室上线', '我们产品的模拟演示直接在浏览器中运行，使用虚构数据：不保存任何内容。'],
-    enlace: 'lab/'
-  }
+  {"fecha": "2026-11-01", "producto": "sindri", "tipo": "video", "enlace": "https://www.instagram.com/henry_arce_dev/", "video": "adl-sindri", "es": ["Vídeo nuevo: Sindri, toda tu empresa en un solo ERP", "¿Ventas, stock y facturas cada uno en su Excel? En 25 segundos, cómo se ve todo junto. Ya en Instagram y TikTok."], "en": ["New video: Sindri, your whole company in one ERP", "Sales, stock and invoices each in its own spreadsheet? In 25 seconds, how it all looks together. Now on Instagram and TikTok."], "zh": ["新视频：Sindri，一个 ERP 管好整个公司", "销售、库存和发票各用一个 Excel？25 秒看懂全部整合在一起的样子。已在 Instagram 和 TikTok 上线。"]},
+  {"fecha": "2026-10-30", "producto": "imagina", "tipo": "capitulo", "enlace": "https://www.tiktok.com/@arcedatalab", "imagen": "img/novedades/iit-ep01.webp", "es": ["Capítulo completo: «La IA me hizo el dashboard… y me mintió»", "El informe decía ventas −8 %; la realidad era +26 %. En 6 partes, los tres errores que la IA no ve y cómo revisarlo antes de enviarlo."], "en": ["Full episode: “AI built my dashboard… and lied to me”", "The report said sales were down 8%; they were actually up 26%. In 6 parts: the three mistakes AI can’t see and how to check before you send it."], "zh": ["完整一集：《AI 给我做了仪表板……却骗了我》", "报告说销售下降 8%，实际却增长了 26%。分 6 集讲清 AI 看不出的三个错误，以及发送前如何检查。"]},
+  {"fecha": "2026-10-28", "producto": "laboratorio", "tipo": "mejorado", "enlace": "lab/#sindri", "es": ["El laboratorio, con vídeo y en tres idiomas", "Cada producto tiene su vídeo y sus simulaciones funcionan en español, inglés y chino."], "en": ["The lab, with video and in three languages", "Every product has its own video, and the simulations work in Spanish, English and Chinese."], "zh": ["实验室：配有视频，支持三种语言", "每个产品都有自己的视频，模拟演示支持西班牙语、英语和中文。"]},
+  {"fecha": "2026-10-27", "producto": "plantillas", "tipo": "nuevo", "enlace": "plantillas/", "es": ["Nuevo: plantillas de web para negocios locales", "Webs de ejemplo para bares, clínicas, peluquerías y talleres, listas para adaptar."], "en": ["New: website templates for local businesses", "Sample sites for bars, clinics, hair salons and garages, ready to adapt."], "zh": ["新品：本地商家网站模板", "为酒吧、诊所、理发店和修车厂准备的示例网站，可直接改用。"]},
+  {"fecha": "2026-10-26", "producto": "reporting", "tipo": "mejorado", "enlace": "lab/#reporting", "es": ["Reporting BI: nuevos lotes de análisis", "Comercial, fabricación, pedidos y calidad, cada uno con su demo."], "en": ["Reporting BI: new analysis packs", "Sales, manufacturing, orders and quality, each with its own demo."], "zh": ["Reporting BI：新增分析模块", "销售、生产、订单和质量，每个都有演示。"]},
+  {"fecha": "2026-10-26", "producto": "sindri", "tipo": "mejorado", "enlace": "lab/#sindri", "es": ["Sindri trabaja con Ada", "Del comercial a la planta en un solo ERP. Pruébalo en la simulación."], "en": ["Sindri works with Ada", "From sales to the shop floor in one ERP. Try it in the simulation."], "zh": ["Sindri 与 Ada 协同工作", "从销售到车间，尽在一个 ERP。在模拟中亲自试试。"]},
+  {"fecha": "2026-10-25", "producto": "ada", "tipo": "nuevo", "enlace": "lab/#ada", "es": ["Nuevo: Ada, tu equipo de IA para el marketing", "Prepara el contenido de tus redes; tú solo lo apruebas."], "en": ["New: Ada, your AI marketing team", "It prepares your social media content; you just approve it."], "zh": ["新品：Ada，你的 AI 营销团队", "它为你准备社交媒体内容；你只需批准。"]}
 ];
+
+const N8N_NOVEDADES = 'https://n8n.luiscontacto03.com/webhook/novedades-web';
+
+// Color, vídeo e imagen de cada producto (si la fila de n8n no trae los suyos).
+// video: nombre en lab/v/ (con -en / -zh por idioma); imagen: ruta desde la raíz.
+const MEDIOS = {
+  ada: { color: '#2C6259', video: 'adl-ada' },
+  sindri: { color: '#1D4F7A', video: 'adl-sindri' },
+  reporting: { color: '#3F5266', video: 'adl-reporting' },
+  brokkr: { color: '#A94F0E', video: 'adl-brokkr' },
+  efesto: { color: '#A94F0E', video: 'adl-efesto' },
+  aris: { color: '#1D4F7A', video: 'adl-aris' },
+  tareas: { color: '#1D4F7A', video: 'adl-aris' },
+  linai: { color: '#A94F0E', video: 'adl-linai' },
+  asistente: { color: '#A94F0E', video: 'adl-linai' },
+  servicios: { color: '#2E6C9E', video: 'adl-servicios' },
+  plantillas: { color: '#8A3B5C', imagen: 'plantillas/cafe-almendro/captura.jpg' },
+  laboratorio: { color: '#2E6C9E', imagen: 'lab/og.jpg' },
+  imagina: { color: '#6D28D9', imagen: 'img/novedades/iit-ep01.webp' },
+  clubbyte: { color: '#C2410C' },
+  otro: { color: '#1D4F7A' }
+};
 
 // Dónde publicamos. Solo cuentas de Arce Data Lab (nunca la personal luis_arce_3).
 const CANALES = [
@@ -116,8 +99,10 @@ const TEXTOS = {
     canales: 'Dónde publicamos',
     canalesSub: 'Todo lo que hacemos sale aquí. Síguenos donde te sea más cómodo.',
     linkedin: 'En LinkedIn',
-    ver: 'Ver',
-    seguir: 'Seguir'
+    ver: 'Verlo',
+    seguir: 'Seguir',
+    tipos: { nuevo: 'Nuevo', mejorado: 'Mejorado', en_preparacion: 'En preparación', video: 'Vídeo', capitulo: 'Capítulo' },
+    play: 'Ver el vídeo'
   },
   en: {
     menu: 'News',
@@ -129,8 +114,10 @@ const TEXTOS = {
     canales: 'Where we publish',
     canalesSub: 'Everything we make goes out here. Follow us wherever suits you best.',
     linkedin: 'On LinkedIn',
-    ver: 'See',
-    seguir: 'Follow'
+    ver: 'See it',
+    seguir: 'Follow',
+    tipos: { nuevo: 'New', mejorado: 'Improved', en_preparacion: 'Coming soon', video: 'Video', capitulo: 'Episode' },
+    play: 'Watch the video'
   },
   zh: {
     menu: '动态',
@@ -143,8 +130,10 @@ const TEXTOS = {
     canalesSub: '我们做的一切都会发布在这里。选择你最方便的平台关注我们。',
     linkedin: 'LinkedIn 上',
     ver: '查看',
-    seguir: '关注'
+    seguir: '关注',
+    tipos: { nuevo: '新品', mejorado: '更新', en_preparacion: '即将推出', video: '视频', capitulo: '新一集' },
+    play: '观看视频'
   }
 };
 
-module.exports = { AHORA, NOVEDADES, CANALES, TEXTOS };
+module.exports = { AHORA, NOVEDADES, CANALES, TEXTOS, MEDIOS, N8N_NOVEDADES };
