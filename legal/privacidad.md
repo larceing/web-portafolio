@@ -5,7 +5,7 @@
 ## 1. Responsable
 - **Responsable:** Luis Henry Arce Inga (persona física), nombre comercial **Arce Data Lab** («Henry Arce»).
 - **NIF:** 61281955L.
-- **Domicilio:** [POR COMPLETAR: calle, número, código postal] Alicante (España).
+- **Domicilio:** Avenida de Catral, 12, 03349 San Isidro (Alicante), España.
 - **Contacto para privacidad:** info@arcedatalab.com
 
 No hay delegado de protección de datos porque no es obligatorio para esta actividad. Más datos del titular en el [Aviso legal](/aviso-legal/).
@@ -16,7 +16,7 @@ No hay delegado de protección de datos porque no es obligatorio para esta activ
 - **Datos:** dirección IP, fecha y hora, página pedida, navegador y página de origen, que el servidor anota en sus registros técnicos. La web no usa analítica ni cookies propias (ver la [Política de cookies](/cookies/)).
 - **Para qué:** que la web funcione, sea segura y se puedan detectar ataques o fallos.
 - **Base legal:** interés legítimo en mantener la web segura (art. 6.1.f del RGPD).
-- **Plazo:** [POR COMPLETAR: días que se guardan los registros del servidor], y después se borran.
+- **Plazo:** los registros de acceso se guardan unas 5 semanas y los de errores unas 10 semanas; después se borran solos. No entran en las copias de seguridad.
 
 ### 2.2. Contacto por correo, teléfono o WhatsApp
 - **Datos:** nombre, empresa, correo o teléfono y lo que nos cuentes en el mensaje.
@@ -51,7 +51,6 @@ No se venden ni se ceden datos a terceros, salvo obligación legal (por ejemplo,
 - **Microsoft** (OneDrive): copias de seguridad.
 - **WhatsApp (Meta):** si nos escribes por WhatsApp.
 - **YouTube (Google), TikTok, Instagram (Meta) y LinkedIn:** donde se publican los contenidos del titular; LinkedIn, además, si cargas sus publicaciones en esta web.
-- **[POR COMPLETAR: gestoría o asesoría fiscal, si la hay]:** contabilidad e impuestos.
 
 ## 4. Transferencias fuera de la UE
 Algunos de estos proveedores (Google, Microsoft, Meta, Resend, LinkedIn y TikTok) pertenecen a grupos con sede o personal fuera del Espacio Económico Europeo, sobre todo en Estados Unidos. En esos casos la transferencia se ampara en el Marco de Privacidad de Datos UE-EE. UU. cuando el proveedor está adherido, o en las cláusulas contractuales tipo de la Comisión Europea. Puedes pedir más información en info@arcedatalab.com.
