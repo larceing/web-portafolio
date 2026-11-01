@@ -12,7 +12,7 @@ Esta política explica lo que exige el artículo 22.2 de la Ley 34/2002 (LSSI), 
 - Las fuentes, imágenes y scripts se sirven desde la propia web. No se carga nada de Google, Meta ni otras empresas al abrir las páginas.
 
 ## 3. Publicaciones de LinkedIn (cookies de terceros, solo si las cargas)
-En la página [Publicaciones](/linkedin/), las publicaciones se muestran con el visor de LinkedIn. **No se cargan hasta que pulsas «Mostrar publicaciones de LinkedIn».** Al pulsarlo aceptas que LinkedIn (LinkedIn Ireland Unlimited Company) instale sus propias cookies en tu navegador.
+En la página [Publicaciones](/linkedin/), cada publicación se resume en una tarjeta propia de esta web, sin nada de LinkedIn. Si quieres leerlas completas ahí mismo, se usa el visor de LinkedIn, que **no se carga hasta que pulsas «Ver completas aquí»**. Al pulsarlo aceptas que LinkedIn (LinkedIn Ireland Unlimited Company) instale sus propias cookies en tu navegador.
 
 El 30/10/2026 el visor de LinkedIn instalaba estas cookies: bcookie y bscookie (identificación del navegador y seguridad, 1 año), li_gc (tus preferencias de cookies en LinkedIn, unos 6 meses), lidc (reparto de tráfico, 1 día), lang (idioma, sesión), JSESSIONID (sesión) y __cf_bm (protección contra bots de Cloudflare, 30 minutos). LinkedIn puede cambiarlas: la información completa está en la [Política de cookies de LinkedIn](https://www.linkedin.com/legal/cookie-policy) y su [Política de privacidad](https://www.linkedin.com/legal/privacy-policy).
 
