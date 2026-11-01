@@ -57,7 +57,7 @@
     <nav class="migas" aria-label="Breadcrumb"><a href="../../">首页</a> › <a href="../">项目</a> › <span>Efesto，车间</span></nav>
 
     <article class="bloque proyecto" data-bit="proyectos">
-      <div class="proyecto-cabecera" style="--c:#A94F0E"><span class="tesela-cara sello"><span class="monograma" aria-hidden="true">Ef</span></span></div>
+      <div class="proyecto-cabecera" style="--c:#A94F0E"><span class="tesela-cara sello"><img class="tesela-logo" src="../../../img/logo-efesto.webp" alt="" width="72" height="72" loading="lazy"></span></div>
       <p class="etiqueta">自有产品 · Sindri 的一部分 · 2026</p>
       <h1>Efesto：让 Sindri 读懂工厂</h1>
       <dl class="caso"><div><dt>问题</dt><dd>设备状态、良品和不良品数量、报警信息都留在各自的 PLC 或 SCADA 里，离 ERP 很远，而要连接它们通常意味着要在工厂里开放端口。</dd></div><div><dt>我做了什么</dt><dd>一个只读的车间代理程序，带 16 种连接器：OPC UA、Modbus、Siemens S7、Rockwell、Beckhoff、Omron、MQTT、MTConnect、BACnet、历史数据库 SQL、文件和电子秤等。连接从工厂向外发起，断网时先存储再补发，工厂的地址和密码绝不外传。</dd></div><div><dt>结果</dt><dd>用 22 台模拟设备测试：106 个数据点全部送达 Sindri。一台设备掉线，其他设备照常工作。尚未连接真实工厂。</dd></div></dl>
