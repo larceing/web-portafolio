@@ -1074,7 +1074,7 @@ const PRINCIPALES = ['ada', 'sindri', 'asistente', 'reporting', 'tareas'];
 const RELACIONADOS = { sindri: ['efesto', 'brokkr'] };
 
 // Logos propios de algunas apps: salen en su tarjeta en lugar del pictograma.
-const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp', brokkr: 'img/logo-brokkr.webp' };
+const LOGOS = { sindri: 'img/logo-sindri.webp', gestor: 'img/logo-odin.webp', tareas: 'img/logo-aris.webp', brokkr: 'img/logo-brokkr.webp', ada: 'img/logo-ada.webp', asistente: 'img/logo-linai.webp', reporting: 'img/logo-reporting.webp', efesto: 'img/logo-efesto.webp' };
 
 // Logo de Arce Data Lab: media hoja de arce con el nombre encima, a la manera
 // del de NERV, y el lema de Cleóbulo («la medida es lo mejor»). Va en línea
@@ -1104,7 +1104,7 @@ function botonPlantillas(t) {
 // y dentro su logo real, su monograma (productos sin logo todavía) o su
 // pictograma en el color del proyecto. Así cada uno tiene su cara sin romper
 // la unidad de la página.
-const MONOGRAMAS = { ada: 'Ad', asistente: 'Li', reporting: 'R', efesto: 'Ef', servicios: 'Rs', crm: 'Fo', plataforma: 'Pl', clubbyte: 'CB' };
+const MONOGRAMAS = { servicios: 'Rs', crm: 'Fo', plataforma: 'Pl', clubbyte: 'CB' };
 function cara(p, base, tam) {
   if (LOGOS[p.id]) return '<img class="tesela-logo" src="' + (base || '') + LOGOS[p.id] + '" alt="" width="' + tam + '" height="' + tam + '" loading="lazy">';
   if (MONOGRAMAS[p.id]) return '<span class="monograma" aria-hidden="true">' + MONOGRAMAS[p.id] + '</span>';

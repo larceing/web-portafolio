@@ -57,7 +57,7 @@
     <nav class="migas" aria-label="Breadcrumb"><a href="../../">Home</a> › <a href="../">Projects</a> › <span>Efesto, shop floor</span></nav>
 
     <article class="bloque proyecto" data-bit="proyectos">
-      <div class="proyecto-cabecera" style="--c:#A94F0E"><span class="tesela-cara sello"><span class="monograma" aria-hidden="true">Ef</span></span></div>
+      <div class="proyecto-cabecera" style="--c:#A94F0E"><span class="tesela-cara sello"><img class="tesela-logo" src="../../../img/logo-efesto.webp" alt="" width="72" height="72" loading="lazy"></span></div>
       <p class="etiqueta">Own product · part of Sindri · 2026</p>
       <h1>Efesto: Sindri reads the factory</h1>
       <dl class="caso"><div><dt>Problem</dt><dd>Machine status, good and bad parts and alarms stay inside each PLC or SCADA, far from the ERP, and connecting them usually means opening ports into the factory.</dd></div><div><dt>What I did</dt><dd>A read-only shop-floor agent with 16 connectors: OPC UA, Modbus, Siemens S7, Rockwell, Beckhoff, Omron, MQTT, MTConnect, BACnet, historian SQL, files and scales, among others. The connection goes out from the factory, stores and resends if the network drops, and no plant addresses or passwords ever leave it.</dd></div><div><dt>Result</dt><dd>Tested with 22 simulated machines: 106 out of 106 data points reach Sindri. If one machine goes down, the rest carry on. Not yet connected to a real factory.</dd></div></dl>

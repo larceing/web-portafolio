@@ -57,7 +57,7 @@
     <nav class="migas" aria-label="Breadcrumb"><a href="../../">首页</a> › <a href="../">项目</a> › <span>Ada，营销</span></nav>
 
     <article class="bloque proyecto" data-bit="proyectos">
-      <div class="proyecto-cabecera" style="--c:#2C6259"><span class="tesela-cara sello"><span class="monograma" aria-hidden="true">Ad</span></span></div>
+      <div class="proyecto-cabecera" style="--c:#2C6259"><span class="tesela-cara sello"><img class="tesela-logo" src="../../../img/logo-ada.webp" alt="" width="72" height="72" loading="lazy"></span></div>
       <p class="etiqueta">自有产品 · 运行中 · 2026</p>
       <h1>Ada：用 n8n 和 AI 做我的渠道营销</h1>
       <dl class="caso"><div><dt>问题</dt><dd>每天为 YouTube、Instagram、TikTok 和 LinkedIn 制作视频、封面和文案，会占满整个晚上；一旦哪里出错，当天就什么都发不出去。</dd></div><div><dt>我做了什么</dt><dd>Ada，一个在 n8n 中按两个周期运行的系统。每周它请 ChatGPT 写故事，并准备剧集、短视频、帖子和推广活动；每晚它回顾当天，如果值得，就准备一条新闻视频。ChatGPT 负责写故事和生成图片，Google AI Studio 负责配音，剪辑、片段和封面来自我自己的视频引擎。所有内容进入一个队列：发布前一天晚上 8 点，它检查封面、文案、时间、每个渠道每天最多三条、14 天内不重复话题，并发一封邮件，每条内容都有一个“停止”按钮。</dd></div><div><dt>结果</dt><dd>审核通过的内容通过 Buffer 和 YouTube API 发布，视频自动归档。有错误和告警日志：如果图片或配音额度用完，它会记录时间，等有额度时再继续；如果某个渠道失败，会提示手动上传。审核和告警已上线；自动发布正在测试中。</dd></div></dl>
