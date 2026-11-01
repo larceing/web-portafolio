@@ -1910,9 +1910,10 @@ function llms() {
 
 // En inglés y en chino, los enlaces al laboratorio llevan ?lang= para que
 // se abra en el mismo idioma aunque el visitante eligiera otro antes.
+// Solo la carpeta lab/ exacta: no «themelab/» ni «theme-lab/».
 function conIdiomaLab(d, html) {
   if (d.id === 'es') return html;
-  return html.replace(/(href="[^"]*lab\/)(#[^"]*)?"/g, (m, ruta, ancla) => ruta + '?lang=' + d.id + (ancla || '') + '"');
+  return html.replace(/(href="(?:[^"]*\/)?lab\/)(#[^"]*)?"/g, (m, ruta, ancla) => ruta + '?lang=' + d.id + (ancla || '') + '"');
 }
 
 IDIOMAS.forEach(d => {
