@@ -130,6 +130,13 @@ module.exports = {
       lotesTitulo: '分析包',
       lotesIntro: '为每个部门预先设计好的报表，按你的 ERP 和你们的叫法调整。从最让你头疼的那个分析包开始，之后随时可以增加其他的。可以在实验室用虚构数据试用。',
       lotesBoton: '试用示例',
+      video: {
+        id: 'g_qpzPODsXE', img: 'img/videos/tabla-calendario.webp',
+        titulo: '视频：在 Power Query 中创建日期表',
+        texto: '我在每份报表里都会用的日期表，附可复制的代码，是与去年对比的基础。视频为西班牙语。',
+        alt: '视频《5 分钟在 Power Query 中创建日期表》的缩略图',
+        ver: '在 YouTube 上观看', canal: '频道里的更多视频'
+      },
       lotes: [
         ['bi-comercial', '销售', '适用于管理层和销售团队', '我们卖得比去年多吗？谁欠我们钱？哪些货需要补？',
           ['按月份、客户和产品系列统计的销售额，与去年对比', '按账龄统计的应收账款和平均回款天数', '低于安全库存的物料和周转率']],
@@ -333,7 +340,7 @@ module.exports = {
       ['他做哪些类型的项目？', '把重复工作自动化，打通 ERP、CRM 和数据库，制作 Power BI 和 Microsoft Fabric 报表，并让 AI 助手以只读方式回答业务数据问题。'],
       ['他和中小企业合作吗？', '是的：和有手工重复工作或数据对不上的中小企业和工厂合作，可远程，也可在阿利坎特当面合作。'],
       ['我的数据安全吗？', '安全：尽可能使用只读访问，应用运行在欧盟的服务器上，每晚备份。'],
-      ['他在哪里发布内容？', '在 LinkedIn 上写 BI、数据和 AI 应用，在 TikTok（@arcedatalab）上分享自动化和数据小技巧，还有 Instagram（@henry_arce_dev）。很快也会在 YouTube 的 Imagina en IT 频道发布。'],
+      ['他在哪里发布内容？', '在 LinkedIn 上写 BI、数据和 AI 应用，在 TikTok（@arcedatalab）上分享自动化和数据小技巧，还有 Instagram（@henry_arce_dev）和 YouTube（@arcedatalab），发布 Power BI、数据和 AI 相关视频。'],
       ['怎么联系他？', '发邮件到 info@arcedatalab.com，WhatsApp +34 633 42 42 23，或通过 LinkedIn；应用技术支持请发邮件到 soporte@arcedatalab.com。']
     ],
     faqServicios: [

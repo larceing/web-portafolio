@@ -129,6 +129,13 @@ module.exports = {
       lotesTitulo: 'Analysis packs',
       lotesIntro: 'Reports already designed for each area, adapted to your ERP and your own names. Start with the pack that hurts most and add the others whenever you like. Try them with made-up data in the lab (the demos are in Spanish).',
       lotesBoton: 'Try the example',
+      video: {
+        id: 'g_qpzPODsXE', img: 'img/videos/tabla-calendario.webp',
+        titulo: 'On video: a date table in Power Query',
+        texto: 'The date table I use in every report, with the code to copy. It is the base for comparing with last year. The video is in Spanish.',
+        alt: 'Thumbnail of the video “Date table in Power Query in 5 minutes”',
+        ver: 'Watch on YouTube', canal: 'More videos on the channel'
+      },
       lotes: [
         ['bi-comercial', 'Sales', 'For management and sales teams', 'Are we selling more than last year, who owes us money and what needs reordering?',
           ['Sales by month, customer and product family against last year', 'Receivables by age and average collection days', 'Stock below minimum and turnover']],
@@ -332,7 +339,7 @@ module.exports = {
       ['What kind of projects does he do?', 'He automates repetitive tasks, connects ERP, CRM and databases, builds Power BI and Microsoft Fabric reports, and puts AI assistants to answer questions on business data in read-only mode.'],
       ['Does he work with SMEs?', 'Yes: with SMEs and factories that have manual tasks or data that does not add up, remotely or from Alicante.'],
       ['Is my data safe?', 'Yes: read-only access is used whenever possible, and the apps run on EU servers with nightly backups.'],
-      ['Where does he publish content?', 'On LinkedIn about BI, data and applied AI, on TikTok (@arcedatalab) with quick automation and data tips, and on Instagram (@henry_arce_dev). Soon on YouTube too, on the Imagina en IT channel.'],
+      ['Where does he publish content?', 'On LinkedIn about BI, data and applied AI, on TikTok (@arcedatalab) with quick automation and data tips, on Instagram (@henry_arce_dev) and on YouTube (@arcedatalab), with videos on Power BI, data and AI.'],
       ['How can I get in touch?', 'By email at info@arcedatalab.com, by WhatsApp at +34 633 42 42 23 or on LinkedIn; for support with the apps, soporte@arcedatalab.com.']
     ],
     faqServicios: [

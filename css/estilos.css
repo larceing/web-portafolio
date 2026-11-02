@@ -5036,3 +5036,47 @@ body:has(.simple) {
     white-space: nowrap;
   }
 }
+
+/* Vídeo de YouTube en una página de servicio: miniatura propia que enlaza al vídeo */
+.video-servicio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.video-mini {
+  position: relative;
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--raya);
+  background: var(--tarjeta);
+}
+.video-mini img { display: block; width: 100%; height: auto; }
+.video-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 68px;
+  height: 48px;
+  margin: -24px 0 0 -34px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, .72);
+  transition: background .2s;
+}
+.video-play::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 14px;
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent #fff;
+}
+.video-mini:hover .video-play, .video-mini:focus-visible .video-play { background: #c4302b; }
+.video-servicio h2 { margin-top: 0; }
+@media (max-width: 760px) {
+  .video-servicio { grid-template-columns: 1fr; gap: 20px; }
+}
+.video-servicio > div { text-align: left; }
+.video-servicio .botones { justify-content: flex-start; }
