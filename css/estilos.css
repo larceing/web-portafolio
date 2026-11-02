@@ -5078,5 +5078,4 @@ body:has(.simple) {
 @media (max-width: 760px) {
   .video-servicio { grid-template-columns: 1fr; gap: 20px; }
 }
-.video-servicio > div { text-align: left; }
-.video-servicio .botones { justify-content: flex-start; }
+.video-servicio .botones { justify-content: center; }
