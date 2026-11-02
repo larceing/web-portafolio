@@ -175,6 +175,72 @@ module.exports = {
         ['What if a program changes?', 'The flow warns you when something stops working and gets adjusted. With monthly maintenance, I do it.']
       ]
     },
+    'power-bi-fabricas': {
+      titulo: 'Power BI for factories: OEE, downtime and scrap | Arce Data Lab',
+      corto: 'Power BI for factories',
+      h1: 'Power BI for factories: OEE, downtime and scrap',
+      descripcion: 'Power BI dashboards for manufacturing SMEs: OEE by machine, downtime by cause and the cost of scrap, with data from the ERP and the shop floor.',
+      intro: 'OEE measures how much of a machine’s time turns into good parts: availability × performance × quality. With Power BI you see it every morning by machine, line and shift, next to the downtime and scrap that pull it down, without building the Excel by hand.',
+      incluye: [
+        ['OEE by machine and line', 'Availability, performance and quality separately, so you know which of the three is costing you.'],
+        ['Downtime by cause', 'Minor and major stops by day, machine and reason, with the mean time between stops.'],
+        ['Scrap and its cost', 'Rejected parts by defect and work centre, and what they cost, against plan.'],
+        ['Shop-floor data', 'From the ERP, the MES or the machines themselves (OPC UA, Modbus, Siemens S7…) in read-only mode, without opening ports in the factory.'],
+        ['Written definitions', 'What counts as a stop, a bad part or planned time, agreed with the plant manager.']
+      ],
+      tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, OPC UA, Modbus, MQTT',
+      lotesTitulo: 'Analysis packs for the plant',
+      lotesIntro: 'Reports already designed for production, adapted to your machines and your own names. Try them with made-up data in the lab.',
+      lotesBoton: 'Try the example',
+      faq: [
+        ['What is OEE and how is it calculated?', 'OEE (overall equipment effectiveness) is availability × performance × quality. If a machine was stopped for 10% of planned time, ran at 90% of its ideal speed and 95% of its parts were good, its OEE is 0.9 × 0.9 × 0.95 = 77%.'],
+        ['Do I need a MES or new sensors?', 'Not always. You can start with what the ERP or the production reports already record. If you want live machine data, it is read from the PLC or SCADA in read-only mode.'],
+        ['Does it work for small factories?', 'Yes. It is designed for manufacturing SMEs with a few lines, where OEE is often worked out by hand in Excel once a month.'],
+        ['How much does it cost?', 'It depends on the machines, where the data comes from and how many packs you want. Tell me about your plant and I’ll send you a fixed written quote, with no obligation.']
+      ]
+    },
+    'pedidos-por-correo': {
+      titulo: 'Automate email orders into your ERP | Arce Data Lab',
+      corto: 'Email orders into the ERP',
+      h1: 'Automate the orders that arrive by email',
+      descripcion: 'Orders that arrive by email or as PDFs, read, checked and entered in your ERP without typing them. You only review what isn’t clear.',
+      intro: 'In many distributors and factories someone spends every morning copying orders from email into the ERP, line by line. It can be automated: the system reads the email and the PDF, recognises the customer and the products, checks prices and stock, and enters the order. It only asks you about what isn’t clear.',
+      incluye: [
+        ['Receive and sort', 'It reads the orders mailbox and separates orders from everything else: questions, invoices or advertising.'],
+        ['Extract', 'It takes customer, item codes, quantities and dates from the email body, a PDF or an attached Excel file.'],
+        ['Validate', 'It checks with your ERP that the customer and items exist, and flags prices, minimums or stock that don’t add up.'],
+        ['Enter', 'It enters the order in the ERP through its API or whatever route it supports, and keeps the original email linked.'],
+        ['Follow up', 'A review tray with anything doubtful and a daily summary of what came in, what was entered and what is waiting.']
+      ],
+      tec: 'n8n, Python, AI (OpenAI or Claude), Microsoft 365 or Gmail, ERP API, SQL Server',
+      faq: [
+        ['Does it work with PDF or scanned orders?', 'Yes, with text PDFs and most readable scans. Anything the system can’t read with confidence goes to the review tray instead of being entered.'],
+        ['What if it gets something wrong?', 'It never enters anything doubtful: if data is missing or doesn’t match the ERP, it asks you. Every entered order stays linked to its email so you can check it.'],
+        ['Which ERPs does it work with?', 'Those with an API or an accessible database. If your ERP only imports files, the import file is prepared for it.'],
+        ['How much does it cost?', 'It depends on how many order formats you receive and how your ERP connects. Tell me about your case and I’ll send you a fixed written quote, with no obligation.']
+      ]
+    },
+    'asistente-ia': {
+      titulo: 'AI assistant connected to your ERP | Arce Data Lab',
+      corto: 'AI assistant for your ERP',
+      h1: 'An AI assistant that answers with your ERP data',
+      descripcion: 'Ask your ERP in plain language and get the answer as text, a table or Excel. Read-only and approved queries, so it doesn’t make figures up.',
+      intro: '“How much have we sold to this customer this year?” Today that question ends up in a report or an email to whoever knows how to pull the figure. An assistant connected to the ERP answers it on the spot. The AI doesn’t write SQL: it chooses between queries that are already approved, so every figure comes from a reviewed calculation.',
+      incluye: [
+        ['Closed queries', 'Each kind of question is a reviewed query. The AI chooses which one to use and with which filters, and cannot make data up.'],
+        ['Read-only', 'The assistant cannot change anything in your ERP. It connects with a read-only user.'],
+        ['Business notes', 'How each figure is calculated in your company, written down and editable, so the assistant answers the way your team would.'],
+        ['Text, table or Excel', 'The answer in whatever format is needed, in Spanish, English or Chinese.'],
+        ['Question log', 'What gets asked and which query was used, to review answers and add the ones that are missing.']
+      ],
+      tec: 'Python, OpenAI or Claude, SQL Server, A3 ERP, Microsoft Fabric',
+      faq: [
+        ['Can it make a figure up?', 'No. The AI doesn’t write the query: it only chooses among the approved ones and passes them the filters. If a question doesn’t fit any of them, it says so instead of inventing.'],
+        ['Does my data leave the company?', 'The AI model receives the question and the query result, not the database. Access to the ERP is read-only.'],
+        ['Is one already running?', 'Yes. Lin-AI has been answering business questions on Grupo SPSIL’s ERP since 2026. You can try a demo with made-up data in the lab.'],
+        ['How much does it cost?', 'It depends on how many kinds of question you want to cover and what your ERP is like. Tell me about your case and I’ll send you a fixed written quote, with no obligation.']
+      ]
+    },
     webs: {
       titulo: 'Custom websites and web apps for SMEs | Arce Data Lab',
       corto: 'Websites and apps',
@@ -293,7 +359,7 @@ module.exports = {
     serviciosLista: [
       ['flujo', 'Process automation', 'I remove repetitive manual work: reports that build themselves, data that moves between programs on its own, automatic alerts and emails.', 'n8n, Python, Power Automate, APIs', 'automatizacion-n8n'],
       ['grafico', 'Dashboards and BI', 'Power BI and Microsoft Fabric on top of your ERP or spreadsheets: sales, collections, stock and production, with figures reconciled and documented.', 'Power BI, DAX, Fabric, SQL', 'power-bi'],
-      ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL', ''],
+      ['bot', 'AI assistants on your data', 'An assistant that answers business questions by querying your data in read-only mode, without making figures up, in text or Excel.', 'Agents, Claude, OpenAI, SQL', 'asistente-ia'],
       ['escritorio', 'Custom websites and applications', 'ERP, CRM, appointments, tickets or an online shop: websites and web apps with sign-in, backups and deployment on my own infrastructure.', 'Node.js, Python, Next.js, Docker', 'webs']
     ],
     verServicio: 'See the service',

@@ -533,7 +533,7 @@ const UI = {
   serviciosLista: [
     ['flujo', 'Automatización de procesos', 'Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos.', 'n8n, Python, Power Automate, API', 'automatizacion-n8n'],
     ['grafico', 'Cuadros de mando y BI', 'Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas.', 'Power BI, DAX, Fabric, SQL', 'power-bi'],
-    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', ''],
+    ['bot', 'Asistentes de IA sobre tus datos', 'Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.', 'Agentes, Claude, OpenAI, SQL', 'asistente-ia'],
     ['escritorio', 'Webs y aplicaciones a medida', 'ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura.', 'Node.js, Python, Next.js, Docker', 'webs']
   ],
   verServicio: 'Ver el servicio',
@@ -801,6 +801,32 @@ const SERVICIOS = [
     ]
   },
   {
+    id: 'power-bi-fabricas', icono: 'fabrica',
+    proyectos: ['efesto', 'sindri', 'reporting', 'escritorio'],
+    titulo: 'Power BI para fábricas: OEE, paradas y scrap | Arce Data Lab',
+    corto: 'Power BI para fábricas',
+    h1: 'Power BI para fábricas: OEE, paradas y scrap',
+    descripcion: 'Cuadros de mando de Power BI para pymes industriales: OEE por máquina, paradas por causa y coste del scrap, con datos del ERP y de la planta.',
+    intro: 'El OEE mide qué parte del tiempo de una máquina se convierte en piezas buenas: disponibilidad por rendimiento por calidad. Con Power BI lo ves cada mañana por máquina, línea y turno, junto a las paradas y el scrap que lo bajan, sin montar el Excel a mano.',
+    incluye: [
+      ['OEE por máquina y línea', 'Disponibilidad, rendimiento y calidad por separado, para saber cuál de los tres te está costando.'],
+      ['Paradas por causa', 'Paradas menores y mayores por día, máquina y motivo, con el tiempo medio entre paradas.'],
+      ['Scrap y su coste', 'Piezas rechazadas por defecto y centro de trabajo, y lo que cuestan, frente a lo previsto.'],
+      ['Datos de la planta', 'Del ERP, del MES o de las propias máquinas (OPC UA, Modbus, Siemens S7…) en solo lectura, sin abrir puertos de la fábrica.'],
+      ['Definiciones por escrito', 'Qué cuenta como parada, como pieza mala o como tiempo planificado, acordado con el jefe de planta.']
+    ],
+    tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, OPC UA, Modbus, MQTT',
+    lotesTitulo: 'Lotes de análisis para planta',
+    lotesIntro: 'Informes ya pensados para producción, que adapto a tus máquinas y a tus nombres. Pruébalos con datos inventados en el laboratorio.',
+    lotesBoton: 'Probar el ejemplo',
+    faq: [
+      ['¿Qué es el OEE y cómo se calcula?', 'El OEE (eficiencia general de los equipos) es disponibilidad × rendimiento × calidad. Si una máquina estuvo parada el 10 % del tiempo planificado, fue al 90 % de su velocidad ideal y el 95 % de las piezas salieron buenas, su OEE es 0,9 × 0,9 × 0,95 = 77 %.'],
+      ['¿Necesito un MES o sensores nuevos?', 'No siempre. Se puede empezar con lo que ya registra el ERP o los partes de producción. Si quieres el dato de la máquina en tiempo real, se lee del PLC o del SCADA en solo lectura.'],
+      ['¿Funciona con fábricas pequeñas?', 'Sí. Está pensado para pymes industriales con pocas líneas, donde el OEE se suele calcular a mano en Excel una vez al mes.'],
+      ['¿Cuánto cuesta?', 'Depende de las máquinas, de dónde salen los datos y de cuántos lotes quieras. Cuéntame tu planta y te paso un presupuesto cerrado por escrito, sin compromiso.']
+    ]
+  },
+  {
     id: 'automatizacion-n8n', icono: 'flujo',
     proyectos: ['ada', 'whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
     titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
@@ -821,6 +847,52 @@ const SERVICIOS = [
       ['¿Qué tareas se pueden automatizar?', 'Las que se repiten y siguen siempre los mismos pasos: copiar datos entre programas, enviar avisos o correos, generar informes o PDF, revisar formularios y clasificar mensajes.'],
       ['¿Cuánto cuesta una automatización?', 'Depende de cuántas aplicaciones se conectan y de los casos especiales. Cuéntame tu caso y te paso un presupuesto cerrado por escrito.'],
       ['¿Qué pasa si cambia un programa?', 'El flujo avisa cuando algo deja de funcionar y se ajusta. Con el mantenimiento mensual, lo hago yo.']
+    ]
+  },
+  {
+    id: 'pedidos-por-correo', icono: 'sobre',
+    proyectos: ['ada', 'outlook', 'sindri', 'helpdesk', 'gateway'],
+    titulo: 'Automatizar pedidos por correo al ERP | Arce Data Lab',
+    corto: 'Pedidos por correo al ERP',
+    h1: 'Automatizar los pedidos que llegan por correo',
+    descripcion: 'Los pedidos que llegan por correo o en PDF, leídos, comprobados y grabados en tu ERP sin teclearlos. Tú solo revisas lo que no está claro.',
+    intro: 'En muchas distribuidoras y fábricas alguien pasa cada mañana copiando pedidos del correo al ERP, línea a línea. Se puede automatizar: el sistema lee el correo y el PDF, reconoce al cliente y los productos, comprueba precios y stock, y graba el pedido. Solo te pregunta lo que no está claro.',
+    incluye: [
+      ['Entrar y clasificar', 'Lee el buzón de pedidos y separa lo que es un pedido de lo que no: consultas, facturas o publicidad.'],
+      ['Extraer', 'Saca cliente, referencias, cantidades y fechas del cuerpo del correo, de un PDF o de un Excel adjunto.'],
+      ['Validar', 'Comprueba con tu ERP que el cliente y las referencias existen, y avisa de precios, mínimos o stock que no cuadran.'],
+      ['Registrar', 'Graba el pedido en el ERP por su API o por la vía que admita, y guarda el correo original enlazado.'],
+      ['Seguir', 'Una bandeja de revisión con lo dudoso y un resumen diario de lo que entró, lo que se grabó y lo que espera.']
+    ],
+    tec: 'n8n, Python, IA (OpenAI o Claude), Microsoft 365 o Gmail, API del ERP, SQL Server',
+    faq: [
+      ['¿Funciona con pedidos en PDF o escaneados?', 'Sí, con PDF de texto y con la mayoría de escaneados legibles. Lo que el sistema no lee con seguridad va a la bandeja de revisión en lugar de grabarse.'],
+      ['¿Qué pasa si se equivoca?', 'No graba nada dudoso: si falta un dato o algo no cuadra con el ERP, te lo pregunta. Cada pedido grabado queda enlazado a su correo, para comprobarlo.'],
+      ['¿Con qué ERP funciona?', 'Con los que tienen API o una base de datos accesible. Si tu ERP solo importa ficheros, se prepara el fichero de importación.'],
+      ['¿Cuánto cuesta?', 'Depende de cuántos formatos de pedido recibes y de cómo se conecta tu ERP. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.']
+    ]
+  },
+  {
+    id: 'asistente-ia', icono: 'bot',
+    proyectos: ['asistente', 'reporting', 'gateway', 'whatsapp', 'gobernanza'],
+    titulo: 'Asistente de IA conectado a tu ERP | Arce Data Lab',
+    corto: 'Asistente de IA para tu ERP',
+    h1: 'Un asistente de IA que responde con los datos de tu ERP',
+    descripcion: 'Pregunta a tu ERP en lenguaje normal y recibe la respuesta en texto, tabla o Excel. Solo lectura y consultas aprobadas, para que no invente cifras.',
+    intro: '«¿Cuánto le hemos vendido a este cliente este año?» Hoy esa pregunta acaba en un informe o en un correo a quien sabe sacar el dato. Un asistente conectado al ERP la responde al momento. La IA no escribe SQL: elige entre consultas ya aprobadas, así cada cifra sale de un cálculo revisado.',
+    incluye: [
+      ['Consultas cerradas', 'Cada tipo de pregunta es una consulta revisada. La IA elige cuál usar y con qué filtros, y no puede inventar datos.'],
+      ['Solo lectura', 'El asistente no puede cambiar nada en tu ERP. Se conecta con un usuario de lectura.'],
+      ['Fichas de negocio', 'Cómo se calcula cada cifra en tu empresa, por escrito y editable, para que el asistente responda como lo haría tu equipo.'],
+      ['Texto, tabla o Excel', 'La respuesta, en el formato que se necesite, en español, inglés o chino.'],
+      ['Registro de preguntas', 'Qué se pregunta y qué consulta se usó, para revisar las respuestas y añadir las que falten.']
+    ],
+    tec: 'Python, OpenAI o Claude, SQL Server, A3 ERP, Microsoft Fabric',
+    faq: [
+      ['¿Puede inventarse una cifra?', 'No. La IA no escribe la consulta: solo elige entre las aprobadas y les pasa los filtros. Si una pregunta no encaja en ninguna, lo dice en vez de inventar.'],
+      ['¿Mis datos salen de la empresa?', 'El modelo de IA recibe la pregunta y el resultado de la consulta, no la base de datos. El acceso al ERP es de solo lectura.'],
+      ['¿Hay alguno funcionando?', 'Sí. Lin-AI responde preguntas de negocio sobre el ERP de Grupo SPSIL desde 2026. Puedes probar una demo con datos inventados en el laboratorio.'],
+      ['¿Cuánto cuesta?', 'Depende de cuántos tipos de pregunta quieres cubrir y de cómo es tu ERP. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.']
     ]
   },
   {
@@ -848,8 +920,13 @@ const SERVICIOS = [
   }
 ];
 
+// La página de fábricas reutiliza los lotes de planta de la de Power BI.
+const LOTES_PLANTA = ['bi-fabricacion', 'bi-calidad', 'bi-pedidos'];
+SERVICIOS.find(x => x.id === 'power-bi-fabricas').lotes = SERVICIOS.find(x => x.id === 'power-bi').lotes.filter(l => LOTES_PLANTA.includes(l[0]));
+
 const EN = require('./contenido.en.js');
 const ZH = require('./contenido.zh.js');
+[EN, ZH].forEach(X => { X.SERVICIOS['power-bi-fabricas'].lotes = X.SERVICIOS['power-bi'].lotes.filter(l => LOTES_PLANTA.includes(l[0])); });
 
 // Publicaciones de la página /linkedin/. Cada elemento es el código de
 // «Insertar esta publicación» o el enlace de la publicación; de él solo se
