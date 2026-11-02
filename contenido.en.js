@@ -493,7 +493,11 @@ module.exports = {
       corto: 'Sindri ERP', titulo: 'Sindri: ERP for small manufacturers', etiqueta: 'Own product · open source · 2026',
       resumen: 'ERP for small factories: orders, a warehouse with batches, invoices ready for VERI*FACTU and the shop floor connected through Efesto.',
       probar: 'From sales to the shop floor: opportunity, order, routing, a pallet with its batch and the delivery note.',
-      texto: 'ERP for small factories: customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, the CRM. It receives the billable support hours from Odin and builds its PDFs with Report Server.',
+      caso: [
+        ['Problem', 'In a small factory, orders, stock and invoices usually live in different programs or in Excel, and the shop floor stays outside the ERP.'],
+        ['What I did', 'An ERP with customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, receives support hours from Odin and builds its PDFs with Report Server.'],
+        ['Result', 'Running (version 0.2) and open source under the AGPL-3.0 licence. Invoices are immutable and ready for VERI*FACTU; it does not issue real invoices to third parties yet.']
+      ],
       tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'REST API', 'Docker']
     },
     gestor: {
@@ -528,14 +532,22 @@ module.exports = {
       corto: 'Lin-AI, assistant', titulo: 'Lin-AI: AI assistant on top of the ERP', etiqueta: 'For Grupo SPSIL · 2026',
       resumen: 'Business questions to the ERP in plain language, with closed queries so it does not make data up.',
       probar: 'Ask the ERP, see which query it picks and download the answer.',
-      texto: 'An assistant that answers business questions by querying the ERP in read-only mode. Each type of query is a closed function; the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated, and it answers in text or in Excel.',
+      caso: [
+        ['Problem', 'Business questions about the ERP (“how much have we sold to this customer this year?”) ended up in a report or an email to whoever knew how to pull the figure.'],
+        ['What I did', 'An assistant that answers by querying the ERP in read-only mode. Each type of query is a closed function: the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated.'],
+        ['Result', 'In use at Grupo SPSIL since 2026. It answers in Spanish, English and Chinese, as text, a table or Excel, and cannot change anything in the ERP.']
+      ],
       tec: ['Python', 'Agents', 'Knowledge base', 'SQL Server']
     },
     reporting: {
       corto: 'BI reporting', titulo: 'Sales, collections and stock reporting', etiqueta: 'For Grupo SPSIL · 2025–2026',
       resumen: 'Sales, collections and stock in Power BI, migrated to Microsoft Fabric and checked before and after.',
       probar: 'Filter, switch pages and refresh the model step by step.',
-      texto: 'Power BI reports on top of the ERP for management, sales and purchasing. After a network change cut off the data sources, I migrated the processes to Dataflows and a Lakehouse in Microsoft Fabric. Every change to a view ships with its backup, its rollback script and a before-and-after check.'
+      caso: [
+        ['Problem', 'A network change cut off the data sources of the Power BI reports for management, sales and purchasing.'],
+        ['What I did', 'I migrated the processes to Dataflows and a Lakehouse in Microsoft Fabric, on top of A3 ERP. Every change to a view ships with its backup, its rollback script and a before-and-after check.'],
+        ['Result', 'The sales, collections and stock reports are still in use on Fabric (2025–2026), with the figures checked at every change. They are the basis of the analysis packs.']
+      ]
     },
     nutricion: {
       corto: 'Nutrition app', titulo: 'Nutrition and training app', etiqueta: 'Own product · web app',

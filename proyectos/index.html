@@ -172,7 +172,7 @@
     <div hidden id="d-sindri" data-color="#1D4F7A" data-icono="fabrica">
       <p class="etiqueta">Producto propio · open source · 2026</p>
       <h3>Sindri: ERP para pymes industriales</h3>
-      <p>ERP para fábricas pequeñas: clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, el CRM. Recibe las horas de soporte por facturar desde Odin y genera sus PDF con Report Server.</p>
+      <dl class="caso"><div><dt>Problema</dt><dd>En una fábrica pequeña, pedidos, almacén y facturas suelen vivir en programas distintos o en Excel, y la planta queda fuera del ERP.</dd></div><div><dt>Qué hice</dt><dd>Un ERP con clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, recibe las horas de soporte de Odin y genera sus PDF con Report Server.</dd></div><div><dt>Resultado</dt><dd>En marcha (versión 0.2) y en código abierto con licencia AGPL-3.0. Las facturas son inmutables y están preparadas para VERI*FACTU; todavía no emite facturas reales a terceros.</dd></div></dl>
       <p class="tec">PostgreSQL (PGlite) · Electron · OPC UA · API REST · Docker</p><p class="enlaces"><a href="https://github.com/larceing/sindri" target="_blank" rel="noopener">Ver en GitHub</a></p>
       <p class="probar"><a class="boton" href="../lab/#sindri">Probarlo en el laboratorio</a></p>
       <p class="pagina-proyecto"><a href="../proyectos/sindri/">Página completa del proyecto →</a></p>
@@ -240,7 +240,7 @@
     <div hidden id="d-asistente" data-color="#A94F0E" data-icono="bot">
       <p class="etiqueta">Para Grupo SPSIL · 2026</p>
       <h3>Lin-AI: asistente de IA sobre el ERP</h3>
-      <p>Un asistente que responde preguntas de negocio consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada; el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa, y responde en texto o en Excel.</p>
+      <dl class="caso"><div><dt>Problema</dt><dd>Las preguntas de negocio sobre el ERP («¿cuánto le hemos vendido a este cliente este año?») acababan en un informe o en un correo a quien sabe sacar el dato.</dd></div><div><dt>Qué hice</dt><dd>Un asistente que responde consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada: el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa.</dd></div><div><dt>Resultado</dt><dd>En uso en Grupo SPSIL desde 2026. Responde en español, inglés y chino, en texto, tabla o Excel, y no puede cambiar nada en el ERP.</dd></div></dl>
       <p class="tec">Python · Agentes · Base de conocimiento · SQL Server</p>
       <p class="probar"><a class="boton" href="../lab/#asistente">Probarlo en el laboratorio</a></p>
       <p class="pagina-proyecto"><a href="../proyectos/asistente/">Página completa del proyecto →</a></p>
@@ -248,7 +248,7 @@
     <div hidden id="d-reporting" data-color="#3F5266" data-icono="grafico">
       <p class="etiqueta">Para Grupo SPSIL · 2025–2026</p>
       <h3>Reporting de ventas, cobros y stock</h3>
-      <p>Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.</p>
+      <dl class="caso"><div><dt>Problema</dt><dd>Un cambio de red cortó los orígenes de datos de los informes de Power BI de dirección, comerciales y compras.</dd></div><div><dt>Qué hice</dt><dd>Migré los procesos a Dataflows y Lakehouse en Microsoft Fabric, sobre A3 ERP. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.</dd></div><div><dt>Resultado</dt><dd>Los informes de ventas, cobros y stock siguen en uso sobre Fabric (2025–2026), con las cifras comprobadas en cada cambio. Son la base de los lotes de análisis.</dd></div></dl>
       <p class="tec">Power BI · DAX · Microsoft Fabric · A3 ERP</p>
       <p class="probar"><a class="boton" href="../lab/#reporting">Probarlo en el laboratorio</a></p>
       <p class="pagina-proyecto"><a href="../proyectos/reporting/">Página completa del proyecto →</a></p>

@@ -184,7 +184,11 @@ const PROYECTOS = [
     tipo: 'producto', etiqueta: 'Producto propio · open source · 2026', icono: 'fabrica', color: C.azul,
     resumen: 'ERP para fábricas pequeñas: pedidos, almacén con lotes, facturas para VERI*FACTU y la planta conectada con Efesto.',
     probar: 'Del comercial a la planta: oportunidad, pedido, hoja de ruta, palé con su lote y albarán.',
-    texto: 'ERP para fábricas pequeñas: clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, el CRM. Recibe las horas de soporte por facturar desde Odin y genera sus PDF con Report Server.',
+    caso: [
+      ['Problema', 'En una fábrica pequeña, pedidos, almacén y facturas suelen vivir en programas distintos o en Excel, y la planta queda fuera del ERP.'],
+      ['Qué hice', 'Un ERP con clientes, presupuestos, pedidos, hojas de ruta, albaranes, facturas preparadas para VERI*FACTU y almacén con lotes. Tiene versión de escritorio, se conecta a la planta con Efesto y a las ventas con Brokkr, recibe las horas de soporte de Odin y genera sus PDF con Report Server.'],
+      ['Resultado', 'En marcha (versión 0.2) y en código abierto con licencia AGPL-3.0. Las facturas son inmutables y están preparadas para VERI*FACTU; todavía no emite facturas reales a terceros.']
+    ],
     tec: ['PostgreSQL (PGlite)', 'Electron', 'OPC UA', 'API REST', 'Docker'],
     enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
   },
@@ -262,7 +266,11 @@ const PROYECTOS = [
     tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · 2026', icono: 'bot', color: C.tostado,
     resumen: 'Preguntas de negocio al ERP en lenguaje normal, con consultas cerradas para que no invente datos.',
     probar: 'Pregunta al ERP, mira qué consulta elige y descarga la respuesta.',
-    texto: 'Un asistente que responde preguntas de negocio consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada; el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa, y responde en texto o en Excel.',
+    caso: [
+      ['Problema', 'Las preguntas de negocio sobre el ERP («¿cuánto le hemos vendido a este cliente este año?») acababan en un informe o en un correo a quien sabe sacar el dato.'],
+      ['Qué hice', 'Un asistente que responde consultando el ERP en solo lectura. Cada tipo de consulta es una función cerrada: el modelo elige cuál usar y con qué parámetros, así no inventa datos. Se apoya en fichas de negocio editables que explican cómo se calcula cada cosa.'],
+      ['Resultado', 'En uso en Grupo SPSIL desde 2026. Responde en español, inglés y chino, en texto, tabla o Excel, y no puede cambiar nada en el ERP.']
+    ],
     tec: ['Python', 'Agentes', 'Base de conocimiento', 'SQL Server']
   },
   {
@@ -270,7 +278,11 @@ const PROYECTOS = [
     tipo: 'empresa', etiqueta: 'Para Grupo SPSIL · 2025–2026', icono: 'grafico', color: C.pizarra,
     resumen: 'Ventas, cobros y stock en Power BI, migrados a Microsoft Fabric y comprobados antes y después.',
     probar: 'Filtra, cambia de página y actualiza el modelo paso a paso.',
-    texto: 'Informes de Power BI sobre el ERP para dirección, comerciales y compras. Tras un cambio de red que cortó los orígenes, migré los procesos a Dataflows y Lakehouse en Microsoft Fabric. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.',
+    caso: [
+      ['Problema', 'Un cambio de red cortó los orígenes de datos de los informes de Power BI de dirección, comerciales y compras.'],
+      ['Qué hice', 'Migré los procesos a Dataflows y Lakehouse en Microsoft Fabric, sobre A3 ERP. Cada cambio en una vista va con su copia, su script de vuelta atrás y una comprobación de antes y después.'],
+      ['Resultado', 'Los informes de ventas, cobros y stock siguen en uso sobre Fabric (2025–2026), con las cifras comprobadas en cada cambio. Son la base de los lotes de análisis.']
+    ],
     tec: ['Power BI', 'DAX', 'Microsoft Fabric', 'A3 ERP']
   },
   {
