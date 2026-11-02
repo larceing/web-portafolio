@@ -46,6 +46,7 @@ const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
 const YOUTUBE = 'https://www.youtube.com/@arcedatalab';
+const PERFIL_GOOGLE = 'https://g.page/r/CSpmSyzqUmGJEBM';
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
 const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
@@ -971,7 +972,7 @@ function organizacion() {
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
       { '@type': 'ContactPoint', contactType: 'technical support', email: SOPORTE, availableLanguage: ['es'] }
     ],
-    sameAs: [YOUTUBE, TIKTOK, INSTAGRAM, LINKEDIN],
+    sameAs: [YOUTUBE, TIKTOK, INSTAGRAM, LINKEDIN, PERFIL_GOOGLE],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
       itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
