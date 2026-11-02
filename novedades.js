@@ -14,14 +14,14 @@ const AHORA = [
     es: ['Ada, en marcha', 'Nuestro equipo de IA para el marketing ya prepara el contenido de nuestras redes.'],
     en: ['Ada, up and running', 'Our AI marketing team already prepares the content for our social channels.'],
     zh: ['Ada 已投入使用', '我们的 AI 营销团队已经在为我们的社交频道准备内容。'],
-    enlace: 'lab/#ada'
+    enlace: 'proyectos/ada/'
   },
   {
     producto: 'brokkr',
     es: ['Brokkr, el CRM en tablet', 'El CRM para el comercial de una pyme industrial, conectado con Sindri. En preparación.'],
     en: ['Brokkr, the tablet CRM', 'The CRM for the sales rep of an industrial SME, connected to Sindri. Coming soon.'],
     zh: ['Brokkr：平板上的 CRM', '为工业中小企业销售人员打造的 CRM，与 Sindri 相连。即将推出。'],
-    enlace: 'lab/#brokkr'
+    enlace: 'proyectos/brokkr/'
   },
   {
     producto: 'clubbyte',

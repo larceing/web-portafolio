@@ -73,6 +73,7 @@ module.exports = {
       ],
       alt: '实验室中的 {o}',
       boton: '在实验室试用',
+      ficha: '查看项目',
       todos: '查看全部项目'
     },
     hacemos: {
