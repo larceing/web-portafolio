@@ -1210,8 +1210,9 @@ ${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lan
   <meta name="twitter:description" content="${p.ogDescripcion}">
   <meta name="twitter:image" content="${imagen}">
   <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="${p.raiz}favicon.ico" sizes="48x48">
   <link rel="icon" href="${p.raiz}img/monograma.svg" type="image/svg+xml">
-  <link rel="icon" href="${p.raiz}img/monograma.png" type="image/png">
+  <link rel="icon" href="${p.raiz}img/monograma.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="${p.raiz}img/monograma.png">
   <link rel="me" href="${LINKEDIN}">
   <link rel="me" href="${GITHUB}">
