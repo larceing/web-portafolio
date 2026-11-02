@@ -172,7 +172,7 @@
     <div hidden id="d-sindri" data-color="#1D4F7A" data-icono="fabrica">
       <p class="etiqueta">Own product · open source · 2026</p>
       <h3>Sindri: ERP for small manufacturers</h3>
-      <p>ERP for small factories: customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, the CRM. It receives the billable support hours from Odin and builds its PDFs with Report Server.</p>
+      <dl class="caso"><div><dt>Problem</dt><dd>In a small factory, orders, stock and invoices usually live in different programs or in Excel, and the shop floor stays outside the ERP.</dd></div><div><dt>What I did</dt><dd>An ERP with customers, quotes, orders, routings, delivery notes, invoices ready for Spain’s VERI*FACTU and a warehouse with batches. It has a desktop version, connects to the shop floor through Efesto and to sales through Brokkr, receives support hours from Odin and builds its PDFs with Report Server.</dd></div><div><dt>Result</dt><dd>Running (version 0.2) and open source under the AGPL-3.0 licence. Invoices are immutable and ready for VERI*FACTU; it does not issue real invoices to third parties yet.</dd></div></dl>
       <p class="tec">PostgreSQL (PGlite) · Electron · OPC UA · REST API · Docker</p><p class="enlaces"><a href="https://github.com/larceing/sindri" target="_blank" rel="noopener">View on GitHub</a></p>
       <p class="probar"><a class="boton" href="../../lab/?lang=en#sindri">Try it in the lab</a></p>
       <p class="pagina-proyecto"><a href="../../proyectos/sindri/">Full project page →</a></p>
@@ -240,7 +240,7 @@
     <div hidden id="d-asistente" data-color="#A94F0E" data-icono="bot">
       <p class="etiqueta">For Grupo SPSIL · 2026</p>
       <h3>Lin-AI: AI assistant on top of the ERP</h3>
-      <p>An assistant that answers business questions by querying the ERP in read-only mode. Each type of query is a closed function; the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated, and it answers in text or in Excel.</p>
+      <dl class="caso"><div><dt>Problem</dt><dd>Business questions about the ERP (“how much have we sold to this customer this year?”) ended up in a report or an email to whoever knew how to pull the figure.</dd></div><div><dt>What I did</dt><dd>An assistant that answers by querying the ERP in read-only mode. Each type of query is a closed function: the model chooses which one to use and with which parameters, so it does not make data up. It relies on editable business notes that explain how each figure is calculated.</dd></div><div><dt>Result</dt><dd>In use at Grupo SPSIL since 2026. It answers in Spanish, English and Chinese, as text, a table or Excel, and cannot change anything in the ERP.</dd></div></dl>
       <p class="tec">Python · Agents · Knowledge base · SQL Server</p>
       <p class="probar"><a class="boton" href="../../lab/?lang=en#asistente">Try it in the lab</a></p>
       <p class="pagina-proyecto"><a href="../../proyectos/asistente/">Full project page →</a></p>
@@ -248,7 +248,7 @@
     <div hidden id="d-reporting" data-color="#3F5266" data-icono="grafico">
       <p class="etiqueta">For Grupo SPSIL · 2025–2026</p>
       <h3>Sales, collections and stock reporting</h3>
-      <p>Power BI reports on top of the ERP for management, sales and purchasing. After a network change cut off the data sources, I migrated the processes to Dataflows and a Lakehouse in Microsoft Fabric. Every change to a view ships with its backup, its rollback script and a before-and-after check.</p>
+      <dl class="caso"><div><dt>Problem</dt><dd>A network change cut off the data sources of the Power BI reports for management, sales and purchasing.</dd></div><div><dt>What I did</dt><dd>I migrated the processes to Dataflows and a Lakehouse in Microsoft Fabric, on top of A3 ERP. Every change to a view ships with its backup, its rollback script and a before-and-after check.</dd></div><div><dt>Result</dt><dd>The sales, collections and stock reports are still in use on Fabric (2025–2026), with the figures checked at every change. They are the basis of the analysis packs.</dd></div></dl>
       <p class="tec">Power BI · DAX · Microsoft Fabric · A3 ERP</p>
       <p class="probar"><a class="boton" href="../../lab/?lang=en#reporting">Try it in the lab</a></p>
       <p class="pagina-proyecto"><a href="../../proyectos/reporting/">Full project page →</a></p>
@@ -275,7 +275,7 @@
       <p class="pagina-proyecto"><a href="../../proyectos/tienda/">Full project page →</a></p>
     </div>
     <div hidden id="d-helpdesk" data-color="#15202B" data-icono="soporte">
-      <p class="etiqueta">At ES Group · 2026</p>
+      <p class="etiqueta">For a manufacturing company · 2026</p>
       <h3>Internal helpdesk, time tracking and IT costs</h3>
       <p>Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.</p>
       <p class="tec">Python · SQL Server · SAP · SharePoint</p>
