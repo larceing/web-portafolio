@@ -47,9 +47,11 @@ const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
 const YOUTUBE = 'https://www.youtube.com/@arcedatalab';
 const PERFIL_GOOGLE = 'https://g.page/r/CSpmSyzqUmGJEBM';
-// Analítica sin cookies (Umami Cloud). data-domains: solo cuenta visitas en
-// arcedatalab.com; en DEV y en las rutas del servidor el script no envía nada.
-const UMAMI = '<script defer src="https://cloud.umami.is/script.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-domains="arcedatalab.com"></script>';
+// Analítica sin cookies (Umami Cloud). El script y el envío pasan por la propia
+// web (/m/, ver nginx.conf) porque los bloqueadores frenan cloud.umami.is.
+// data-domains: solo cuenta visitas en arcedatalab.com; en DEV y en las rutas
+// del servidor no envía nada.
+const UMAMI = '<script defer src="/m/s.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-host-url="/m" data-domains="arcedatalab.com"></script>';
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
 const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');

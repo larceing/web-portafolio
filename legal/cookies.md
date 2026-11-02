@@ -9,7 +9,7 @@ Esta política explica lo que exige el artículo 22.2 de la Ley 34/2002 (LSSI), 
 
 ## 2. Lo que se guarda en tu navegador al usar la web
 - **«bit» (almacenamiento local del navegador, no es una cookie):** recuerda si has ocultado o mostrado a Bit, el robot que acompaña la web. Solo se guarda si lo pulsas, no sale de tu navegador y no identifica a nadie. Es una preferencia que pides tú, por lo que está exenta de consentimiento. Puedes borrarla desde los ajustes de tu navegador («Borrar datos de sitios»).
-- **Estadísticas de visitas (Umami, sin cookies):** al abrir una página se carga un pequeño script de Umami (cloud.umami.is) que cuenta la visita: página, página de origen, navegador, sistema, tamaño de pantalla y país aproximado. No instala cookies, no guarda nada en tu navegador, no guarda tu dirección IP y no permite identificarte ni seguirte por otras webs. Por eso no necesita consentimiento.
+- **Estadísticas de visitas (Umami, sin cookies):** al abrir una página se carga un pequeño script de Umami (servido desde esta misma web y enviado a Umami Cloud) que cuenta la visita: página, página de origen, navegador, sistema, tamaño de pantalla y país aproximado. No instala cookies, no guarda nada en tu navegador, no guarda tu dirección IP y no permite identificarte ni seguirte por otras webs. Por eso no necesita consentimiento.
 - El resto (fuentes, imágenes y scripts) se sirve desde la propia web. No se carga nada de Google, Meta ni otras empresas al abrir las páginas.
 
 ## 3. Publicaciones de LinkedIn (cookies de terceros, solo si las cargas)
