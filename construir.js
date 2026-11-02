@@ -46,6 +46,8 @@ const ARCE = 'https://arcedatalab.com';
 const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
 const YOUTUBE = 'https://www.youtube.com/@arcedatalab';
+// Dirección fija del canal (no cambia aunque cambie el @), para los datos estructurados.
+const YOUTUBE_CANAL = 'https://www.youtube.com/channel/UC8yLnwXe0BRemThW3w6WUVQ';
 const PERFIL_GOOGLE = 'https://g.page/r/CSpmSyzqUmGJEBM';
 // Analítica sin cookies (Umami Cloud). El script y el envío pasan por la propia
 // web (/m/, ver nginx.conf) porque los bloqueadores frenan cloud.umami.is.
@@ -553,7 +555,7 @@ const UI = {
     ['¿Qué tipo de proyectos hace?', 'Automatiza tareas repetitivas, conecta ERP, CRM y bases de datos, crea informes de Power BI y Microsoft Fabric, y pone asistentes de IA a responder sobre los datos del negocio en solo lectura.'],
     ['¿Trabaja con pymes?', 'Sí: con pymes y fábricas que tienen tareas manuales o datos que no cuadran, en remoto o desde Alicante.'],
     ['¿Mis datos están seguros?', 'Sí: se trabaja con acceso de solo lectura cuando es posible y las aplicaciones viven en servidores de la UE con copias cada noche.'],
-    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, y en Instagram (@henry_arce_dev). Pronto también en YouTube, en el canal Imagina en IT.'],
+    ['¿Dónde publica contenido?', 'En LinkedIn sobre BI, datos e IA aplicada, en TikTok (@arcedatalab) con consejos rápidos de automatización y datos, en Instagram (@henry_arce_dev) y en YouTube (@arcedatalab), con vídeos de Power BI, datos e IA.'],
     ['¿Cómo contactar?', 'Por correo a ' + CORREO + ', por WhatsApp al ' + TELEFONO + ' o por LinkedIn; para soporte de las aplicaciones, ' + SOPORTE + '.']
   ],
   faqServicios: [
@@ -746,6 +748,14 @@ const SERVICIOS = [
     lotesTitulo: 'Lotes de análisis',
     lotesIntro: 'Informes ya pensados por área, que adapto a tu ERP y a tus nombres. Empiezas por el lote que más te duele y añades los demás cuando quieras. Pruébalos con datos inventados en el laboratorio.',
     lotesBoton: 'Probar el ejemplo',
+    // Vídeo del canal de YouTube: miniatura propia que enlaza a YouTube (sin iframe ni nada de fuera).
+    video: {
+      id: 'g_qpzPODsXE', img: 'img/videos/tabla-calendario.webp',
+      titulo: 'En vídeo: tabla calendario en Power Query',
+      texto: 'La tabla calendario que uso en todos mis informes, con el código para copiar. Es la base para comparar con el año anterior.',
+      alt: 'Miniatura del vídeo «Tabla calendario en Power Query en 5 minutos»',
+      ver: 'Ver en YouTube', canal: 'Más vídeos en el canal'
+    },
     lotes: [
       ['bi-comercial', 'Comercial', 'Para dirección y comerciales', '¿Vendemos más que el año pasado, quién nos debe y qué hay que pedir?',
         ['Ventas por mes, cliente y familia frente al año anterior', 'Cobros por antigüedad y días medios de cobro', 'Stock bajo mínimo y rotación']],
@@ -977,7 +987,7 @@ function organizacion() {
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
       { '@type': 'ContactPoint', contactType: 'technical support', email: SOPORTE, availableLanguage: ['es'] }
     ],
-    sameAs: [YOUTUBE, TIKTOK, INSTAGRAM, LINKEDIN, PERFIL_GOOGLE],
+    sameAs: [YOUTUBE, YOUTUBE_CANAL, TIKTOK, INSTAGRAM, LINKEDIN, PERFIL_GOOGLE],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
       itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
@@ -1897,6 +1907,22 @@ ${s.lotes.map(l => `        <article class="lote">
 `;
 }
 
+// Vídeo de YouTube en una página de servicio: miniatura servida desde la web y enlace
+// al vídeo. No se carga nada de YouTube hasta que la persona pulsa.
+function videoHtml(v, raiz) {
+  const url = 'https://www.youtube.com/watch?v=' + v.id;
+  return `
+    <section class="bloque video-servicio">
+      <a class="video-mini" href="${url}" target="_blank" rel="noopener"><img src="${raiz}${v.img}" alt="${attr(v.alt)}" width="640" height="360" loading="lazy"><span class="video-play" aria-hidden="true"></span></a>
+      <div>
+        <h2>${v.titulo}</h2>
+        <p class="sub">${v.texto}</p>
+        <p class="botones"><a class="boton secundario" href="${url}" target="_blank" rel="noopener">${v.ver}</a><a class="boton secundario" href="${YOUTUBE}" target="_blank" rel="noopener">${v.canal}</a></p>
+      </div>
+    </section>
+`;
+}
+
 function paginaServicio(d, s) {
   const t = d.t;
   const ruta = 'servicios/' + s.id + '/';
@@ -1940,7 +1966,7 @@ ${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>
       </div>
       <p class="servicios-nota">${s.tec}</p>
     </section>
-${s.lotes ? lotesHtml(s, raiz) : ''}
+${s.lotes ? lotesHtml(s, raiz) : ''}${s.video ? videoHtml(s.video, raiz) : ''}
     <section class="bloque">
       <h2>${t.serv.como}</h2>
       <ol class="pasos-servicio">
