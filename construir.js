@@ -47,6 +47,9 @@ const DEMOS = 'https://demo.arcedatalab.com';
 const TIKTOK = 'https://www.tiktok.com/@arcedatalab';
 const YOUTUBE = 'https://www.youtube.com/@arcedatalab';
 const PERFIL_GOOGLE = 'https://g.page/r/CSpmSyzqUmGJEBM';
+// Analítica sin cookies (Umami Cloud). data-domains: solo cuenta visitas en
+// arcedatalab.com; en DEV y en las rutas del servidor el script no envía nada.
+const UMAMI = '<script defer src="https://cloud.umami.is/script.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-domains="arcedatalab.com"></script>';
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
 const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
@@ -1203,6 +1206,7 @@ ${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lan
   <script type="application/ld+json">${jsonLd(p.datos)}</script>
   <link rel="preload" href="${p.raiz}fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${p.raiz}css/estilos.css?v=${VERSION_CSS}">
+  ${UMAMI}
 </head>
 
 <body>
