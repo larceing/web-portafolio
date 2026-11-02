@@ -61,8 +61,33 @@ const CLUBBYTE_YOUTUBE = 'https://www.youtube.com/@clubbyte_es';
 const CLUBBYTE_CANAL = 'https://www.youtube.com/channel/UCGf6S4beoxCkjF3Fyl2XIrA';
 const CLUBBYTE_BLOG = 'https://clubbyte.arcedatalab.com';
 
-// Fecha de la última revisión del contenido (sitemap y datos estructurados).
+// Fecha de hoy: la que se pone a una página cuando su contenido cambia.
 const REVISADO = new Date().toISOString().slice(0, 10);
+
+// Fecha de última modificación de cada página (lastmod del sitemap). Una página
+// que se genera igual que la que ya hay en disco (sin contar su propia fecha)
+// no se reescribe y conserva la fecha que tenía en el sitemap anterior. Así
+// Google solo ve una fecha nueva en las páginas que cambian de verdad.
+const FECHAS_ANTES = {};
+try {
+  const previo = fs.readFileSync(path.join(__dirname, 'sitemap.xml'), 'utf8');
+  for (const m of previo.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) FECHAS_ANTES[m[1]] = m[2];
+} catch (e) { /* primera generación: todas con la fecha de hoy */ }
+const FECHAS = {};
+const sinFecha = h => h.replace(/"dateModified":"\d{4}-\d{2}-\d{2}"/g, '');
+function guardar(archivo, html) {
+  const rel = path.relative(__dirname, path.dirname(archivo)).split(path.sep).join('/');
+  const url = SITIO + (rel ? rel + '/' : '');
+  let antes = null;
+  try { antes = fs.readFileSync(archivo, 'utf8'); } catch (e) { /* página nueva */ }
+  if (antes !== null && FECHAS_ANTES[url] && sinFecha(antes) === sinFecha(html)) {
+    FECHAS[url] = FECHAS_ANTES[url];
+    return;
+  }
+  FECHAS[url] = REVISADO;
+  fs.writeFileSync(archivo, html);
+}
+const fecha = url => FECHAS[url] || FECHAS_ANTES[url] || REVISADO;
 
 // Publicaciones de LinkedIn de la sección de divulgación, en el mismo orden que
 // las cifras. Si una no tiene enlace (null), su cifra sale sin él.
@@ -413,7 +438,7 @@ const CARRERA = {
 // Textos de la página en español. Los de inglés están en contenido.en.js.
 const UI = {
   lang: 'es',
-  titulo: 'Henry Arce · Automatización, IA aplicada y Power BI | Arce Data Lab',
+  titulo: 'Henry Arce · Automatización, IA y Power BI | Arce Data Lab',
   descripcion: 'Henry Arce, fundador de Arce Data Lab (Alicante): automatización, IA aplicada, Power BI y apps a medida para pymes e industria. Proyectos reales y open source.',
   ogDescripcion: 'Automatización, IA aplicada y datos para pymes e industria. Proyectos reales, cuadros de mando y open source.',
   locale: 'es_ES',
@@ -678,6 +703,7 @@ UI.p = {
     ],
     alt: '{o} en el laboratorio',
     boton: 'Probarlo en el laboratorio',
+    ficha: 'Ver el proyecto',
     todos: 'Ver todos los proyectos'
   },
   hacemos: {
@@ -945,6 +971,9 @@ function resumen(p) {
 }
 
 // JSON dentro de <script>: sin "</" para que no pueda cerrar la etiqueta.
+// Título de una ficha: con la firma « · Henry Arce» si cabe en 65 caracteres,
+// que es lo que Google suele enseñar sin recortar; si no, sin ella.
+const conFirma = t => (t + ' · Henry Arce').length <= 65 ? t + ' · Henry Arce' : t;
 const jsonLd = datos => JSON.stringify(datos).replace(/</g, '\\u003c');
 
 function persona(d) {
@@ -974,14 +1003,17 @@ function persona(d) {
 
 function organizacion() {
   return {
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': ID_ORG,
     name: 'Arce Data Lab',
     url: ARCE,
     email: CORREO,
     logo: SITIO + 'img/monograma.png',
     founder: { '@id': ID_PERSONA },
-    areaServed: 'ES',
+    // La misma zona de servicio que el perfil de empresa de Google (sin dirección pública).
+    areaServed: ['Alicante', 'Elche', 'San Vicente del Raspeig', "Sant Joan d'Alacant", 'Murcia']
+      .map(c => ({ '@type': 'City', name: c })).concat({ '@type': 'Country', name: 'España' }),
+    hasMap: PERFIL_GOOGLE,
     address: { '@type': 'PostalAddress', addressLocality: 'Alicante', addressCountry: 'ES' },
     contactPoint: [
       { '@type': 'ContactPoint', contactType: 'customer service', email: CORREO, availableLanguage: ['es', 'en'] },
@@ -1081,6 +1113,11 @@ function datosProyecto(d, p) {
 
 // Orden de los proyectos en la portada: primero los que más dicen a una pyme
 // (datos, IA, ERP); Club Byte, al final. Los demás, en el orden de PROYECTOS.
+// Ficha del proyecto de una pestaña del laboratorio de la portada: la pestaña
+// (o[1]) o su demo (o[4]), si existe como proyecto. Enlaza a una página que
+// se indexa, porque /lab/ lleva noindex.
+const fichaPestana = o => [o[1], o[4]].find(id => id && PROYECTOS.some(x => x.id === id)) || '';
+
 const DESTACADOS = ['reporting', 'asistente', 'sindri', 'tareas', 'efesto', 'brokkr', 'plantillas', 'whatsapp', 'gestor', 'servicios', 'crm', 'gateway', 'escritorio', 'tienda', 'plataforma'];
 
 // Proyectos principales: tarjeta grande con su demo del laboratorio. El primero
@@ -1281,7 +1318,8 @@ ${p.lab.pestanas.map((o, i) => `      <div class="oficina" role="tabpanel" id="o
         <div class="oficina-texto">
           <h3>${o[0]}</h3>
           <p>${o[3]}</p>
-          <p class="enlace-flecha"><a href="${base}${o[5] || 'lab/#' + o[4]}">${o[6] || p.lab.boton} →</a></p>
+          <p class="enlace-flecha"><a href="${base}${o[5] || 'lab/#' + o[4]}">${o[6] || p.lab.boton} →</a></p>${fichaPestana(o) ? `
+          <p class="enlace-flecha"><a href="${base}proyectos/${fichaPestana(o)}/">${p.lab.ficha} →</a></p>` : ''}
         </div>
       </div>`).join('\n')}
       <p class="botones centrados"><a class="boton secundario" href="${base}proyectos/">${p.lab.todos}</a></p>
@@ -1814,7 +1852,7 @@ function paginaProyecto(d, p) {
   const otros = d.proyectos.filter(o => o.id !== p.id);
 
   return cabeza(d, {
-    titulo: plano(p.titulo) + ' · Henry Arce', descripcion: attr(resumen(p)), ogDescripcion: attr(resumen(p)), ogTipo: 'article',
+    titulo: conFirma(plano(p.titulo)), descripcion: attr(resumen(p)), ogDescripcion: attr(resumen(p)), ogTipo: 'article',
     ruta: 'proyectos/' + p.id + '/', raiz: raiz, inicio: '../../',
     datos: datosProyecto(d, p)
   }) + `
@@ -2004,10 +2042,10 @@ ${bitHtml(t, raiz)}
 function sitemap() {
   const rutas = ['', 'proyectos/', 'sobre-mi/'].concat(['servicios/']).concat(SERVICIOS.map(x => 'servicios/' + x.id + '/')).concat(['novedades/']).concat(PROYECTOS.map(p => 'proyectos/' + p.id + '/'));
   const entrada = ruta => SELECTOR.map(pre =>
-    '  <url>\n    <loc>' + SITIO + prefijo(pre.id) + ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n' +
+    '  <url>\n    <loc>' + SITIO + prefijo(pre.id) + ruta + '</loc>\n    <lastmod>' + fecha(SITIO + prefijo(pre.id) + ruta) + '</lastmod>\n' +
     SELECTOR.map(x => '    <xhtml:link rel="alternate" hreflang="' + x.lang + '" href="' + SITIO + prefijo(x.id) + ruta + '"/>\n').join('') +
     '    <xhtml:link rel="alternate" hreflang="x-default" href="' + SITIO + ruta + '"/>\n  </url>').join('\n');
-  const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + REVISADO + '</lastmod>\n  </url>';
+  const legal = l => '  <url>\n    <loc>' + SITIO + l.ruta + '</loc>\n    <lastmod>' + fecha(SITIO + l.ruta) + '</lastmod>\n  </url>';
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
     rutas.map(entrada).join('\n') + '\n' + legal({ ruta: 'plantillas/' }) + '\n' + LEGALES.map(legal).join('\n') + '\n</urlset>\n';
 }
@@ -2064,39 +2102,39 @@ function conIdiomaLab(d, html) {
 IDIOMAS.forEach(d => {
   const carpeta = path.join(__dirname, d.carpeta);
   fs.mkdirSync(carpeta, { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'index.html'), conIdiomaLab(d, pagina(d)));
+  guardar(path.join(carpeta, 'index.html'), conIdiomaLab(d, pagina(d)));
   console.log(path.join(d.carpeta, 'index.html') + ' generado: ' + d.proyectos.length + ' proyectos');
 
   const carpetaLinkedin = path.join(carpeta, 'linkedin');
   fs.mkdirSync(carpetaLinkedin, { recursive: true });
-  fs.writeFileSync(path.join(carpetaLinkedin, 'index.html'), conIdiomaLab(d, paginaLinkedin(d)));
+  guardar(path.join(carpetaLinkedin, 'index.html'), conIdiomaLab(d, paginaLinkedin(d)));
   const carpetaNovedades = path.join(carpeta, 'novedades');
   fs.mkdirSync(carpetaNovedades, { recursive: true });
-  fs.writeFileSync(path.join(carpetaNovedades, 'index.html'), conIdiomaLab(d, paginaNovedades(d)));
+  guardar(path.join(carpetaNovedades, 'index.html'), conIdiomaLab(d, paginaNovedades(d)));
   console.log(path.join(d.carpeta, 'novedades', 'index.html') + ' generado: ' + NV.NOVEDADES.length + ' novedades y ' + LINKEDIN_PUBLICACIONES.length + ' publicaciones (linkedin/ lleva a novedades/)');
 
   fs.mkdirSync(path.join(carpeta, 'proyectos'), { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'proyectos', 'index.html'), conIdiomaLab(d, paginaProyectos(d)));
+  guardar(path.join(carpeta, 'proyectos', 'index.html'), conIdiomaLab(d, paginaProyectos(d)));
   fs.mkdirSync(path.join(carpeta, 'sobre-mi'), { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'sobre-mi', 'index.html'), conIdiomaLab(d, paginaSobreMi(d)));
+  guardar(path.join(carpeta, 'sobre-mi', 'index.html'), conIdiomaLab(d, paginaSobreMi(d)));
   console.log(path.join(d.carpeta, 'proyectos') + ' y ' + path.join(d.carpeta, 'sobre-mi') + ' generados');
 
   const carpetaServicios = path.join(carpeta, 'servicios');
   fs.mkdirSync(carpetaServicios, { recursive: true });
-  fs.writeFileSync(path.join(carpetaServicios, 'index.html'), conIdiomaLab(d, paginaServicios(d)));
+  guardar(path.join(carpetaServicios, 'index.html'), conIdiomaLab(d, paginaServicios(d)));
   console.log(path.join(d.carpeta, 'servicios', 'index.html') + ' generado');
 
   d.servicios.forEach(x => {
     const carpetaServicio = path.join(carpetaServicios, x.id);
     fs.mkdirSync(carpetaServicio, { recursive: true });
-    fs.writeFileSync(path.join(carpetaServicio, 'index.html'), conIdiomaLab(d, paginaServicio(d, x)));
+    guardar(path.join(carpetaServicio, 'index.html'), conIdiomaLab(d, paginaServicio(d, x)));
   });
   console.log(path.join(d.carpeta, 'servicios') + ': ' + d.servicios.length + ' páginas de servicio');
 
   d.proyectos.forEach(p => {
     const carpetaProyecto = path.join(carpeta, 'proyectos', p.id);
     fs.mkdirSync(carpetaProyecto, { recursive: true });
-    fs.writeFileSync(path.join(carpetaProyecto, 'index.html'), conIdiomaLab(d, paginaProyecto(d, p)));
+    guardar(path.join(carpetaProyecto, 'index.html'), conIdiomaLab(d, paginaProyecto(d, p)));
   });
   console.log(path.join(d.carpeta, 'proyectos') + ': ' + d.proyectos.length + ' páginas de proyecto');
 });
@@ -2135,7 +2173,7 @@ fs.writeFileSync(path.join(__dirname, '404.html'), `<!DOCTYPE html>
 LEGALES.forEach(l => {
   const carpeta = path.join(__dirname, l.ruta);
   fs.mkdirSync(carpeta, { recursive: true });
-  fs.writeFileSync(path.join(carpeta, 'index.html'), paginaLegal(l));
+  guardar(path.join(carpeta, 'index.html'), paginaLegal(l));
   console.log(l.ruta + 'index.html generado');
 });
 

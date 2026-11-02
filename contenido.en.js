@@ -72,6 +72,7 @@ module.exports = {
       ],
       alt: '{o} in the lab',
       boton: 'Try it in the lab',
+      ficha: 'See the project',
       todos: 'See all projects'
     },
     hacemos: {
