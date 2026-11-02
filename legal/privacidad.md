@@ -1,6 +1,6 @@
 # Política de privacidad
 
-Última actualización: 30 de octubre de 2026
+Última actualización: 2 de noviembre de 2026
 
 ## 1. Responsable
 - **Responsable:** Luis Henry Arce Inga (persona física), nombre comercial **Arce Data Lab** («Henry Arce»).
@@ -13,7 +13,8 @@ No hay delegado de protección de datos porque no es obligatorio para esta activ
 ## 2. Qué datos se tratan, para qué, con qué base y cuánto tiempo
 
 ### 2.1. Visitas a la web
-- **Datos:** dirección IP, fecha y hora, página pedida, navegador y página de origen, que el servidor anota en sus registros técnicos. La web no usa analítica ni cookies propias (ver la [Política de cookies](/cookies/)).
+- **Datos:** dirección IP, fecha y hora, página pedida, navegador y página de origen, que el servidor anota en sus registros técnicos. La web no usa cookies propias (ver la [Política de cookies](/cookies/)).
+- **Estadísticas:** además, Umami cuenta las visitas sin cookies y sin guardar la IP: página, página de origen, navegador, sistema, tamaño de pantalla y país aproximado, en datos agregados que no identifican a nadie. Sirve para saber qué páginas se leen y mejorar la web (interés legítimo, art. 6.1.f del RGPD).
 - **Para qué:** que la web funcione, sea segura y se puedan detectar ataques o fallos.
 - **Base legal:** interés legítimo en mantener la web segura (art. 6.1.f del RGPD).
 - **Plazo:** los registros de acceso se guardan unas 5 semanas y los de errores unas 10 semanas; después se borran solos. No entran en las copias de seguridad.
@@ -49,11 +50,12 @@ No se venden ni se ceden datos a terceros, salvo obligación legal (por ejemplo,
 - **Google** (Google Workspace): correo de arcedatalab.com.
 - **Resend:** envío de los correos automáticos de las aplicaciones (servidores en la UE, Irlanda).
 - **Microsoft** (OneDrive): copias de seguridad.
+- **Umami Software** (Umami Cloud): estadísticas de visitas sin cookies.
 - **WhatsApp (Meta):** si nos escribes por WhatsApp.
 - **YouTube (Google), TikTok, Instagram (Meta) y LinkedIn:** donde se publican los contenidos del titular; LinkedIn, además, si cargas sus publicaciones en esta web.
 
 ## 4. Transferencias fuera de la UE
-Algunos de estos proveedores (Google, Microsoft, Meta, Resend, LinkedIn y TikTok) pertenecen a grupos con sede o personal fuera del Espacio Económico Europeo, sobre todo en Estados Unidos. En esos casos la transferencia se ampara en el Marco de Privacidad de Datos UE-EE. UU. cuando el proveedor está adherido, o en las cláusulas contractuales tipo de la Comisión Europea. Puedes pedir más información en info@arcedatalab.com.
+Algunos de estos proveedores (Google, Microsoft, Meta, Resend, Umami, LinkedIn y TikTok) pertenecen a grupos con sede o personal fuera del Espacio Económico Europeo, sobre todo en Estados Unidos. En esos casos la transferencia se ampara en el Marco de Privacidad de Datos UE-EE. UU. cuando el proveedor está adherido, o en las cláusulas contractuales tipo de la Comisión Europea. Puedes pedir más información en info@arcedatalab.com.
 
 ## 5. Tus derechos
 Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación del tratamiento y la portabilidad de tus datos, y retirar en cualquier momento el consentimiento que hayas dado, escribiendo a info@arcedatalab.com. Te responderemos en el plazo máximo de un mes. Si crees que no se han respetado tus derechos, puedes reclamar ante la [Agencia Española de Protección de Datos](https://www.aepd.es).
