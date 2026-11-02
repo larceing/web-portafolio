@@ -305,7 +305,7 @@ const PROYECTOS = [
   },
   {
     id: 'helpdesk', corto: 'Helpdesk interno', titulo: 'Helpdesk interno, control horario y costes de IT',
-    tipo: 'empresa', etiqueta: 'En ES Group · 2026', icono: 'soporte', color: C.tinta,
+    tipo: 'empresa', etiqueta: 'Para una empresa industrial · 2026', icono: 'soporte', color: C.tinta,
     texto: 'Herramientas internas para dos plantas de producción: sistema de helpdesk propio para el soporte, control horario, seguimiento de costes de IT e integración de la facturación entre plantas del grupo.',
     tec: ['Python', 'SQL Server', 'SAP', 'SharePoint']
   },

@@ -562,7 +562,7 @@ module.exports = {
       texto: 'A shop for a screen-printing business: catalogue, cart and checkout, with a custom admin panel to manage products and orders. Everything starts with a single command thanks to Docker.'
     },
     helpdesk: {
-      corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'At ES Group · 2026',
+      corto: 'Internal helpdesk', titulo: 'Internal helpdesk, time tracking and IT costs', etiqueta: 'For a manufacturing company · 2026',
       texto: 'Internal tools for two production plants: an in-house helpdesk system for support, time tracking, IT cost monitoring and integration of invoicing between the group’s plants.'
     },
     plantillas: {

@@ -563,7 +563,7 @@ module.exports = {
       texto: '为一家丝网印刷店做的网店：商品目录、购物车和结账，还有一个定制的后台，用来管理商品和订单。借助 Docker，一条命令就能全部启动。'
     },
     helpdesk: {
-      corto: '内部服务台', titulo: '内部服务台、考勤和 IT 成本', etiqueta: '在 ES Group · 2026',
+      corto: '内部服务台', titulo: '内部服务台、考勤和 IT 成本', etiqueta: '为一家制造企业 · 2026',
       texto: '为两座生产工厂开发的内部工具：自建的技术支持服务台、考勤、IT 成本监控，以及集团各工厂之间的发票集成。'
     },
     plantillas: {
