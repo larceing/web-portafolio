@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工厂 Power BI：OEE、停机与废品 | Arce Data Lab</title>
+  <meta name="description" content="为工业中小企业打造的 Power BI 看板：按设备查看 OEE、按原因查看停机、计算废品成本，数据来自 ERP 和车间。">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="Henry Arce">
+  <link rel="canonical" href="https://arcedatalab.com/zh/servicios/power-bi-fabricas/">
+  <link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/power-bi-fabricas/">
+  <link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/power-bi-fabricas/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/power-bi-fabricas/">
+  <link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/power-bi-fabricas/">
+  <meta property="og:title" content="工厂 Power BI：OEE、停机与废品 | Arce Data Lab">
+  <meta property="og:description" content="为工业中小企业打造的 Power BI 看板：按设备查看 OEE、按原因查看停机、计算废品成本，数据来自 ERP 和车间。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arcedatalab.com/zh/servicios/power-bi-fabricas/">
+  <meta property="og:site_name" content="Henry Arce · Arce Data Lab">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Henry Arce · Arce Data Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="工厂 Power BI：OEE、停机与废品 | Arce Data Lab">
+  <meta name="twitter:description" content="为工业中小企业打造的 Power BI 看板：按设备查看 OEE、按原因查看停机、计算废品成本，数据来自 ERP 和车间。">
+  <meta name="twitter:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="../../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../../img/monograma.svg" type="image/svg+xml">
+  <link rel="icon" href="../../../img/monograma.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../../../img/monograma.png">
+  <link rel="me" href="https://www.linkedin.com/in/luis-henry-programador">
+  <link rel="me" href="https://github.com/larceing">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/","url":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/","name":"工厂 Power BI：OEE、停机与废品","description":"为工业中小企业打造的 Power BI 看板：按设备查看 OEE、按原因查看停机、计算废品成本，数据来自 ERP 和车间。","inLanguage":"zh-Hans","isPartOf":{"@id":"https://arcedatalab.com/#web"},"about":{"@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/#servicio"},"breadcrumb":{"@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/#migas"}},{"@type":"Service","@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/#servicio","name":"工厂 Power BI：OEE、停机与废品","serviceType":"工厂 Power BI","description":"为工业中小企业打造的 Power BI 看板：按设备查看 OEE、按原因查看停机、计算废品成本，数据来自 ERP 和车间。","url":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/","provider":{"@id":"https://arcedatalab.com/#organizacion"},"areaServed":[{"@type":"Country","name":"España"},{"@type":"Place","name":"Unión Europea"}],"availableLanguage":["es","en"]},{"@type":"BreadcrumbList","@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/#migas","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://arcedatalab.com/zh/"},{"@type":"ListItem","position":2,"name":"服务","item":"https://arcedatalab.com/zh/servicios/"},{"@type":"ListItem","position":3,"name":"工厂 Power BI","item":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/"}]},{"@type":"FAQPage","@id":"https://arcedatalab.com/zh/servicios/power-bi-fabricas/#preguntas","inLanguage":"zh-Hans","mainEntity":[{"@type":"Question","name":"什么是 OEE，怎么计算？","acceptedAnswer":{"@type":"Answer","text":"OEE（设备综合效率）= 可用率 × 性能 × 质量。如果一台设备在计划时间内停机 10%，以理想速度的 90% 运行，95% 的零件合格，那么它的 OEE 是 0.9 × 0.9 × 0.95 = 77%。"}},{"@type":"Question","name":"需要 MES 或新传感器吗？","acceptedAnswer":{"@type":"Answer","text":"不一定。可以先用 ERP 或生产报工中已有的数据。如果需要设备的实时数据，可以从 PLC 或 SCADA 以只读方式读取。"}},{"@type":"Question","name":"小工厂也适用吗？","acceptedAnswer":{"@type":"Answer","text":"适用。它就是为只有几条产线的工业中小企业设计的，这类工厂通常每月在 Excel 里手工计算一次 OEE。"}},{"@type":"Question","name":"费用是多少？","acceptedAnswer":{"@type":"Answer","text":"取决于设备数量、数据来源以及你需要多少个分析包。告诉我你的车间情况，我会给你一份书面固定报价，没有任何义务。"}}]}]}</script>
+  <link rel="preload" href="../../../fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../css/estilos.css?v=c4d64b291f">
+  <script defer src="/m/s.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-host-url="/m" data-domains="arcedatalab.com"></script>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">跳到正文</a>
+
+  <header class="cabecera">
+    <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce <span>自动化 · AI · 数据</span></a>
+    <nav class="menu" aria-label="栏目">
+      <a href="../../servicios/" aria-current="page">我们做什么</a>
+      <a class="menu-extra" href="../../../lab/?lang=zh#sindri">实验室</a>
+      <a href="../../proyectos/">项目</a>
+      <a class="menu-extra" href="../../novedades/">动态</a>
+      <a class="menu-extra" href="../../sobre-mi/">关于我</a>
+      <span class="idiomas" role="group" aria-label="Idioma · Language · 语言"><a href="../../../servicios/power-bi-fabricas/" lang="es" hreflang="es" title="Español">ES</a><a href="../../../en/servicios/power-bi-fabricas/" lang="en" hreflang="en" title="English">EN</a><a href="../../../zh/servicios/power-bi-fabricas/" lang="zh-Hans" hreflang="zh-Hans" title="中文" aria-current="true">中文</a></span>
+      <a class="menu-cta" href="https://wa.me/34633424223?text=%E4%BD%A0%E5%A5%BD%20Henry%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%85%AC%E5%8F%B8%E8%AF%A2%E4%BB%B7%E3%80%82%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A" target="_blank" rel="noopener">获取报价</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="pagina-servicios pagina-servicio">
+    <nav class="migas" aria-label="Breadcrumb"><a href="../../">首页</a> › <a href="../">服务</a> › <span>工厂 Power BI</span></nav>
+
+    <section class="bloque servicio-cabeza">
+      <span class="servicio-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40V22l9 6v-6l9 6v-6l9 6V10h8v30z"/><path d="M14 34h4M24 34h4"/></svg></span>
+      <h1>工厂 Power BI：OEE、停机与废品</h1>
+      <p class="sub">OEE 衡量设备有多少时间变成了合格品：可用率 × 性能 × 质量。用 Power BI，每天早上按设备、产线和班次查看 OEE，以及拉低它的停机和废品，不用再手工做 Excel。</p>
+      <p class="botones"><a class="boton" href="https://wa.me/34633424223?text=%E4%BD%A0%E5%A5%BD%20Henry%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%85%AC%E5%8F%B8%E8%AF%A2%E4%BB%B7%E3%80%82%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A" target="_blank" rel="noopener">获取报价</a></p>
+    </section>
+
+    <section class="bloque">
+      <h2>包含内容</h2>
+      <div class="servicios servicio-incluye">
+        <article class="servicio"><h3>按设备和产线的 OEE</h3><p>分别查看可用率、性能和质量，知道是哪一项在拖后腿。</p></article>
+        <article class="servicio"><h3>按原因的停机</h3><p>按天、设备和原因统计小停机和大停机，以及平均停机间隔。</p></article>
+        <article class="servicio"><h3>废品及其成本</h3><p>按缺陷和工作中心统计不合格品及其成本，并与计划对比。</p></article>
+        <article class="servicio"><h3>车间数据</h3><p>来自 ERP、MES 或设备本身（OPC UA、Modbus、Siemens S7…），只读方式，不需要在工厂开放端口。</p></article>
+        <article class="servicio"><h3>书面定义</h3><p>什么算停机、什么算不良品、什么算计划时间，与车间主管一起确定。</p></article>
+      </div>
+      <p class="servicios-nota">Power BI、DAX、Power Query、Microsoft Fabric、SQL Server、OPC UA、Modbus、MQTT</p>
+    </section>
+
+    <section class="bloque" id="lotes">
+      <h2>车间分析包</h2>
+      <p class="sub lotes-intro">为生产设计好的报表，按你的设备和名称调整。可以在实验室用虚构数据试用。</p>
+      <div class="lotes">
+        <article class="lote">
+          <p class="lote-para">适用于车间主管</p>
+          <h3>生产与 OEE</h3>
+          <p class="lote-pregunta">设备在哪里浪费了时间？为什么？</p>
+          <ul><li>按设备和产线统计的 OEE：可用率、性能和质量</li><li>按天、原因和设备统计的小停机和大停机，以及平均故障间隔时间</li><li>按产品统计的损失工时</li></ul>
+          <p class="enlace-flecha"><a href="../../../lab/?lang=zh#bi-fabricacion">试用示例 →</a></p>
+        </article>
+        <article class="lote">
+          <p class="lote-para">适用于物流和客服</p>
+          <h3>订单与交付</h3>
+          <p class="lote-pregunta">有多少订单按时送达？其余的为什么延误？</p>
+          <ul><li>按周、仓库和承运商统计的准时交付率</li><li>按原因和客户统计的延误</li><li>未完成订单及其状态</li></ul>
+          <p class="enlace-flecha"><a href="../../../lab/?lang=zh#bi-pedidos">试用示例 →</a></p>
+        </article>
+        <article class="lote">
+          <p class="lote-para">适用于质量和生产部门</p>
+          <h3>质量与废品</h3>
+          <p class="lote-pregunta">我们报废了多少零件？花了多少钱？为什么？</p>
+          <ul><li>按月份和工作中心统计的废品率</li><li>按缺陷统计的不合格品和废品成本</li><li>按零件号统计的实际与预计对比，以及废品最多的工单</li></ul>
+          <p class="enlace-flecha"><a href="../../../lab/?lang=zh#bi-calidad">试用示例 →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <h2>合作流程</h2>
+      <ol class="pasos-servicio">
+        <li><strong>免费评估</strong><span>45 分钟视频通话，一起看你的数据、你的工作，以及真正占用时间的事情。</span></li>
+        <li><strong>书面方案</strong><span>做什么、几轮修改、固定价格和交付时间，在看过数据后确定。</span></li>
+        <li><strong>开发</strong><span>过程中随时给你看进度。开始时付 50%，交付时付 50%，均开具发票。</span></li>
+        <li><strong>交付与培训</strong><span>系统上线运行，附带文档，并向你的团队讲解清楚。如有需要，可以继续按月维护。</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque porque" id="por-que">
+      <h2>为什么选择和我合作？</h2>
+      <p class="sub">和找广告公司或买现成软件相比，有什么不同</p>
+      <ol class="porque-lista">
+        <li><strong>你直接和动手做的人沟通</strong><span>评估时听你讲需求的人，就是设计、编写并交付成果的人。没有销售，也没有中间人。</span></li>
+        <li><strong>我了解企业的日常运转</strong><span>我从 2019 年开始做数据工作，先在咨询公司，现在在制造业企业内部，用过 A3、SAP、Clavei 等 ERP。</span></li>
+        <li><strong>书面固定报价</strong><span>开始之前你就知道要做什么、有几轮修改、花多少钱。最后不会有意外。</span></li>
+        <li><strong>认真保护你的数据</strong><span>能只读就只读，应用部署在欧盟的服务器上，每晚备份。</span></li>
+        <li><strong>不被绑定</strong><span>我交付时附带完整文档，而且我做的很多东西是开源的：联系我之前，你就能看到我是怎么工作的。</span></li>
+        <li><strong>我会衡量你的收获</strong><span>我会记录这项工作现在要花多长时间、之后要花多长时间，让你知道值不值得。</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque">
+      <h2>相关项目</h2>
+      <ul class="otros">
+        <li><a href="../../proyectos/efesto/">Efesto：让 Sindri 读懂工厂</a> <span>· 自有产品</span></li>
+        <li><a href="../../proyectos/sindri/">Sindri：面向小型制造企业的 ERP</a> <span>· 自有产品</span></li>
+        <li><a href="../../proyectos/reporting/">销售、回款和库存报表</a> <span>· 为企业开发</span></li>
+        <li><a href="../../proyectos/escritorio/">无需 Power BI 的运营报表</a> <span>· 为企业开发</span></li>
+      </ul>
+    </section>
+
+    <section class="bloque">
+      <h2>常见问题</h2>
+      <dl class="preguntas">
+        <div><dt>什么是 OEE，怎么计算？</dt><dd>OEE（设备综合效率）= 可用率 × 性能 × 质量。如果一台设备在计划时间内停机 10%，以理想速度的 90% 运行，95% 的零件合格，那么它的 OEE 是 0.9 × 0.9 × 0.95 = 77%。</dd></div>
+        <div><dt>需要 MES 或新传感器吗？</dt><dd>不一定。可以先用 ERP 或生产报工中已有的数据。如果需要设备的实时数据，可以从 PLC 或 SCADA 以只读方式读取。</dd></div>
+        <div><dt>小工厂也适用吗？</dt><dd>适用。它就是为只有几条产线的工业中小企业设计的，这类工厂通常每月在 Excel 里手工计算一次 OEE。</dd></div>
+        <div><dt>费用是多少？</dt><dd>取决于设备数量、数据来源以及你需要多少个分析包。告诉我你的车间情况，我会给你一份书面固定报价，没有任何义务。</dd></div>
+      </dl>
+      <h2 class="otros-servicios">其他服务</h2>
+      <p class="botones"><a class="boton secundario" href="../power-bi/">Power BI</a><a class="boton secundario" href="../automatizacion-n8n/">n8n 自动化</a><a class="boton secundario" href="../pedidos-por-correo/">邮件订单录入 ERP</a><a class="boton secundario" href="../asistente-ia/">ERP 的 AI 助手</a><a class="boton secundario" href="../webs/">网站和应用</a><a class="boton secundario" href="../">服务</a></p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-dentro">
+      <div class="pie-marca">
+        <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce</a>
+        <p>为想用数据做决策的企业提供数据、Power BI 和定制开发。</p>
+        <p><a href="mailto:info@arcedatalab.com">info@arcedatalab.com</a><br><a href="tel:+34633424223">+34 633 42 42 23</a></p>
+      </div>
+      <div class="pie-col"><h2>网站</h2><ul><li><a href="../../servicios/">我们做什么</a></li><li><a href="../../../lab/?lang=zh#sindri">实验室</a></li><li><a href="../../proyectos/">项目</a></li><li><a href="../../novedades/">动态</a></li><li><a href="../../sobre-mi/">关于我</a></li><li><a href="../../#contacto">联系</a></li></ul></div>
+      <div class="pie-col"><h2>服务</h2><ul><li><a href="../../servicios/power-bi/">Power BI</a></li><li><a href="../../servicios/power-bi-fabricas/">工厂 Power BI</a></li><li><a href="../../servicios/automatizacion-n8n/">n8n 自动化</a></li><li><a href="../../servicios/pedidos-por-correo/">邮件订单录入 ERP</a></li><li><a href="../../servicios/asistente-ia/">ERP 的 AI 助手</a></li><li><a href="../../servicios/webs/">网站和应用</a></li></ul></div>
+      <div class="pie-col"><h2>社交媒体</h2><ul><li><a href="https://www.youtube.com/@arcedatalab" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luis-henry-programador" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/henry_arce_dev/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@arcedatalab" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://github.com/larceing" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://wa.me/34633424223" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div class="pie-col"><h2>Legal</h2><ul><li><a href="../../../aviso-legal/">法律声明</a></li><li><a href="../../../privacidad/">隐私政策</a></li><li><a href="../../../cookies/">Cookie 政策</a></li><li><a href="../../../condiciones/">使用条款</a></li></ul></div>
+    </div>
+    <p class="pie-final">© <span id="anio">2026</span> Henry Arce · 西班牙阿利坎特</p>
+  </footer>
+
+  <aside class="bit" id="bit" data-paseo="libre" aria-label="Byte，Arce Data Lab 的助手" data-modelo="../../../img/bit.glb?v=c774ee89ad" data-js="../../../js/bit.js?v=358877e49e">
+    <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
+    <div class="bit-cuerpo" id="bitCuerpo">
+      <img class="bit-foto" src="../../../img/bit.webp" alt="" width="104" height="160">
+      <canvas class="bit-lienzo" id="bitLienzo" aria-hidden="true" hidden></canvas>
+    </div>
+    <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="隐藏 Byte">×</button>
+  </aside>
+  <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
+    <form method="dialog" novalidate>
+      <h2 id="byteMensajeTitulo">给 Henry 留言</h2>
+      <p class="sub">留言会直接发给 Henry。你的信息只用于回复你。</p>
+      <label>你的名字<input name="nombre" autocomplete="name" maxlength="80"></label>
+      <label>公司（可选）<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>你的邮箱或电话<input name="contacto" autocomplete="email" maxlength="120" placeholder="方便他回复你" required></label>
+      <label class="byte-trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
+      <label>他能帮你做什么？<textarea name="texto" rows="4" maxlength="1200" placeholder="例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。" required></textarea></label>
+      <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
+      <p class="botones">
+        <button type="button" class="boton" data-via="correo">发送留言</button>
+        <button type="button" class="boton secundario" data-via="whatsapp">改用 WhatsApp</button>
+      </p>
+      <button type="submit" class="byte-mensaje-cerrar" aria-label="关闭">×</button>
+    </form>
+  </dialog>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte，Arce Data Lab 的助手","hola":"你好，我是 Byte，Arce Data Lab 的助手。我会带你浏览这个网站，并总结每个项目。","servicios":"如果你公司里有每周都重复的工作，那它很可能可以自动化。","infraestructura":"这个网站和客户的应用都运行在这里：容器、HTTPS 和每晚备份。","arcedatalab":"Arce Data Lab 为中小企业打造软件、数据看板和 AI 助手。","proyectos":"点开任意一个项目，我来总结问题、方案和结果。","ficha":"项目摘要。","jugar":["你阅读的时候，我在检查数据。","系统检查：一切正常。","我还在这儿。需要摘要的话告诉我。","正在检查每个应用是否正常响应。"],"dormir":"节能模式。动一下鼠标，我就回来。","despertar":"我回来了。有什么可以帮你？","cinta":"自动化就是这样工作的：手工数据进去，完整的报表出来，全程无需人手。","trayectoria":"咨询、银行和制造业：用真实数据、赶真实工期的经验。","tecnologias":"经过生产环境检验的工具，按需选择。","preguntas":"开始项目前大家最常问的问题，简短回答。","contacto":"想聊聊你的情况？发邮件到 info@arcedatalab.com，Henry 会回复你。","pulsar":["我在这儿。双击我，我帮你给 Henry 留言。","想看某个项目的摘要？点开任意一个就行。","小建议：先把最花时间的工作自动化。","数据对不上时，几乎总能找到可以解决的原因。","1 个字节是 8 位。好的流程，0 次重复工作。"],"mensaje":{"titulo":"给 Henry 留言","sub":"留言会直接发给 Henry。你的信息只用于回复你。","nombre":"你的名字","empresa":"公司（可选）","contacto":"你的邮箱或电话","contactoEj":"方便他回复你","texto":"他能帮你做什么？","ejemplo":"例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。","correo":"发送留言","whatsapp":"改用 WhatsApp","cerrar":"关闭","vacio":"请至少写一句话，让 Henry 知道你需要什么。","sinContacto":"请留下邮箱或电话，方便他回复你。","abriendo":"正在发送……","listo":"已发送！Henry 通常当天回复。","muchos":"你连续发送了好几条留言，请稍后再试。","fallo":"发送失败。复制这条消息，发送到 ","copiar":"复制消息","copiado":"已复制","asunto":"来自 arcedatalab.com 的留言","hola":"你好 Henry，我是"},"ocultar":"隐藏 Byte","mostrar":"显示 Byte","canal":"观看 Club Byte","correoDestino":"info@arcedatalab.com","whatsappDestino":"https://wa.me/34633424223","contactoUrl":"https://n8n.luiscontacto03.com/webhook/contacto-web","idioma":"zh"}</script>
+  <script src="../../../js/bit-arranque.js?v=56d8f31d92"></script>
+  <script src="../../../js/bit-paseo.js?v=a524ed8a41"></script>
+  <script src="../../../js/cinta-arranque.js?v=87e19776e9"></script>
+</body>
+</html>

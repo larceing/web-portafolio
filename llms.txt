@@ -14,7 +14,7 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 ## Servicios
 - **Automatización de procesos**: Quito el trabajo manual que se repite: informes que se generan solos, datos que pasan de un programa a otro, avisos y correos automáticos. Más: https://arcedatalab.com/servicios/automatizacion-n8n/
 - **Cuadros de mando y BI**: Power BI y Microsoft Fabric sobre tu ERP o tus hojas de cálculo: ventas, cobros, stock y producción, con las cifras cuadradas y documentadas. Más: https://arcedatalab.com/servicios/power-bi/
-- **Asistentes de IA sobre tus datos**: Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel.
+- **Asistentes de IA sobre tus datos**: Un asistente que responde preguntas del negocio consultando tus datos en solo lectura, sin inventar cifras, en texto o en Excel. Más: https://arcedatalab.com/servicios/asistente-ia/
 - **Webs y aplicaciones a medida**: ERP, CRM, citas, incidencias o una tienda: webs y aplicaciones con inicio de sesión, copias y despliegue en mi propia infraestructura. Más: https://arcedatalab.com/servicios/webs/
 
 ## Infraestructura propia
@@ -86,6 +86,9 @@ Soy Henry Arce, analista de datos y desarrollador en Alicante, y fundador de Arc
 - [Sobre mí](https://arcedatalab.com/sobre-mi/)
 - [Laboratorio de demos](https://arcedatalab.com/lab/)
 - [Consultor de Power BI para pymes](https://arcedatalab.com/servicios/power-bi/)
+- [Power BI para fábricas: OEE, paradas y scrap](https://arcedatalab.com/servicios/power-bi-fabricas/)
 - [Automatización de procesos con n8n](https://arcedatalab.com/servicios/automatizacion-n8n/)
+- [Automatizar los pedidos que llegan por correo](https://arcedatalab.com/servicios/pedidos-por-correo/)
+- [Un asistente de IA que responde con los datos de tu ERP](https://arcedatalab.com/servicios/asistente-ia/)
 - [Webs y aplicaciones a medida para pymes](https://arcedatalab.com/servicios/webs/)
 - [Novedades: en qué trabajamos, dónde publicamos y LinkedIn](https://arcedatalab.com/novedades/)
