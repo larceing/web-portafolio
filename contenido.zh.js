@@ -747,6 +747,7 @@ module.exports = {
     },
     'nifi-oee': {
       corto: 'NiFi 到 Power BI', titulo: '用 Apache NiFi 把机器数据送进 Power BI', etiqueta: '开源 · Apache NiFi · 2026',
+      captura: { src: 'img/proyectos/nifi-oee-powerbi.webp', ancho: 1456, alto: 815, alt: '项目的 Power BI 报表：OEE、可用率、性能和质量；按日期和机器的 OEE；按机器和班次的 OEE；按原因的停机分钟数以及每台机器的当前状态', pie: '仓库中附带的 Power BI 报表，使用模拟器生成的虚构数据。' },
       caso: [
         ['问题', '很多工厂每月一次在 Excel 里手工计算 OEE：等数字变差时，已经没人记得发生了什么，而且每个班组长记录停机的方式都不一样。'],
         ['我做了什么', '一个使用虚构数据的完整数据管道：三台模拟机器通过 MQTT 发布运行或停机状态、停机原因以及良品和不良品数量。Apache NiFi 2 读取消息，按模式校验 JSON，执行业务规则，从 PostgreSQL 主数据表补充班次和机器名称后写入数据库。错误消息进入错误队列，并注明原因。'],
