@@ -153,7 +153,8 @@ module.exports = {
         ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
         ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.'],
-        ['My Power BI report isn’t refreshing. Can you help?', 'Yes. Here are <a href="../power-bi-no-actualiza/">the most common causes and how to fix them</a>. If you can’t sort it out, I’ll go through it with you.']
+        ['My Power BI report isn’t refreshing. Can you help?', 'Yes. Here are <a href="../power-bi-no-actualiza/">the most common causes and how to fix them</a>. If you can’t sort it out, I’ll go through it with you.'],
+        ['My Power BI report is slow. What can I do?', 'Start with <a href="../power-bi-lento/">the six most common causes and how to speed it up</a>. If it is still slow, I’ll measure it with you and tell you what to change.']
       ]
     },
     'automatizacion-n8n': {
@@ -257,6 +258,44 @@ module.exports = {
         ['What if the problem is Power BI itself?', 'It happens, though rarely. Check the Power BI service status page. If there is an incident, don’t touch anything: refresh works again once Microsoft fixes it.'],
         ['How many times a day can it refresh?', 'With Power BI Pro, up to 8 scheduled refreshes a day. With Premium Per User or a Fabric capacity, up to 48.'],
         ['How much does it cost for you to fix it?', 'It depends on the cause. Tell me which error you get and I’ll send you a fixed quote before starting, with no obligation.']
+      ]
+    },
+    'power-bi-lento': {
+      titulo: 'Power BI slow: why it lags and how to speed it up | Arce Data Lab',
+      corto: 'Slow Power BI',
+      h1: 'Your Power BI report is slow: causes and fixes',
+      descripcion: 'Why your Power BI report takes so long to load and how to speed it up: too many visuals, a large model, heavy DAX, two-way relationships or DirectQuery.',
+      intro: 'You open the report and the charts keep loading, or every filter takes seconds. It is almost always one of these six causes. Start with Performance Analyzer in Power BI Desktop (Optimize ribbon): it tells you which visual is slow and where its time goes. If you can’t find it, I’ll go through it with you.',
+      causasTitulo: 'The six most common causes',
+      causasIntro: 'For each one, the clue that gives it away and what to do. Performance Analyzer tells you where to start.',
+      causaEtiqueta: 'Cause',
+      causas: [
+        ['Too many visuals on one page', 'The page is slow to open and, in Performance Analyzer, many visuals spend time in “Other”: they are waiting for the rest to finish.',
+          ['Keep only what is needed on each page.', 'Move the detail to a drillthrough page or a report page tooltip.', 'Test custom visuals one by one: a poorly built one slows down the whole report.']],
+        ['A table that shows everything', 'A table or matrix shows thousands of unfiltered rows, and it is the slowest item in Performance Analyzer.',
+          ['Give it a Top N filter to limit the rows, with a maximum higher than anyone will look at.', 'Open the page with a sensible filter already set, such as the current month, instead of the whole history.']],
+        ['The model loads more data than it uses', 'The file is large, refresh is slow too and the whole report lags, not one particular visual.',
+          ['Remove the columns and rows no report uses; for example, load only the last few years.', 'Turn off “Auto date/time”: it creates a hidden table for every date column.', 'Create new columns in Power Query rather than as DAX calculated columns.']],
+        ['Heavy DAX measures', 'In Performance Analyzer, the “DAX query” takes most of the time.',
+          ['Store in a variable (VAR) whatever the measure calculates twice, so it is calculated only once.', 'Inside CALCULATE, use simple conditions on a column instead of FILTER over the whole table.', 'Copy the query from Performance Analyzer and test it in DAX query view until it gets faster.']],
+        ['Two-way relationships', 'In model view, a relationship has arrows in both directions.',
+          ['Keep them single-direction unless they are needed: two-way ones give every query more work.', 'If it was so a slicer only shows options with data, filter the slicer with an “is not blank” measure instead.', 'If a measure needs to filter both ways, turn it on only in that measure with CROSSFILTER.']],
+        ['DirectQuery or a slow source', 'The data isn’t imported: every filter asks the database, and in Performance Analyzer “Direct query” takes the time.',
+          ['Consider importing the data: it is Microsoft’s recommended default and it answers from memory.', 'If you need DirectQuery, keep measures simple (SUM, COUNT, MIN, MAX, AVERAGE) and avoid two-way relationships.', 'Keep the gateway and the database close to your Power BI region to cut latency.']]
+      ],
+      incluye: [
+        ['Diagnosis', 'I measure the report with Performance Analyzer and see which page, visual and measure take the time.'],
+        ['Lighter model', 'I remove columns, rows and history nobody uses, and whatever bloats the model without adding anything.'],
+        ['Faster DAX', 'I rewrite the slowest measures and check they return the same figures as before.'],
+        ['Clearer pages', 'Fewer visuals per page and the detail kept apart, so it opens sooner and reads better.'],
+        ['Before and after', 'I give you the load times measured before and after the change, page by page.']
+      ],
+      tec: 'Power BI Desktop, Power BI service, Performance Analyzer, DAX, Power Query, DirectQuery, SQL Server',
+      faq: [
+        ['Why is my Power BI so slow?', 'Almost always for one of these reasons: too many visuals on the page, a model with more data than it needs, heavy DAX measures, two-way relationships or a slow source with DirectQuery. Performance Analyzer tells you which.'],
+        ['How do I know which visual is slow?', 'Open Performance Analyzer (Optimize ribbon in Power BI Desktop, or the View menu when editing the report in the service), select “Start recording” and then “Refresh visuals”. You’ll see how long each one takes and on what.'],
+        ['Is it better to import the data or use DirectQuery?', 'Import, unless you have a reason not to: the data is queried from memory and responds fast. With DirectQuery every visual asks the database, so it is only as fast as the database. It makes sense if you need near real-time data or it doesn’t fit in the model.'],
+        ['How much does it cost for you to speed it up?', 'It depends on the cause and the size of the model. Tell me which report is slow and I’ll send you a fixed quote before starting, with no obligation.']
       ]
     },
     'asistente-ia': {

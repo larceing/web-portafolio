@@ -810,7 +810,8 @@ const SERVICIOS = [
       ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
       ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.'],
-      ['Mi informe de Power BI no se actualiza, ¿me ayudas?', 'Sí. Aquí tienes <a href="../power-bi-no-actualiza/">las causas más habituales y cómo arreglarlas</a>. Si no das con ello, lo reviso contigo.']
+      ['Mi informe de Power BI no se actualiza, ¿me ayudas?', 'Sí. Aquí tienes <a href="../power-bi-no-actualiza/">las causas más habituales y cómo arreglarlas</a>. Si no das con ello, lo reviso contigo.'],
+      ['Mi informe de Power BI va lento, ¿qué hago?', 'Mira primero <a href="../power-bi-lento/">las seis causas más habituales y cómo acelerarlo</a>. Si sigue lento, lo mido contigo y te digo qué cambiar.']
     ]
   },
   {
@@ -877,6 +878,46 @@ const SERVICIOS = [
       ['¿Y si el problema es de Power BI?', 'Puede pasar, aunque es raro. Mira la página de estado del servicio de Power BI. Si hay una incidencia, no toques nada: la actualización vuelve a funcionar cuando Microsoft la resuelve.'],
       ['¿Cuántas veces al día se puede actualizar?', 'Con Power BI Pro, hasta 8 actualizaciones programadas al día. Con Premium por usuario o una capacidad de Fabric, hasta 48.'],
       ['¿Cuánto cuesta que lo arregles?', 'Depende de la causa. Cuéntame qué error te sale y te paso un presupuesto cerrado antes de empezar, sin compromiso.']
+    ]
+  },
+  {
+    id: 'power-bi-lento', icono: 'lupa',
+    proyectos: ['reader', 'reporting', 'grafo', 'calculate'],
+    titulo: 'Power BI lento: por qué tarda y cómo acelerarlo | Arce Data Lab',
+    corto: 'Power BI lento',
+    h1: 'Tu informe de Power BI va lento: causas y solución',
+    descripcion: 'Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.',
+    intro: 'Abres el informe y los gráficos se quedan cargando, o cada filtro tarda segundos. Casi siempre es una de estas seis causas. Empieza por el Analizador de rendimiento de Power BI Desktop (cinta Optimizar): te dice qué objeto visual tarda y en qué se le va el tiempo. Si no das con ello, lo reviso contigo.',
+    causasTitulo: 'Las seis causas más habituales',
+    causasIntro: 'En cada una, la pista que la delata y qué hacer. El Analizador de rendimiento te dice por cuál empezar.',
+    causaEtiqueta: 'Causa',
+    causas: [
+      ['Demasiados objetos visuales en una página', 'La página tarda al abrirse y, en el Analizador, muchos objetos visuales pasan tiempo en «Otros»: esperan a que terminen los demás.',
+        ['Deja en cada página solo lo necesario.', 'Lleva el detalle a una página de obtención de detalles o a una información sobre herramientas de página.', 'Prueba los objetos visuales personalizados uno a uno: uno mal hecho frena todo el informe.']],
+      ['Una tabla que lo enseña todo', 'Una tabla o una matriz muestra miles de filas sin filtrar, y es lo que más tarda en el Analizador.',
+        ['Ponle un filtro Top N para limitar las filas, con un máximo mayor del que nadie va a mirar.', 'Abre la página con un filtro razonable ya puesto, como el mes actual, en vez de todo el histórico.']],
+      ['El modelo carga más datos de los que usa', 'El archivo pesa mucho, también tarda al actualizar y todo el informe va lento, no un objeto visual concreto.',
+        ['Quita las columnas y las filas que no usa ningún informe; por ejemplo, carga solo los últimos años.', 'Desactiva «Fecha y hora automáticas»: crea una tabla oculta por cada columna de fecha.', 'Crea las columnas nuevas en Power Query mejor que como columnas calculadas en DAX.']],
+      ['Medidas DAX pesadas', 'En el Analizador, lo que más tarda es la «Consulta DAX».',
+        ['Guarda en una variable (VAR) lo que la medida calcula dos veces, para que lo calcule una sola.', 'Dentro de CALCULATE, usa condiciones simples sobre una columna en vez de FILTER sobre la tabla entera.', 'Copia la consulta desde el Analizador y pruébala en la vista de consultas DAX hasta que baje.']],
+      ['Relaciones en las dos direcciones', 'En la vista de modelo, alguna relación tiene flechas en los dos sentidos.',
+        ['Déjalas en una sola dirección salvo que hagan falta: las dobles dan más trabajo a cada consulta.', 'Si era para que una segmentación muestre solo opciones con datos, fíltrala con una medida «no está en blanco».', 'Si una medida necesita filtrar en los dos sentidos, actívalo solo en esa medida con CROSSFILTER.']],
+      ['DirectQuery o un origen lento', 'Los datos no están importados: cada filtro pregunta a la base de datos, y en el Analizador la «Consulta directa» se lleva el tiempo.',
+        ['Valora importar los datos: es la opción que Microsoft recomienda por defecto y responde desde memoria.', 'Si necesitas DirectQuery, deja las medidas simples (SUM, COUNT, MIN, MAX, AVERAGE) y evita las relaciones dobles.', 'Acerca la puerta de enlace y la base de datos a la región de tu Power BI para recortar la latencia.']]
+    ],
+    incluye: [
+      ['Diagnóstico', 'Mido el informe con el Analizador de rendimiento y veo qué página, qué objeto visual y qué medida se llevan el tiempo.'],
+      ['Modelo más ligero', 'Quito columnas, filas e historial que nadie usa, y lo que engorda el modelo sin aportar nada.'],
+      ['DAX más rápido', 'Reescribo las medidas que más tardan y compruebo que dan las mismas cifras que antes.'],
+      ['Páginas más claras', 'Menos objetos visuales por página y el detalle aparte, para que abra antes y se entienda mejor.'],
+      ['Antes y después', 'Te paso los tiempos de carga medidos antes y después del cambio, página por página.']
+    ],
+    tec: 'Power BI Desktop, servicio de Power BI, Analizador de rendimiento, DAX, Power Query, DirectQuery, SQL Server',
+    faq: [
+      ['¿Por qué mi Power BI va tan lento?', 'Casi siempre por una de estas causas: demasiados objetos visuales en la página, un modelo con más datos de los necesarios, medidas DAX pesadas, relaciones en las dos direcciones o un origen lento con DirectQuery. El Analizador de rendimiento te dice cuál.'],
+      ['¿Cómo sé qué objeto visual es el lento?', 'Abre el Analizador de rendimiento (cinta Optimizar en Power BI Desktop, o menú Ver al editar el informe en el servicio), pulsa «Iniciar grabación» y luego «Actualizar objetos visuales». Verás cuánto tarda cada uno y en qué.'],
+      ['¿Es mejor importar los datos o usar DirectQuery?', 'Importar, salvo que tengas un motivo: los datos se consultan desde memoria y responden rápido. Con DirectQuery cada objeto visual pregunta a la base de datos, así que va tan rápido como ella. Tiene sentido si necesitas el dato casi al momento o no cabe en el modelo.'],
+      ['¿Cuánto cuesta que lo acelere?', 'Depende de la causa y del tamaño del modelo. Cuéntame qué informe va lento y te paso un presupuesto cerrado antes de empezar, sin compromiso.']
     ]
   },
   {
