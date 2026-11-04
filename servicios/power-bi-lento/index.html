@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power BI lento: por qué tarda y cómo acelerarlo | Arce Data Lab</title>
+  <meta name="description" content="Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="Henry Arce">
+  <link rel="canonical" href="https://arcedatalab.com/servicios/power-bi-lento/">
+  <link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/power-bi-lento/">
+  <link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/power-bi-lento/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/power-bi-lento/">
+  <link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/power-bi-lento/">
+  <meta property="og:title" content="Power BI lento: por qué tarda y cómo acelerarlo | Arce Data Lab">
+  <meta property="og:description" content="Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arcedatalab.com/servicios/power-bi-lento/">
+  <meta property="og:site_name" content="Henry Arce · Arce Data Lab">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Henry Arce · Arce Data Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Power BI lento: por qué tarda y cómo acelerarlo | Arce Data Lab">
+  <meta name="twitter:description" content="Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.">
+  <meta name="twitter:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../img/monograma.svg" type="image/svg+xml">
+  <link rel="icon" href="../../img/monograma.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../../img/monograma.png">
+  <link rel="me" href="https://www.linkedin.com/in/luis-henry-programador">
+  <link rel="me" href="https://github.com/larceing">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://arcedatalab.com/servicios/power-bi-lento/","url":"https://arcedatalab.com/servicios/power-bi-lento/","name":"Tu informe de Power BI va lento: causas y solución","description":"Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.","inLanguage":"es","isPartOf":{"@id":"https://arcedatalab.com/#web"},"about":{"@id":"https://arcedatalab.com/servicios/power-bi-lento/#servicio"},"breadcrumb":{"@id":"https://arcedatalab.com/servicios/power-bi-lento/#migas"}},{"@type":"Service","@id":"https://arcedatalab.com/servicios/power-bi-lento/#servicio","name":"Tu informe de Power BI va lento: causas y solución","serviceType":"Power BI lento","description":"Por qué tu informe de Power BI tarda en cargar y cómo acelerarlo: demasiados objetos visuales, modelo grande, DAX pesado, relaciones dobles o DirectQuery.","url":"https://arcedatalab.com/servicios/power-bi-lento/","provider":{"@id":"https://arcedatalab.com/#organizacion"},"areaServed":[{"@type":"City","name":"Alicante"},{"@type":"Country","name":"España"},{"@type":"Place","name":"Unión Europea"}],"availableLanguage":["es","en"]},{"@type":"BreadcrumbList","@id":"https://arcedatalab.com/servicios/power-bi-lento/#migas","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://arcedatalab.com/"},{"@type":"ListItem","position":2,"name":"Servicios","item":"https://arcedatalab.com/servicios/"},{"@type":"ListItem","position":3,"name":"Power BI lento","item":"https://arcedatalab.com/servicios/power-bi-lento/"}]},{"@type":"FAQPage","@id":"https://arcedatalab.com/servicios/power-bi-lento/#preguntas","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Por qué mi Power BI va tan lento?","acceptedAnswer":{"@type":"Answer","text":"Casi siempre por una de estas causas: demasiados objetos visuales en la página, un modelo con más datos de los necesarios, medidas DAX pesadas, relaciones en las dos direcciones o un origen lento con DirectQuery. El Analizador de rendimiento te dice cuál."}},{"@type":"Question","name":"¿Cómo sé qué objeto visual es el lento?","acceptedAnswer":{"@type":"Answer","text":"Abre el Analizador de rendimiento (cinta Optimizar en Power BI Desktop, o menú Ver al editar el informe en el servicio), pulsa «Iniciar grabación» y luego «Actualizar objetos visuales». Verás cuánto tarda cada uno y en qué."}},{"@type":"Question","name":"¿Es mejor importar los datos o usar DirectQuery?","acceptedAnswer":{"@type":"Answer","text":"Importar, salvo que tengas un motivo: los datos se consultan desde memoria y responden rápido. Con DirectQuery cada objeto visual pregunta a la base de datos, así que va tan rápido como ella. Tiene sentido si necesitas el dato casi al momento o no cabe en el modelo."}},{"@type":"Question","name":"¿Cuánto cuesta que lo acelere?","acceptedAnswer":{"@type":"Answer","text":"Depende de la causa y del tamaño del modelo. Cuéntame qué informe va lento y te paso un presupuesto cerrado antes de empezar, sin compromiso."}}]}]}</script>
+  <link rel="preload" href="../../fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/estilos.css?v=2495425573">
+  <script defer src="/m/s.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-host-url="/m" data-domains="arcedatalab.com"></script>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce <span>automatización · IA · datos</span></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="../../servicios/" aria-current="page">Qué hacemos</a>
+      <a class="menu-extra" href="../../lab/#sindri">Laboratorio</a>
+      <a href="../../proyectos/">Proyectos</a>
+      <a class="menu-extra" href="../../novedades/">Novedades</a>
+      <a class="menu-extra" href="../../sobre-mi/">Sobre mí</a>
+      <span class="idiomas" role="group" aria-label="Idioma · Language · 语言"><a href="../../servicios/power-bi-lento/" lang="es" hreflang="es" title="Español" aria-current="true">ES</a><a href="../../en/servicios/power-bi-lento/" lang="en" hreflang="en" title="English">EN</a><a href="../../zh/servicios/power-bi-lento/" lang="zh-Hans" hreflang="zh-Hans" title="中文">中文</a></span>
+      <a class="menu-cta" href="https://wa.me/34633424223?text=Hola%20Henry%2C%20quiero%20pedir%20presupuesto%20para%20mi%20empresa.%20Te%20cuento%3A%20" target="_blank" rel="noopener">Pide presupuesto</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="pagina-servicios pagina-servicio">
+    <nav class="migas" aria-label="Breadcrumb"><a href="../../">Inicio</a> › <a href="../">Servicios</a> › <span>Power BI lento</span></nav>
+
+    <section class="bloque servicio-cabeza">
+      <span class="servicio-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11"/><path d="M29 29l10 10"/></svg></span>
+      <h1>Tu informe de Power BI va lento: causas y solución</h1>
+      <p class="sub">Abres el informe y los gráficos se quedan cargando, o cada filtro tarda segundos. Casi siempre es una de estas seis causas. Empieza por el Analizador de rendimiento de Power BI Desktop (cinta Optimizar): te dice qué objeto visual tarda y en qué se le va el tiempo. Si no das con ello, lo reviso contigo.</p>
+      <p class="botones"><a class="boton" href="https://wa.me/34633424223?text=Hola%20Henry%2C%20quiero%20pedir%20presupuesto%20para%20mi%20empresa.%20Te%20cuento%3A%20" target="_blank" rel="noopener">Pide presupuesto</a></p>
+    </section>
+
+    <section class="bloque" id="causas">
+      <h2>Las seis causas más habituales</h2>
+      <p class="sub lotes-intro">En cada una, la pista que la delata y qué hacer. El Analizador de rendimiento te dice por cuál empezar.</p>
+      <div class="lotes">
+        <article class="lote">
+          <p class="lote-para">Causa 1</p>
+          <h3>Demasiados objetos visuales en una página</h3>
+          <p class="lote-pregunta">La página tarda al abrirse y, en el Analizador, muchos objetos visuales pasan tiempo en «Otros»: esperan a que terminen los demás.</p>
+          <ul><li>Deja en cada página solo lo necesario.</li><li>Lleva el detalle a una página de obtención de detalles o a una información sobre herramientas de página.</li><li>Prueba los objetos visuales personalizados uno a uno: uno mal hecho frena todo el informe.</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">Causa 2</p>
+          <h3>Una tabla que lo enseña todo</h3>
+          <p class="lote-pregunta">Una tabla o una matriz muestra miles de filas sin filtrar, y es lo que más tarda en el Analizador.</p>
+          <ul><li>Ponle un filtro Top N para limitar las filas, con un máximo mayor del que nadie va a mirar.</li><li>Abre la página con un filtro razonable ya puesto, como el mes actual, en vez de todo el histórico.</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">Causa 3</p>
+          <h3>El modelo carga más datos de los que usa</h3>
+          <p class="lote-pregunta">El archivo pesa mucho, también tarda al actualizar y todo el informe va lento, no un objeto visual concreto.</p>
+          <ul><li>Quita las columnas y las filas que no usa ningún informe; por ejemplo, carga solo los últimos años.</li><li>Desactiva «Fecha y hora automáticas»: crea una tabla oculta por cada columna de fecha.</li><li>Crea las columnas nuevas en Power Query mejor que como columnas calculadas en DAX.</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">Causa 4</p>
+          <h3>Medidas DAX pesadas</h3>
+          <p class="lote-pregunta">En el Analizador, lo que más tarda es la «Consulta DAX».</p>
+          <ul><li>Guarda en una variable (VAR) lo que la medida calcula dos veces, para que lo calcule una sola.</li><li>Dentro de CALCULATE, usa condiciones simples sobre una columna en vez de FILTER sobre la tabla entera.</li><li>Copia la consulta desde el Analizador y pruébala en la vista de consultas DAX hasta que baje.</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">Causa 5</p>
+          <h3>Relaciones en las dos direcciones</h3>
+          <p class="lote-pregunta">En la vista de modelo, alguna relación tiene flechas en los dos sentidos.</p>
+          <ul><li>Déjalas en una sola dirección salvo que hagan falta: las dobles dan más trabajo a cada consulta.</li><li>Si era para que una segmentación muestre solo opciones con datos, fíltrala con una medida «no está en blanco».</li><li>Si una medida necesita filtrar en los dos sentidos, actívalo solo en esa medida con CROSSFILTER.</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">Causa 6</p>
+          <h3>DirectQuery o un origen lento</h3>
+          <p class="lote-pregunta">Los datos no están importados: cada filtro pregunta a la base de datos, y en el Analizador la «Consulta directa» se lleva el tiempo.</p>
+          <ul><li>Valora importar los datos: es la opción que Microsoft recomienda por defecto y responde desde memoria.</li><li>Si necesitas DirectQuery, deja las medidas simples (SUM, COUNT, MIN, MAX, AVERAGE) y evita las relaciones dobles.</li><li>Acerca la puerta de enlace y la base de datos a la región de tu Power BI para recortar la latencia.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <h2>Qué incluye</h2>
+      <div class="servicios servicio-incluye">
+        <article class="servicio"><h3>Diagnóstico</h3><p>Mido el informe con el Analizador de rendimiento y veo qué página, qué objeto visual y qué medida se llevan el tiempo.</p></article>
+        <article class="servicio"><h3>Modelo más ligero</h3><p>Quito columnas, filas e historial que nadie usa, y lo que engorda el modelo sin aportar nada.</p></article>
+        <article class="servicio"><h3>DAX más rápido</h3><p>Reescribo las medidas que más tardan y compruebo que dan las mismas cifras que antes.</p></article>
+        <article class="servicio"><h3>Páginas más claras</h3><p>Menos objetos visuales por página y el detalle aparte, para que abra antes y se entienda mejor.</p></article>
+        <article class="servicio"><h3>Antes y después</h3><p>Te paso los tiempos de carga medidos antes y después del cambio, página por página.</p></article>
+      </div>
+      <p class="servicios-nota">Power BI Desktop, servicio de Power BI, Analizador de rendimiento, DAX, Power Query, DirectQuery, SQL Server</p>
+    </section>
+
+    <section class="bloque">
+      <h2>Cómo trabajamos</h2>
+      <ol class="pasos-servicio">
+        <li><strong>Diagnóstico gratis</strong><span>45 minutos por videollamada para ver tus datos, tus tareas y lo que de verdad te quita tiempo.</span></li>
+        <li><strong>Propuesta por escrito</strong><span>Qué se construye, cuántas rondas de cambios, el precio cerrado y el plazo, que se fija cuando ya he visto los datos.</span></li>
+        <li><strong>Construcción</strong><span>Te enseño avances por el camino. Se paga el 50 % al empezar y el 50 % a la entrega, siempre con factura.</span></li>
+        <li><strong>Entrega y formación</strong><span>Lo dejo funcionando, documentado y explicado a tu equipo. Si quieres, sigo con un mantenimiento mensual.</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque porque" id="por-que">
+      <h2>¿Por qué trabajar conmigo?</h2>
+      <p class="sub">Lo que cambia frente a contratar una agencia o un programa genérico</p>
+      <ol class="porque-lista">
+        <li><strong>Hablas con quien lo hace</strong><span>Quien te escucha en el diagnóstico es quien diseña, programa y te entrega el trabajo. Sin comerciales ni intermediarios.</span></li>
+        <li><strong>Conozco el día a día de una empresa</strong><span>Trabajo con datos desde 2019, primero en consultoras y hoy dentro de la industria, con ERP como A3, SAP o Clavei.</span></li>
+        <li><strong>Precio cerrado y por escrito</strong><span>Antes de empezar sabes qué se construye, cuántas rondas de cambios hay y cuánto cuesta. Sin sorpresas al final.</span></li>
+        <li><strong>Tus datos, cuidados</strong><span>Trabajo en solo lectura siempre que se puede y las aplicaciones viven en servidores de la UE con copias cada noche.</span></li>
+        <li><strong>Sin atarte a mí</strong><span>Te entrego el trabajo documentado y mucho de lo que hago es open source: puedes ver cómo trabajo antes de llamarme.</span></li>
+        <li><strong>Mido lo que se gana</strong><span>Apunto cuánto tiempo lleva hoy la tarea y cuánto después, para que sepas si ha merecido la pena.</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque">
+      <h2>Proyectos relacionados</h2>
+      <ul class="otros">
+        <li><a href="../../proyectos/reader/">powerbi-report-reader</a> <span>· Open source</span></li>
+        <li><a href="../../proyectos/reporting/">Reporting de ventas, cobros y stock</a> <span>· Para empresa</span></li>
+        <li><a href="../../proyectos/grafo/">Mapa-grafo de tu proyecto Power BI</a> <span>· Open source</span></li>
+        <li><a href="../../proyectos/calculate/">CALCULATE en vivo</a> <span>· Open source</span></li>
+      </ul>
+    </section>
+
+    <section class="bloque">
+      <h2>Preguntas frecuentes</h2>
+      <dl class="preguntas">
+        <div><dt>¿Por qué mi Power BI va tan lento?</dt><dd>Casi siempre por una de estas causas: demasiados objetos visuales en la página, un modelo con más datos de los necesarios, medidas DAX pesadas, relaciones en las dos direcciones o un origen lento con DirectQuery. El Analizador de rendimiento te dice cuál.</dd></div>
+        <div><dt>¿Cómo sé qué objeto visual es el lento?</dt><dd>Abre el Analizador de rendimiento (cinta Optimizar en Power BI Desktop, o menú Ver al editar el informe en el servicio), pulsa «Iniciar grabación» y luego «Actualizar objetos visuales». Verás cuánto tarda cada uno y en qué.</dd></div>
+        <div><dt>¿Es mejor importar los datos o usar DirectQuery?</dt><dd>Importar, salvo que tengas un motivo: los datos se consultan desde memoria y responden rápido. Con DirectQuery cada objeto visual pregunta a la base de datos, así que va tan rápido como ella. Tiene sentido si necesitas el dato casi al momento o no cabe en el modelo.</dd></div>
+        <div><dt>¿Cuánto cuesta que lo acelere?</dt><dd>Depende de la causa y del tamaño del modelo. Cuéntame qué informe va lento y te paso un presupuesto cerrado antes de empezar, sin compromiso.</dd></div>
+      </dl>
+      <h2 class="otros-servicios">Otros servicios</h2>
+      <p class="botones"><a class="boton secundario" href="../power-bi/">Power BI</a><a class="boton secundario" href="../power-bi-fabricas/">Power BI para fábricas</a><a class="boton secundario" href="../power-bi-no-actualiza/">Power BI que no se actualiza</a><a class="boton secundario" href="../error-puerta-de-enlace-power-bi/">Error de puerta de enlace en Power BI</a><a class="boton secundario" href="../automatizacion-n8n/">Automatización con n8n</a><a class="boton secundario" href="../pedidos-por-correo/">Pedidos por correo al ERP</a><a class="boton secundario" href="../asistente-ia/">Asistente de IA para tu ERP</a><a class="boton secundario" href="../webs/">Webs y aplicaciones</a><a class="boton secundario" href="../">Servicios</a></p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-dentro">
+      <div class="pie-marca">
+        <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce</a>
+        <p>Datos, Power BI y desarrollo a medida para empresas que quieren decidir con números.</p>
+        <p><a href="mailto:info@arcedatalab.com">info@arcedatalab.com</a><br><a href="tel:+34633424223">+34 633 42 42 23</a></p>
+      </div>
+      <div class="pie-col"><h2>La web</h2><ul><li><a href="../../servicios/">Qué hacemos</a></li><li><a href="../../lab/#sindri">Laboratorio</a></li><li><a href="../../proyectos/">Proyectos</a></li><li><a href="../../novedades/">Novedades</a></li><li><a href="../../sobre-mi/">Sobre mí</a></li><li><a href="../../#contacto">Contacto</a></li></ul></div>
+      <div class="pie-col"><h2>Servicios</h2><ul><li><a href="../../servicios/power-bi/">Power BI</a></li><li><a href="../../servicios/power-bi-fabricas/">Power BI para fábricas</a></li><li><a href="../../servicios/power-bi-no-actualiza/">Power BI que no se actualiza</a></li><li><a href="../../servicios/power-bi-lento/">Power BI lento</a></li><li><a href="../../servicios/error-puerta-de-enlace-power-bi/">Error de puerta de enlace en Power BI</a></li><li><a href="../../servicios/automatizacion-n8n/">Automatización con n8n</a></li><li><a href="../../servicios/pedidos-por-correo/">Pedidos por correo al ERP</a></li><li><a href="../../servicios/asistente-ia/">Asistente de IA para tu ERP</a></li><li><a href="../../servicios/webs/">Webs y aplicaciones</a></li></ul></div>
+      <div class="pie-col"><h2>Redes</h2><ul><li><a href="https://www.youtube.com/@arcedatalab" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luis-henry-programador" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/henry_arce_dev/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@arcedatalab" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://github.com/larceing" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://wa.me/34633424223" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div class="pie-col"><h2>Legal</h2><ul><li><a href="../../aviso-legal/">Aviso legal</a></li><li><a href="../../privacidad/">Privacidad</a></li><li><a href="../../cookies/">Cookies</a></li><li><a href="../../condiciones/">Condiciones</a></li></ul></div>
+    </div>
+    <p class="pie-final">© <span id="anio">2026</span> Henry Arce · Alicante, España</p>
+  </footer>
+
+  <aside class="bit" id="bit" data-paseo="libre" aria-label="Byte, el asistente de Arce Data Lab" data-modelo="../../img/bit.glb?v=c774ee89ad" data-js="../../js/bit.js?v=358877e49e">
+    <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
+    <div class="bit-cuerpo" id="bitCuerpo">
+      <img class="bit-foto" src="../../img/bit.webp" alt="" width="104" height="160">
+      <canvas class="bit-lienzo" id="bitLienzo" aria-hidden="true" hidden></canvas>
+    </div>
+    <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="Ocultar a Byte">×</button>
+  </aside>
+  <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
+    <form method="dialog" novalidate>
+      <h2 id="byteMensajeTitulo">Déjale un mensaje a Henry</h2>
+      <p class="sub">Le llega directamente a Henry. Tus datos solo se usan para contestarte.</p>
+      <label>Tu nombre<input name="nombre" autocomplete="name" maxlength="80"></label>
+      <label>Empresa (opcional)<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>Tu correo o teléfono<input name="contacto" autocomplete="email" maxlength="120" placeholder="Para poder contestarte" required></label>
+      <label class="byte-trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
+      <label>¿En qué te puede ayudar?<textarea name="texto" rows="4" maxlength="1200" placeholder="Ej.: cada lunes copiamos las ventas del ERP a un Excel y tardamos 3 horas." required></textarea></label>
+      <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
+      <p class="botones">
+        <button type="button" class="boton" data-via="correo">Enviar mensaje</button>
+        <button type="button" class="boton secundario" data-via="whatsapp">Mejor por WhatsApp</button>
+      </p>
+      <button type="submit" class="byte-mensaje-cerrar" aria-label="Cerrar">×</button>
+    </form>
+  </dialog>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte, el asistente de Arce Data Lab","hola":"Hola, soy Byte, el asistente de Arce Data Lab. Te acompaño por la web y te resumo cada proyecto.","servicios":"Si en tu empresa una tarea se repite cada semana, probablemente se puede automatizar.","infraestructura":"Esta web y las aplicaciones de los clientes funcionan aquí: contenedores, HTTPS y copias cada noche.","arcedatalab":"Arce Data Lab desarrolla software, cuadros de mando y asistentes de IA para pymes.","proyectos":"Abre cualquier proyecto y te resumo el problema, la solución y el resultado.","ficha":"Resumen del proyecto.","jugar":["Mientras lees, reviso los datos.","Comprobación de sistemas: todo en orden.","Sigo aquí. Avísame si quieres un resumen.","Revisando que todas las aplicaciones respondan."],"dormir":"Modo de ahorro de energía. Mueve el ratón y vuelvo.","despertar":"De vuelta. ¿En qué te ayudo?","cinta":"Así funciona una automatización: entran datos manuales y sale un informe listo, sin intervención.","trayectoria":"Consultoría, banca e industria: experiencia con datos reales y plazos reales.","tecnologias":"Herramientas probadas en producción, elegidas según el caso.","preguntas":"Respuestas breves a lo que más se pregunta antes de empezar un proyecto.","contacto":"¿Hablamos de tu caso? Escribe a info@arcedatalab.com y Henry te responde.","pulsar":["Aquí estoy. Si me haces doble clic, le dejo un mensaje a Henry.","¿Te resumo algún proyecto? Abre cualquiera.","Consejo: empieza automatizando la tarea que más tiempo te quita.","Si los datos no cuadran, casi siempre hay una causa que se puede corregir.","Un byte son 8 bits. Un buen proceso, cero tareas repetidas."],"mensaje":{"titulo":"Déjale un mensaje a Henry","sub":"Le llega directamente a Henry. Tus datos solo se usan para contestarte.","nombre":"Tu nombre","empresa":"Empresa (opcional)","contacto":"Tu correo o teléfono","contactoEj":"Para poder contestarte","texto":"¿En qué te puede ayudar?","ejemplo":"Ej.: cada lunes copiamos las ventas del ERP a un Excel y tardamos 3 horas.","correo":"Enviar mensaje","whatsapp":"Mejor por WhatsApp","cerrar":"Cerrar","vacio":"Escribe al menos una frase para que Henry sepa qué necesitas.","sinContacto":"Déjale un correo o un teléfono para que pueda contestarte.","abriendo":"Enviando…","listo":"¡Enviado! Henry suele contestar en el día.","muchos":"Has enviado varios mensajes seguidos. Prueba dentro de un rato.","fallo":"No se ha podido enviar. Copia el mensaje y mándalo a ","copiar":"Copiar mensaje","copiado":"Copiado","asunto":"Mensaje desde arcedatalab.com","hola":"Hola Henry, soy"},"ocultar":"Ocultar a Byte","mostrar":"Mostrar a Byte","canal":"Ver Club Byte","correoDestino":"info@arcedatalab.com","whatsappDestino":"https://wa.me/34633424223","contactoUrl":"https://n8n.luiscontacto03.com/webhook/contacto-web","idioma":"es"}</script>
+  <script src="../../js/bit-arranque.js?v=56d8f31d92"></script>
+  <script src="../../js/bit-paseo.js?v=a524ed8a41"></script>
+  <script src="../../js/cinta-arranque.js?v=87e19776e9"></script>
+</body>
+</html>
