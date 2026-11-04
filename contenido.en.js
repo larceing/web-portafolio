@@ -115,11 +115,11 @@ module.exports = {
   },
   SERVICIOS: {
     'power-bi': {
-      titulo: 'Power BI consultant for SMEs | Arce Data Lab',
+      titulo: 'Power BI consultant in Alicante for SMEs | Arce Data Lab',
       corto: 'Power BI',
-      h1: 'Power BI consultant for SMEs',
+      h1: 'Power BI consultant in Alicante for SMEs',
       descripcion: 'Power BI dashboards on top of your ERP, Excel or SQL, with figures that add up and refreshed every morning. Ask for a quote with no obligation.',
-      intro: 'If your company’s numbers live in several Excel files and someone spends hours every month pulling them together, a Power BI dashboard does it on its own. I connect it to your ERP, your spreadsheets or your database, reconcile the figures with accounting and hand it over documented.',
+      intro: 'If your company’s numbers live in several Excel files and someone spends hours every month pulling them together, a Power BI dashboard does it on its own. I connect it to your ERP, your spreadsheets or your database, reconcile the figures with accounting and hand it over documented. I work from Alicante with companies in Alicante, Elche and the surrounding area, and remotely with the rest of Spain and Europe.',
       incluye: [
         ['Tidy data', 'Cleaning and a data model with Power Query: one version of every figure, even when it comes from several places.'],
         ['DAX measures', 'Sales, margins, collections, stock or production, compared with last year and with your targets.'],
@@ -152,7 +152,8 @@ module.exports = {
         ['What is an analysis pack?', 'A set of Power BI pages designed for one area (sales, plant, logistics or quality) with its indicators already defined. I connect it to your data and adjust it to the way you work, so you don’t start from scratch. Tell me which packs interest you and I’ll send you a fixed quote.'],
         ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
-        ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.']
+        ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.'],
+        ['My Power BI report isn’t refreshing. Can you help?', 'Yes. Here are <a href="../power-bi-no-actualiza/">the most common causes and how to fix them</a>. If you can’t sort it out, I’ll go through it with you.']
       ]
     },
     'automatizacion-n8n': {
@@ -218,6 +219,44 @@ module.exports = {
         ['What if it gets something wrong?', 'It never enters anything doubtful: if data is missing or doesn’t match the ERP, it asks you. Every entered order stays linked to its email so you can check it.'],
         ['Which ERPs does it work with?', 'Those with an API or an accessible database. If your ERP only imports files, the import file is prepared for it.'],
         ['How much does it cost?', 'It depends on how many order formats you receive and how your ERP connects. Tell me about your case and I’ll send you a fixed written quote, with no obligation.']
+      ]
+    },
+    'power-bi-no-actualiza': {
+      titulo: 'Power BI not refreshing: causes and fixes | Arce Data Lab',
+      corto: 'Power BI not refreshing',
+      h1: 'Your Power BI report isn’t refreshing: causes and fixes',
+      descripcion: 'Why Power BI refresh fails and how to fix it: expired credentials, the gateway, moved files, changed columns and time limits.',
+      intro: 'You open the report and the data is from yesterday, or you get a “refresh failed” email. It is almost always one of these six causes, and most take minutes to fix. Start with the semantic model’s refresh history in the Power BI service: the error message is there. If you can’t find it, I’ll go through it with you.',
+      causasTitulo: 'The six most common causes',
+      causasIntro: 'From most to least frequent. For each one, the clue that gives it away and what to do.',
+      causaEtiqueta: 'Cause',
+      causas: [
+        ['Expired credentials', 'Someone changed the password of the database, of Microsoft 365 or of the user the report connects with.',
+          ['In the Power BI service, open the semantic model settings, go to “Data source credentials” and sign in again.', 'Use a service account whose password doesn’t expire, instead of a person’s.']],
+        ['The gateway isn’t responding', 'The data comes from a company server or folder, and the error mentions the gateway.',
+          ['Check that the machine it’s installed on is switched on, connected and not asleep.', 'Update it: Microsoft releases a new version almost every month.', 'Better on a server than on someone’s laptop.']],
+        ['A file was moved or renamed', 'The report reads an Excel or CSV file and someone changed its folder, name or sheet.',
+          ['Point to the new path in Power Query, under “Data source settings”.', 'Keep the files in SharePoint or OneDrive and connect by their web address: then no gateway is needed.']],
+        ['A column changed', 'The error says a column can’t be found (“The column … of the table wasn’t found”).',
+          ['Someone renamed or removed a column in the Excel file or the ERP view.', 'Adjust the Power Query step that uses it, or agree that the source keeps its names.']],
+        ['The schedule switched itself off', 'The report stopped refreshing with no new errors and the scheduled refresh shows as disabled.',
+          ['Power BI disables it after four failures in a row, and pauses it if nobody opens the report for two months.', 'Fix the cause, open the report and switch the schedule back on.']],
+        ['It takes too long', 'The error mentions a timeout or size.',
+          ['With Power BI Pro, each scheduled refresh can run for two hours at most.', 'Remove unused columns and rows, filter at the source and consider incremental refresh.']]
+      ],
+      incluye: [
+        ['Diagnosis', 'I check the refresh history, the gateway and the credentials until I find the failure.'],
+        ['Fix', 'I fix the cause: credentials, paths, Power Query steps or the gateway configuration.'],
+        ['Paths that don’t break', 'I move the Excel files to SharePoint or OneDrive, so moving a file doesn’t break the report again.'],
+        ['Alert if it fails again', 'I set up the failure emails so they reach whoever has to fix it, not only the report owner.'],
+        ['Lighter report', 'If it takes too long, I cut data and Power Query steps so it refreshes in minutes.']
+      ],
+      tec: 'Power BI service, on-premises data gateway, Power Query, SharePoint, OneDrive, SQL Server',
+      faq: [
+        ['Why isn’t my Power BI refreshing today?', 'Look at the semantic model’s refresh history first: the error message usually tells you the cause. The most common ones are expired credentials, a gateway that is off or a file that has been moved.'],
+        ['What if the problem is Power BI itself?', 'It happens, though rarely. Check the Power BI service status page. If there is an incident, don’t touch anything: refresh works again once Microsoft fixes it.'],
+        ['How many times a day can it refresh?', 'With Power BI Pro, up to 8 scheduled refreshes a day. With Premium Per User or a Fabric capacity, up to 48.'],
+        ['How much does it cost for you to fix it?', 'It depends on the cause. Tell me which error you get and I’ll send you a fixed quote before starting, with no obligation.']
       ]
     },
     'asistente-ia': {
