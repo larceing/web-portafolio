@@ -769,11 +769,11 @@ const SERVICIOS = [
   {
     id: 'power-bi', icono: 'grafico',
     proyectos: ['reporting', 'escritorio', 'comercial', 'grafo', 'reader', 'themelab', 'calculate'],
-    titulo: 'Consultor de Power BI para pymes | Arce Data Lab',
+    titulo: 'Consultor de Power BI en Alicante para pymes | Arce Data Lab',
     corto: 'Power BI',
-    h1: 'Consultor de Power BI para pymes',
-    descripcion: 'Cuadros de mando de Power BI sobre tu ERP, Excel o SQL, con las cifras cuadradas y actualizados cada mañana. Pide presupuesto sin compromiso.',
-    intro: 'Si los números de tu empresa viven en varios Excel y cada mes alguien pasa horas juntándolos, un cuadro de mando de Power BI lo hace solo. Lo conecto a tu ERP, a tus hojas o a tu base de datos, cuadro las cifras con contabilidad y te lo entrego documentado.',
+    h1: 'Consultor de Power BI en Alicante para pymes',
+    descripcion: 'Consultor de Power BI en Alicante: cuadros de mando sobre tu ERP, Excel o SQL, con las cifras cuadradas y actualizados cada mañana. Presupuesto sin compromiso.',
+    intro: 'Si los números de tu empresa viven en varios Excel y cada mes alguien pasa horas juntándolos, un cuadro de mando de Power BI lo hace solo. Lo conecto a tu ERP, a tus hojas o a tu base de datos, cuadro las cifras con contabilidad y te lo entrego documentado. Trabajo desde Alicante con empresas de Alicante, Elche y alrededores, y en remoto con el resto de España.',
     incluye: [
       ['Datos ordenados', 'Limpieza y modelo de datos con Power Query: una sola versión de cada cifra, aunque venga de varios sitios.'],
       ['Medidas DAX', 'Ventas, márgenes, cobros, stock o producción, comparados con el año anterior y con tus objetivos.'],
@@ -809,7 +809,8 @@ const SERVICIOS = [
       ['¿Qué es un lote de análisis?', 'Un conjunto de páginas de Power BI pensado para un área (ventas, planta, logística o calidad) con sus indicadores ya definidos. Lo conecto a tus datos y lo ajusto a cómo trabajas, así no se empieza de cero. Cuéntame qué lotes te interesan y te paso un presupuesto cerrado.'],
       ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
-      ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.']
+      ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.'],
+      ['Mi informe de Power BI no se actualiza, ¿me ayudas?', 'Sí. Aquí tienes <a href="../power-bi-no-actualiza/">las causas más habituales y cómo arreglarlas</a>. Si no das con ello, lo reviso contigo.']
     ]
   },
   {
@@ -836,6 +837,46 @@ const SERVICIOS = [
       ['¿Necesito un MES o sensores nuevos?', 'No siempre. Se puede empezar con lo que ya registra el ERP o los partes de producción. Si quieres el dato de la máquina en tiempo real, se lee del PLC o del SCADA en solo lectura.'],
       ['¿Funciona con fábricas pequeñas?', 'Sí. Está pensado para pymes industriales con pocas líneas, donde el OEE se suele calcular a mano en Excel una vez al mes.'],
       ['¿Cuánto cuesta?', 'Depende de las máquinas, de dónde salen los datos y de cuántos lotes quieras. Cuéntame tu planta y te paso un presupuesto cerrado por escrito, sin compromiso.']
+    ]
+  },
+  {
+    id: 'power-bi-no-actualiza', icono: 'ciclo',
+    proyectos: ['reporting', 'escritorio'],
+    titulo: 'Power BI no se actualiza: causas y solución | Arce Data Lab',
+    corto: 'Power BI que no se actualiza',
+    h1: 'Tu informe de Power BI no se actualiza: causas y solución',
+    descripcion: 'Por qué falla la actualización de Power BI y cómo arreglarlo: credenciales caducadas, puerta de enlace, archivos movidos, columnas cambiadas y límites de tiempo.',
+    intro: 'Abres el informe y los datos son de ayer, o te llega un correo de «error de actualización». Casi siempre es una de estas seis causas, y la mayoría se arregla en minutos. Empieza por el historial de actualizaciones del modelo semántico en el servicio de Power BI: ahí está el mensaje de error. Si no das con ello, lo reviso contigo.',
+    causasTitulo: 'Las seis causas más habituales',
+    causasIntro: 'De la más frecuente a la menos. En cada una, la pista que la delata y qué hacer.',
+    causaEtiqueta: 'Causa',
+    causas: [
+      ['Credenciales caducadas', 'Alguien cambió la contraseña de la base de datos, de Microsoft 365 o del usuario con el que se conecta el informe.',
+        ['En el servicio de Power BI, abre la configuración del modelo semántico, entra en «Credenciales del origen de datos» y vuelve a iniciar sesión.', 'Usa una cuenta de servicio cuya contraseña no caduque, en vez de la de una persona.']],
+      ['La puerta de enlace no responde', 'Los datos vienen de un servidor o de una carpeta de la empresa, y el error habla de la puerta de enlace (gateway).',
+        ['Comprueba que el equipo donde está instalada está encendido, con conexión y sin suspensión.', 'Actualízala: Microsoft publica una versión nueva casi cada mes.', 'Mejor en un servidor que en el portátil de alguien.']],
+      ['Un archivo se movió o cambió de nombre', 'El informe lee un Excel o un CSV y alguien lo cambió de carpeta, de nombre o de hoja.',
+        ['Vuelve a apuntar la ruta en Power Query, en «Configuración del origen de datos».', 'Guarda los archivos en SharePoint o OneDrive y conéctate por su dirección web: así no hace falta puerta de enlace.']],
+      ['Ha cambiado una columna', 'El error dice que no encuentra una columna («The column … of the table wasn’t found»).',
+        ['Alguien renombró o quitó una columna en el Excel o en la vista del ERP.', 'Ajusta el paso de Power Query que la usa, o acuerda que el origen mantenga los nombres.']],
+      ['La programación se desactivó sola', 'El informe dejó de actualizarse sin errores nuevos y la actualización programada aparece desactivada.',
+        ['Power BI la desactiva tras cuatro fallos seguidos, y la pausa si nadie abre el informe en dos meses.', 'Arregla la causa, abre el informe y vuelve a activar la programación.']],
+      ['Tarda demasiado', 'El error habla de tiempo de espera agotado o de tamaño.',
+        ['Con Power BI Pro, cada actualización programada tiene un máximo de dos horas.', 'Quita columnas y filas que no se usan, filtra en el origen y valora la actualización incremental.']]
+    ],
+    incluye: [
+      ['Diagnóstico', 'Reviso el historial de actualizaciones, la puerta de enlace y las credenciales hasta dar con el fallo.'],
+      ['Arreglo', 'Corrijo la causa: credenciales, rutas, pasos de Power Query o la configuración de la puerta de enlace.'],
+      ['Rutas que no se rompen', 'Paso los Excel a SharePoint o OneDrive, para que mover un archivo no vuelva a romper el informe.'],
+      ['Aviso si vuelve a fallar', 'Configuro los correos de error para que le lleguen a quien lo tiene que arreglar, no solo al dueño del informe.'],
+      ['Informe más ligero', 'Si tarda demasiado, reduzco datos y pasos de Power Query para que se actualice en minutos.']
+    ],
+    tec: 'Servicio de Power BI, puerta de enlace de datos local, Power Query, SharePoint, OneDrive, SQL Server',
+    faq: [
+      ['¿Por qué mi Power BI no se actualiza hoy?', 'Mira primero el historial de actualizaciones del modelo semántico: el mensaje de error suele decir la causa. Las más habituales son credenciales caducadas, la puerta de enlace apagada o un archivo que se ha movido.'],
+      ['¿Y si el problema es de Power BI?', 'Puede pasar, aunque es raro. Mira la página de estado del servicio de Power BI. Si hay una incidencia, no toques nada: la actualización vuelve a funcionar cuando Microsoft la resuelve.'],
+      ['¿Cuántas veces al día se puede actualizar?', 'Con Power BI Pro, hasta 8 actualizaciones programadas al día. Con Premium por usuario o una capacidad de Fabric, hasta 48.'],
+      ['¿Cuánto cuesta que lo arregles?', 'Depende de la causa. Cuéntame qué error te sale y te paso un presupuesto cerrado antes de empezar, sin compromiso.']
     ]
   },
   {
@@ -2035,6 +2076,25 @@ ${s.lotes.map(l => `        <article class="lote">
 `;
 }
 
+// Causas de un problema (página de Power BI que no se actualiza): tarjetas con la pista
+// que delata cada causa y qué hacer. Usa el mismo estilo que los lotes.
+function causasHtml(s) {
+  return `
+    <section class="bloque" id="causas">
+      <h2>${s.causasTitulo}</h2>
+      <p class="sub lotes-intro">${s.causasIntro}</p>
+      <div class="lotes">
+${s.causas.map((c, i) => `        <article class="lote">
+          <p class="lote-para">${s.causaEtiqueta} ${i + 1}</p>
+          <h3>${c[0]}</h3>
+          <p class="lote-pregunta">${c[1]}</p>
+          <ul>${c[2].map(x => '<li>' + x + '</li>').join('')}</ul>
+        </article>`).join('\n')}
+      </div>
+    </section>
+`;
+}
+
 // Vídeo de YouTube en una página de servicio: miniatura servida desde la web y enlace
 // al vídeo. No se carga nada de YouTube hasta que la persona pulsa.
 function videoHtml(v, raiz) {
@@ -2067,7 +2127,7 @@ function paginaServicio(d, s) {
       '@context': 'https://schema.org',
       '@graph': [
         { '@type': 'WebPage', '@id': url, url: url, name: plano(s.h1), description: plano(s.descripcion), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': url + '#servicio' }, breadcrumb: { '@id': url + '#migas' } },
-        { '@type': 'Service', '@id': url + '#servicio', name: plano(s.h1), serviceType: plano(s.corto), description: plano(s.descripcion), url: url, provider: { '@id': ID_ORG }, areaServed: [{ '@type': 'Country', name: 'España' }, { '@type': 'Place', name: 'Unión Europea' }], availableLanguage: ['es', 'en'] },
+        { '@type': 'Service', '@id': url + '#servicio', name: plano(s.h1), serviceType: plano(s.corto), description: plano(s.descripcion), url: url, provider: { '@id': ID_ORG }, areaServed: [{ '@type': 'City', name: 'Alicante' }, { '@type': 'Country', name: 'España' }, { '@type': 'Place', name: 'Unión Europea' }], availableLanguage: ['es', 'en'] },
         { '@type': 'BreadcrumbList', '@id': url + '#migas', itemListElement: [
           { '@type': 'ListItem', position: 1, name: plano(t.migas), item: inicio },
           { '@type': 'ListItem', position: 2, name: plano(t.serviciosTitulo), item: inicio + 'servicios/' },
@@ -2086,7 +2146,7 @@ function paginaServicio(d, s) {
       <p class="sub">${s.intro}</p>
       <p class="botones"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a></p>
     </section>
-
+${s.causas ? causasHtml(s) : ''}
     <section class="bloque">
       <h2>${t.serv.incluye}</h2>
       <div class="servicios servicio-incluye">
