@@ -375,7 +375,8 @@ const PROYECTOS = [
       ['Resultado', 'El OEE (disponibilidad × rendimiento × calidad) por máquina y turno, las paradas por causa y el scrap salen de vistas SQL listas para Power BI. Todo arranca con un solo <code>docker compose up</code> en unos dos minutos y, en las pruebas, ninguno de los 12.960 mensajes del histórico se perdió. Incluye la plantilla del flujo en JSON y una guía para escalar NiFi: back pressure, prioridad de colas y cuándo pasar a clúster.']
     ],
     tec: ['Apache NiFi 2', 'MQTT', 'PostgreSQL', 'Power BI', 'Python', 'Docker'],
-    enlaces: [['Ver en GitHub', GITHUB + '/nifi-maquina-powerbi']]
+    enlaces: [['Ver en GitHub', GITHUB + '/nifi-maquina-powerbi']],
+    captura: { src: 'img/proyectos/nifi-oee-powerbi.webp', ancho: 1456, alto: 815, alt: 'Informe de Power BI del proyecto: OEE, disponibilidad, rendimiento y calidad; OEE por día y máquina; OEE por máquina y turno; minutos de parada por causa y estado actual de cada máquina', pie: 'El informe de Power BI que viene en el repositorio, con los datos inventados del simulador.' }
   },
   {
     id: 'nifi', corto: 'Apache NiFi', titulo: 'Apache NiFi: tu primer flujo',
@@ -2090,6 +2091,7 @@ function paginaProyecto(d, p) {
       <p class="etiqueta">${p.etiqueta}</p>
       <h1>${p.titulo}</h1>
       ${cuerpo}
+      ${capturaHtml(p, raiz)}
       ${tec}${enlaces}
       ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}${p.ver ? botonPlantillas(t) : ''}
       ${siguienteHtml(d, p, '../')}${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
@@ -2151,6 +2153,12 @@ function antesAhoraHtml(t, raiz) {
 // El servicio al que pertenece un proyecto (para enlazar de vuelta), o nada.
 // «Siguiente paso»: enlace de un proyecto a otro que lo continúa (p. ej. del
 // manual de NiFi al caso práctico). camino: ruta hasta la carpeta proyectos/.
+// Captura opcional de un proyecto (p.captura), debajo del caso.
+function capturaHtml(p, raiz) {
+  const c = p.captura;
+  return c ? '<figure class="proyecto-captura"><img src="' + raiz + c.src + '" alt="' + attr(c.alt) + '" width="' + c.ancho + '" height="' + c.alto + '" loading="lazy">' + (c.pie ? '<figcaption>' + c.pie + '</figcaption>' : '') + '</figure>' : '';
+}
+
 function siguienteHtml(d, p, camino) {
   const o = p.siguiente && d.proyectos.find(x => x.id === p.siguiente);
   return o ? '<p class="proyecto-siguiente">' + d.t.serv.siguientePaso + ': <a href="' + camino + o.id + '/">' + o.titulo + ' →</a></p>' : '';

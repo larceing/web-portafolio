@@ -746,6 +746,7 @@ module.exports = {
     },
     'nifi-oee': {
       corto: 'NiFi to Power BI', titulo: 'From the machine to Power BI with Apache NiFi', etiqueta: 'Open source · Apache NiFi · 2026',
+      captura: { src: 'img/proyectos/nifi-oee-powerbi.webp', ancho: 1456, alto: 815, alt: 'The project\'s Power BI report: OEE, availability, performance and quality; OEE by day and machine; OEE by machine and shift; downtime minutes by reason and the current state of each machine', pie: 'The Power BI report included in the repository, with the simulator\'s made-up data.' },
       caso: [
         ['Problem', 'In many plants OEE is worked out by hand in Excel once a month: by the time the number looks bad nobody remembers what happened, and each supervisor logs stoppages their own way.'],
         ['What I did', 'A complete pipeline with made-up data: three simulated machines publish over MQTT whether they are running or stopped, the reason and the good and bad parts. Apache NiFi 2 reads it, validates the JSON against a schema, applies the business rules, adds the shift and the machine name from the PostgreSQL master table and stores it. Bad messages go to an error queue, each with its reason.'],

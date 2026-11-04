@@ -5081,3 +5081,23 @@ body:has(.simple) {
   .video-servicio { grid-template-columns: 1fr; gap: 20px; }
 }
 .video-servicio .botones { justify-content: center; }
+
+/* Captura de un proyecto (p. ej. el informe de Power BI de nifi-oee) */
+.proyecto-captura {
+  margin: 24px 0 0;
+}
+
+.proyecto-captura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--raya);
+  border-radius: 12px;
+  background: var(--tarjeta);
+}
+
+.proyecto-captura figcaption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--tenue);
+}
