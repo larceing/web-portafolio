@@ -666,7 +666,7 @@ module.exports = {
       texto: 'A Power BI report with sample data to decide which customers and areas the sales team should spend its time on, with a Python script that regenerates the data.'
     },
     nifi: {
-      titulo: 'Apache NiFi: your first flow', etiqueta: 'Open source · manual',
+      titulo: 'Apache NiFi: install it and build your first flow', etiqueta: 'Open source · guide',
       texto: 'A step-by-step manual, in Spanish, for installing NiFi on Windows and building a first pipeline in twenty minutes, aimed at analysts coming from Power BI and Power Query.'
     }
   },

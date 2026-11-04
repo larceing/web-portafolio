@@ -667,7 +667,7 @@ module.exports = {
       texto: '一个使用示例数据的 Power BI 报表，帮助决定销售团队应该把时间花在哪些客户和区域上，并附带一个重新生成数据的 Python 脚本。'
     },
     nifi: {
-      titulo: 'Apache NiFi：你的第一个数据流', etiqueta: '开源 · 手册',
+      titulo: 'Apache NiFi：安装并搭建你的第一个数据流', etiqueta: '开源 · 指南',
       texto: '一本西班牙语的分步手册，教你在 Windows 上安装 NiFi，并在二十分钟内搭建第一个数据管道，面向从 Power BI 和 Power Query 转过来的分析师。'
     }
   },

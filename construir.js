@@ -367,10 +367,23 @@ const PROYECTOS = [
     enlaces: [['Ver en GitHub', GITHUB + '/analisis_comerciales']]
   },
   {
-    id: 'nifi', corto: 'Apache NiFi', titulo: 'Apache NiFi: tu primer flujo',
-    tipo: 'abierto', etiqueta: 'Open source · manual', icono: 'flujo', color: C.pizarra,
-    texto: 'Manual paso a paso en español para instalar NiFi en Windows y montar un primer pipeline en veinte minutos, pensado para analistas que vienen de Power BI y Power Query.',
-    enlaces: [['Ver en GitHub', GITHUB + '/apache-nifi-primer-flujo']]
+    id: 'nifi', corto: 'Apache NiFi', titulo: 'Apache NiFi en español: instalar y crear tu primer flujo',
+    tipo: 'abierto', etiqueta: 'Open source · guía', icono: 'flujo', color: C.pizarra,
+    texto: 'Guía en español para instalar Apache NiFi 2 en Windows y montar tu primer flujo de datos en veinte minutos: requisitos, usuario, primer acceso, un flujo que mueve ficheros y los problemas típicos. Pensada para analistas que vienen de Power BI y Power Query.',
+    enlaces: [['Ver en GitHub', GITHUB + '/apache-nifi-primer-flujo']],
+    // Guía completa, solo en la página en español (sale del README del repositorio).
+    guia: [
+      ['Qué es Apache NiFi', '<p>Apache NiFi es una herramienta open source para <strong>mover y transformar datos entre sistemas</strong> con una interfaz visual de arrastrar y soltar: de una API, un fichero o una base de datos a otro destino, filtrando y limpiando por el camino, casi sin escribir código. Bastan tres conceptos:</p><ul><li><strong>FlowFile</strong>: cada paquete de datos que viaja por el flujo (un fichero, un registro, un mensaje).</li><li><strong>Processor</strong>: cada caja que hace algo, como leer, transformar o escribir.</li><li><strong>Connection</strong>: la flecha que une dos processors y guarda en cola los FlowFiles entre ellos.</li></ul>'],
+      ['1. Requisitos', '<p>Windows 10 u 11 y <strong>Java 21 o superior</strong>, que NiFi 2 exige. Comprueba tu versión con <code>java -version</code>. Si no la tienes, instala un JDK 21 (por ejemplo Eclipse Temurin 21) y haz que <code>JAVA_HOME</code> apunte a él.</p>'],
+      ['2. Descarga', '<ol><li>Entra en la página oficial de descargas: <a href="https://nifi.apache.org/download/" target="_blank" rel="noopener">nifi.apache.org/download</a>.</li><li>Descarga el binario <strong>NiFi Standard</strong> en <code>.zip</code>, la última versión estable.</li><li>Descomprímelo en una ruta corta, sin espacios ni tildes, por ejemplo <code>C:\\nifi\\nifi-2.12.0</code>. Con rutas largas NiFi puede fallar en Windows.</li></ol>'],
+      ['3. Usuario y contraseña', '<p>NiFi 2 arranca con HTTPS y pide iniciar sesión. Antes de arrancarlo, crea tu usuario desde PowerShell, en la carpeta de NiFi. La contraseña necesita <strong>12 caracteres como mínimo</strong>:</p><pre><code>cd C:\\nifi\\nifi-2.12.0\n.\\bin\\nifi.cmd set-single-user-credentials admin MiPasswordSegura123</code></pre>'],
+      ['4. Arrancar y parar NiFi', '<p>Desde la misma carpeta, <code>.\\bin\\nifi.cmd start</code> lo arranca en segundo plano. La primera vez tarda uno o dos minutos. <code>.\\bin\\nifi.cmd status</code> te dice si ya está listo, y <code>.\\bin\\nifi.cmd stop</code> lo para.</p>'],
+      ['5. Primer acceso', '<p>Abre <code>https://localhost:8443/nifi</code> en el navegador. Saldrá un aviso de seguridad porque el certificado es autofirmado: en local es normal, así que continúa a localhost. Entra con el usuario del paso 3 y verás el lienzo de NiFi.</p>'],
+      ['6. Tu primer flujo: mover ficheros de una carpeta a otra', '<p>El «hola mundo» de NiFi: todo lo que aparezca en una carpeta de entrada pasa a una de salida.</p><ol><li>Crea dos carpetas: <code>C:\\nifi-in</code> y <code>C:\\nifi-out</code>.</li><li>Arrastra un processor al lienzo, busca <strong>GetFile</strong> y, en <em>Properties</em>, pon <em>Input Directory</em> = <code>C:\\nifi-in</code>.</li><li>Añade otro processor <strong>PutFile</strong> con <em>Directory</em> = <code>C:\\nifi-out</code>. En <em>Relationships</em>, marca <code>success</code> y <code>failure</code> para que terminen ahí.</li><li>Pasa el ratón por el borde de GetFile, arrastra la flecha hasta PutFile y elige la relación <code>success</code>.</li><li>Selecciona los dos processors y pulsa <em>Start</em>. Deja un fichero en <code>C:\\nifi-in</code>: en segundos aparecerá en <code>C:\\nifi-out</code>.</li></ol>'],
+      ['7. Siguiente paso: transformar por el camino', '<p>Entre GetFile y PutFile puedes poner más processors: <strong>UpdateAttribute</strong> para cambiar metadatos como el nombre del fichero, <strong>ReplaceText</strong> para buscar y reemplazar contenido, o <strong>InvokeHTTP</strong> para traer los datos de una API en lugar de una carpeta. La lógica es siempre la misma: cajas unidas por flechas, cada una haciendo una cosa.</p>'],
+      ['Problemas típicos', '<dl class="caso"><div><dt>NiFi no arranca o no reconoce java</dt><dd>Falta Java 21 o <code>JAVA_HOME</code> apunta a otra versión.</dd></div><div><dt>La web no carga en el puerto 8443</dt><dd>Espera uno o dos minutos y comprueba <code>nifi.cmd status</code>.</dd></div><div><dt>No puedo iniciar sesión</dt><dd>Para NiFi y vuelve a crear el usuario con <code>set-single-user-credentials</code>.</dd></div><div><dt>El flujo no mueve nada</dt><dd>Mira que los processors estén arrancados y que la ruta de <em>Input Directory</em> sea correcta.</dd></div></dl>'],
+      ['¿NiFi o n8n para tu empresa?', '<p>NiFi brilla cuando hay mucho volumen de datos que mover entre sistemas, con colas y trazabilidad de cada paquete. Para automatizar tareas de oficina (correos, avisos, pedidos o informes) suele bastar con n8n, que es más sencillo de mantener. Si dudas, en <a href="../../servicios/automatizacion-n8n/">automatización de procesos</a> te cuento cómo lo enfoco.</p>']
+    ]
   }
 ];
 
@@ -1994,6 +2007,7 @@ function paginaProyecto(d, p) {
       <p class="etiqueta">${p.etiqueta}</p>
       <h1>${p.titulo}</h1>
       ${cuerpo}
+      ${d.id === 'es' && p.guia ? '<div class="guia">' + p.guia.map(g => '<h2>' + g[0] + '</h2>' + g[1]).join('') + '</div>' : ''}
       ${tec}${enlaces}
       ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}${p.ver ? botonPlantillas(t) : ''}
       ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
