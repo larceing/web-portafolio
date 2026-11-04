@@ -367,10 +367,22 @@ const PROYECTOS = [
     enlaces: [['Ver en GitHub', GITHUB + '/analisis_comerciales']]
   },
   {
+    id: 'nifi-oee', corto: 'NiFi a Power BI', titulo: 'De la máquina a Power BI con Apache NiFi',
+    tipo: 'abierto', etiqueta: 'Open source · Apache NiFi · 2026', icono: 'fabrica', color: C.tostado,
+    caso: [
+      ['Problema', 'En muchas plantas el OEE se calcula a mano en Excel una vez al mes: cuando el número sale malo ya nadie recuerda qué pasó, y cada encargado apunta las paradas a su manera.'],
+      ['Qué hice', 'Un pipeline completo con datos inventados: tres máquinas simuladas publican por MQTT si están en marcha o paradas, la causa y las piezas buenas y malas. Apache NiFi 2 lo lee, valida el JSON contra un esquema, aplica las reglas de negocio, pone el turno y el nombre de la máquina desde el maestro de PostgreSQL y lo guarda. Los mensajes malos van a una cola de errores, cada uno con su motivo.'],
+      ['Resultado', 'El OEE (disponibilidad × rendimiento × calidad) por máquina y turno, las paradas por causa y el scrap salen de vistas SQL listas para Power BI. Todo arranca con un solo <code>docker compose up</code> en unos dos minutos y, en las pruebas, ninguno de los 12.960 mensajes del histórico se perdió. Incluye la plantilla del flujo en JSON y una guía para escalar NiFi: back pressure, prioridad de colas y cuándo pasar a clúster.']
+    ],
+    tec: ['Apache NiFi 2', 'MQTT', 'PostgreSQL', 'Power BI', 'Python', 'Docker'],
+    enlaces: [['Ver en GitHub', GITHUB + '/nifi-maquina-powerbi']]
+  },
+  {
     id: 'nifi', corto: 'Apache NiFi', titulo: 'Apache NiFi: tu primer flujo',
     tipo: 'abierto', etiqueta: 'Open source · manual', icono: 'flujo', color: C.pizarra,
     texto: 'Manual paso a paso en español para instalar NiFi en Windows y montar un primer pipeline en veinte minutos, pensado para analistas que vienen de Power BI y Power Query.',
-    enlaces: [['Ver en GitHub', GITHUB + '/apache-nifi-primer-flujo']]
+    enlaces: [['Ver en GitHub', GITHUB + '/apache-nifi-primer-flujo']],
+    siguiente: 'nifi-oee'
   }
 ];
 
@@ -647,6 +659,7 @@ UI.serv = {
   otros: 'Otros servicios',
   calcular: 'Calcular el precio',
   relacionado: 'Servicio relacionado',
+  siguientePaso: 'Siguiente paso',
   probar: 'Probarlo en el laboratorio',
   antesAhora: 'Antes y después',
   antesAhoraSub: 'El mismo contenido, rediseñado: la portada de mis demos para clientes. Arrastra la línea para comparar.',
@@ -817,7 +830,7 @@ const SERVICIOS = [
   },
   {
     id: 'power-bi-fabricas', icono: 'fabrica',
-    proyectos: ['efesto', 'sindri', 'reporting', 'escritorio'],
+    proyectos: ['nifi-oee', 'efesto', 'sindri', 'reporting', 'escritorio'],
     titulo: 'Power BI para fábricas: OEE, paradas y scrap | Arce Data Lab',
     corto: 'Power BI para fábricas',
     h1: 'Power BI para fábricas: OEE, paradas y scrap',
@@ -963,7 +976,7 @@ const SERVICIOS = [
   },
   {
     id: 'automatizacion-n8n', icono: 'flujo',
-    proyectos: ['ada', 'whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'asistente'],
+    proyectos: ['ada', 'whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'nifi-oee', 'asistente'],
     titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
     corto: 'Automatización con n8n',
     h1: 'Automatización de procesos con n8n',
@@ -1397,7 +1410,7 @@ function mini(p, t, base) {
     '<span class="mini-texto"><b>' + p.corto + '</b><span>' + t.tipos[p.tipo] + '</span></span></button></li>';
 }
 
-function detalle(p, t, base) {
+function detalle(p, t, base, d) {
   const cuerpo = p.caso
     ? '<dl class="caso">' + p.caso.map(c => '<div><dt>' + c[0] + '</dt><dd>' + c[1] + '</dd></div>').join('') + '</dl>'
     : '<p>' + p.texto + '</p>';
@@ -1409,6 +1422,7 @@ function detalle(p, t, base) {
     '      <p class="etiqueta">' + p.etiqueta + '</p>\n      <h3>' + p.titulo + '</h3>\n      ' + cuerpo + '\n      ' + tec + enlaces + '\n' +
     (LAB_DEMOS.includes(p.id) ? '      <p class="probar"><a class="boton" href="' + base + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>\n' : '') +
     (p.ver ? '      ' + botonPlantillas(t) + '\n' : '') +
+    (p.siguiente ? '      ' + siguienteHtml(d, p, base + 'proyectos/') + '\n' : '') +
     '      <p class="pagina-proyecto"><a href="' + base + 'proyectos/' + p.id + '/">' + t.verFicha + ' →</a></p>\n    </div>';
 }
 
@@ -1626,7 +1640,7 @@ ${enPortada(d.proyectos).filter(p => !PRINCIPALES.includes(p.id)).map(p => mini(
       <p class="sin-proyectos" id="sinProyectos" role="status" hidden>${t.sinProyectos} <a href="${t.p.ctaHref}" target="_blank" rel="noopener">${t.p.cta} →</a></p>
     </section>
 
-${d.proyectos.map(p => detalle(p, t, raiz)).join('\n')}
+${d.proyectos.map(p => detalle(p, t, raiz, d)).join('\n')}
   </main>
 
   ${pie(t, raiz, '../')}
@@ -2078,7 +2092,7 @@ function paginaProyecto(d, p) {
       ${cuerpo}
       ${tec}${enlaces}
       ${LAB_DEMOS.includes(p.id) ? '<p class="probar"><a class="boton" href="' + raiz + 'lab/#' + p.id + '">' + t.serv.probar + '</a></p>' : ''}${p.ver ? botonPlantillas(t) : ''}
-      ${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
+      ${siguienteHtml(d, p, '../')}${servicioDe(d, p.id) ? '<p class="proyecto-servicio">' + t.serv.relacionado + ': <a href="../../servicios/' + servicioDe(d, p.id).id + '/">' + servicioDe(d, p.id).h1 + '</a></p>' : ''}
       <p class="proyecto-contacto">${t.contactoSub}: <a href="mailto:${CORREO}">${CORREO}</a></p>
     </article>
 
@@ -2135,6 +2149,13 @@ function antesAhoraHtml(t, raiz) {
 }
 
 // El servicio al que pertenece un proyecto (para enlazar de vuelta), o nada.
+// «Siguiente paso»: enlace de un proyecto a otro que lo continúa (p. ej. del
+// manual de NiFi al caso práctico). camino: ruta hasta la carpeta proyectos/.
+function siguienteHtml(d, p, camino) {
+  const o = p.siguiente && d.proyectos.find(x => x.id === p.siguiente);
+  return o ? '<p class="proyecto-siguiente">' + d.t.serv.siguientePaso + ': <a href="' + camino + o.id + '/">' + o.titulo + ' →</a></p>' : '';
+}
+
 function servicioDe(d, id) {
   return d.servicios.find(s => s.proyectos.includes(id));
 }

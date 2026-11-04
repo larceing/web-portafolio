@@ -3299,7 +3299,8 @@ h1, h2, h3,
   margin-top: 18px;
 }
 
-.proyecto-servicio {
+.proyecto-servicio,
+.proyecto-siguiente {
   margin-top: 18px;
   font-weight: 600;
 }
