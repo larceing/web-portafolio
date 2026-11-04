@@ -5079,3 +5079,11 @@ body:has(.simple) {
   .video-servicio { grid-template-columns: 1fr; gap: 20px; }
 }
 .video-servicio .botones { justify-content: center; }
+
+/* Guía dentro de una página de proyecto (p. ej. Apache NiFi) */
+.guia { margin-top: 28px; }
+.guia h2 { margin: 32px 0 10px; font-size: 24px; text-align: left; }
+.guia p, .guia ul, .guia ol, .guia dl { margin-top: 10px; }
+.guia ul, .guia ol { padding-left: 22px; display: grid; gap: 6px; }
+.guia pre { margin-top: 12px; padding: 12px 14px; background: var(--suave); border-radius: 6px; overflow-x: auto; }
+.guia pre code { background: none; padding: 0; }
