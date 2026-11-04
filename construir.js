@@ -811,7 +811,8 @@ const SERVICIOS = [
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
       ['¿Puedo cambiarlo yo después?', 'Sí. Te lo entrego documentado y te explico cómo está hecho. Si prefieres no tocarlo, hay mantenimiento mensual.'],
       ['Mi informe de Power BI no se actualiza, ¿me ayudas?', 'Sí. Aquí tienes <a href="../power-bi-no-actualiza/">las causas más habituales y cómo arreglarlas</a>. Si no das con ello, lo reviso contigo.'],
-      ['Mi informe de Power BI va lento, ¿qué hago?', 'Mira primero <a href="../power-bi-lento/">las seis causas más habituales y cómo acelerarlo</a>. Si sigue lento, lo mido contigo y te digo qué cambiar.']
+      ['Mi informe de Power BI va lento, ¿qué hago?', 'Mira primero <a href="../power-bi-lento/">las seis causas más habituales y cómo acelerarlo</a>. Si sigue lento, lo mido contigo y te digo qué cambiar.'],
+      ['Me sale un error de la puerta de enlace, ¿qué hago?', 'Aquí tienes <a href="../error-puerta-de-enlace-power-bi/">las seis causas más habituales y cómo arreglarlas</a>. Si sigue fallando, lo reviso contigo.']
     ]
   },
   {
@@ -918,6 +919,46 @@ const SERVICIOS = [
       ['¿Cómo sé qué objeto visual es el lento?', 'Abre el Analizador de rendimiento (cinta Optimizar en Power BI Desktop, o menú Ver al editar el informe en el servicio), pulsa «Iniciar grabación» y luego «Actualizar objetos visuales». Verás cuánto tarda cada uno y en qué.'],
       ['¿Es mejor importar los datos o usar DirectQuery?', 'Importar, salvo que tengas un motivo: los datos se consultan desde memoria y responden rápido. Con DirectQuery cada objeto visual pregunta a la base de datos, así que va tan rápido como ella. Tiene sentido si necesitas el dato casi al momento o no cabe en el modelo.'],
       ['¿Cuánto cuesta que lo acelere?', 'Depende de la causa y del tamaño del modelo. Cuéntame qué informe va lento y te paso un presupuesto cerrado antes de empezar, sin compromiso.']
+    ]
+  },
+  {
+    id: 'error-puerta-de-enlace-power-bi', icono: 'tunel',
+    proyectos: ['gateway', 'reporting', 'escritorio'],
+    titulo: 'Error puerta de enlace Power BI: causas y arreglo | Arce Data Lab',
+    corto: 'Error de puerta de enlace en Power BI',
+    h1: 'Error de la puerta de enlace de Power BI: causas y solución',
+    descripcion: 'Por qué falla la puerta de enlace de Power BI y cómo arreglarlo: equipo apagado, conexión mal configurada, credenciales, puertos o niveles de privacidad.',
+    intro: 'La puerta de enlace de datos es el programa que deja al servicio de Power BI leer los datos que tienes en la empresa: un SQL Server, el ERP o una carpeta compartida. Si falla, el informe no se actualiza. Casi siempre es una de estas seis causas. Empieza por el mensaje del historial de actualizaciones y por la pestaña Estado de la aplicación de la puerta de enlace. Si no das con ello, lo reviso contigo.',
+    causasTitulo: 'Las seis causas más habituales',
+    causasIntro: 'En cada una, la pista que la delata (casi siempre, el texto del error) y qué hacer.',
+    causaEtiqueta: 'Causa',
+    causas: [
+      ['La puerta de enlace está desconectada', 'El error dice «Your data gateway is offline or couldn’t be reached», o en «Administrar conexiones y puertas de enlace» aparece sin conexión.',
+        ['Comprueba que el equipo donde está instalada está encendido, con internet y sin suspensión. Microsoft desaconseja instalarla en un portátil.', 'Abre la aplicación de la puerta de enlace y reiníciala desde «Configuración del servicio».', 'Si lleva meses sin tocarse, actualízala: Microsoft solo da soporte a las seis últimas versiones.']],
+      ['Falta la conexión del origen de datos', 'Al programar la actualización no te deja elegir la puerta de enlace, o el error dice que no hay ninguna configurada para los orígenes de datos.',
+        ['En «Administrar conexiones y puertas de enlace», crea una conexión para cada origen de la empresa que use el informe, todas en la misma puerta de enlace.', 'Escribe el servidor y la base de datos igual que en Power BI Desktop: si allí pusiste una IP o SERVIDOR\\INSTANCIA, aquí también.', 'Pide al administrador que te añada como usuario de la conexión.']],
+      ['Credenciales mal en la conexión', 'El error dice «Invalid connection credentials» o «Login failed for user».',
+        ['Con la puerta de enlace, las credenciales no van en el modelo semántico: se cambian en la conexión, dentro de «Administrar conexiones y puertas de enlace».', 'Revisa que el método de autenticación (Windows o básica) sea el que pide el origen.', 'Usa una cuenta de servicio cuya contraseña no caduque.']],
+      ['Llega a la puerta de enlace, pero no al origen', 'El error dice «We reached the data gateway, but the gateway can’t access the on-premises data source», o sale el código DM_GWPipeline_Gateway_DataSourceAccessError.',
+        ['Abre Power BI Desktop en el equipo de la puerta de enlace y actualiza el informe desde ahí: si ahí falla, el problema está en ese equipo.', 'Instala en ese equipo los controladores que pida el origen, como el ODBC de 64 bits del ERP.', 'Si lee archivos de una carpeta compartida, comprueba que ese equipo y la cuenta de la conexión pueden abrirla.']],
+      ['El cortafuegos o el proxy la bloquean', 'Al iniciar sesión en la aplicación sale «Network request returned unexpected error», o la actualización falla con «Unable to connect to the remote server».',
+        ['En la aplicación, ve a Diagnósticos y lanza la prueba de puertos de red.', 'La puerta de enlace solo necesita conexiones de salida: 443, 5671-5672 y 9350-9354. No hay que abrir puertos de entrada.', 'Si el proxy solo deja pasar los puertos 80 y 443, activa el modo HTTPS en la pestaña Red.']],
+      ['Se mezclan datos con distinta privacidad', 'En Power BI Desktop se actualiza bien, pero en el servicio falla con «Information is needed in order to combine data».',
+        ['Pasa en informes que combinan varios orígenes con la opción «Ignorar siempre los niveles de privacidad», que el servicio no tiene.', 'En Power BI Desktop, quita esa opción en Opciones > Privacidad, tanto en Global como en el archivo actual.', 'Vuelve a publicar y pon el nivel de privacidad «Organizativo» en el servicio.']]
+    ],
+    incluye: [
+      ['Diagnóstico', 'Reviso el error, los registros de la puerta de enlace y la prueba de puertos hasta dar con el fallo.'],
+      ['Arreglo', 'Corrijo la causa: el servicio de la puerta de enlace, las conexiones, las credenciales o los pasos de Power Query.'],
+      ['Puerta de enlace en su sitio', 'Si está en un portátil, la paso a un servidor siempre encendido, con la clave de recuperación guardada a buen recaudo.'],
+      ['Al día', 'La actualizo a la última versión y dejo apuntado cómo hacerlo cada mes.'],
+      ['Menos dependencia', 'Si los datos son Excel, los paso a SharePoint o OneDrive, que no necesitan puerta de enlace.']
+    ],
+    tec: 'Puerta de enlace de datos local, servicio de Power BI, Power BI Desktop, Power Query, SQL Server, ODBC, SharePoint',
+    faq: [
+      ['¿Qué es la puerta de enlace de datos de Power BI?', 'Un programa de Windows que se instala en un equipo de tu red y hace de puente entre tus datos y el servicio de Power BI. Solo abre conexiones de salida, así que no hay que abrir puertos de entrada en tu red.'],
+      ['¿Necesito puerta de enlace si mis datos están en SharePoint o OneDrive?', 'No. SharePoint, OneDrive y las bases de datos en la nube, como Azure SQL, se conectan directamente desde el servicio. Hace falta para lo que está dentro de tu red: un servidor, el ERP o una carpeta compartida.'],
+      ['¿Se actualiza sola la puerta de enlace?', 'No. Microsoft publica una versión nueva cada mes y solo da soporte a las seis últimas, así que hay que instalarla a mano de vez en cuando.'],
+      ['¿Cuánto cuesta que lo arregles?', 'Depende de la causa. Cuéntame qué error te sale y te paso un presupuesto cerrado antes de empezar, sin compromiso.']
     ]
   },
   {

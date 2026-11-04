@@ -154,7 +154,8 @@ module.exports = {
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
         ['Can I change it myself later?', 'Yes. I hand it over documented and explain how it is built. If you would rather not touch it, there is monthly maintenance.'],
         ['My Power BI report isn’t refreshing. Can you help?', 'Yes. Here are <a href="../power-bi-no-actualiza/">the most common causes and how to fix them</a>. If you can’t sort it out, I’ll go through it with you.'],
-        ['My Power BI report is slow. What can I do?', 'Start with <a href="../power-bi-lento/">the six most common causes and how to speed it up</a>. If it is still slow, I’ll measure it with you and tell you what to change.']
+        ['My Power BI report is slow. What can I do?', 'Start with <a href="../power-bi-lento/">the six most common causes and how to speed it up</a>. If it is still slow, I’ll measure it with you and tell you what to change.'],
+        ['I’m getting a gateway error. What can I do?', 'Here are <a href="../error-puerta-de-enlace-power-bi/">the six most common causes and how to fix them</a>. If it still fails, I’ll go through it with you.']
       ]
     },
     'automatizacion-n8n': {
@@ -296,6 +297,44 @@ module.exports = {
         ['How do I know which visual is slow?', 'Open Performance Analyzer (Optimize ribbon in Power BI Desktop, or the View menu when editing the report in the service), select “Start recording” and then “Refresh visuals”. You’ll see how long each one takes and on what.'],
         ['Is it better to import the data or use DirectQuery?', 'Import, unless you have a reason not to: the data is queried from memory and responds fast. With DirectQuery every visual asks the database, so it is only as fast as the database. It makes sense if you need near real-time data or it doesn’t fit in the model.'],
         ['How much does it cost for you to speed it up?', 'It depends on the cause and the size of the model. Tell me which report is slow and I’ll send you a fixed quote before starting, with no obligation.']
+      ]
+    },
+    'error-puerta-de-enlace-power-bi': {
+      titulo: 'Power BI gateway error: causes and fixes | Arce Data Lab',
+      corto: 'Power BI gateway error',
+      h1: 'Power BI gateway error: causes and fixes',
+      descripcion: 'Why the Power BI gateway fails and how to fix it: machine switched off, missing connection, credentials, blocked ports or privacy levels.',
+      intro: 'The data gateway is the program that lets the Power BI service read the data you keep inside the company: a SQL Server, the ERP or a shared folder. When it fails, the report doesn’t refresh. It is almost always one of these six causes. Start with the message in the refresh history and the Status tab of the gateway app. If you can’t find it, I’ll go through it with you.',
+      causasTitulo: 'The six most common causes',
+      causasIntro: 'For each one, the clue that gives it away (usually the error text) and what to do.',
+      causaEtiqueta: 'Cause',
+      causas: [
+        ['The gateway is offline', 'The error says “Your data gateway is offline or couldn’t be reached”, or it shows as offline in “Manage connections and gateways”.',
+          ['Check that the machine it’s installed on is switched on, online and not asleep. Microsoft advises against installing it on a laptop.', 'Open the gateway app and restart it from “Service Settings”.', 'If nobody has touched it for months, update it: Microsoft only supports the last six releases.']],
+        ['The data source connection is missing', 'When you schedule the refresh you can’t pick the gateway, or the error says no gateway is configured for the data sources.',
+          ['In “Manage connections and gateways”, create a connection for each company source the report uses, all on the same gateway.', 'Type the server and database exactly as in Power BI Desktop: if you used an IP address or SERVER\\INSTANCE there, use it here too.', 'Ask the admin to add you as a user of the connection.']],
+        ['Wrong credentials in the connection', 'The error says “Invalid connection credentials” or “Login failed for user”.',
+          ['With a gateway, the credentials don’t live in the semantic model: you change them in the connection, under “Manage connections and gateways”.', 'Check that the authentication method (Windows or Basic) is the one the source expects.', 'Use a service account whose password doesn’t expire.']],
+        ['It reaches the gateway, but not the source', 'The error says “We reached the data gateway, but the gateway can’t access the on-premises data source”, or you see the code DM_GWPipeline_Gateway_DataSourceAccessError.',
+          ['Open Power BI Desktop on the gateway machine and refresh the report there: if it fails there, the problem is on that machine.', 'Install on that machine the drivers the source needs, such as the ERP’s 64-bit ODBC driver.', 'If it reads files from a shared folder, check that the machine and the connection’s account can open it.']],
+        ['The firewall or proxy blocks it', 'Signing in to the app shows “Network request returned unexpected error”, or the refresh fails with “Unable to connect to the remote server”.',
+          ['In the app, go to Diagnostics and run the network ports test.', 'The gateway only needs outbound connections: 443, 5671-5672 and 9350-9354. No inbound ports have to be opened.', 'If the proxy only lets ports 80 and 443 through, turn on HTTPS mode in the Network tab.']],
+        ['Data with different privacy levels is combined', 'It refreshes fine in Power BI Desktop, but in the service it fails with “Information is needed in order to combine data”.',
+          ['It happens in reports that combine several sources with “Always ignore privacy level settings” on, an option the service doesn’t have.', 'In Power BI Desktop, turn that option off under Options > Privacy, both in Global and in the current file.', 'Publish again and set the privacy level to “Organizational” in the service.']]
+      ],
+      incluye: [
+        ['Diagnosis', 'I check the error, the gateway logs and the ports test until I find the failure.'],
+        ['Fix', 'I fix the cause: the gateway service, the connections, the credentials or the Power Query steps.'],
+        ['Gateway in the right place', 'If it’s on a laptop, I move it to a server that is always on, with the recovery key kept safe.'],
+        ['Up to date', 'I update it to the latest version and write down how to do it each month.'],
+        ['Less dependence', 'If the data is in Excel files, I move them to SharePoint or OneDrive, which don’t need a gateway.']
+      ],
+      tec: 'On-premises data gateway, Power BI service, Power BI Desktop, Power Query, SQL Server, ODBC, SharePoint',
+      faq: [
+        ['What is the Power BI data gateway?', 'A Windows program installed on a machine in your network that acts as a bridge between your data and the Power BI service. It only opens outbound connections, so no inbound ports have to be opened in your network.'],
+        ['Do I need a gateway if my data is in SharePoint or OneDrive?', 'No. SharePoint, OneDrive and cloud databases such as Azure SQL connect directly from the service. You need it for what is inside your network: a server, the ERP or a shared folder.'],
+        ['Does the gateway update itself?', 'No. Microsoft releases a new version every month and only supports the last six, so you have to install it by hand from time to time.'],
+        ['How much does it cost for you to fix it?', 'It depends on the cause. Tell me which error you get and I’ll send you a fixed quote before starting, with no obligation.']
       ]
     },
     'asistente-ia': {

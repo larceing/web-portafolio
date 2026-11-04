@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power BI 网关错误：原因和解决方法 | Arce Data Lab</title>
+  <meta name="description" content="Power BI 网关为什么出错、怎么解决：电脑关机、缺少连接、凭据错误、端口被封或隐私级别。">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="Henry Arce">
+  <link rel="canonical" href="https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/">
+  <link rel="alternate" hreflang="es" href="https://arcedatalab.com/servicios/error-puerta-de-enlace-power-bi/">
+  <link rel="alternate" hreflang="en" href="https://arcedatalab.com/en/servicios/error-puerta-de-enlace-power-bi/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/">
+  <link rel="alternate" hreflang="x-default" href="https://arcedatalab.com/servicios/error-puerta-de-enlace-power-bi/">
+  <meta property="og:title" content="Power BI 网关错误：原因和解决方法 | Arce Data Lab">
+  <meta property="og:description" content="Power BI 网关为什么出错、怎么解决：电脑关机、缺少连接、凭据错误、端口被封或隐私级别。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/">
+  <meta property="og:site_name" content="Henry Arce · Arce Data Lab">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Henry Arce · Arce Data Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Power BI 网关错误：原因和解决方法 | Arce Data Lab">
+  <meta name="twitter:description" content="Power BI 网关为什么出错、怎么解决：电脑关机、缺少连接、凭据错误、端口被封或隐私级别。">
+  <meta name="twitter:image" content="https://arcedatalab.com/img/og.jpg">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="../../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../../img/monograma.svg" type="image/svg+xml">
+  <link rel="icon" href="../../../img/monograma.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../../../img/monograma.png">
+  <link rel="me" href="https://www.linkedin.com/in/luis-henry-programador">
+  <link rel="me" href="https://github.com/larceing">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/","url":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/","name":"Power BI 网关错误：原因和解决方法","description":"Power BI 网关为什么出错、怎么解决：电脑关机、缺少连接、凭据错误、端口被封或隐私级别。","inLanguage":"zh-Hans","isPartOf":{"@id":"https://arcedatalab.com/#web"},"about":{"@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/#servicio"},"breadcrumb":{"@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/#migas"}},{"@type":"Service","@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/#servicio","name":"Power BI 网关错误：原因和解决方法","serviceType":"Power BI 网关错误","description":"Power BI 网关为什么出错、怎么解决：电脑关机、缺少连接、凭据错误、端口被封或隐私级别。","url":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/","provider":{"@id":"https://arcedatalab.com/#organizacion"},"areaServed":[{"@type":"City","name":"Alicante"},{"@type":"Country","name":"España"},{"@type":"Place","name":"Unión Europea"}],"availableLanguage":["es","en"]},{"@type":"BreadcrumbList","@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/#migas","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://arcedatalab.com/zh/"},{"@type":"ListItem","position":2,"name":"服务","item":"https://arcedatalab.com/zh/servicios/"},{"@type":"ListItem","position":3,"name":"Power BI 网关错误","item":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/"}]},{"@type":"FAQPage","@id":"https://arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/#preguntas","inLanguage":"zh-Hans","mainEntity":[{"@type":"Question","name":"什么是 Power BI 数据网关？","acceptedAnswer":{"@type":"Answer","text":"一个安装在你网络内某台电脑上的 Windows 程序，在你的数据和 Power BI 服务之间搭起桥梁。它只建立出站连接，所以不需要在你的网络上开放入站端口。"}},{"@type":"Question","name":"数据在 SharePoint 或 OneDrive 上，还需要网关吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。SharePoint、OneDrive 和 Azure SQL 等云数据库可以直接从服务连接。网关是给你网络内部的东西用的：服务器、ERP 或共享文件夹。"}},{"@type":"Question","name":"网关会自动更新吗？","acceptedAnswer":{"@type":"Answer","text":"不会。微软每个月发布一个新版本，并且只支持最近的六个版本，所以需要不时手动安装更新。"}},{"@type":"Question","name":"请你修好要多少钱？","acceptedAnswer":{"@type":"Answer","text":"取决于原因。告诉我你遇到的错误，我会在开始前给你一份固定报价，不附带任何义务。"}}]}]}</script>
+  <link rel="preload" href="../../../fuentes/robotoflex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../../css/estilos.css?v=2495425573">
+  <script defer src="/m/s.js" data-website-id="2dd567c3-cac8-4f2f-b4ce-641a2c956a71" data-host-url="/m" data-domains="arcedatalab.com"></script>
+</head>
+
+<body>
+  <a class="saltar" href="#contenido">跳到正文</a>
+
+  <header class="cabecera">
+    <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce <span>自动化 · AI · 数据</span></a>
+    <nav class="menu" aria-label="栏目">
+      <a href="../../servicios/" aria-current="page">我们做什么</a>
+      <a class="menu-extra" href="../../../lab/?lang=zh#sindri">实验室</a>
+      <a href="../../proyectos/">项目</a>
+      <a class="menu-extra" href="../../novedades/">动态</a>
+      <a class="menu-extra" href="../../sobre-mi/">关于我</a>
+      <span class="idiomas" role="group" aria-label="Idioma · Language · 语言"><a href="../../../servicios/error-puerta-de-enlace-power-bi/" lang="es" hreflang="es" title="Español">ES</a><a href="../../../en/servicios/error-puerta-de-enlace-power-bi/" lang="en" hreflang="en" title="English">EN</a><a href="../../../zh/servicios/error-puerta-de-enlace-power-bi/" lang="zh-Hans" hreflang="zh-Hans" title="中文" aria-current="true">中文</a></span>
+      <a class="menu-cta" href="https://wa.me/34633424223?text=%E4%BD%A0%E5%A5%BD%20Henry%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%85%AC%E5%8F%B8%E8%AF%A2%E4%BB%B7%E3%80%82%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A" target="_blank" rel="noopener">获取报价</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="pagina-servicios pagina-servicio">
+    <nav class="migas" aria-label="Breadcrumb"><a href="../../">首页</a> › <a href="../">服务</a> › <span>Power BI 网关错误</span></nav>
+
+    <section class="bloque servicio-cabeza">
+      <span class="servicio-icono"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="16" width="13" height="16" rx="2"/><rect x="30" y="16" width="13" height="16" rx="2"/><path d="M18 21h12M30 27H18"/></svg></span>
+      <h1>Power BI 网关错误：原因和解决方法</h1>
+      <p class="sub">数据网关是让 Power BI 服务读取公司内部数据的程序，比如 SQL Server、ERP 或共享文件夹。网关出错，报表就无法刷新。几乎总是下面六个原因之一。先看刷新历史里的错误信息，再看网关应用的“状态”页。如果还是找不到原因，我和你一起排查。</p>
+      <p class="botones"><a class="boton" href="https://wa.me/34633424223?text=%E4%BD%A0%E5%A5%BD%20Henry%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%85%AC%E5%8F%B8%E8%AF%A2%E4%BB%B7%E3%80%82%E5%85%B7%E4%BD%93%E9%9C%80%E6%B1%82%E6%98%AF%EF%BC%9A" target="_blank" rel="noopener">获取报价</a></p>
+    </section>
+
+    <section class="bloque" id="causas">
+      <h2>最常见的六个原因</h2>
+      <p class="sub lotes-intro">每个原因都附有识别线索（通常就是错误文字）和处理方法。</p>
+      <div class="lotes">
+        <article class="lote">
+          <p class="lote-para">原因 1</p>
+          <h3>网关离线</h3>
+          <p class="lote-pregunta">错误提示“Your data gateway is offline or couldn’t be reached”，或在“管理连接和网关”中显示离线。</p>
+          <ul><li>确认安装网关的电脑已开机、能上网且没有休眠。微软不建议把网关装在笔记本电脑上。</li><li>打开网关应用，在“服务设置”里重启网关。</li><li>如果几个月没动过，请更新：微软只支持最近的六个版本。</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">原因 2</p>
+          <h3>缺少数据源连接</h3>
+          <p class="lote-pregunta">设置计划刷新时选不了网关，或错误提示没有为数据源配置网关。</p>
+          <ul><li>在“管理连接和网关”中，为报表用到的每个公司内部数据源创建连接，并且都放在同一个网关上。</li><li>服务器和数据库名称要和 Power BI Desktop 里完全一样：那里用的是 IP 或 SERVER\INSTANCE，这里也要一样。</li><li>请管理员把你加为该连接的用户。</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">原因 3</p>
+          <h3>连接里的凭据不对</h3>
+          <p class="lote-pregunta">错误提示“Invalid connection credentials”或“Login failed for user”。</p>
+          <ul><li>使用网关时，凭据不在语义模型里，而是在“管理连接和网关”的连接中修改。</li><li>确认身份验证方式（Windows 或基本）与数据源要求的一致。</li><li>使用密码不会过期的服务账户。</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">原因 4</p>
+          <h3>能连到网关，但连不到数据源</h3>
+          <p class="lote-pregunta">错误提示“We reached the data gateway, but the gateway can’t access the on-premises data source”，或出现代码 DM_GWPipeline_Gateway_DataSourceAccessError。</p>
+          <ul><li>在网关所在的电脑上打开 Power BI Desktop 并刷新报表：如果在那里也失败，问题就在这台电脑上。</li><li>在这台电脑上安装数据源需要的驱动，比如 ERP 的 64 位 ODBC 驱动。</li><li>如果读取的是共享文件夹里的文件，确认这台电脑和连接所用的账户都能打开它。</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">原因 5</p>
+          <h3>防火墙或代理拦截了网关</h3>
+          <p class="lote-pregunta">登录网关应用时提示“Network request returned unexpected error”，或刷新失败并提示“Unable to connect to the remote server”。</p>
+          <ul><li>在网关应用中进入“诊断”，运行网络端口测试。</li><li>网关只需要出站连接：443、5671-5672 和 9350-9354，不需要开放任何入站端口。</li><li>如果代理只放行 80 和 443 端口，请在“网络”页开启 HTTPS 模式。</li></ul>
+        </article>
+        <article class="lote">
+          <p class="lote-para">原因 6</p>
+          <h3>合并了隐私级别不同的数据</h3>
+          <p class="lote-pregunta">在 Power BI Desktop 里刷新正常，但在服务中失败，提示“Information is needed in order to combine data”。</p>
+          <ul><li>这发生在合并多个数据源、并勾选了“始终忽略隐私级别设置”的报表上，而服务里没有这个选项。</li><li>在 Power BI Desktop 的“选项 > 隐私”中，把“全局”和“当前文件”里的这个选项都取消。</li><li>重新发布，并在服务中把隐私级别设为“组织”。</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <h2>包含内容</h2>
+      <div class="servicios servicio-incluye">
+        <article class="servicio"><h3>诊断</h3><p>查看错误、网关日志和端口测试，直到找到故障。</p></article>
+        <article class="servicio"><h3>修复</h3><p>解决根本原因：网关服务、连接、凭据或 Power Query 步骤。</p></article>
+        <article class="servicio"><h3>把网关放对地方</h3><p>如果装在笔记本电脑上，就迁到一直开机的服务器上，并妥善保存恢复密钥。</p></article>
+        <article class="servicio"><h3>保持最新</h3><p>更新到最新版本，并写下每月更新的方法。</p></article>
+        <article class="servicio"><h3>减少依赖</h3><p>如果数据是 Excel 文件，就迁到 SharePoint 或 OneDrive，它们不需要网关。</p></article>
+      </div>
+      <p class="servicios-nota">本地数据网关、Power BI 服务、Power BI Desktop、Power Query、SQL Server、ODBC、SharePoint</p>
+    </section>
+
+    <section class="bloque">
+      <h2>合作流程</h2>
+      <ol class="pasos-servicio">
+        <li><strong>免费评估</strong><span>45 分钟视频通话，一起看你的数据、你的工作，以及真正占用时间的事情。</span></li>
+        <li><strong>书面方案</strong><span>做什么、几轮修改、固定价格和交付时间，在看过数据后确定。</span></li>
+        <li><strong>开发</strong><span>过程中随时给你看进度。开始时付 50%，交付时付 50%，均开具发票。</span></li>
+        <li><strong>交付与培训</strong><span>系统上线运行，附带文档，并向你的团队讲解清楚。如有需要，可以继续按月维护。</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque porque" id="por-que">
+      <h2>为什么选择和我合作？</h2>
+      <p class="sub">和找广告公司或买现成软件相比，有什么不同</p>
+      <ol class="porque-lista">
+        <li><strong>你直接和动手做的人沟通</strong><span>评估时听你讲需求的人，就是设计、编写并交付成果的人。没有销售，也没有中间人。</span></li>
+        <li><strong>我了解企业的日常运转</strong><span>我从 2019 年开始做数据工作，先在咨询公司，现在在制造业企业内部，用过 A3、SAP、Clavei 等 ERP。</span></li>
+        <li><strong>书面固定报价</strong><span>开始之前你就知道要做什么、有几轮修改、花多少钱。最后不会有意外。</span></li>
+        <li><strong>认真保护你的数据</strong><span>能只读就只读，应用部署在欧盟的服务器上，每晚备份。</span></li>
+        <li><strong>不被绑定</strong><span>我交付时附带完整文档，而且我做的很多东西是开源的：联系我之前，你就能看到我是怎么工作的。</span></li>
+        <li><strong>我会衡量你的收获</strong><span>我会记录这项工作现在要花多长时间、之后要花多长时间，让你知道值不值得。</span></li>
+      </ol>
+    </section>
+
+    <section class="bloque">
+      <h2>相关项目</h2>
+      <ul class="otros">
+        <li><a href="../../proyectos/gateway/">实时数据网关</a> <span>· 为企业开发</span></li>
+        <li><a href="../../proyectos/reporting/">销售、回款和库存报表</a> <span>· 为企业开发</span></li>
+        <li><a href="../../proyectos/escritorio/">无需 Power BI 的运营报表</a> <span>· 为企业开发</span></li>
+      </ul>
+    </section>
+
+    <section class="bloque">
+      <h2>常见问题</h2>
+      <dl class="preguntas">
+        <div><dt>什么是 Power BI 数据网关？</dt><dd>一个安装在你网络内某台电脑上的 Windows 程序，在你的数据和 Power BI 服务之间搭起桥梁。它只建立出站连接，所以不需要在你的网络上开放入站端口。</dd></div>
+        <div><dt>数据在 SharePoint 或 OneDrive 上，还需要网关吗？</dt><dd>不需要。SharePoint、OneDrive 和 Azure SQL 等云数据库可以直接从服务连接。网关是给你网络内部的东西用的：服务器、ERP 或共享文件夹。</dd></div>
+        <div><dt>网关会自动更新吗？</dt><dd>不会。微软每个月发布一个新版本，并且只支持最近的六个版本，所以需要不时手动安装更新。</dd></div>
+        <div><dt>请你修好要多少钱？</dt><dd>取决于原因。告诉我你遇到的错误，我会在开始前给你一份固定报价，不附带任何义务。</dd></div>
+      </dl>
+      <h2 class="otros-servicios">其他服务</h2>
+      <p class="botones"><a class="boton secundario" href="../power-bi/">Power BI</a><a class="boton secundario" href="../power-bi-fabricas/">工厂 Power BI</a><a class="boton secundario" href="../power-bi-no-actualiza/">Power BI 无法刷新</a><a class="boton secundario" href="../power-bi-lento/">Power BI 很慢</a><a class="boton secundario" href="../automatizacion-n8n/">n8n 自动化</a><a class="boton secundario" href="../pedidos-por-correo/">邮件订单录入 ERP</a><a class="boton secundario" href="../asistente-ia/">ERP 的 AI 助手</a><a class="boton secundario" href="../webs/">网站和应用</a><a class="boton secundario" href="../">服务</a></p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-dentro">
+      <div class="pie-marca">
+        <a class="marca" href="../../#inicio"><svg class="hojita" viewBox="-6 -156 148 276" aria-hidden="true" focusable="false"><path d="M0,-150 L12,-120 L27,-129 L24,-93 L33,-69 L51,-84 L60,-75 L90,-114 L96,-87 L126,-96 L114,-60 L135,-51 L96,-21 L63,-12 L87,6 L93,24 L66,24 L72,42 L39,33 L12,45 L7.5,45 L7.5,114 L0,114 Z"/></svg>Henry Arce</a>
+        <p>为想用数据做决策的企业提供数据、Power BI 和定制开发。</p>
+        <p><a href="mailto:info@arcedatalab.com">info@arcedatalab.com</a><br><a href="tel:+34633424223">+34 633 42 42 23</a></p>
+      </div>
+      <div class="pie-col"><h2>网站</h2><ul><li><a href="../../servicios/">我们做什么</a></li><li><a href="../../../lab/?lang=zh#sindri">实验室</a></li><li><a href="../../proyectos/">项目</a></li><li><a href="../../novedades/">动态</a></li><li><a href="../../sobre-mi/">关于我</a></li><li><a href="../../#contacto">联系</a></li></ul></div>
+      <div class="pie-col"><h2>服务</h2><ul><li><a href="../../servicios/power-bi/">Power BI</a></li><li><a href="../../servicios/power-bi-fabricas/">工厂 Power BI</a></li><li><a href="../../servicios/power-bi-no-actualiza/">Power BI 无法刷新</a></li><li><a href="../../servicios/power-bi-lento/">Power BI 很慢</a></li><li><a href="../../servicios/error-puerta-de-enlace-power-bi/">Power BI 网关错误</a></li><li><a href="../../servicios/automatizacion-n8n/">n8n 自动化</a></li><li><a href="../../servicios/pedidos-por-correo/">邮件订单录入 ERP</a></li><li><a href="../../servicios/asistente-ia/">ERP 的 AI 助手</a></li><li><a href="../../servicios/webs/">网站和应用</a></li></ul></div>
+      <div class="pie-col"><h2>社交媒体</h2><ul><li><a href="https://www.youtube.com/@arcedatalab" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.linkedin.com/in/luis-henry-programador" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com/henry_arce_dev/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@arcedatalab" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://github.com/larceing" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://wa.me/34633424223" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div class="pie-col"><h2>Legal</h2><ul><li><a href="../../../aviso-legal/">法律声明</a></li><li><a href="../../../privacidad/">隐私政策</a></li><li><a href="../../../cookies/">Cookie 政策</a></li><li><a href="../../../condiciones/">使用条款</a></li></ul></div>
+    </div>
+    <p class="pie-final">© <span id="anio">2026</span> Henry Arce · 西班牙阿利坎特</p>
+  </footer>
+
+  <aside class="bit" id="bit" data-paseo="libre" aria-label="Byte，Arce Data Lab 的助手" data-modelo="../../../img/bit.glb?v=c774ee89ad" data-js="../../../js/bit.js?v=358877e49e">
+    <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
+    <div class="bit-cuerpo" id="bitCuerpo">
+      <img class="bit-foto" src="../../../img/bit.webp" alt="" width="104" height="160">
+      <canvas class="bit-lienzo" id="bitLienzo" aria-hidden="true" hidden></canvas>
+    </div>
+    <button type="button" class="bit-boton" id="bitBoton" aria-expanded="true" aria-controls="bitCuerpo" title="隐藏 Byte">×</button>
+  </aside>
+  <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
+    <form method="dialog" novalidate>
+      <h2 id="byteMensajeTitulo">给 Henry 留言</h2>
+      <p class="sub">留言会直接发给 Henry。你的信息只用于回复你。</p>
+      <label>你的名字<input name="nombre" autocomplete="name" maxlength="80"></label>
+      <label>公司（可选）<input name="empresa" autocomplete="organization" maxlength="80"></label>
+      <label>你的邮箱或电话<input name="contacto" autocomplete="email" maxlength="120" placeholder="方便他回复你" required></label>
+      <label class="byte-trampa" aria-hidden="true">Web<input name="web" tabindex="-1" autocomplete="off"></label>
+      <label>他能帮你做什么？<textarea name="texto" rows="4" maxlength="1200" placeholder="例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。" required></textarea></label>
+      <p class="byte-estado" id="byteEstado" role="status" aria-live="polite"></p>
+      <p class="botones">
+        <button type="button" class="boton" data-via="correo">发送留言</button>
+        <button type="button" class="boton secundario" data-via="whatsapp">改用 WhatsApp</button>
+      </p>
+      <button type="submit" class="byte-mensaje-cerrar" aria-label="关闭">×</button>
+    </form>
+  </dialog>
+  <script type="application/json" id="bitGuion">{"nombre":"Byte，Arce Data Lab 的助手","hola":"你好，我是 Byte，Arce Data Lab 的助手。我会带你浏览这个网站，并总结每个项目。","servicios":"如果你公司里有每周都重复的工作，那它很可能可以自动化。","infraestructura":"这个网站和客户的应用都运行在这里：容器、HTTPS 和每晚备份。","arcedatalab":"Arce Data Lab 为中小企业打造软件、数据看板和 AI 助手。","proyectos":"点开任意一个项目，我来总结问题、方案和结果。","ficha":"项目摘要。","jugar":["你阅读的时候，我在检查数据。","系统检查：一切正常。","我还在这儿。需要摘要的话告诉我。","正在检查每个应用是否正常响应。"],"dormir":"节能模式。动一下鼠标，我就回来。","despertar":"我回来了。有什么可以帮你？","cinta":"自动化就是这样工作的：手工数据进去，完整的报表出来，全程无需人手。","trayectoria":"咨询、银行和制造业：用真实数据、赶真实工期的经验。","tecnologias":"经过生产环境检验的工具，按需选择。","preguntas":"开始项目前大家最常问的问题，简短回答。","contacto":"想聊聊你的情况？发邮件到 info@arcedatalab.com，Henry 会回复你。","pulsar":["我在这儿。双击我，我帮你给 Henry 留言。","想看某个项目的摘要？点开任意一个就行。","小建议：先把最花时间的工作自动化。","数据对不上时，几乎总能找到可以解决的原因。","1 个字节是 8 位。好的流程，0 次重复工作。"],"mensaje":{"titulo":"给 Henry 留言","sub":"留言会直接发给 Henry。你的信息只用于回复你。","nombre":"你的名字","empresa":"公司（可选）","contacto":"你的邮箱或电话","contactoEj":"方便他回复你","texto":"他能帮你做什么？","ejemplo":"例如：每周一我们要把 ERP 里的销售数据复制到 Excel，要花 3 个小时。","correo":"发送留言","whatsapp":"改用 WhatsApp","cerrar":"关闭","vacio":"请至少写一句话，让 Henry 知道你需要什么。","sinContacto":"请留下邮箱或电话，方便他回复你。","abriendo":"正在发送……","listo":"已发送！Henry 通常当天回复。","muchos":"你连续发送了好几条留言，请稍后再试。","fallo":"发送失败。复制这条消息，发送到 ","copiar":"复制消息","copiado":"已复制","asunto":"来自 arcedatalab.com 的留言","hola":"你好 Henry，我是"},"ocultar":"隐藏 Byte","mostrar":"显示 Byte","canal":"观看 Club Byte","correoDestino":"info@arcedatalab.com","whatsappDestino":"https://wa.me/34633424223","contactoUrl":"https://n8n.luiscontacto03.com/webhook/contacto-web","idioma":"zh"}</script>
+  <script src="../../../js/bit-arranque.js?v=56d8f31d92"></script>
+  <script src="../../../js/bit-paseo.js?v=a524ed8a41"></script>
+  <script src="../../../js/cinta-arranque.js?v=87e19776e9"></script>
+</body>
+</html>

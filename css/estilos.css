@@ -4246,10 +4246,11 @@ body:has(.simple) {
   border-radius: 24px;
   background: var(--tarjeta);
   border: 1px solid var(--raya);
+  min-width: 0;
 }
 .lote h3 { margin: 0; font-size: 20px; }
 .lote-para { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--tenue); }
-.lote-pregunta { margin: 0; color: var(--tinta); }
+.lote-pregunta { margin: 0; color: var(--tinta); overflow-wrap: anywhere; }
 .lote ul { margin: 4px 0 0; padding-left: 18px; color: var(--texto); font-size: 15px; display: grid; gap: 6px; }
 .lote .enlace-flecha { margin: 8px 0 0; }
 
