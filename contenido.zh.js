@@ -23,6 +23,7 @@ module.exports = {
     otros: '其他服务',
     calcular: '估算价格',
     relacionado: '相关服务',
+    siguientePaso: '下一步',
     probar: '在实验室试用',
     antesAhora: '改版前后',
     antesAhoraSub: '同样的内容，重新设计：我给客户做演示网站的首页。拖动分隔线对比。',
@@ -743,6 +744,15 @@ module.exports = {
     comercial: {
       corto: '销售优先级', titulo: '不过度打扰的销售优先级', etiqueta: '开源 · Power BI',
       texto: '一个使用示例数据的 Power BI 报表，帮助决定销售团队应该把时间花在哪些客户和区域上，并附带一个重新生成数据的 Python 脚本。'
+    },
+    'nifi-oee': {
+      corto: 'NiFi 到 Power BI', titulo: '用 Apache NiFi 把机器数据送进 Power BI', etiqueta: '开源 · Apache NiFi · 2026',
+      caso: [
+        ['问题', '很多工厂每月一次在 Excel 里手工计算 OEE：等数字变差时，已经没人记得发生了什么，而且每个班组长记录停机的方式都不一样。'],
+        ['我做了什么', '一个使用虚构数据的完整数据管道：三台模拟机器通过 MQTT 发布运行或停机状态、停机原因以及良品和不良品数量。Apache NiFi 2 读取消息，按模式校验 JSON，执行业务规则，从 PostgreSQL 主数据表补充班次和机器名称后写入数据库。错误消息进入错误队列，并注明原因。'],
+        ['结果', '按机器和班次的 OEE（可用率 × 性能 × 质量）、按原因的停机时间和废品率，都由 SQL 视图直接提供给 Power BI。只需一条 <code>docker compose up</code> 命令，约两分钟即可启动；测试中 12,960 条历史消息无一丢失。附带 JSON 格式的 NiFi 流程模板，以及 NiFi 扩展指南：背压、队列优先级以及何时需要集群。']
+      ],
+      tec: ['Apache NiFi 2', 'MQTT', 'PostgreSQL', 'Power BI', 'Python', 'Docker']
     },
     nifi: {
       titulo: 'Apache NiFi：你的第一个数据流', etiqueta: '开源 · 手册',

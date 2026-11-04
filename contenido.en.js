@@ -22,6 +22,7 @@ module.exports = {
     otros: 'Other services',
     calcular: 'Work out the price',
     relacionado: 'Related service',
+    siguientePaso: 'Next step',
     probar: 'Try it in the lab',
     antesAhora: 'Before and after',
     antesAhoraSub: 'Same content, redesigned: the landing page of my client demos. Drag the line to compare.',
@@ -742,6 +743,15 @@ module.exports = {
     comercial: {
       corto: 'Sales priorities', titulo: 'Sales priorities without overload',
       texto: 'A Power BI report with sample data to decide which customers and areas the sales team should spend its time on, with a Python script that regenerates the data.'
+    },
+    'nifi-oee': {
+      corto: 'NiFi to Power BI', titulo: 'From the machine to Power BI with Apache NiFi', etiqueta: 'Open source · Apache NiFi · 2026',
+      caso: [
+        ['Problem', 'In many plants OEE is worked out by hand in Excel once a month: by the time the number looks bad nobody remembers what happened, and each supervisor logs stoppages their own way.'],
+        ['What I did', 'A complete pipeline with made-up data: three simulated machines publish over MQTT whether they are running or stopped, the reason and the good and bad parts. Apache NiFi 2 reads it, validates the JSON against a schema, applies the business rules, adds the shift and the machine name from the PostgreSQL master table and stores it. Bad messages go to an error queue, each with its reason.'],
+        ['Result', 'OEE (availability × performance × quality) per machine and shift, downtime by reason and scrap come out of SQL views ready for Power BI. Everything starts with a single <code>docker compose up</code> in about two minutes and, in testing, none of the 12,960 history messages was lost. It includes the NiFi flow template in JSON and a guide to scaling NiFi: back pressure, queue prioritization and when to move to a cluster.']
+      ],
+      tec: ['Apache NiFi 2', 'MQTT', 'PostgreSQL', 'Power BI', 'Python', 'Docker']
     },
     nifi: {
       titulo: 'Apache NiFi: your first flow', etiqueta: 'Open source · manual',
