@@ -26,6 +26,7 @@ const VERSION_JS_CINTA = huella('js/cinta-arranque.js');
 const VERSION_JS_PORTADA = huella('js/portada.js');
 const VERSION_JS_ANTES = huella('js/antes-ahora.js');
 const VERSION_JS_NOVEDADES = huella('js/novedades.js');
+const VERSION_JS_FIJO = huella('js/fijo.js');
 const NovWeb = require('./js/novedades.js');
 // Mensajes del cuadro de Byte: n8n «Web · Mensajes de Byte» los manda a info@ desde no-reply@.
 const N8N_CONTACTO = 'https://n8n.luiscontacto03.com/webhook/contacto-web';
@@ -57,6 +58,43 @@ const UMAMI = '<script defer src="/m/s.js" data-website-id="2dd567c3-cac8-4f2f-b
 const INSTAGRAM = 'https://www.instagram.com/henry_arce_dev/';
 // Enlace de WhatsApp con el mensaje del diagnóstico ya escrito.
 const WHATSAPP_DIAGNOSTICO = WHATSAPP + '?text=' + encodeURIComponent('Hola Henry, quiero pedir presupuesto para mi empresa. Te cuento: ');
+// Textos del botón fijo de WhatsApp (móvil), de «volver arriba», del compromiso
+// de respuesta y de la página /gracias/ (adonde lleva el cuadro de Byte al enviar,
+// para contar en Umami los mensajes que llegan).
+const EXTRA = {
+  es: {
+    respuesta: 'Te respondo en menos de 24 h laborables.',
+    whatsapp: 'WhatsApp', whatsappAria: 'Escribir a Henry por WhatsApp', arriba: 'Volver arriba',
+    gracias: {
+      titulo: 'Mensaje recibido · Henry Arce', h1: 'Mensaje recibido',
+      descripcion: 'Tu mensaje le ha llegado a Henry Arce. Te responde en menos de 24 h laborables.',
+      texto: 'Gracias por escribir. Te respondo en menos de 24 h laborables al correo o teléfono que me has dejado.',
+      urgente: '¿Es urgente? Escríbeme por WhatsApp', mientras: 'Mientras tanto, puedes ver:'
+    }
+  },
+  en: {
+    respuesta: 'I reply within 24 working hours.',
+    whatsapp: 'WhatsApp', whatsappAria: 'Message Henry on WhatsApp', arriba: 'Back to top',
+    gracias: {
+      titulo: 'Message received · Henry Arce', h1: 'Message received',
+      descripcion: 'Your message has reached Henry Arce. He replies within 24 working hours.',
+      texto: 'Thanks for getting in touch. I’ll reply within 24 working hours to the email or phone number you left.',
+      urgente: 'Is it urgent? Message me on WhatsApp', mientras: 'In the meantime, you can look at:'
+    }
+  },
+  zh: {
+    respuesta: '我会在 24 个工作小时内回复。',
+    whatsapp: 'WhatsApp', whatsappAria: '通过 WhatsApp 联系 Henry', arriba: '回到顶部',
+    gracias: {
+      titulo: '已收到留言 · Henry Arce', h1: '已收到你的留言',
+      descripcion: '你的留言已发给 Henry Arce，他会在 24 个工作小时内回复。',
+      texto: '谢谢你的留言。我会在 24 个工作小时内通过你留下的邮箱或电话回复你。',
+      urgente: '比较急？请通过 WhatsApp 联系我', mientras: '在此期间，你可以看看：'
+    }
+  }
+};
+const extra = t => EXTRA[t.lang.slice(0, 2)] || EXTRA.es;
+
 const CLUBBYTE_YOUTUBE = 'https://www.youtube.com/@clubbyte_es';
 const CLUBBYTE_CANAL = 'https://www.youtube.com/channel/UCGf6S4beoxCkjF3Fyl2XIrA';
 const CLUBBYTE_BLOG = 'https://clubbyte.arcedatalab.com';
@@ -1234,7 +1272,9 @@ function organizacion() {
     name: 'Arce Data Lab',
     url: ARCE,
     email: CORREO,
+    telephone: TELEFONO.replace(/\s/g, ''),
     logo: SITIO + 'img/monograma.png',
+    image: SITIO + 'img/og.jpg',
     founder: { '@id': ID_PERSONA },
     // La misma zona de servicio que el perfil de empresa de Google (sin dirección pública).
     areaServed: ['Alicante', 'Elche', 'San Vicente del Raspeig', "Sant Joan d'Alacant", 'Murcia']
@@ -1446,7 +1486,8 @@ function selectorIdioma(d, p) {
 function cabeza(d, p) {
   const t = d.t;
   const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + p.ruta;
-  const imagen = SITIO + 'img/og.jpg';
+  // Imagen para redes: la de la página si la tiene (p. ej. cada servicio), si no la general.
+  const imagen = SITIO + (p.imagen || 'img/og.jpg');
 
   return `<!DOCTYPE html>
 <html lang="${t.lang}">
@@ -1455,7 +1496,7 @@ function cabeza(d, p) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${p.titulo}</title>
   <meta name="description" content="${p.descripcion}">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="robots" content="${p.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}">
   <meta name="author" content="Henry Arce">
   <link rel="canonical" href="${url}">
 ${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lang + '" href="' + SITIO + prefijo(x.id) + p.ruta + '">\n').join('')}  <link rel="alternate" hreflang="x-default" href="${SITIO}${p.ruta}">
@@ -1468,7 +1509,7 @@ ${p.soloEs ? '' : SELECTOR.map(x => '  <link rel="alternate" hreflang="' + x.lan
   <meta property="og:image" content="${imagen}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Henry Arce · Arce Data Lab">
+  <meta property="og:image:alt" content="${p.imagenAlt || 'Henry Arce · Arce Data Lab'}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${p.titulo}">
   <meta name="twitter:description" content="${p.ogDescripcion}">
@@ -1580,6 +1621,7 @@ ${p.faq.map(f => '        <details><summary>' + f[0] + '</summary><p>' + f[1] + 
           <h2>${p.final.titulo}</h2>
           <p>${p.final.texto}</p>
           <p class="botones"><a class="boton grande" href="${p.ctaHref}" target="_blank" rel="noopener">${p.cta}</a></p>
+          <p class="respuesta">${extra(t).respuesta}</p>
           <p class="final-otros"><a href="mailto:${CORREO}">${CORREO}</a> · <a href="tel:${TELEFONO.replace(/\s/g, '')}">${TELEFONO}</a></p>
         </article>
         <article class="final-tarjeta">
@@ -1918,6 +1960,7 @@ ${t.serviciosLista.map(x => '        <article class="servicio">' + icono(x[0]) +
       <p class="servicios-nota">${t.serviciosNota}</p>
       <p class="servicios-nota">${t.serviciosPago}</p>
       <p class="botones centrados"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a><a class="boton secundario" href="mailto:${CORREO}">${CORREO}</a></p>
+      <p class="respuesta centrada">${extra(t).respuesta}</p>
     </section>
 ${porqueHtml(t)}
     <section class="bloque">
@@ -1977,7 +2020,10 @@ function pie(t, raiz, inicio) {
       ${col('Legal', LEGALES.map(l => '<a href="' + raiz + l.ruta + '">' + (l[t.lang.slice(0, 2)] || l.es) + '</a>'))}
     </div>
     <p class="pie-final">© <span id="anio">${new Date().getFullYear()}</span> Henry Arce · ${t.pie}</p>
-  </footer>`;
+  </footer>
+  <a class="fijo-whatsapp" href="${t.whatsappDiagnostico || WHATSAPP}" target="_blank" rel="noopener" aria-label="${extra(t).whatsappAria}">${ICONO_WHATSAPP}<span>${extra(t).whatsapp}</span></a>
+  <a class="fijo-arriba" href="#contenido" aria-label="${extra(t).arriba}" title="${extra(t).arriba}" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 15l6-6 6 6"/></svg></a>
+  <script src="${raiz}js/fijo.js?v=${VERSION_JS_FIJO}" defer></script>`;
 }
 
 // Markdown sencillo (títulos, párrafos, listas, negrita y enlaces) a HTML.
@@ -2032,7 +2078,7 @@ function paginaLegal(l) {
 const VERSION_JS_BIT3D = huella('js/bit.js');
 
 function bitHtml(t, base) {
-  const guion = Object.assign({}, t.bit, { correoDestino: CORREO, whatsappDestino: WHATSAPP, contactoUrl: N8N_CONTACTO, idioma: t.lang.slice(0, 2) });
+  const guion = Object.assign({}, t.bit, { correoDestino: CORREO, whatsappDestino: WHATSAPP, contactoUrl: N8N_CONTACTO, idioma: t.lang.slice(0, 2), gracias: base + prefijo(t.lang.slice(0, 2)) + 'gracias/' });
   const m = t.bit.mensaje;
   return `  <aside class="bit" id="bit" data-paseo="libre" aria-label="${t.bit.nombre}" data-modelo="${base}img/bit.glb?v=${huella('img/bit.glb')}" data-js="${base}js/bit.js?v=${VERSION_JS_BIT3D}">
     <p class="bit-bocadillo" id="bitBocadillo" role="status" aria-live="polite" hidden></p>
@@ -2045,7 +2091,7 @@ function bitHtml(t, base) {
   <dialog class="byte-mensaje" id="byteMensaje" aria-labelledby="byteMensajeTitulo">
     <form method="dialog" novalidate>
       <h2 id="byteMensajeTitulo">${m.titulo}</h2>
-      <p class="sub">${m.sub}</p>
+      <p class="sub">${m.sub} ${extra(t).respuesta}</p>
       <label>${m.nombre}<input name="nombre" autocomplete="name" maxlength="80"></label>
       <label>${m.empresa}<input name="empresa" autocomplete="organization" maxlength="80"></label>
       <label>${m.contacto}<input name="contacto" autocomplete="email" maxlength="120" placeholder="${attr(m.contactoEj)}" required></label>
@@ -2233,6 +2279,7 @@ function paginaServicio(d, s) {
 
   return cabeza(d, {
     titulo: s.titulo, descripcion: attr(s.descripcion), ogDescripcion: attr(s.descripcion), ogTipo: 'website',
+    imagen: imagenServicio(d, s), imagenAlt: attr(s.h1),
     ruta: ruta, raiz: raiz, inicio: '../../',
     datos: {
       '@context': 'https://schema.org',
@@ -2256,6 +2303,7 @@ function paginaServicio(d, s) {
       <h1>${s.h1}</h1>
       <p class="sub">${s.intro}</p>
       <p class="botones"><a class="boton" href="${t.whatsappDiagnostico}" target="_blank" rel="noopener">${t.serviciosCta}</a></p>
+      <p class="respuesta">${extra(t).respuesta}</p>
     </section>
 ${s.causas ? causasHtml(s) : ''}
     <section class="bloque">
@@ -2293,6 +2341,50 @@ ${s.faq.map(f => '        <div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
   ${pie(t, raiz, '../../')}
 
 ${bitHtml(t, raiz)}
+</body>
+</html>
+`;
+}
+
+// Imagen para redes de un servicio (img/og/<idioma>-<id>.jpg, la dibuja og/generar.js).
+// Si aún no existe, la página usa la general.
+function imagenServicio(d, s) {
+  const archivo = 'img/og/' + d.id + '-' + s.id + '.jpg';
+  return fs.existsSync(path.join(__dirname, archivo)) ? archivo : '';
+}
+
+// Bocadillo con teléfono para el botón fijo de WhatsApp.
+const ICONO_WHATSAPP = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.3L2.5 21.5l4.8-1.3A9.5 9.5 0 1 0 12 2.5z"/><path class="tel" d="M9.1 7.6c.3 0 .5 0 .7.5l.8 1.9c.1.2 0 .5-.1.6l-.6.7c-.1.2-.1.4 0 .6.6 1 1.4 1.8 2.5 2.4.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.3.6-.2 1-1.1 1.8-2.1 1.8-3.3-.2-6.2-3.1-6.4-6.4 0-1 .7-1.9 1.6-2.1z"/></svg>';
+
+// Página /gracias/: adonde lleva el cuadro de Byte cuando el mensaje se ha
+// enviado. Sin indexar y fuera del sitemap; Umami cuenta sus visitas, así que
+// sus visitas son los mensajes recibidos.
+function paginaGracias(d) {
+  const t = d.t;
+  const g = extra(t).gracias;
+  const raiz = '../' + d.base;
+  const url = SITIO + (d.carpeta ? d.carpeta + '/' : '') + 'gracias/';
+  return cabeza(d, {
+    titulo: g.titulo, descripcion: g.descripcion, ogDescripcion: g.descripcion, ogTipo: 'website', noindex: true,
+    ruta: 'gracias/', raiz: raiz, inicio: '../',
+    datos: { '@context': 'https://schema.org', '@type': 'WebPage', '@id': url, url: url, name: g.h1, inLanguage: t.lang, isPartOf: { '@id': ID_WEB } }
+  }) + `
+  <main id="contenido" class="pagina-servicios pagina-gracias">
+    <section class="bloque">
+      <h1>${g.h1}</h1>
+      <p class="sub">${g.texto}</p>
+      <p class="botones"><a class="boton" href="${t.whatsappDiagnostico || WHATSAPP}" target="_blank" rel="noopener">${g.urgente}</a></p>
+      <p class="gracias-mientras">${g.mientras}</p>
+      <ul class="otros">
+        <li><a href="../servicios/">${t.serviciosTitulo}</a></li>
+        <li><a href="../proyectos/">${t.p.menu.proyectos}</a></li>
+        <li><a href="../novedades/">${NV.TEXTOS[d.id].menu}</a></li>
+        <li><a href="../">${t.migas}</a></li>
+      </ul>
+    </section>
+  </main>
+
+  ${pie(t, raiz, '../')}
 </body>
 </html>
 `;
@@ -2364,6 +2456,9 @@ IDIOMAS.forEach(d => {
   fs.mkdirSync(carpeta, { recursive: true });
   guardar(path.join(carpeta, 'index.html'), conIdiomaLab(d, pagina(d)));
   console.log(path.join(d.carpeta, 'index.html') + ' generado: ' + d.proyectos.length + ' proyectos');
+
+  fs.mkdirSync(path.join(carpeta, 'gracias'), { recursive: true });
+  guardar(path.join(carpeta, 'gracias', 'index.html'), conIdiomaLab(d, paginaGracias(d)));
 
   const carpetaLinkedin = path.join(carpeta, 'linkedin');
   fs.mkdirSync(carpetaLinkedin, { recursive: true });
@@ -2441,3 +2536,9 @@ fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap());
 fs.writeFileSync(path.join(__dirname, 'robots.txt'), robots());
 fs.writeFileSync(path.join(__dirname, 'llms.txt'), llms());
 console.log('sitemap.xml, robots.txt y llms.txt generados');
+
+// Datos para las imágenes de redes de cada servicio (og/generar.js las dibuja en img/og/).
+fs.writeFileSync(path.join(__dirname, 'og', 'fichas.json'), JSON.stringify(IDIOMAS.flatMap(d => d.servicios.map(s => ({
+  archivo: 'img/og/' + d.id + '-' + s.id + '.jpg', lang: d.t.lang, ante: plano(d.t.serviciosTitulo), titulo: plano(s.corto), sub: plano(s.h1),
+  url: SITIO.replace(/^https:\/\//, '') + prefijo(d.id) + 'servicios/' + s.id + '/', icono: ICONOS[s.icono]
+}))), null, 1) + '\n');

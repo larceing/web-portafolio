@@ -184,7 +184,13 @@ if (location.hostname.indexOf('dev.') === 0) {
             if (x.j && x.j.ok) {
               aviso(estado, 'listo', m.listo);
               f.texto.value = '';
-              setTimeout(function () { if (dialogo.open) dialogo.close(); if (window.ByteWeb) window.ByteWeb.decir(m.listo, 6); }, 2200);
+              // A /gracias/: Umami cuenta allí los mensajes recibidos.
+              if (window.umami && typeof window.umami.track === 'function') window.umami.track('contacto-mensaje', { pagina: location.pathname });
+              setTimeout(function () {
+                if (guion.gracias) { location.href = guion.gracias; return; }
+                if (dialogo.open) dialogo.close();
+                if (window.ByteWeb) window.ByteWeb.decir(m.listo, 6);
+              }, 1600);
             } else if (x.r.status === 429) {
               aviso(estado, 'error', m.muchos);
             } else if (x.j && x.j.error === 'contacto') {
