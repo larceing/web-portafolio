@@ -63,7 +63,18 @@ problema / qué hice / resultado; con `texto`, en un párrafo.
   los asistentes de IA pueden citar tal cual.
 - `sitemap.xml` (con las versiones es/en enlazadas), `robots.txt` (abierto también a los
   rastreadores de IA) y `llms.txt` (resumen para asistentes de IA).
-- Imagen para redes: `img/og.jpg` (1200 × 630).
+- Imagen para redes: `img/og.jpg` (1200 × 630) para todas las páginas, y una propia por servicio e
+  idioma en `img/og/<idioma>-<servicio>.jpg`. Las dibuja `og/generar.js` (Chromium con Playwright) con
+  los datos que deja `construir.js` en `og/fichas.json`: `node construir.js`, `node og/generar.js` y otra
+  vez `node construir.js`. Solo hace falta al añadir o renombrar un servicio; si falta la imagen de uno,
+  su página usa la general.
+- **Página de gracias** (`/gracias/`, `/en/gracias/`, `/zh/gracias/`): sin indexar y fuera del sitemap.
+  El cuadro de Byte lleva a ella cuando el mensaje se ha enviado, así que sus visitas en Umami son los
+  mensajes recibidos. `js/fijo.js` además manda a Umami los eventos `contacto-whatsapp`,
+  `contacto-correo` y `contacto-telefono` (con la página) y Byte, `contacto-mensaje`.
+- **Botones fijos** (los pone `pie()`, script `js/fijo.js`): WhatsApp abajo a la izquierda solo en el
+  móvil, y «volver arriba», que aparece al bajar dos pantallas. «Te respondo en menos de 24 h
+  laborables» va junto a los botones de contacto (textos en `EXTRA`, en `construir.js`).
 - Search Console: la propiedad de dominio `arcedatalab.com` (cuenta henry@arcedatalab.com)
   ya la cubre. Enviar `https://arcedatalab.com/sitemap.xml`.
 
@@ -133,7 +144,7 @@ conservar en `lab/index.html` las dos líneas de `presentar.*` y el enlace `menu
 
 ## Cabeceras de seguridad
 
-`cabeceras.conf` reúne las cabeceras (CSP incluida) y se incluye en `nginx.conf` en el `server` y
+`cabeceras.conf` reúne las cabeceras (CSP y HSTS incluidas) y se incluye en `nginx.conf` en el `server` y
 en cada `location` con su propio `add_header`, porque nginx no las hereda en ese caso. La CSP solo
 abre las fuentes de Google y los marcos de `https://www.linkedin.com`.
 

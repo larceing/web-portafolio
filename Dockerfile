@@ -13,6 +13,7 @@ COPY zh /usr/share/nginx/html/zh
 COPY linkedin /usr/share/nginx/html/linkedin
 COPY novedades /usr/share/nginx/html/novedades
 COPY servicios /usr/share/nginx/html/servicios
+COPY gracias /usr/share/nginx/html/gracias
 COPY privacidad /usr/share/nginx/html/privacidad
 COPY condiciones /usr/share/nginx/html/condiciones
 COPY aviso-legal /usr/share/nginx/html/aviso-legal

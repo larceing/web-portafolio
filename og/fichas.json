@@ -1,0 +1,245 @@
+[
+ {
+  "archivo": "img/og/es-power-bi.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Power BI",
+  "sub": "Consultor de Power BI en Alicante para pymes",
+  "url": "arcedatalab.com/servicios/power-bi/",
+  "icono": "<path d=\"M8 40h32M8 34l8-9 8 4 8-14 8 5\"/>"
+ },
+ {
+  "archivo": "img/og/es-power-bi-fabricas.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Power BI para fábricas",
+  "sub": "Power BI para fábricas: OEE, paradas y scrap",
+  "url": "arcedatalab.com/servicios/power-bi-fabricas/",
+  "icono": "<path d=\"M6 40V22l9 6v-6l9 6v-6l9 6V10h8v30z\"/><path d=\"M14 34h4M24 34h4\"/>"
+ },
+ {
+  "archivo": "img/og/es-power-bi-no-actualiza.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Power BI que no se actualiza",
+  "sub": "Tu informe de Power BI no se actualiza: causas y solución",
+  "url": "arcedatalab.com/servicios/power-bi-no-actualiza/",
+  "icono": "<path d=\"M38 19a15 15 0 0 0-26-6M10 29a15 15 0 0 0 26 6\"/><path d=\"M11 7v6h6M37 41v-6h-6\"/><path d=\"M21 18v12l9-6z\"/>"
+ },
+ {
+  "archivo": "img/og/es-power-bi-lento.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Power BI lento",
+  "sub": "Tu informe de Power BI va lento: causas y solución",
+  "url": "arcedatalab.com/servicios/power-bi-lento/",
+  "icono": "<circle cx=\"21\" cy=\"21\" r=\"11\"/><path d=\"M29 29l10 10\"/>"
+ },
+ {
+  "archivo": "img/og/es-error-puerta-de-enlace-power-bi.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Error de puerta de enlace en Power BI",
+  "sub": "Error de la puerta de enlace de Power BI: causas y solución",
+  "url": "arcedatalab.com/servicios/error-puerta-de-enlace-power-bi/",
+  "icono": "<rect x=\"5\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><rect x=\"30\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><path d=\"M18 21h12M30 27H18\"/>"
+ },
+ {
+  "archivo": "img/og/es-automatizacion-n8n.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Automatización con n8n",
+  "sub": "Automatización de procesos con n8n",
+  "url": "arcedatalab.com/servicios/automatizacion-n8n/",
+  "icono": "<rect x=\"5\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"19\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"33\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><path d=\"M15 24h4M29 24h4\"/>"
+ },
+ {
+  "archivo": "img/og/es-pedidos-por-correo.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Pedidos por correo al ERP",
+  "sub": "Automatizar los pedidos que llegan por correo",
+  "url": "arcedatalab.com/servicios/pedidos-por-correo/",
+  "icono": "<rect x=\"7\" y=\"12\" width=\"34\" height=\"24\" rx=\"2\"/><path d=\"M7 14l17 13 17-13\"/>"
+ },
+ {
+  "archivo": "img/og/es-asistente-ia.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Asistente de IA para tu ERP",
+  "sub": "Un asistente de IA que responde con los datos de tu ERP",
+  "url": "arcedatalab.com/servicios/asistente-ia/",
+  "icono": "<rect x=\"12\" y=\"16\" width=\"24\" height=\"18\" rx=\"4\"/><circle cx=\"19\" cy=\"25\" r=\"2\"/><circle cx=\"29\" cy=\"25\" r=\"2\"/><path d=\"M24 16v-6\"/><circle cx=\"24\" cy=\"8\" r=\"2\"/>"
+ },
+ {
+  "archivo": "img/og/es-webs.jpg",
+  "lang": "es",
+  "ante": "Servicios",
+  "titulo": "Webs y aplicaciones",
+  "sub": "Webs y aplicaciones a medida para pymes",
+  "url": "arcedatalab.com/servicios/webs/",
+  "icono": "<rect x=\"8\" y=\"10\" width=\"32\" height=\"22\" rx=\"2\"/><path d=\"M24 32v6M17 38h14\"/>"
+ },
+ {
+  "archivo": "img/og/en-power-bi.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Power BI",
+  "sub": "Power BI consultant in Alicante for SMEs",
+  "url": "arcedatalab.com/en/servicios/power-bi/",
+  "icono": "<path d=\"M8 40h32M8 34l8-9 8 4 8-14 8 5\"/>"
+ },
+ {
+  "archivo": "img/og/en-power-bi-fabricas.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Power BI for factories",
+  "sub": "Power BI for factories: OEE, downtime and scrap",
+  "url": "arcedatalab.com/en/servicios/power-bi-fabricas/",
+  "icono": "<path d=\"M6 40V22l9 6v-6l9 6v-6l9 6V10h8v30z\"/><path d=\"M14 34h4M24 34h4\"/>"
+ },
+ {
+  "archivo": "img/og/en-power-bi-no-actualiza.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Power BI not refreshing",
+  "sub": "Your Power BI report isn’t refreshing: causes and fixes",
+  "url": "arcedatalab.com/en/servicios/power-bi-no-actualiza/",
+  "icono": "<path d=\"M38 19a15 15 0 0 0-26-6M10 29a15 15 0 0 0 26 6\"/><path d=\"M11 7v6h6M37 41v-6h-6\"/><path d=\"M21 18v12l9-6z\"/>"
+ },
+ {
+  "archivo": "img/og/en-power-bi-lento.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Slow Power BI",
+  "sub": "Your Power BI report is slow: causes and fixes",
+  "url": "arcedatalab.com/en/servicios/power-bi-lento/",
+  "icono": "<circle cx=\"21\" cy=\"21\" r=\"11\"/><path d=\"M29 29l10 10\"/>"
+ },
+ {
+  "archivo": "img/og/en-error-puerta-de-enlace-power-bi.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Power BI gateway error",
+  "sub": "Power BI gateway error: causes and fixes",
+  "url": "arcedatalab.com/en/servicios/error-puerta-de-enlace-power-bi/",
+  "icono": "<rect x=\"5\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><rect x=\"30\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><path d=\"M18 21h12M30 27H18\"/>"
+ },
+ {
+  "archivo": "img/og/en-automatizacion-n8n.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Automation with n8n",
+  "sub": "Process automation with n8n",
+  "url": "arcedatalab.com/en/servicios/automatizacion-n8n/",
+  "icono": "<rect x=\"5\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"19\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"33\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><path d=\"M15 24h4M29 24h4\"/>"
+ },
+ {
+  "archivo": "img/og/en-pedidos-por-correo.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Email orders into the ERP",
+  "sub": "Automate the orders that arrive by email",
+  "url": "arcedatalab.com/en/servicios/pedidos-por-correo/",
+  "icono": "<rect x=\"7\" y=\"12\" width=\"34\" height=\"24\" rx=\"2\"/><path d=\"M7 14l17 13 17-13\"/>"
+ },
+ {
+  "archivo": "img/og/en-asistente-ia.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "AI assistant for your ERP",
+  "sub": "An AI assistant that answers with your ERP data",
+  "url": "arcedatalab.com/en/servicios/asistente-ia/",
+  "icono": "<rect x=\"12\" y=\"16\" width=\"24\" height=\"18\" rx=\"4\"/><circle cx=\"19\" cy=\"25\" r=\"2\"/><circle cx=\"29\" cy=\"25\" r=\"2\"/><path d=\"M24 16v-6\"/><circle cx=\"24\" cy=\"8\" r=\"2\"/>"
+ },
+ {
+  "archivo": "img/og/en-webs.jpg",
+  "lang": "en",
+  "ante": "Services",
+  "titulo": "Websites and apps",
+  "sub": "Custom websites and web apps for SMEs",
+  "url": "arcedatalab.com/en/servicios/webs/",
+  "icono": "<rect x=\"8\" y=\"10\" width=\"32\" height=\"22\" rx=\"2\"/><path d=\"M24 32v6M17 38h14\"/>"
+ },
+ {
+  "archivo": "img/og/zh-power-bi.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "Power BI",
+  "sub": "阿利坎特面向中小企业的 Power BI 顾问",
+  "url": "arcedatalab.com/zh/servicios/power-bi/",
+  "icono": "<path d=\"M8 40h32M8 34l8-9 8 4 8-14 8 5\"/>"
+ },
+ {
+  "archivo": "img/og/zh-power-bi-fabricas.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "工厂 Power BI",
+  "sub": "工厂 Power BI：OEE、停机与废品",
+  "url": "arcedatalab.com/zh/servicios/power-bi-fabricas/",
+  "icono": "<path d=\"M6 40V22l9 6v-6l9 6v-6l9 6V10h8v30z\"/><path d=\"M14 34h4M24 34h4\"/>"
+ },
+ {
+  "archivo": "img/og/zh-power-bi-no-actualiza.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "Power BI 无法刷新",
+  "sub": "你的 Power BI 报表无法刷新：原因与解决方法",
+  "url": "arcedatalab.com/zh/servicios/power-bi-no-actualiza/",
+  "icono": "<path d=\"M38 19a15 15 0 0 0-26-6M10 29a15 15 0 0 0 26 6\"/><path d=\"M11 7v6h6M37 41v-6h-6\"/><path d=\"M21 18v12l9-6z\"/>"
+ },
+ {
+  "archivo": "img/og/zh-power-bi-lento.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "Power BI 很慢",
+  "sub": "你的 Power BI 报表很慢：原因与解决方法",
+  "url": "arcedatalab.com/zh/servicios/power-bi-lento/",
+  "icono": "<circle cx=\"21\" cy=\"21\" r=\"11\"/><path d=\"M29 29l10 10\"/>"
+ },
+ {
+  "archivo": "img/og/zh-error-puerta-de-enlace-power-bi.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "Power BI 网关错误",
+  "sub": "Power BI 网关错误：原因和解决方法",
+  "url": "arcedatalab.com/zh/servicios/error-puerta-de-enlace-power-bi/",
+  "icono": "<rect x=\"5\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><rect x=\"30\" y=\"16\" width=\"13\" height=\"16\" rx=\"2\"/><path d=\"M18 21h12M30 27H18\"/>"
+ },
+ {
+  "archivo": "img/og/zh-automatizacion-n8n.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "n8n 自动化",
+  "sub": "用 n8n 实现流程自动化",
+  "url": "arcedatalab.com/zh/servicios/automatizacion-n8n/",
+  "icono": "<rect x=\"5\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"19\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><rect x=\"33\" y=\"18\" width=\"10\" height=\"12\" rx=\"2\"/><path d=\"M15 24h4M29 24h4\"/>"
+ },
+ {
+  "archivo": "img/og/zh-pedidos-por-correo.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "邮件订单录入 ERP",
+  "sub": "自动处理通过邮件收到的订单",
+  "url": "arcedatalab.com/zh/servicios/pedidos-por-correo/",
+  "icono": "<rect x=\"7\" y=\"12\" width=\"34\" height=\"24\" rx=\"2\"/><path d=\"M7 14l17 13 17-13\"/>"
+ },
+ {
+  "archivo": "img/og/zh-asistente-ia.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "ERP 的 AI 助手",
+  "sub": "用你 ERP 数据回答问题的 AI 助手",
+  "url": "arcedatalab.com/zh/servicios/asistente-ia/",
+  "icono": "<rect x=\"12\" y=\"16\" width=\"24\" height=\"18\" rx=\"4\"/><circle cx=\"19\" cy=\"25\" r=\"2\"/><circle cx=\"29\" cy=\"25\" r=\"2\"/><path d=\"M24 16v-6\"/><circle cx=\"24\" cy=\"8\" r=\"2\"/>"
+ },
+ {
+  "archivo": "img/og/zh-webs.jpg",
+  "lang": "zh-Hans",
+  "ante": "服务",
+  "titulo": "网站和应用",
+  "sub": "面向中小企业的定制网站和 Web 应用",
+  "url": "arcedatalab.com/zh/servicios/webs/",
+  "icono": "<rect x=\"8\" y=\"10\" width=\"32\" height=\"22\" rx=\"2\"/><path d=\"M24 32v6M17 38h14\"/>"
+ }
+]
