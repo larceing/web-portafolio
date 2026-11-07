@@ -204,11 +204,15 @@ const PROYECTOS = [
     enlaces: [['Ver en GitHub', GITHUB + '/sindri']]
   },
   {
-    id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM para el comercial de una pyme industrial',
-    tipo: 'producto', etiqueta: 'Producto propio · en proceso', icono: 'tablet', color: C.verde,
-    texto: 'El CRM de la casa, en proceso. Va como módulo de Sindri, con los mismos clientes, presupuestos, pedidos y facturas, así nada se duplica. El objetivo: registrar una visita en menos de 30 segundos desde el móvil o la PDA, incluso sin cobertura; que la oportunidad se gane sola al confirmarse el pedido, y una línea de tiempo por cliente que junte llamadas, presupuestos, facturas, cobros e incidencias de Odin. El embudo, las actividades y los presupuestos ya funcionan dentro de Sindri; antes de seguir analicé 15 CRM libres.',
-    tec: ['Módulo de Sindri', 'Fastify', 'PostgreSQL', 'React', 'Keycloak'],
-    enlaces: [['Ver en GitHub', GITHUB + '/brokkr']]
+    id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM que te dice qué hacer hoy',
+    tipo: 'producto', etiqueta: 'Producto propio · 2026', icono: 'tablet', color: C.verde,
+    resumen: 'CRM modular para pymes: Hoy, embudo, ficha 360 y conexión con el ERP y con cualquier programa.',
+    caso: [
+      ['Problema', 'En una pyme las oportunidades se olvidan: nadie sabe cuál lleva días sin seguimiento, qué cliente se está enfriando ni por qué se pierden las ventas, y lo que se gana hay que volver a teclearlo en el ERP.'],
+      ['Qué hice', 'Un CRM propio y modular. La pantalla «Hoy» dice qué toca: lo vencido, las oportunidades sin siguiente paso y los clientes que se enfrían. Embudo con importe y previsión, motivo obligatorio al perder, ficha 360 de cada empresa con una sola línea de tiempo, registro de una llamada y su siguiente paso en un gesto desde el móvil, búsqueda con Ctrl+K e informes de conversión. Permisos por rol (todo, mi equipo o lo mío) iguales en la web y en la API, y varias empresas separadas.'],
+      ['Resultado', 'Al ganar una oportunidad, el cliente y las líneas llegan solos a «Por facturar» de Sindri, sin duplicar. Cualquier otro programa se conecta con webhooks firmados o con llaves de API con su propio rol. Antes de diseñarlo analicé 15 CRM libres.']
+    ],
+    tec: ['TypeScript', 'React', 'Fastify', 'PostgreSQL', 'Keycloak', 'Webhooks y API REST']
   },
   {
     id: 'plantillas', corto: 'Plantillas de web', titulo: 'Plantillas de web para negocios locales',

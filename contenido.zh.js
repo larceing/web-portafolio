@@ -703,9 +703,14 @@ module.exports = {
       ]
     },
     brokkr: {
-      corto: 'Brokkr CRM', titulo: 'Brokkr：为小型制造企业销售人员打造的 CRM', etiqueta: '自有产品 · 进行中',
-      texto: '自研 CRM，正在开发。它是 Sindri 的一个模块，共用同样的客户、报价、订单和发票，不会产生重复数据。目标是：在手机或手持终端上 30 秒内记录一次拜访，即使没有信号；订单确认后商机自动标记为赢单；每个客户一条时间线，包含电话、报价、发票、付款和 Odin 工单。销售漏斗、活动和报价已经在 Sindri 中可用；在继续开发之前，我分析了 15 个开源 CRM。',
-      tec: ['Sindri 模块', 'Fastify', 'PostgreSQL', 'React', 'Keycloak']
+      corto: 'Brokkr CRM', titulo: 'Brokkr：告诉你今天该做什么的 CRM', etiqueta: '自有产品 · 2026',
+      resumen: '面向中小企业的模块化 CRM：“今天”、销售漏斗、客户 360 视图，并与 ERP 及任何软件连接。',
+      caso: [
+        ['问题', '在中小企业里，商机常常被遗忘：没人知道哪个商机已经好几天没有跟进、哪个客户正在流失、为什么丢单，而赢下的订单还要在 ERP 里重新录入。'],
+        ['我做了什么', '一个自有的模块化 CRM。“今天”页面告诉你该做什么：逾期事项、没有下一步的商机和正在流失的客户。带金额和预测的销售漏斗、丢单必须填写原因、每家企业的 360 视图和统一时间线、在手机上一步记录通话和下一步、Ctrl+K 搜索以及转化报表。按角色的权限（全部、我的团队或仅本人）在网页和 API 中完全一致，并支持多家企业相互隔离。'],
+        ['结果', '赢单后，客户和明细会自动进入 Sindri 的“待开票”，不会重复。任何其他软件都可以通过签名的 Webhook 或拥有自己角色的 API 密钥接入。设计之前，我分析了 15 个开源 CRM。']
+      ],
+      tec: ['TypeScript', 'React', 'Fastify', 'PostgreSQL', 'Keycloak', 'Webhook 与 REST API']
     },
     tareas: {
       corto: 'Aris，任务', titulo: 'Aris：团队任务与项目管理', etiqueta: '开源 · Web 应用',

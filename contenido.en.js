@@ -702,9 +702,14 @@ module.exports = {
       ]
     },
     brokkr: {
-      corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM for a small manufacturer’s sales rep', etiqueta: 'Own product · in progress',
-      texto: 'The in-house CRM, in progress. It is a Sindri module sharing the same customers, quotes, orders and invoices, so nothing is duplicated. The goal: log a visit in under 30 seconds from a phone or handheld, even without coverage; opportunities that win themselves when the order is confirmed; and one timeline per customer with calls, quotes, invoices, payments and Odin tickets. The pipeline, activities and quotes already work inside Sindri; before going further I analysed 15 open-source CRMs.',
-      tec: ['Sindri module', 'Fastify', 'PostgreSQL', 'React', 'Keycloak']
+      corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM that tells you what to do today', etiqueta: 'Own product · 2026',
+      resumen: 'Modular CRM for small businesses: Today, pipeline, 360° account view and links to the ERP and any other software.',
+      caso: [
+        ['Problem', 'In a small business opportunities get forgotten: nobody knows which one has gone days without follow-up, which customer is going cold or why deals are lost, and whatever is won has to be typed again into the ERP.'],
+        ['What I did', 'An in-house, modular CRM. The “Today” screen says what to do: overdue items, opportunities with no next step and customers going cold. A pipeline with amounts and forecast, a mandatory reason when a deal is lost, a 360° view of each account with a single timeline, logging a call and its next step in one go from a phone, Ctrl+K search and conversion reports. Role-based permissions (everything, my team or mine) that apply equally to the web and the API, and several companies kept apart.'],
+        ['Result', 'When an opportunity is won, the customer and its lines reach Sindri’s “To invoice” list on their own, without duplicates. Any other software connects through signed webhooks or API keys with their own role. Before designing it I analysed 15 open-source CRMs.']
+      ],
+      tec: ['TypeScript', 'React', 'Fastify', 'PostgreSQL', 'Keycloak', 'Webhooks and REST API']
     },
     tareas: {
       corto: 'Aris, tasks', titulo: 'Aris: tasks and projects for teams', etiqueta: 'Open source · web app',
