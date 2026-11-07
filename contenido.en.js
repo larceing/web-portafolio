@@ -704,6 +704,7 @@ module.exports = {
     brokkr: {
       corto: 'Brokkr CRM', titulo: 'Brokkr: the CRM that tells you what to do today', etiqueta: 'Own product · 2026',
       resumen: 'Modular CRM for small businesses: Today, pipeline, 360° account view and links to the ERP and any other software.',
+      probar: 'Play the sales rep: handle an overdue follow-up, log the call, win the deal and watch it reach Sindri and n8n on its own.',
       caso: [
         ['Problem', 'In a small business opportunities get forgotten: nobody knows which one has gone days without follow-up, which customer is going cold or why deals are lost, and whatever is won has to be typed again into the ERP.'],
         ['What I did', 'An in-house, modular CRM. The “Today” screen says what to do: overdue items, opportunities with no next step and customers going cold. A pipeline with amounts and forecast, a mandatory reason when a deal is lost, a 360° view of each account with a single timeline, logging a call and its next step in one go from a phone, Ctrl+K search and conversion reports. Role-based permissions (everything, my team or mine) that apply equally to the web and the API, and several companies kept apart.'],

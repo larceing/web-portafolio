@@ -207,6 +207,7 @@ const PROYECTOS = [
     id: 'brokkr', corto: 'Brokkr CRM', titulo: 'Brokkr: el CRM que te dice qué hacer hoy',
     tipo: 'producto', etiqueta: 'Producto propio · 2026', icono: 'tablet', color: C.verde,
     resumen: 'CRM modular para pymes: Hoy, embudo, ficha 360 y conexión con el ERP y con cualquier programa.',
+    probar: 'Haz de comercial: atiende un seguimiento vencido, registra la llamada, gana la oportunidad y mira cómo llega sola a Sindri y a n8n.',
     caso: [
       ['Problema', 'En una pyme las oportunidades se olvidan: nadie sabe cuál lleva días sin seguimiento, qué cliente se está enfriando ni por qué se pierden las ventas, y lo que se gana hay que volver a teclearlo en el ERP.'],
       ['Qué hice', 'Un CRM propio y modular. La pantalla «Hoy» dice qué toca: lo vencido, las oportunidades sin siguiente paso y los clientes que se enfrían. Embudo con importe y previsión, motivo obligatorio al perder, ficha 360 de cada empresa con una sola línea de tiempo, registro de una llamada y su siguiente paso en un gesto desde el móvil, búsqueda con Ctrl+K e informes de conversión. Permisos por rol (todo, mi equipo o lo mío) iguales en la web y en la API, y varias empresas separadas.'],
