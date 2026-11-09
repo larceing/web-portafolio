@@ -148,8 +148,21 @@ module.exports = {
         ['bi-calidad', 'Quality and scrap', 'For quality and production', 'How many parts do we scrap, what does it cost and why?',
           ['Scrap % by month and work centre', 'Rejected parts by defect and cost of scrap', 'Actual against expected by part number, and the orders with most scrap']]
       ],
+      local: {
+        titulo: 'Power BI for companies in the province of Alicante',
+        intro: 'Each sector in the province has its own questions. These are the ones that come up most and what a dashboard answers.',
+        sectores: [
+          ['Footwear · Elche, Elda and Petrer', 'Sales by season, model and size, customer orders against what was made, and stock by warehouse.'],
+          ['Toys · Ibi and Onil', 'The Christmas season week by week, stock by item and a forecast of what to make or order.'],
+          ['Textiles · Alcoy and Cocentaina', 'Production and waste by item, real margin by customer and open orders.'],
+          ['Food and agriculture · Vega Baja and Vinalopó', 'Batch traceability, waste, collections from distributors and sales by channel.'],
+          ['Industry · plastics, metal and marble', 'OEE, downtime and scrap by machine, with data from the ERP and the shop floor.']
+        ]
+      },
       faq: [
         ['How much does a Power BI dashboard cost?', 'It depends on the data sources, the number of pages and the calculations. Tell me about your case and I’ll send you a fixed quote in writing, with no obligation.'],
+        ['Do you come to the company?', 'Yes. In the province of Alicante (Alicante, Elche, Elda, Alcoy, Ibi and the surrounding area) I come to see the process and for the go-live; the rest of the work is done remotely.'],
+        ['Do you work outside Alicante?', 'Yes, remotely with companies in the rest of Spain and Europe. Meetings are by video call.'],
         ['What is an analysis pack?', 'A set of Power BI pages designed for one area (sales, plant, logistics or quality) with its indicators already defined. I connect it to your data and adjust it to the way you work, so you don’t start from scratch. Tell me which packs interest you and I’ll send you a fixed quote.'],
         ['Do I need a Power BI licence?', 'To build and view the report on your computer, Power BI Desktop is enough and it is free. To share it online with your team you need Power BI Pro, which is paid to Microsoft per user.'],
         ['Does it work with my ERP?', 'I have worked with A3 ERP, SAP, Clavei, Cybermax and SQL Server. If your ERP stores its data in a database or exports it to Excel, it can be connected.'],
@@ -160,11 +173,11 @@ module.exports = {
       ]
     },
     'automatizacion-n8n': {
-      titulo: 'Business process automation with n8n | Arce Data Lab',
+      titulo: 'Process automation with n8n in Alicante | Arce Data Lab',
       corto: 'Automation with n8n',
-      h1: 'Process automation with n8n',
+      h1: 'Process automation with n8n in Alicante',
       descripcion: 'I use n8n to automate the tasks your team repeats every week: emails, alerts, orders and reports moving on their own between your programs.',
-      intro: 'Copying orders from email into the ERP, sending the same reminder every Monday or moving data from one sheet to another adds nothing and often goes wrong. With n8n I turn it into a flow that does it on its own, with alerts if something fails, and I host it on a server in the EU.',
+      intro: 'Copying orders from email into the ERP, sending the same reminder every Monday or moving data from one sheet to another adds nothing and often goes wrong. With n8n I turn it into a flow that does it on its own, with alerts if something fails, and I host it on a server in the EU. I work from Alicante with companies in Alicante, Elche and the surrounding area, and remotely with the rest of Spain and Europe.',
       incluye: [
         ['Task map', 'We look together at what is done by hand, how often and how long it takes, to start with what pays off most.'],
         ['The n8n flow', 'Connected to your programs: email, Excel or Google Sheets, ERP, CRM, forms, WhatsApp or any API.'],
@@ -172,10 +185,23 @@ module.exports = {
         ['Alerts when something fails', 'If a step goes wrong you get an alert saying what happened, instead of a silent error.'],
         ['One hour of training', 'So your team knows what the flow does and how to stop or change it.']
       ],
+      local: {
+        titulo: 'Automation for companies in the province of Alicante',
+        intro: 'Manual work changes from one sector to another. These are the tasks I see most in the province, and a flow can take them off your hands.',
+        sectores: [
+          ['Footwear · Elche, Elda and Petrer', 'Customer orders arriving by email or in Excel, entered into the ERP, and alerts for last-minute changes.'],
+          ['Toys · Ibi and Onil', 'Season orders, low-stock alerts and the daily summary for management in the busy months.'],
+          ['Textiles · Alcoy and Cocentaina', 'Production reports nobody copies by hand any more, and orders that move from the ERP to the plant on their own.'],
+          ['Food and agriculture · Vega Baja and Vinalopó', 'Delivery notes and batches recorded without typing, and alerts to customers and carriers.'],
+          ['Industry · plastics, metal and marble', 'Machine and incident alerts, daily production reports and supplier invoices read automatically.']
+        ]
+      },
       faq: [
         ['What is n8n?', 'n8n is an automation tool that connects programs with visual flows. It can be installed on your own server, so your data stays in the EU.'],
         ['Which tasks can be automated?', 'The ones that repeat and always follow the same steps: copying data between programs, sending alerts or emails, generating reports or PDFs, checking forms and sorting messages.'],
         ['How much does an automation cost?', 'It depends on how many applications are connected and on the special cases. Tell me about your case and I’ll send you a fixed quote in writing.'],
+        ['Do you come to the company?', 'Yes. In the province of Alicante (Alicante, Elche, Elda, Alcoy, Ibi and the surrounding area) I come to see the process and for the go-live; the rest of the work is done remotely.'],
+        ['Do you work outside Alicante?', 'Yes, remotely with companies in the rest of Spain and Europe. Meetings are by video call.'],
         ['What if a program changes?', 'The flow warns you when something stops working and gets adjusted. With monthly maintenance, I do it.']
       ]
     },

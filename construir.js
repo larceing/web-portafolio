@@ -801,6 +801,17 @@ const SERVICIOS = [
       ['Documentación', 'Qué mide cada cifra y de dónde sale, para que tu equipo confíe en ella y la pueda mantener.']
     ],
     tec: 'Power BI, DAX, Power Query, Microsoft Fabric, SQL Server, A3 ERP, SharePoint',
+    local: {
+      titulo: 'Power BI para las empresas de la provincia de Alicante',
+      intro: 'Cada sector de la provincia tiene sus propias preguntas. Estas son las que más se repiten y lo que un cuadro de mando les responde.',
+      sectores: [
+        ['Calzado · Elche, Elda y Petrer', 'Ventas por temporada, modelo y talla, pedidos de clientes frente a lo fabricado y stock por almacén.'],
+        ['Juguete · Ibi y Onil', 'La campaña de Navidad semana a semana, stock por referencia y previsión de lo que hay que fabricar o pedir.'],
+        ['Textil · Alcoy y Cocentaina', 'Producción y mermas por artículo, margen real por cliente y pedidos en curso.'],
+        ['Agroalimentaria · Vega Baja y Vinalopó', 'Trazabilidad por lote, mermas, cobros a distribuidores y ventas por canal.'],
+        ['Industria · plástico, metal y mármol', 'OEE, paradas y scrap por máquina, con datos del ERP y de la planta.']
+      ]
+    },
     // Lotes de análisis: paquetes de informes por área, cada uno con su demo en lab/#<id>.
     lotesTitulo: 'Lotes de análisis',
     lotesIntro: 'Informes ya pensados por área, que adapto a tu ERP y a tus nombres. Empiezas por el lote que más te duele y añades los demás cuando quieras. Pruébalos con datos inventados en el laboratorio.',
@@ -825,6 +836,8 @@ const SERVICIOS = [
     ],
     faq: [
       ['¿Cuánto cuesta un dashboard de Power BI?', 'Depende de las fuentes de datos, del número de páginas y de los cálculos. Cuéntame tu caso y te paso un presupuesto cerrado por escrito, sin compromiso.'],
+      ['¿Vienes a la empresa?', 'Sí. En la provincia de Alicante (Alicante, Elche, Elda, Alcoy, Ibi y alrededores) voy a conocer el proceso y a la puesta en marcha; el resto del trabajo se hace en remoto.'],
+      ['¿Trabajas fuera de Alicante?', 'Sí, en remoto con empresas del resto de España y de Europa. Las reuniones son por videollamada.'],
       ['¿Qué es un lote de análisis?', 'Un conjunto de páginas de Power BI pensado para un área (ventas, planta, logística o calidad) con sus indicadores ya definidos. Lo conecto a tus datos y lo ajusto a cómo trabajas, así no se empieza de cero. Cuéntame qué lotes te interesan y te paso un presupuesto cerrado.'],
       ['¿Necesito licencia de Power BI?', 'Para hacer y ver el informe en tu ordenador basta Power BI Desktop, que es gratis. Para compartirlo en la web con tu equipo hace falta Power BI Pro, que se paga a Microsoft por usuario.'],
       ['¿Funciona con mi ERP?', 'He trabajado con A3 ERP, SAP, Clavei, Cybermax y SQL Server. Si tu ERP guarda los datos en una base de datos o los exporta a Excel, se puede conectar.'],
@@ -983,11 +996,11 @@ const SERVICIOS = [
   {
     id: 'automatizacion-n8n', icono: 'flujo',
     proyectos: ['ada', 'whatsapp', 'helpdesk', 'outlook', 'gateway', 'servicios', 'nifi', 'nifi-oee', 'asistente'],
-    titulo: 'Automatización de procesos con n8n para empresas | Arce Data Lab',
+    titulo: 'Automatización de procesos con n8n en Alicante | Arce Data Lab',
     corto: 'Automatización con n8n',
-    h1: 'Automatización de procesos con n8n',
-    descripcion: 'Automatizo con n8n las tareas que tu equipo repite cada semana: correos, avisos, pedidos, facturas e informes que pasan solos entre ERP, CRM, Excel y correo.',
-    intro: 'Copiar pedidos del correo al ERP, mandar el mismo aviso cada lunes o pasar datos de una hoja a otra no aporta nada y se equivoca a menudo. Con n8n lo convierto en un flujo que lo hace solo, con avisos si algo falla, y lo instalo en un servidor en la UE.',
+    h1: 'Automatización de procesos con n8n en Alicante',
+    descripcion: 'Automatización con n8n en Alicante: las tareas que tu equipo repite cada semana (correos, avisos, pedidos, facturas e informes) pasan solas entre ERP, CRM, Excel y correo.',
+    intro: 'Copiar pedidos del correo al ERP, mandar el mismo aviso cada lunes o pasar datos de una hoja a otra no aporta nada y se equivoca a menudo. Con n8n lo convierto en un flujo que lo hace solo, con avisos si algo falla, y lo instalo en un servidor en la UE. Trabajo desde Alicante con empresas de Alicante, Elche y alrededores, y en remoto con el resto de España.',
     incluye: [
       ['Mapa de la tarea', 'Vemos juntos qué se hace a mano, cuántas veces y cuánto tiempo se lleva, para empezar por lo que más rinde.'],
       ['El flujo en n8n', 'Conectado a tus programas: correo, Excel o Google Sheets, ERP, CRM, formularios, WhatsApp o cualquier API.'],
@@ -996,10 +1009,23 @@ const SERVICIOS = [
       ['Una hora de formación', 'Para que tu equipo sepa qué hace el flujo y cómo pararlo o cambiarlo.']
     ],
     tec: 'n8n, Python, Power Automate, Apps Script, API REST, webhooks',
+    local: {
+      titulo: 'Automatización para las empresas de la provincia de Alicante',
+      intro: 'Las tareas manuales cambian según el sector. Estas son las que más veo en la provincia y se pueden quitar con un flujo.',
+      sectores: [
+        ['Calzado · Elche, Elda y Petrer', 'Pedidos de clientes que llegan por correo o en Excel, grabados en el ERP, y avisos de cambios de última hora.'],
+        ['Juguete · Ibi y Onil', 'Pedidos de campaña, avisos de stock bajo y el resumen diario para dirección en temporada alta.'],
+        ['Textil · Alcoy y Cocentaina', 'Partes de producción que dejan de copiarse a mano y órdenes que pasan solas del ERP a la planta.'],
+        ['Agroalimentaria · Vega Baja y Vinalopó', 'Albaranes y lotes registrados sin teclear, y avisos a clientes y transportistas.'],
+        ['Industria · plástico, metal y mármol', 'Avisos de máquinas e incidencias, informes diarios de producción y facturas de proveedores leídas solas.']
+      ]
+    },
     faq: [
       ['¿Qué es n8n?', 'n8n es una herramienta de automatización que conecta programas entre sí con flujos visuales. Se puede instalar en tu propio servidor, así tus datos no salen de la UE.'],
       ['¿Qué tareas se pueden automatizar?', 'Las que se repiten y siguen siempre los mismos pasos: copiar datos entre programas, enviar avisos o correos, generar informes o PDF, revisar formularios y clasificar mensajes.'],
       ['¿Cuánto cuesta una automatización?', 'Depende de cuántas aplicaciones se conectan y de los casos especiales. Cuéntame tu caso y te paso un presupuesto cerrado por escrito.'],
+      ['¿Vienes a la empresa?', 'Sí. En la provincia de Alicante (Alicante, Elche, Elda, Alcoy, Ibi y alrededores) voy a conocer el proceso y a la puesta en marcha; el resto del trabajo se hace en remoto.'],
+      ['¿Trabajas fuera de Alicante?', 'Sí, en remoto con empresas del resto de España y de Europa. Las reuniones son por videollamada.'],
       ['¿Qué pasa si cambia un programa?', 'El flujo avisa cuando algo deja de funcionar y se ajusta. Con el mantenimiento mensual, lo hago yo.']
     ]
   },
@@ -1232,6 +1258,12 @@ function persona(d) {
   };
 }
 
+// Zona de servicio: la del perfil de empresa de Google (sin dirección pública), más la
+// Comunidad Valenciana y España. La usan la organización y cada Service.
+const ZONA = ['Alicante', 'Elche', 'San Vicente del Raspeig', "Sant Joan d'Alacant", 'Murcia']
+  .map(c => ({ '@type': 'City', name: c }))
+  .concat({ '@type': 'AdministrativeArea', name: 'Comunidad Valenciana' }, { '@type': 'Country', name: 'España' });
+
 function organizacion() {
   return {
     '@type': ['Organization', 'ProfessionalService'],
@@ -1241,9 +1273,7 @@ function organizacion() {
     email: CORREO,
     logo: SITIO + 'img/monograma.png',
     founder: { '@id': ID_PERSONA },
-    // La misma zona de servicio que el perfil de empresa de Google (sin dirección pública).
-    areaServed: ['Alicante', 'Elche', 'San Vicente del Raspeig', "Sant Joan d'Alacant", 'Murcia']
-      .map(c => ({ '@type': 'City', name: c })).concat({ '@type': 'Country', name: 'España' }),
+    areaServed: ZONA,
     hasMap: PERFIL_GOOGLE,
     address: { '@type': 'PostalAddress', addressLocality: 'Alicante', addressCountry: 'ES' },
     contactPoint: [
@@ -1253,7 +1283,7 @@ function organizacion() {
     sameAs: [YOUTUBE, YOUTUBE_CANAL, TIKTOK, INSTAGRAM, LINKEDIN, PERFIL_GOOGLE],
     hasOfferCatalog: {
       '@type': 'OfferCatalog', name: 'Servicios',
-      itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: 'ES' } }))
+      itemListElement: UI.serviciosLista.map(x => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x[1], description: plano(x[2]), provider: { '@id': ID_ORG }, areaServed: ZONA } }))
     }
   };
 }
@@ -2211,6 +2241,20 @@ ${s.causas.map((c, i) => `        <article class="lote">
 `;
 }
 
+// Bloque local: sectores de la provincia de Alicante y lo que el servicio les resuelve.
+// Una sola página por servicio, sin copias por ciudad.
+function localHtml(s) {
+  return `
+    <section class="bloque servicio-local">
+      <h2>${s.local.titulo}</h2>
+      <p class="sub">${s.local.intro}</p>
+      <div class="servicios servicio-incluye">
+${s.local.sectores.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>' + x[1] + '</p></article>').join('\n')}
+      </div>
+    </section>
+`;
+}
+
 // Vídeo de YouTube en una página de servicio: miniatura servida desde la web y enlace
 // al vídeo. No se carga nada de YouTube hasta que la persona pulsa.
 function videoHtml(v, raiz) {
@@ -2243,7 +2287,7 @@ function paginaServicio(d, s) {
       '@context': 'https://schema.org',
       '@graph': [
         { '@type': 'WebPage', '@id': url, url: url, name: plano(s.h1), description: plano(s.descripcion), inLanguage: t.lang, isPartOf: { '@id': ID_WEB }, about: { '@id': url + '#servicio' }, breadcrumb: { '@id': url + '#migas' } },
-        { '@type': 'Service', '@id': url + '#servicio', name: plano(s.h1), serviceType: plano(s.corto), description: plano(s.descripcion), url: url, provider: { '@id': ID_ORG }, areaServed: [{ '@type': 'City', name: 'Alicante' }, { '@type': 'Country', name: 'España' }, { '@type': 'Place', name: 'Unión Europea' }], availableLanguage: ['es', 'en'] },
+        { '@type': 'Service', '@id': url + '#servicio', name: plano(s.h1), serviceType: plano(s.corto), description: plano(s.descripcion), url: url, provider: { '@id': ID_ORG }, areaServed: ZONA.concat({ '@type': 'Place', name: 'Unión Europea' }), availableLanguage: ['es', 'en'] },
         { '@type': 'BreadcrumbList', '@id': url + '#migas', itemListElement: [
           { '@type': 'ListItem', position: 1, name: plano(t.migas), item: inicio },
           { '@type': 'ListItem', position: 2, name: plano(t.serviciosTitulo), item: inicio + 'servicios/' },
@@ -2270,7 +2314,7 @@ ${s.incluye.map(x => '        <article class="servicio"><h3>' + x[0] + '</h3><p>
       </div>
       <p class="servicios-nota">${s.tec}</p>
     </section>
-${s.lotes ? lotesHtml(s, raiz) : ''}${s.video ? videoHtml(s.video, raiz) : ''}
+${s.local ? localHtml(s) : ''}${s.lotes ? lotesHtml(s, raiz) : ''}${s.video ? videoHtml(s.video, raiz) : ''}
     <section class="bloque">
       <h2>${t.serv.como}</h2>
       <ol class="pasos-servicio">
