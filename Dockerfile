@@ -1,5 +1,8 @@
 FROM nginx:1.27-alpine
 
+# Parches de seguridad del sistema de la imagen base (Trivy, D20).
+RUN apk upgrade --no-cache
+
 # Versión de la imagen (sha-xxxxxxx o vX.Y.Z); la pone el workflow y se lee en /version/.
 ARG APP_VERSION=dev
 
