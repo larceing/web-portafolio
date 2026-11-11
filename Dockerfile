@@ -1,4 +1,4 @@
-FROM nginx:1.27-alpine
+FROM nginx:1.31-alpine
 
 # Parches de seguridad del sistema de la imagen base (Trivy, D20).
 RUN apk upgrade --no-cache
