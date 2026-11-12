@@ -9,7 +9,7 @@
   var LOCALES = { es: 'es-ES', en: 'en-GB', zh: 'zh-CN' };
 
   function esc(t) {
-    return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
   function fecha(iso, lang) {
@@ -21,7 +21,10 @@
   // ctx: { lang, raiz (camino a la raíz del sitio), medios, textos }
   function enlace(u, ctx) {
     if (!u) return '';
-    if (/^https?:\/\//.test(u)) return u;
+    u = String(u);
+    if (/^https:\/\//.test(u)) return u;
+    // Solo https o rutas de la propia web (nada de «javascript:», «data:» ni «//otro»).
+    if (/^[a-z][a-z0-9+.-]*:|^\/\//i.test(u)) return '';
     var global = /^(lab|plantillas|cookies|img)\b/.test(u);
     var ruta = ctx.raiz + (ctx.lang !== 'es' && !global ? ctx.lang + '/' : '') + u;
     if (ctx.lang !== 'es' && /^lab\//.test(u)) ruta = ruta.replace(/lab\/(#.*)?$/, function (m, ancla) { return 'lab/?lang=' + ctx.lang + (ancla || ''); });
@@ -32,13 +35,15 @@
     var m = ctx.medios[n.producto] || ctx.medios.otro || {};
     var video = n.video || (n.imagen ? null : m.video);
     var imagen = n.imagen || (video ? null : m.imagen);
-    if (video && !/[\/.]/.test(video)) {
+    if (video && /^[a-z0-9_-]+$/i.test(video)) {
       var suf = ctx.lang === 'es' ? '' : '-' + ctx.lang;
       var base = ctx.raiz + 'lab/v/' + video + suf;
       return '<div class="nov-movil"><video controls preload="none" playsinline poster="' + esc(base + '.jpg') + '" aria-label="' + esc(ctx.textos.play) + '"><source src="' + esc(base + '.mp4') + '" type="video/mp4"></video></div>';
     }
     if (imagen) {
-      var src = /^https?:/.test(imagen) ? imagen : ctx.raiz + imagen;
+      // Solo imágenes de la propia web (la CSP tampoco deja cargar otras).
+      if (/^[a-z][a-z0-9+.-]*:|^\/\//i.test(imagen)) return '<div class="nov-marca">' + esc(n.producto) + '</div>';
+      var src = ctx.raiz + imagen;
       var forma = (m.forma === 'movil' || /iit-|vertical/.test(imagen)) ? 'nov-movil' : 'nov-ventana';
       return '<div class="' + forma + '"><img src="' + esc(src) + '" alt="" loading="lazy"></div>';
     }
